@@ -4,10 +4,24 @@ import RootLayout from "./pages/RootLayout";
 
 import classes from "./App.module.css";
 
+// { name: "bitcoin" },
+// { name: "ethereum" },
+// { name: "tether" },
+// { name: "cardano" },
+// { name: "binancecoin" },
+// { name: "bitcoincash" },
+// { name: "dogecoin" },
+// { name: "ethereumclassic" },
+// { name: "litecoin" },
+// { name: "shibainu" },
+// { name: "tron" },
+// { name: "ripple" },
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    children: [{ index: true, element: <HomePage /> }],
   },
 ]);
 

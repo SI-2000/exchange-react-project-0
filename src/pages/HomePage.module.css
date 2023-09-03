@@ -1,0 +1,31 @@
+.home-page {
+}
+
+.intro {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(48, 48, 48);
+  padding:1rem 0 3rem;
+}
+
+.intro h1 {
+  color: rgb(255, 174, 0);
+  margin: 1rem 0;
+}
+
+.intro p {
+  font-size: 14px;
+  color: rgb(194, 194, 194);
+}
+
+.currencies-list{
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-radius: 25px;
+  color:black;
+  margin-top:-25px;
+}

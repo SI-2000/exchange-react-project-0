@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import  ReactDOM  from "react-dom";
 import MainNavigation from "./MainNavigation";
 import ProfileSec from "./ProfileSec";
 
@@ -8,6 +9,7 @@ import { ReactComponent as HamburgerIcon } from "../files/icons/menu_FILL0_wght4
 
 import classes from "./MainHeader.module.css";
 import { Link } from "react-router-dom";
+import { getElementError } from "@testing-library/react";
 
 const MainHeader = () => {
   const [navIsOpen, setNavIsOpen] = useState(false);
@@ -17,7 +19,6 @@ const MainHeader = () => {
   }
 
   function closeNavOverleyHandler() {
-    console.log("closed");
     setNavIsOpen(false);
   }
 
@@ -33,11 +34,14 @@ const MainHeader = () => {
           >
             <HamburgerIcon />
           </label>
-          <MainNavigation
-            className={navIsOpen ? "shown" : ""}
-            navIsOpen={navIsOpen}
-            onCloseNav={closeNavOverleyHandler}
-          />
+          {ReactDOM.createPortal(
+            <MainNavigation
+              className={navIsOpen ? "shown" : ""}
+              navIsOpen={navIsOpen}
+              onCloseNav={closeNavOverleyHandler}
+            />,
+            document.getElementById("main-nav-overlay")
+          )}
         </div>
 
         <div className={classes["logo"]}>

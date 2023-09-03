@@ -1,0 +1,26 @@
+table {
+  width: 100%;
+}
+
+.volume {
+  display: none;
+}
+
+.buy-sell-btn {
+  display: none;
+}
+
+th{
+  width: 5rem;
+  text-align: center;
+}
+
+th.price {
+  display: block;
+  text-align: center;
+}
+
+.change {
+  display: block;
+  text-align: center;
+}
