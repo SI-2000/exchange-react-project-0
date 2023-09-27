@@ -29,7 +29,7 @@ const MainHeader = () => {
           <input type="checkbox" id="show-menu-cbx" checked={navIsOpen} />
           <label
             className={classes["show-menu-label"]}
-            for="show-menu-cbx"
+            htmlFor="show-menu-cbx"
             onClick={openNavOverlyHandler}
           >
             <HamburgerIcon />

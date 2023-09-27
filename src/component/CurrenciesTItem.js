@@ -11,7 +11,7 @@ const CurrenciesTItem = ({ currencyInfo }) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://fffapi.coingecko.com/api/v3/coins/${currencyInfo.coinId}`
+          `https://api.coingecko.com/api/v3/coins/${currencyInfo.coinId}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch");

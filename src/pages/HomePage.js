@@ -3,8 +3,7 @@ import React from "react";
 import classes from "./HomePage.module.css";
 import { Link } from "react-router-dom";
 import CurrenciesTable from "../component/CurrenciesTable";
-
-
+import WhiteFrame from "../ui/WhiteFrame";
 
 const HomePage = () => {
   return (
@@ -13,9 +12,9 @@ const HomePage = () => {
         <h1>ایزی بیت</h1>
         <p>خرید و فروش سریع،امن و کم هزینه ارز های دیجیتال</p>
       </div>
-      <div className={classes["currencies-list"]}>
+      <WhiteFrame className="margin-top">
         <CurrenciesTable />
-      </div>
+      </WhiteFrame>
     </div>
   );
 };

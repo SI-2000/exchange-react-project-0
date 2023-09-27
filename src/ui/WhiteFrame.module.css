@@ -1,0 +1,11 @@
+.white-frame {
+  display:flex;
+  justify-content: center;
+  background-color: white;
+  border-radius: 25px;
+  color: black;
+}
+
+.margin-top {
+  margin-top: -25px;
+}

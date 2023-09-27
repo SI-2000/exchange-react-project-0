@@ -25,9 +25,9 @@ const CurrenciesTable = () => {
         </tr>
       </thead>
       <tbody>
-        {currencies.map((c) => {
+        {/* {currencies.map((c) => {
           return <CurrenciesTItem currencyInfo={c} />;
-        })}
+        })} */}
       </tbody>
     </table>
   );

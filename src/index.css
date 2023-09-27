@@ -7,6 +7,11 @@
   font-family: Yekan;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --body-bg: rgb(32, 32, 32);
 }
 
 body {
@@ -18,7 +23,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   direction: rtl;
-  background-color: rgb(32, 32, 32);
+  background-color: var(--body-bg);
   color: white;
 }
 
@@ -33,6 +38,7 @@ ul {
 
 a {
   text-decoration: none;
+  color: white;
 }
 
 svg {
@@ -45,3 +51,11 @@ input[type="checkbox"] {
   display: none;
 }
 
+input {
+  all: unset;
+}
+
+button{
+  all:unset;
+  cursor: pointer;
+}

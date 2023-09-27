@@ -1,5 +1,5 @@
 .main-footer{
-    background-color: rgb(32, 32, 32);
+    /* background-color: var(--body-bg); */
     color:white;
     padding:1rem;
 }

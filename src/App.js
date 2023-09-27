@@ -2,30 +2,79 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import RootLayout from "./pages/RootLayout";
 
+import Authentication from "./pages/Authentication";
+import { action as authenticationAction } from "./pages/Authentication";
+import ErrorPage from "./pages/ErrorPage";
+
 import classes from "./App.module.css";
 
-// { name: "bitcoin" },
-// { name: "ethereum" },
-// { name: "tether" },
-// { name: "cardano" },
-// { name: "binancecoin" },
-// { name: "bitcoincash" },
-// { name: "dogecoin" },
-// { name: "ethereumclassic" },
-// { name: "litecoin" },
-// { name: "shibainu" },
-// { name: "tron" },
-// { name: "ripple" },
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "./store/auth";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyANzh3LLqS4Fvg5hFGSE-td8iEyZ_qE60Q",
+  authDomain: "exchange-3f817.firebaseapp.com",
+  databaseURL: "https://exchange-3f817-default-rtdb.firebaseio.com",
+  projectId: "exchange-3f817",
+  storageBucket: "exchange-3f817.appspot.com",
+  messagingSenderId: "1031330021796",
+  appId: "1:1031330021796:web:1b695560b3f67fda014131",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// Initialize Firebase Authentication and get a reference to the service
+// const auth = getAuth(app);
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    children: [{ index: true, element: <HomePage /> }],
+    errorElement: <ErrorPage />,
+    children: [
+      { index: true, element: <HomePage /> },
+      {
+        path: "auth",
+        element: <Authentication />,
+        action: authenticationAction,
+      },
+    ],
   },
 ]);
 
 function App() {
+  const dispatch = useDispatch();
+  
+  const data = useSelector(state=>state.uid)
+
+  useEffect(() => {
+    const auth = getAuth();
+    const uid = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        const uid = user.uid;
+        const email = user.email
+        console.log(email);
+        dispatch(authActions.login({ uid, email }));
+        console.log("data is: "+ data)
+        // ...
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+  }, []);
   return <RouterProvider router={router} />;
 }
 
