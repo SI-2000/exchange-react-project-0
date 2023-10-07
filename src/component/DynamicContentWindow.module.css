@@ -1,0 +1,12 @@
+.tabs button {
+    color: var(--custom-gray);
+  }
+  
+  .tabs button:hover {
+    color: var(--gold-color);
+  }
+  
+  button.active {
+    color: var(--gold-color);
+  }
+  

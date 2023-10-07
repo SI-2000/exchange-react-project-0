@@ -1,36 +1,22 @@
 import React from "react";
+import DynamicContentWindow from "../DynamicContentWindow ";
 
 import classes from "./SmartPhonDataSelector.module.css";
 
 const SmartPhonDataSelector = (props) => {
   const activeStateClasses = {
-    chart: props.activeWindowState.buttonsClass.chart,
-    order_book: props.activeWindowState.buttonsClass.order_book,
-    trades: props.activeWindowState.buttonsClass.trades,
+    CHART: props.activeWindowState.buttonsClass.CHART,
+    ORDER_BOOK: props.activeWindowState.buttonsClass.ORDER_BOOK,
+    TRADES: props.activeWindowState.buttonsClass.TRADES,
   };
 
   return (
     <div className={classes["selectors"]}>
-      <button
-        onClick={() => props.onChangeActiveState({ type: "CHART" })}
-        className={`${classes["chart"]} ${classes[activeStateClasses.chart]}`}
-      >
-        نمودار
-      </button>
-      <button
-        onClick={() => props.onChangeActiveState({ type: "ORDER_BOOK" })}
-        className={`${classes["order-book"]} ${
-          classes[activeStateClasses.order_book]
-        }`}
-      >
-        سفارش‌ها
-      </button>
-      <button
-        onClick={() => props.onChangeActiveState({ type: "TRADES" })}
-        className={`${classes["trades"]} ${classes[activeStateClasses.trades]}`}
-      >
-        سفارش‌های اخیر
-      </button>
+      <DynamicContentWindow
+        actions={props.actions}
+        onChangeActiveState={props.onChangeActiveState}
+        displayClasses={activeStateClasses}
+      />
     </div>
   );
 };
