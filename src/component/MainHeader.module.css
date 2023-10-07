@@ -27,17 +27,11 @@
   align-items: center;
 }
 
-.header-link {
-  display: flex;
-  align-items: center;
-  margin: 0 0.1rem;
+.header-auth-links{
+  height: 40px;
+  padding: .3rem 0;
 }
 
-.icon {
-  fill: white;
-  width: 20px;
-  padding: 0 0.1rem;
-}
 
 .show-menu-label {
   display: flex;
@@ -48,3 +42,4 @@
 .menubtn-logo-container input[type="checkbox"]:checked ~ .show-menu-label {
   visibility: hidden;
 }
+

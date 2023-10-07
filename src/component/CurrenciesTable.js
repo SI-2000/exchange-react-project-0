@@ -5,14 +5,8 @@ import CurrenciesTItem from "./CurrenciesTItem";
 
 import classes from "./CurrenciesTable.module.css";
 
-const currencies = [
-  { coinId: "bitcoin", fname: "بیت کوین" },
-  { coinId: "ethereum", fname: "اتریوم" },
-  { coinId: "cardano", fname: "کاردانو" },
-  { coinId: "binancecoin", fname: "بایننس کوین" },
-];
 
-const CurrenciesTable = () => {
+const CurrenciesTable = ({currencies}) => {
   return (
     <table>
       <thead>

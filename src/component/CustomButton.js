@@ -1,10 +1,11 @@
 import React from "react";
 
-import classes from "./Button.module.css";
+import classes from "./CustomButton.module.css";
 
-const Button = ({ children, disabled, className }) => {
+const CustomButton = ({ children, disabled, className, onClick }) => {
   return (
     <button
+      onClick={onClick}
       className={`${classes[className]} ${classes[""]}`}
       disabled={disabled}
     >
@@ -13,4 +14,4 @@ const Button = ({ children, disabled, className }) => {
   );
 };
 
-export default Button;
+export default CustomButton;

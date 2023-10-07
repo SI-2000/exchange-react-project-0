@@ -6,6 +6,13 @@ import CurrenciesTable from "../component/CurrenciesTable";
 import WhiteFrame from "../ui/WhiteFrame";
 
 const HomePage = () => {
+  const currencies = [
+    { coinId: "bitcoin", fname: "بیت کوین" },
+    { coinId: "ethereum", fname: "اتریوم" },
+    { coinId: "cardano", fname: "کاردانو" },
+    { coinId: "binancecoin", fname: "بایننس کوین" },
+  ];
+
   return (
     <div className={classes["home-page"]}>
       <div className={classes["intro"]}>
@@ -13,7 +20,7 @@ const HomePage = () => {
         <p>خرید و فروش سریع،امن و کم هزینه ارز های دیجیتال</p>
       </div>
       <WhiteFrame className="margin-top">
-        <CurrenciesTable />
+        <CurrenciesTable currencies={currencies} />
       </WhiteFrame>
     </div>
   );

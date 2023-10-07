@@ -12,7 +12,7 @@
 }
 
 .intro h1 {
-  color: rgb(255, 174, 0);
+  color: var(--gold-color);
   margin: 1rem 0;
 }
 

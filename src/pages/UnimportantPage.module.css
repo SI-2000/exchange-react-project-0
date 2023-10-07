@@ -1,0 +1,8 @@
+.unimportant{
+    max-width: 30rem;
+    margin:5rem auto;
+}
+
+.unimportant p{
+    padding:2rem;
+}

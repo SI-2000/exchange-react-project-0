@@ -1,0 +1,5 @@
+.trading-page {
+  background-color: var(--tradingview-dark);
+  display:grid;
+}
+

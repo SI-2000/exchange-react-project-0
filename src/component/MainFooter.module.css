@@ -51,7 +51,7 @@
 
 .copy-right{
     font-size:14px;
-    color:rgb(170, 170, 170);
+    color:var(--custom-gray);
     text-align: center;
     display: flex;
     justify-content: center;

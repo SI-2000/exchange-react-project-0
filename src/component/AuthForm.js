@@ -8,7 +8,7 @@ import {
 
 import classes from "./AuthForm.module.css";
 import WhiteFrame from "../ui/WhiteFrame";
-import Button from "./Button";
+import CustomButton from "./CustomButton";
 import CustomLink from "./CustomLink";
 import { useSelector } from "react-redux";
 
@@ -64,9 +64,9 @@ const AuthForm = () => {
             >
               {isLogin ? "حساب جدیدی بسازید" : "ورود به حساب کاربری"}
             </CustomLink>
-            <Button className="dark" disabled={isSubmiting}>
+            <CustomButton className="dark" disabled={isSubmiting}>
               {isSubmiting ? "در حال ارسال" : isLogin ? "ورود" : "ارسال"}
-            </Button>
+            </CustomButton>
           </div>
         </Form>
       </WhiteFrame>

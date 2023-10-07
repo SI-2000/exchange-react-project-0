@@ -6,14 +6,28 @@ import {
 } from "firebase/auth";
 
 import AuthForm from "../component/AuthForm";
-import { useDispatch } from "react-redux";
-import { json, useActionData, useSearchParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  json,
+  redirect,
+  useActionData,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import { authActions } from "../store/auth";
 import { firebaseErrHandler } from "../util/fb-auth-err-handler";
+import { fetchRealTimeDB } from "../util/realTimeDB-req";
+import { extractUsername } from "../util/username-extracter";
 
 const Authentication = () => {
-  const token = useActionData();
-  const dispatch = useDispatch();
+  const uid = useSelector((state) => state.auth.uid);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (uid) {
+      navigate("/");
+    }
+  }, []);
 
   return <AuthForm />;
 };
@@ -44,6 +58,12 @@ export async function action({ request }) {
           authData.password
         );
         user = userCredential.user;
+        const userData = {
+          email: user.email,
+          userName: extractUsername(user.email),
+          assets: {},
+        };
+        // fetchRealTimeDB(`users/${user.uid}`, "put", userData);
       } catch (err) {
         return firebaseErrHandler(err.code) || null;
       }
@@ -59,13 +79,23 @@ export async function action({ request }) {
           authData.password
         );
         user = userCredential.user;
+
+        const userData = {
+          email: user.email,
+          userName: extractUsername(user.email),
+          assets: {
+            tether: 0,
+          },
+        };
+
+        fetchRealTimeDB(`users/${user.uid}`, "PUT", userData);
       } catch (err) {
-        console.log(err.code);
+        console.log(err);
         return firebaseErrHandler(err.code) || null;
       }
 
       break;
     }
   }
-  return null;
+  return redirect("/");
 }

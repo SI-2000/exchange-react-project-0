@@ -5,6 +5,7 @@ import RootLayout from "./pages/RootLayout";
 import Authentication from "./pages/Authentication";
 import { action as authenticationAction } from "./pages/Authentication";
 import ErrorPage from "./pages/ErrorPage";
+import { fetchRealTimeDB } from "./util/realTimeDB-req";
 
 import classes from "./App.module.css";
 
@@ -15,6 +16,10 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "./store/auth";
+import AssetsPage from "./pages/assets/AssetsPage";
+import UnimportantPage from "./pages/UnimportantPage";
+import CurrenciesList from "./pages/CurrenciesList";
+import TradingPage from "./pages/TradingPage";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -43,10 +48,20 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
+      { path: "assets", element: <AssetsPage /> },
       {
         path: "auth",
         element: <Authentication />,
         action: authenticationAction,
+      },
+      { path: "currencies-list", element: <CurrenciesList /> },
+      {
+        path: "coins",
+        children: [{ path: ":coinId", element: <TradingPage /> }],
+      },
+      {
+        path: "unimportant-page",
+        element: <UnimportantPage />,
       },
     ],
   },
@@ -54,8 +69,8 @@ const router = createBrowserRouter([
 
 function App() {
   const dispatch = useDispatch();
-  
-  const data = useSelector(state=>state.uid)
+
+  const data = useSelector((state) => state.uid);
 
   useEffect(() => {
     const auth = getAuth();
@@ -64,10 +79,11 @@ function App() {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
         const uid = user.uid;
-        const email = user.email
-        console.log(email);
+        const email = user.email;
+
+        // for error
         dispatch(authActions.login({ uid, email }));
-        console.log("data is: "+ data)
+
         // ...
       } else {
         // User is signed out

@@ -1,11 +1,22 @@
 .link {
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
-    font-size: 14px;
-  }
-  
-  .dark {
-    background-color: rgb(41, 41, 41);
-    color: white;
-  }
-  
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.dark {
+  background-color: rgb(41, 41, 41);
+  color: white;
+}
+
+.golden-link {
+  background-color: var(--gold-color);
+  padding: 0.3rem 1rem;
+  margin: 0.1rem 0;
+  margin-right: 0.3rem;
+}
+
+.header-login:hover {
+  background-color: rgb(92, 92, 92);
+  padding: 0.3rem 1rem;
+}

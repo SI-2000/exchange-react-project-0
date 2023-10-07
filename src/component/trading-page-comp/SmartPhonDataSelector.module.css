@@ -1,0 +1,14 @@
+.selectors {
+}
+
+.selectors button {
+  color: var(--custom-gray);
+}
+
+.selectors button:hover {
+  color: var(--gold-color);
+}
+
+button.active {
+  color: var(--gold-color);
+}

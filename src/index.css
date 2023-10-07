@@ -12,6 +12,9 @@
 
 :root {
   --body-bg: rgb(32, 32, 32);
+  --gold-color: rgb(255, 174, 0);
+  --custom-gray:rgb(170, 170, 170);
+  --tradingview-dark:rgba(19, 23, 34);
 }
 
 body {
@@ -55,7 +58,7 @@ input {
   all: unset;
 }
 
-button{
-  all:unset;
+button {
+  all: unset;
   cursor: pointer;
 }

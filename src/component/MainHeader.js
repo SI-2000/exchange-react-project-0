@@ -1,18 +1,22 @@
 import React, { useState } from "react";
-import  ReactDOM  from "react-dom";
+import ReactDOM from "react-dom";
 import MainNavigation from "./MainNavigation";
 import ProfileSec from "./ProfileSec";
-
-import { ReactComponent as CreditIcon } from "../files/icons/credit_card_FILL0_wght400_GRAD0_opsz48.svg";
-import { ReactComponent as NotifIcon } from "../files/icons/notifications_FILL0_wght400_GRAD0_opsz48.svg";
+import { useLocation, useNavigate } from "react-router-dom";
+import CustomButton from "./CustomButton";
 import { ReactComponent as HamburgerIcon } from "../files/icons/menu_FILL0_wght400_GRAD0_opsz48.svg";
-
 import classes from "./MainHeader.module.css";
-import { Link } from "react-router-dom";
-import { getElementError } from "@testing-library/react";
+import { useSelector } from "react-redux";
+import CustomLink from "./CustomLink";
 
 const MainHeader = () => {
+  const uid = useSelector((state) => state.auth.uid);
+  const navigate = useNavigate();
   const [navIsOpen, setNavIsOpen] = useState(false);
+  const location = useLocation();
+  const fullURL = location.pathname + location.search;
+  const isInAuthPages =
+    fullURL === "/auth/?mode=login" || fullURL === "/auth/?mode=signup";
 
   function openNavOverlyHandler() {
     setNavIsOpen(true);
@@ -43,19 +47,33 @@ const MainHeader = () => {
             document.getElementById("main-nav-overlay")
           )}
         </div>
-
         <div className={classes["logo"]}>
           <h1>ایزی بیت</h1>
         </div>
       </div>
       <div className={classes["user-links"]}>
-        <Link className={classes["header-link"]}>
-          <CreditIcon className={`${classes["icon"]} ${classes["credit"]}`} />
-        </Link>
-        <Link className={classes["header-link"]}>
-          <NotifIcon className={`${classes["icon"]} ${classes["notif"]}`} />
-        </Link>
-        <ProfileSec />
+        {uid && <ProfileSec />}
+        {!uid && !isInAuthPages && (
+          <div className={classes["header-auth-links"]}>
+            <CustomLink to="auth/?mode=login" className="header-login">
+              ورود
+            </CustomLink>
+            <CustomLink to="auth/?mode=signup" className="golden-link">
+              ثبت نام کنید
+            </CustomLink>
+          </div>
+        )}
+        {isInAuthPages && (
+          <CustomButton
+            className="golden-btn"
+            onClick={() => {
+              // navigate(-1);
+              navigate("/");
+            }}
+          >
+            بازگشت
+          </CustomButton>
+        )}
       </div>
     </header>
   );
