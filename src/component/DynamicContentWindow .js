@@ -6,23 +6,26 @@ import classes from "./DynamicContentWindow.module.css";
 
 const DynamicContentWindow = ({
   actions,
-  displayClasses,
-  onChangeActiveState,
+  onDispatchTabsChanges,
+  marketDataDisplayState,
 }) => {
-
-
+  const tabsClasses = {};
+  Object.keys(marketDataDisplayState.buttonsClass).forEach((tab) => {
+    tabsClasses[tab] = marketDataDisplayState.buttonsClass[tab];
+  });
 
   return (
     <div className={classes["tabs"]}>
       {actions.map((action) => {
-        const actionType = Object.keys(action)[0]
-        const actionLabel = Object.values(action)[0]
-        console.log(displayClasses.actionType)
+        const actionType = Object.keys(action)[0];
+        const actionLabel = Object.values(action)[0];
+        console.log(tabsClasses[actionType]);
         return (
-        
           <button
-            onClick={() => onChangeActiveState({ type: actionType})}
-            className={`${classes[actionType]} ${classes[displayClasses[actionType]]}`}
+            onClick={() => onDispatchTabsChanges({ type: actionType })}
+            className={`${classes[actionType]} ${
+              classes[tabsClasses[actionType]]
+            }`}
           >
             {actionLabel}
           </button>

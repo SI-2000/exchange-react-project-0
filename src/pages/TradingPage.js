@@ -3,33 +3,36 @@ import React, { useReducer } from "react";
 import classes from "./TradingPage.module.css";
 import { useParams } from "react-router-dom";
 import PrimaryData from "../component/trading-page-comp/PrimaryData";
-import SmartPhonDataSelector from "../component/trading-page-comp/SmartPhonDataSelector";
+import MarketDataSelector from "../component/trading-page-comp/MarketDataSelector";
 import OrderBook from "../component/trading-page-comp/OrderBook";
 import Trades from "../component/trading-page-comp/Trades";
 import Chart from "../component/trading-page-comp/Chart";
 import { useReducer_DWindow } from "../hook/use-reducer-dwindow";
 
-const actions = [
+const marketDataActions = [
   { CHART: "نمودار" },
   { ORDER_BOOK: "سفارش‌ها" },
   { TRADES: "سفارش‌های اخیر" },
 ];
 
 const TradingPage = () => {
-  const [dataDisplayState, dispatchDataDisplay] = useReducer_DWindow(actions);
+  const [marketDataDisplayState, dispatchMarketDataDisplay] =
+    useReducer_DWindow(marketDataActions);
   const params = useParams();
 
   return (
     <div className={classes["trading-page"]}>
       <PrimaryData />
-      <SmartPhonDataSelector
-        actions={actions}
-        activeWindowState={dataDisplayState}
-        onChangeActiveState={dispatchDataDisplay}
+      <MarketDataSelector
+        actions={marketDataActions}
+        marketDataDisplayState={marketDataDisplayState}
+        onDispatchMDataDisplay={dispatchMarketDataDisplay}
       />
-      <Chart className={dataDisplayState.componentsClass.CHART} />
-      <OrderBook className={dataDisplayState.componentsClass.ORDER_BOOK} />
-      <Trades className={dataDisplayState.componentsClass.TRADES} />
+      <Chart className={marketDataDisplayState.componentsClass.CHART} />
+      <OrderBook
+        className={marketDataDisplayState.componentsClass.ORDER_BOOK}
+      />
+      <Trades className={marketDataDisplayState.componentsClass.TRADES} />
     </div>
   );
 };
