@@ -7,11 +7,11 @@ import classes from "./DynamicContentWindow.module.css";
 const DynamicContentWindow = ({
   actions,
   onDispatchTabsChanges,
-  marketDataDisplayState,
+  tabsState,
 }) => {
   const tabsClasses = {};
-  Object.keys(marketDataDisplayState.buttonsClass).forEach((tab) => {
-    tabsClasses[tab] = marketDataDisplayState.buttonsClass[tab];
+  Object.keys(tabsState.buttonsClass).forEach((tab) => {
+    tabsClasses[tab] = tabsState.buttonsClass[tab];
   });
 
   return (

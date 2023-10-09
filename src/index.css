@@ -14,7 +14,9 @@
   --body-bg: rgb(32, 32, 32);
   --gold-color: rgb(255, 174, 0);
   --custom-gray:rgb(170, 170, 170);
-  --tradingview-dark:rgba(19, 23, 34);
+  --tradingview-black:rgba(19, 23, 34);
+  --tradingview-dark-black:rgb(27, 30, 39);
+
 }
 
 body {
@@ -61,4 +63,8 @@ input {
 button {
   all: unset;
   cursor: pointer;
+}
+
+dl, dt, dd{
+  all:unset;
 }

@@ -8,6 +8,7 @@ import OrderBook from "../component/trading-page-comp/OrderBook";
 import Trades from "../component/trading-page-comp/Trades";
 import Chart from "../component/trading-page-comp/Chart";
 import { useReducer_DWindow } from "../hook/use-reducer-dwindow";
+import TradeHistory from "../component/trading-page-comp/TradeHistory";
 
 const marketDataActions = [
   { CHART: "نمودار" },
@@ -33,6 +34,8 @@ const TradingPage = () => {
         className={marketDataDisplayState.componentsClass.ORDER_BOOK}
       />
       <Trades className={marketDataDisplayState.componentsClass.TRADES} />
+
+      <TradeHistory />
     </div>
   );
 };

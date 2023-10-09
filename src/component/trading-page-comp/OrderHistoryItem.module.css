@@ -1,0 +1,66 @@
+.order-item {
+  margin: 0 1rem;
+  background-color: var(--tradingview-dark-black);
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+div.currency-pair {
+  margin-left: 1rem;
+  font-size: 14px;
+}
+
+div.order-type {
+  font-size: 12px;
+}
+
+div.transaction-type {
+  font-size: 12px;
+  margin-left: 0.2rem;
+}
+
+.order-item dl {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
+}
+
+.order-item dt {
+  font-size: 12px;
+  justify-self: start;
+}
+
+.order-item dd {
+  justify-self: end;
+}
+
+.currency-pair:not(div),
+.order-type:not(div),
+.transaction-type:not(div) {
+  display: none;
+}
+
+/* dt.currency-pair,
+dt.order-type,
+dt.transaction-type {
+  display: none;
+}
+
+dd.currency-pair {
+  grid-column: 1 /2;
+  justify-self: start;
+}
+
+dd.order-type {
+  grid-column: 2/3;
+}
+
+dd.transaction-type {
+  grid-column: 3/9;
+}  */

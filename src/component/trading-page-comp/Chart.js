@@ -7,7 +7,7 @@ const Chart = ({ className }) => {
   return (
     <div className={`${classes["chart-container"]} ${classes[className]}`}>
       <TradingViewWidget
-        symbol="LINKUSDT"
+        symbol="BTCUSDT"
         theme="dark"
         locale="fa"
         width="100%"

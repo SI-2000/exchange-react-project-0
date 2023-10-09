@@ -9,7 +9,7 @@ const MarketDataSelector = (props) => {
       <DynamicContentWindow
         actions={props.actions}
         onDispatchTabsChanges={props.onDispatchMDataDisplay}
-        marketDataDisplayState={props.marketDataDisplayState}
+        tabsState={props.marketDataDisplayState}
       />
     </div>
   );
