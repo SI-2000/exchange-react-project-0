@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Form, Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { ReactComponent as CloseIcon } from "../files/icons/close_FILL0_wght400_GRAD0_opsz48.svg";
 
@@ -8,7 +8,6 @@ import classes from "./MainNavigation.module.css";
 import { useLogout } from "../hook/use-logout";
 import { useSelector } from "react-redux";
 import Backdrop from "../ui/Backdrop";
-
 
 const MainNavigation = ({ className, navIsOpen, onCloseNav }) => {
   const uid = useSelector((state) => state.auth.uid);
@@ -95,11 +94,6 @@ const MainNavigation = ({ className, navIsOpen, onCloseNav }) => {
           </li>
         )}
       </ul>
-      {navIsOpen &&
-        ReactDOM.createPortal(
-          <Backdrop onClick={onCloseNav} />,
-          document.getElementById("backdrop-root")
-        )}
     </nav>
   );
 };

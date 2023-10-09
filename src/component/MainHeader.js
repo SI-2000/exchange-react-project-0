@@ -8,6 +8,7 @@ import { ReactComponent as HamburgerIcon } from "../files/icons/menu_FILL0_wght4
 import classes from "./MainHeader.module.css";
 import { useSelector } from "react-redux";
 import CustomLink from "./CustomLink";
+import Overly from "../ui/Overly";
 
 const MainHeader = () => {
   const uid = useSelector((state) => state.auth.uid);
@@ -39,11 +40,18 @@ const MainHeader = () => {
             <HamburgerIcon />
           </label>
           {ReactDOM.createPortal(
-            <MainNavigation
-              className={navIsOpen ? "shown" : ""}
-              navIsOpen={navIsOpen}
-              onCloseNav={closeNavOverleyHandler}
-            />,
+            <Overly
+              classNamesList={
+                navIsOpen ? ["main-nav-overly", "shown"] : ["main-nav-overly"]
+              }
+              overlyIsOpen={navIsOpen}
+              onCloseOverly={closeNavOverleyHandler}
+            >
+              <MainNavigation
+                navIsOpen={navIsOpen}
+                onCloseNav={closeNavOverleyHandler}
+              />
+            </Overly>,
             document.getElementById("overlay")
           )}
         </div>

@@ -1,20 +1,20 @@
 .main-nav {
-  background-color: rgb(43, 43, 43);
+  /* background-color: rgb(43, 43, 43); */
   padding: 1rem 3rem;
   display: flex;
   flex-direction: column;
-  position: fixed;
-  margin-right: -16rem;
-  top: 0;
-  transition: margin 0.3s;
-  z-index: 101;
-  height: 100%;
-  width: 15rem;
+  /* position: fixed; */
+  /* margin-right: -16rem; */
+  /* top: 0; */
+  /* transition: margin 0.3s; */
+  /* z-index: 101; */
+  /* height: 100%; */
+  /* width: 15rem; */
 }
 
-.shown {
+/* .shown {
   margin-right: -1rem;
-}
+} */
 
 .main-nav ul {
   margin-top: 3rem;
