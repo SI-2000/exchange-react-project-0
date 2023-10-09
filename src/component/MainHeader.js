@@ -8,7 +8,7 @@ import { ReactComponent as HamburgerIcon } from "../files/icons/menu_FILL0_wght4
 import classes from "./MainHeader.module.css";
 import { useSelector } from "react-redux";
 import CustomLink from "./CustomLink";
-import Overly from "../ui/Overly";
+import Overlay from "../ui/Overlay";
 
 const MainHeader = () => {
   const uid = useSelector((state) => state.auth.uid);
@@ -19,11 +19,11 @@ const MainHeader = () => {
   const isInAuthPages =
     fullURL === "/auth/?mode=login" || fullURL === "/auth/?mode=signup";
 
-  function openNavOverlyHandler() {
+  function openNavOverlayHandler() {
     setNavIsOpen(true);
   }
 
-  function closeNavOverleyHandler() {
+  function closeNavOverlayHandler() {
     setNavIsOpen(false);
   }
 
@@ -35,23 +35,18 @@ const MainHeader = () => {
           <label
             className={classes["show-menu-label"]}
             htmlFor="show-menu-cbx"
-            onClick={openNavOverlyHandler}
+            onClick={openNavOverlayHandler}
           >
             <HamburgerIcon />
           </label>
           {ReactDOM.createPortal(
-            <Overly
-              classNamesList={
-                navIsOpen ? ["main-nav-overly", "shown"] : ["main-nav-overly"]
-              }
-              overlyIsOpen={navIsOpen}
-              onCloseOverly={closeNavOverleyHandler}
+            <Overlay
+              classNamesList={["main-nav-Overlay"]}
+              overlayIsOpen={navIsOpen}
+              onClickBackdrop={closeNavOverlayHandler}
             >
-              <MainNavigation
-                navIsOpen={navIsOpen}
-                onCloseNav={closeNavOverleyHandler}
-              />
-            </Overly>,
+              <MainNavigation onCloseNav={closeNavOverlayHandler} />
+            </Overlay>,
             document.getElementById("overlay")
           )}
         </div>

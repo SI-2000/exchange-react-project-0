@@ -1,11 +1,11 @@
-.overly {
+.Overlay {
   background-color: rgb(43, 43, 43);
   position: fixed;
   transition: margin 0.3s;
   z-index: 101;
 }
 
-.main-nav-overly {
+.main-nav-Overlay {
   margin-right: -16rem;
   top: 0;
   height: 100%;

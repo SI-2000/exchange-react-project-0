@@ -9,7 +9,7 @@ import { useLogout } from "../hook/use-logout";
 import { useSelector } from "react-redux";
 import Backdrop from "../ui/Backdrop";
 
-const MainNavigation = ({ className, navIsOpen, onCloseNav }) => {
+const MainNavigation = ({ className, onCloseNav }) => {
   const uid = useSelector((state) => state.auth.uid);
   const logoutHandler = useLogout(onCloseNav);
 

@@ -1,0 +1,28 @@
+.trade-sec {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+}
+
+.show-form-btns {
+  display: flex;
+  /* justify-content: space-between; */
+  padding: 1rem 1rem;
+  background-color: var(--tradingview-light-black);
+}
+
+.show-form-btns button {
+  flex: 1 1 auto;
+  text-align: center;
+  margin: 0.2rem;
+  border-radius: 5px;
+  height: 1.5rem;
+}
+
+.show-form-btns .sell {
+  background-color: var(--exchange-red);
+}
+
+.show-form-btns .buy {
+  background-color: var(--exchange-green);
+}
