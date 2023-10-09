@@ -44,7 +44,7 @@ const MainHeader = () => {
               navIsOpen={navIsOpen}
               onCloseNav={closeNavOverleyHandler}
             />,
-            document.getElementById("main-nav-overlay")
+            document.getElementById("overlay")
           )}
         </div>
         <div className={classes["logo"]}>

@@ -1,5 +1,6 @@
 .trading-page {
   background-color: var(--tradingview-black);
   display:grid;
+  height:calc(100vh - 56px);
 }
 

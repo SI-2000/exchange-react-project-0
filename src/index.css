@@ -13,10 +13,11 @@
 :root {
   --body-bg: rgb(32, 32, 32);
   --gold-color: rgb(255, 174, 0);
-  --custom-gray:rgb(170, 170, 170);
-  --tradingview-black:rgba(19, 23, 34);
-  --tradingview-dark-black:rgb(27, 30, 39);
-
+  --custom-gray: rgb(170, 170, 170);
+  --tradingview-black: rgba(19, 23, 34);
+  --tradingview-light-black: rgb(27, 30, 39);
+  --exchange-green: rgb(14, 203, 129);
+  --exchange-red: rgb(246, 70, 93);
 }
 
 body {
@@ -65,6 +66,8 @@ button {
   cursor: pointer;
 }
 
-dl, dt, dd{
-  all:unset;
+dl,
+dt,
+dd {
+  all: unset;
 }

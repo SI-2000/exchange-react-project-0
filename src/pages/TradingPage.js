@@ -9,6 +9,7 @@ import Trades from "../component/trading-page-comp/Trades";
 import Chart from "../component/trading-page-comp/Chart";
 import { useReducer_DWindow } from "../hook/use-reducer-dwindow";
 import TradeHistory from "../component/trading-page-comp/TradeHistory";
+import TradeForm from "../component/trading-page-comp/TradeForm";
 
 const marketDataActions = [
   { CHART: "نمودار" },
@@ -36,6 +37,7 @@ const TradingPage = () => {
       <Trades className={marketDataDisplayState.componentsClass.TRADES} />
 
       <TradeHistory />
+      <TradeForm />
     </div>
   );
 };

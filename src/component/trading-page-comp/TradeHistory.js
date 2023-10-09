@@ -21,7 +21,7 @@ const TradeHistory = () => {
         tabsState={tradeHistoryState}
       />
       <div className={classes["open-orders"]}></div>
-      <OrderHistoryItem />
+      {/* <OrderHistoryItem /> */}
     </div>
   );
 };

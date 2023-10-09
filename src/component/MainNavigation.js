@@ -2,17 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Form, Link, NavLink } from "react-router-dom";
 
-import { getAuth, signOut } from "firebase/auth";
-
 import { ReactComponent as CloseIcon } from "../files/icons/close_FILL0_wght400_GRAD0_opsz48.svg";
 
 import classes from "./MainNavigation.module.css";
 import { useLogout } from "../hook/use-logout";
 import { useSelector } from "react-redux";
+import Backdrop from "../ui/Backdrop";
 
-const Backdrop = ({ onClick }) => {
-  return <div className={classes["backdrop"]} onClick={onClick}></div>;
-};
 
 const MainNavigation = ({ className, navIsOpen, onCloseNav }) => {
   const uid = useSelector((state) => state.auth.uid);
