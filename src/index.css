@@ -18,6 +18,8 @@
   --tradingview-light-black: rgb(27, 30, 39);
   --exchange-green: rgb(14, 203, 129);
   --exchange-red: rgb(246, 70, 93);
+  --border-light-gray:rgb(49, 49, 49);
+  --input-gray:rgb(43, 47, 54);
 }
 
 body {
@@ -64,6 +66,7 @@ input {
 button {
   all: unset;
   cursor: pointer;
+  font-size: 14px;
 }
 
 dl,

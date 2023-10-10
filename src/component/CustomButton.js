@@ -6,7 +6,7 @@ const CustomButton = ({ children, disabled, className, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className={`${classes[className]} ${classes[""]}`}
+      className={`${classes["custom-btn"]} ${classes[className]} ${classes[""]}`}
       disabled={disabled}
     >
       {children}

@@ -19,7 +19,6 @@ const DynamicContentWindow = ({
       {actions.map((action) => {
         const actionType = Object.keys(action)[0];
         const actionLabel = Object.values(action)[0];
-        console.log(tabsClasses[actionType]);
         return (
           <button
             onClick={() => onDispatchTabsChanges({ type: actionType })}

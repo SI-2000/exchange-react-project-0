@@ -1,17 +1,28 @@
-.Overlay {
-  background-color: rgb(43, 43, 43);
+.overlay {
   position: fixed;
   transition: margin 0.3s;
   z-index: 101;
+  width: fit-content;
+  height: fit-content;
 }
 
-.main-nav-Overlay {
+.main-nav-overlay {
   margin-right: -16rem;
   top: 0;
   height: 100%;
   width: 15rem;
 }
 
-.shown {
-    margin-right: -1rem;
-  }
+.show-main-nav-overlay {
+  margin-right: -1rem;
+}
+
+.trade-form-overlay{
+  bottom: -30rem;
+  transition: bottom .3s;
+  
+}
+
+.show-trade-form-overlay{
+  bottom: 0rem;
+}

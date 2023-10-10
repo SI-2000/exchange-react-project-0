@@ -1,0 +1,24 @@
+.buy-sell-btn{
+    width: 100%;
+    margin:1.5rem 0;
+    border-radius: 3px;
+    text-align: center;
+    padding:.5rem 0;
+  }
+  
+  
+  .signed-out-trade-btn{
+    background-color: var(--input-gray);
+  }
+  
+  .signed-out-trade-btn a{
+    color:var(--gold-color)
+  }
+  
+  button.buy{
+    background-color: var(--exchange-green);
+  }
+  
+  button.sell{
+    background-color: var(--exchange-red);
+  }

@@ -1,5 +1,8 @@
 .tabs button {
     color: var(--custom-gray);
+    padding: 0.5rem 0 .5rem 2rem;
+    text-align: right
+
   }
   
   .tabs button:hover {

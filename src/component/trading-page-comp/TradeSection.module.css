@@ -1,7 +1,7 @@
 .trade-sec {
+  /* background-color: red; */
   position: sticky;
   bottom: 0;
-  width: 100%;
 }
 
 .show-form-btns {
@@ -17,6 +17,7 @@
   margin: 0.2rem;
   border-radius: 5px;
   height: 1.5rem;
+  padding: 0.5rem 1rem;
 }
 
 .show-form-btns .sell {

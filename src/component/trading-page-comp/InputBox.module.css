@@ -1,0 +1,37 @@
+.input-box {
+  background-color: var(--input-gray);
+  margin: .7rem 0;
+  border-radius: 5px;
+  display: flex;
+  font-size: 12px;
+  padding: 0.7rem 0.6rem;
+  justify-content: space-between;
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.input-box:hover,
+.input-box:focus-within {
+  border: 1px solid var(--gold-color);
+}
+
+.disabled-inp-box:hover,
+.disabled-inp-box:focus-within {
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.disabled-inp-box {
+  background-color: rgb(121, 121, 121);
+}
+
+.input-box .title {
+  color: var(--custom-gray);
+}
+
+.input-box input {
+  flex: 1 1 auto;
+  direction: ltr;
+}
+
+.input-box .unit {
+  margin-right: 1rem;
+}

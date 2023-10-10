@@ -41,7 +41,7 @@ const MainHeader = () => {
           </label>
           {ReactDOM.createPortal(
             <Overlay
-              classNamesList={["main-nav-Overlay"]}
+              className="main-nav-overlay"
               overlayIsOpen={navIsOpen}
               onClickBackdrop={closeNavOverlayHandler}
             >

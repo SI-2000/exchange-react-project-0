@@ -1,0 +1,21 @@
+.buy-sell-triangle {
+  position: absolute;
+  height: 100%;
+  width: 3rem;
+  display: none;
+}
+
+.buy-triangle {
+  display: block;
+  fill: var(--exchange-green);
+  right: -1.5rem;
+  z-index: 0;
+}
+
+.sell-triangle {
+  display: block;
+  fill: var(--exchange-red);
+  transform: rotate(180deg);
+  left: -1.5rem;
+  z-index: 1;
+}

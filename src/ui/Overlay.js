@@ -4,21 +4,19 @@ import Backdrop from "./Backdrop";
 
 import classes from "./Overlay.module.css";
 
-const Overly = ({
+const Overlay = ({
   children,
-  classNamesList = [],
+  className = "",
   overlayIsOpen = false,
   onClickBackdrop = () => {},
 }) => {
-  console.log(classNamesList);
-  let classesTemplate = `${classes["Overlay"]} ${
-    classes[overlayIsOpen ? "shown" : ""]
+  const classesTemplate = `${classes["overlay"]} ${classes[className]} ${
+    classes[overlayIsOpen ? "show-" + className : undefined]
   }`;
-  classNamesList.forEach((class_name) => {
-    classesTemplate += ` ${classes[class_name]}`;
-  });
 
+console.log(classesTemplate)
   return (
+
     <div className={classesTemplate}>
       {children}
       {overlayIsOpen &&
@@ -30,4 +28,4 @@ const Overly = ({
   );
 };
 
-export default Overly;
+export default Overlay;

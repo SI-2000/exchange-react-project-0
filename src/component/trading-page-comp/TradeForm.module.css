@@ -1,0 +1,33 @@
+.trade-form {
+  background-color: var(--tradingview-black);
+  width: 100vw;
+  height: 100%;
+}
+
+.trade-type-selector {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+}
+
+.layout-helper {
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid var(--border-light-gray);
+}
+
+.form-switchers {
+  /* width: 100%; */
+  display: flex;
+}
+
+.input-sec {
+  padding: 1rem;
+}
+
+.select-order-type {
+  border-bottom: 1px solid var(--border-light-gray);
+  margin: 1rem 0;
+}
+
+

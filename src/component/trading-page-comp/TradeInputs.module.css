@@ -1,0 +1,19 @@
+.avbl {
+  display: flex;
+  align-items: center;
+}
+
+.avbl .title {
+  font-size: 12px;
+  color: var(--custom-gray);
+}
+
+.avbl .value {
+  font-size: 14px;
+  margin: 0 1rem;
+}
+.avbl .value span {
+  margin: 0 0.2rem;
+  font-size: 12px;
+}
+
