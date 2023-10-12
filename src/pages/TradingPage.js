@@ -17,6 +17,7 @@ const marketDataActions = [
   { TRADES: "سفارش‌های اخیر" },
 ];
 
+
 const TradingPage = () => {
   const [marketDataDisplayState, dispatchMarketDataDisplay] =
     useReducer_DWindow(marketDataActions);

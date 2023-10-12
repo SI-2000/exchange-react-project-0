@@ -6,10 +6,10 @@ import classes from "./BuySellBtn.module.css";
 // Temp variable
 const isLogedIn = true;
 
-const BuySellBtn = ({ activeForm }) => {
+const BuySellBtn = ({ formType }) => {
   const class_name = isLogedIn
     ? "signed-out-trade-btn"
-    : activeForm === "buy"
+    : formType === "buy"
     ? "buy"
     : "sell";
 
@@ -17,7 +17,7 @@ const BuySellBtn = ({ activeForm }) => {
     <span>
       <Link>وارد شوید</Link> یا <Link>حالا ثبت نام کنید</Link>
     </span>
-  ) : activeForm === "buy" ? (
+  ) : formType === "buy" ? (
     "خرید"
   ) : (
     "فروش"

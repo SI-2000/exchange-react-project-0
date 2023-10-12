@@ -1,4 +1,5 @@
 import React from "react";
+import { Scrollbar } from "react-scrollbars-custom";
 
 import classes from "./HomePage.module.css";
 import { Link } from "react-router-dom";

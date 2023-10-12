@@ -8,7 +8,7 @@
   justify-content: center;
   flex-direction: column;
   background-color: rgb(48, 48, 48);
-  padding:1rem 0 3rem;
+  padding: 1rem 0 3rem;
 }
 
 .intro h1 {
@@ -21,11 +21,11 @@
   color: rgb(194, 194, 194);
 }
 
-.currencies-list{
+.currencies-list {
   display: flex;
   justify-content: center;
   background-color: white;
   border-radius: 25px;
-  color:black;
-  margin-top:-25px;
+  color: black;
+  margin-top: -25px;
 }

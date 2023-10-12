@@ -7,8 +7,14 @@ import TradeForm from "./TradeForm";
 
 const TradeSection = () => {
   const [tradeFormIsOpen, setTradeFormIsOpen] = useState(false);
+  const [activeForm, setActiveForm] = useState();
 
-  function openFormOverlayHandler() {
+  function openBuyFormOverlayHandler() {
+    setActiveForm("buy");
+    setTradeFormIsOpen(true);
+  }
+  function openSellFormOverlayHandler() {
+    setActiveForm("sell");
     setTradeFormIsOpen(true);
   }
   function closeFormOverlayHandler() {
@@ -18,10 +24,13 @@ const TradeSection = () => {
   return (
     <div className={classes["trade-sec"]}>
       <div className={classes["show-form-btns"]}>
-        <button onClick={openFormOverlayHandler} className={classes["sell"]}>
+        <button
+          onClick={openSellFormOverlayHandler}
+          className={classes["sell"]}
+        >
           فروش
         </button>
-        <button onClick={openFormOverlayHandler} className={classes["buy"]}>
+        <button onClick={openBuyFormOverlayHandler} className={classes["buy"]}>
           خرید
         </button>
       </div>
@@ -31,7 +40,7 @@ const TradeSection = () => {
           onClickBackdrop={closeFormOverlayHandler}
           overlayIsOpen={tradeFormIsOpen}
         >
-          <TradeForm />
+          <TradeForm activeForm={activeForm} setActiveForm={setActiveForm} />
         </Overlay>,
         document.getElementById("overlay")
       )}

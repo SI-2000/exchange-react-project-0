@@ -14,7 +14,6 @@ const Overlay = ({
     classes[overlayIsOpen ? "show-" + className : undefined]
   }`;
 
-console.log(classesTemplate)
   return (
 
     <div className={classesTemplate}>

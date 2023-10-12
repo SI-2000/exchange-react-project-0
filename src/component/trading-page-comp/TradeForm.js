@@ -9,11 +9,10 @@ import DynamicContentWindow from "../DynamicContentWindow ";
 import { useReducer_DWindow } from "../../hook/use-reducer-dwindow";
 import TradeInputs from "./TradeInputs";
 
-const TradeForm = () => {
+const TradeForm = ({ activeForm, setActiveForm }) => {
   const tradeTypes = ["spot", "cross", "isolated"];
 
   const [tradeType, setTradeType] = useState("spot");
-  const [activeForm, setActiveForm] = useState("buy");
 
   const orderTypes = [
     { LIMIT: "Limit" },
@@ -68,7 +67,16 @@ const TradeForm = () => {
           />
         </div>
 
-        <TradeInputs orderType={selectedOrderType} activeForm={activeForm} />
+        <TradeInputs
+          formType="sell"
+          orderType={selectedOrderType}
+          activeForm={activeForm}
+        />
+        <TradeInputs
+          formType="buy"
+          orderType={selectedOrderType}
+          activeForm={activeForm}
+        />
       </div>
     </div>
   );

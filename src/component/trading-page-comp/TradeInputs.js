@@ -5,15 +5,18 @@ import InputBox from "./InputBox";
 import AVBLPercentage from "./AVBLPercentage";
 import { Link } from "react-router-dom";
 import BuySellBtn from "./BuySellBtn";
-import { act } from "react-dom/test-utils";
 
-const TradeInputs = ({ orderType, activeForm }) => {
+const TradeInputs = ({ formType, orderType, activeForm }) => {
   return (
-    <div className={classes["inputs-container"]}>
+    <div
+      className={`${classes["inputs-container"]} ${
+        classes[formType === activeForm ? "show-form" : ""]
+      }`}
+    >
       <div className={classes["avbl"]}>
         <div className={classes["title"]}>موجودی حساب</div>
         <div className={classes["value"]}>
-          46746<span>{activeForm === "buy" ? "تتر" : "بیت کوین"}</span>
+          46746<span>{formType === "buy" ? "تتر" : "بیت کوین"}</span>
         </div>
       </div>
       {orderType.state === "STOP_LIMIT" && (
@@ -35,7 +38,7 @@ const TradeInputs = ({ orderType, activeForm }) => {
         unit={{ en: "btc", fa: "بیت کوین" }}
       />
       <AVBLPercentage />
-      <BuySellBtn activeForm={activeForm} />
+      <BuySellBtn formType={formType} />
     </div>
   );
 };
