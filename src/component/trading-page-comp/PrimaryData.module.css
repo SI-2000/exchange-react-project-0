@@ -1,55 +1,120 @@
-.primary-data{
-    display:flex;
-    justify-content: space-between;
-    padding:0 .5rem;
+.primary-data {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
 }
 
-.col{
+.col {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.name-price {
+  margin-right: 0;
+}
+
+.col h5 {
+  font-weight: 400;
+  font-size: 10px;
+  color: var(--custom-gray);
+}
+
+.col p {
+  font-size: 12px;
+}
+
+.key-value {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.key-value span {
+  display: block;
+  font-size: 12px;
+}
+
+.name {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.price-change {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.price {
+  font-size: 24px;
+}
+
+.change {
+  display: flex;
+  flex-direction: column;
+}
+
+.change > div {
+  display: flex;
+}
+
+.change span {
+  font-size: 12px;
+  margin-left: 0.4rem;
+}
+
+.change h5 {
+  display: none;
+}
+
+.change p {
+  font-size: 14px;
+}
+
+/* Min width: 770 px */
+
+@media screen and (min-width: 770px) {
+  .primary-data {
+    grid-column: 1 / end;
+    justify-content: flex-start;
+    max-height: 83px;
+  }
+
+  .col {
+    flex-direction: row;
+    justify-content: center;
+    margin: 1rem 0rem;
+  }
+
+  .name {
+    margin-left: 6rem;
+  }
+
+  .price-change {
+    flex-direction: row;
+  }
+
+  .key-value{
+    margin:0 .5rem;
+  }
+
+  .price {
+    font-size: 16px;
+    margin-left: 6rem;
     display: flex;
-    flex-direction: column;
-    margin:1rem;
-}
+    align-items: center;
+  }
 
-.col h5{
-    font-weight: 400;
-    font-size: 10px;
-    color: var(--custom-gray);
-}
+  .change h5 {
+    display: block;
+  }
 
-.col p{
-    font-size: 12px;
-}
+  .change {
+    margin-right: 0;
+  }
 
-.col > div {
-    margin-bottom: .5rem;
-}
-
-.name{
-    font-size: 20px;
-}
-
-.price-change{
-    margin-top:.2rem;
-}
-
-.price{
-    font-size:24px;
-    margin-bottom: -.5rem;
-}
-
-.change{
-
-}
-
-.change span{
-    font-size:12px;
-    margin:0 .3rem;
-}
-
-.change h5{
-    display: none;
-}
-
-.change p{
-    font-size: 14px;
+  .high-24h {
+  }
 }

@@ -1,6 +1,7 @@
 .trade-sec {
   /* background-color: red; */
-  position: sticky;
+  position: fixed;
+  width: 100%;
   bottom: 0;
 }
 
@@ -26,4 +27,15 @@
 
 .show-form-btns .buy {
   background-color: var(--exchange-green);
+}
+
+@media screen and (min-width: 770px) {
+  .trade-sec {
+    position: relative;
+    grid-row: 2 / 5;
+  }
+
+  .show-form-btns {
+    display: none;
+  }
 }

@@ -1,8 +1,15 @@
-.trades{
-    background-color: blue;
-    height: 21rem;
+.trades {
+  background-color: blue;
+  height: 21rem;
 }
 
-.hidden{
-    display: none;
+.hidden {
+  display: none;
+}
+
+@media screen and (min-width: 770px) {
+  .hidden {
+    height: 14rem;
+    display: block;
+  }
 }

@@ -1,9 +1,23 @@
 .order-book {
   height: 21rem;
-
-  background-color: red;
+  /* display: flex;
+  justify-content: space-between; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding:1rem;
 }
 
 .hidden {
   display: none;
+}
+
+@media screen and (min-width: 770px) {
+  .order-book{
+    grid-column-start: 2;
+    height: 14rem;
+  }
+  .hidden{
+    display: block;
+  }
 }

@@ -7,7 +7,7 @@ import TradeForm from "./TradeForm";
 
 const TradeSection = () => {
   const [tradeFormIsOpen, setTradeFormIsOpen] = useState(false);
-  const [activeForm, setActiveForm] = useState();
+  const [activeForm, setActiveForm] = useState("buy");
 
   function openBuyFormOverlayHandler() {
     setActiveForm("buy");
@@ -40,10 +40,11 @@ const TradeSection = () => {
           onClickBackdrop={closeFormOverlayHandler}
           overlayIsOpen={tradeFormIsOpen}
         >
-          <TradeForm activeForm={activeForm} setActiveForm={setActiveForm} />
+          <TradeForm className="max-770" activeForm={activeForm} setActiveForm={setActiveForm} />
         </Overlay>,
         document.getElementById("overlay")
       )}
+      <TradeForm className="min-770" activeForm={activeForm} setActiveForm={setActiveForm} />
     </div>
   );
 };

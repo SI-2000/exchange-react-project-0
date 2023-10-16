@@ -9,7 +9,7 @@ import DynamicContentWindow from "../DynamicContentWindow ";
 import { useReducer_DWindow } from "../../hook/use-reducer-dwindow";
 import TradeInputs from "./TradeInputs";
 
-const TradeForm = ({ activeForm, setActiveForm }) => {
+const TradeForm = ({ className, activeForm, setActiveForm }) => {
   const tradeTypes = ["spot", "cross", "isolated"];
 
   const [tradeType, setTradeType] = useState("spot");
@@ -30,11 +30,12 @@ const TradeForm = ({ activeForm, setActiveForm }) => {
   }
 
   return (
-    <div className={classes["trade-form"]}>
+    <div className={`${classes["trade-form"]} ${classes[className]}`}>
       <div className={classes["trade-type-selector"]}>
         {tradeTypes.map((type) => {
           return (
             <SelectBtn
+              className="trade-form-selector"
               label={type}
               onClick={() => {
                 setTradeType(type);

@@ -1,6 +1,15 @@
 .trading-page {
   background-color: var(--tradingview-black);
   display:grid;
-  height:calc(100vh - 56px);
+  /* height:calc(100vh - 56px); */
+}
+
+
+@media screen and (min-width:770px){
+  .trading-page{
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, fit-content);
+    height: fit-content;
+  }
 }
 

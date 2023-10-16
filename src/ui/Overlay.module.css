@@ -26,3 +26,9 @@
 .show-trade-form-overlay{
   bottom: 0rem;
 }
+
+@media screen and (min-width: 770px) {
+  .trade-form-overlay{
+    display: none;
+  }
+}

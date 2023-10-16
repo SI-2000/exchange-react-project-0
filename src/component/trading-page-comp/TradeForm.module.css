@@ -4,6 +4,10 @@
   height: 100%;
 }
 
+.min-770 {
+  display: none;
+}
+
 .trade-type-selector {
   display: flex;
   align-items: center;
@@ -28,6 +32,17 @@
 .select-order-type {
   border-bottom: 1px solid var(--border-light-gray);
   margin: 1rem 0;
+}
+
+@media screen and (min-width: 770px) {
+  .trade-form {
+    width: 100%;
+    grid-row: 2 / end;
+  }
+
+  .min-770 {
+    display: block;
+  }
 }
 
 

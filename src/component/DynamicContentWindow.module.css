@@ -1,15 +1,13 @@
 .tabs button {
-    color: var(--custom-gray);
-    padding: 0.5rem 0 .5rem 2rem;
-    text-align: right
+  color: var(--custom-gray);
+  padding: 0.5rem 0 0.5rem 1.8rem;
+  text-align: right;
+}
 
-  }
-  
-  .tabs button:hover {
-    color: var(--gold-color);
-  }
-  
-  button.active {
-    color: var(--gold-color);
+.tabs button:hover {
+  color: var(--gold-color);
+}
 
-  }
+button.active {
+  color: var(--gold-color);
+}

@@ -10,13 +10,13 @@ import Chart from "../component/trading-page-comp/Chart";
 import { useReducer_DWindow } from "../hook/use-reducer-dwindow";
 import TradeHistory from "../component/trading-page-comp/TradeHistory";
 import TradeSection from "../component/trading-page-comp/TradeSection";
+import SearchCurrency from "../component/trading-page-comp/SearchCurrency";
 
 const marketDataActions = [
   { CHART: "نمودار" },
   { ORDER_BOOK: "سفارش‌ها" },
   { TRADES: "سفارش‌های اخیر" },
 ];
-
 
 const TradingPage = () => {
   const [marketDataDisplayState, dispatchMarketDataDisplay] =
@@ -26,6 +26,9 @@ const TradingPage = () => {
   return (
     <div className={classes["trading-page"]}>
       <PrimaryData />
+      <TradeSection />
+      {/* <SearchCurrency /> */}
+
       <MarketDataSelector
         actions={marketDataActions}
         marketDataDisplayState={marketDataDisplayState}
@@ -38,7 +41,6 @@ const TradingPage = () => {
       <Trades className={marketDataDisplayState.componentsClass.TRADES} />
 
       <TradeHistory />
-      <TradeSection />
     </div>
   );
 };
