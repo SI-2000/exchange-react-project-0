@@ -41,7 +41,7 @@
 }
 
 @media screen and (min-width: 1030px) {
-  .trade-sec{
+  .trade-sec {
     grid-column: 2/4;
     grid-row: 3/6;
   }

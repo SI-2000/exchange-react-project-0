@@ -2,7 +2,7 @@
   background-color: var(--tradingview-black);
   width: 100vw;
   height: 100%;
-  background:var(--tradingview-light-black);
+  background: var(--tradingview-light-black);
 }
 
 .min-770 {
@@ -36,8 +36,10 @@
   margin: 1rem 0;
 }
 
-.inputs-container{
-  display: flex;
+.inputs-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
 @media screen and (min-width: 770px) {
@@ -51,8 +53,8 @@
   }
 }
 
-
-/* @media screen and (min-width: 1030px) {
-  .trade-form{
+@media screen and (min-width: 1030px) {
+  .form-switchers {
+    display: none;
   }
-} */
+}
