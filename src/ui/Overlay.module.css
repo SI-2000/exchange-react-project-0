@@ -6,6 +6,8 @@
   height: fit-content;
 }
 
+/* Main navigation */
+
 .main-nav-overlay {
   margin-right: -16rem;
   top: 0;
@@ -17,18 +19,31 @@
   margin-right: -1rem;
 }
 
-.trade-form-overlay{
+/*  Trade form */
+
+.trade-form-overlay {
   bottom: -30rem;
-  transition: bottom .3s;
-  
+  transition: bottom 0.3s;
 }
 
-.show-trade-form-overlay{
+.show-trade-form-overlay {
   bottom: 0rem;
 }
 
+/*  Search pairs */
+
+.search-pairs-overlay {
+  width: 100%;
+  bottom: -30rem;
+  transition: bottom 0.3s;
+}
+
+.show-search-pairs-overlay {
+  bottom: 0;
+}
+
 @media screen and (min-width: 770px) {
-  .trade-form-overlay{
+  .trade-form-overlay {
     display: none;
   }
 }

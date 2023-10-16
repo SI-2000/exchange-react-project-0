@@ -3,7 +3,7 @@
   max-width: 30rem;
 }
 
-Form {
+.form-container form {
   padding: 1rem 0;
   display: flex;
   flex-direction: column;
@@ -52,7 +52,7 @@ Form p {
   padding: 0.6rem;
   font-size: 12px;
 }
- 
+
 .buttons {
   display: flex;
   justify-content: space-between;

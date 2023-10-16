@@ -1,0 +1,41 @@
+.search-currency {
+  background-color: var(--tradingview-black);
+  padding: 1rem;
+}
+
+.min-1030 {
+  display: none;
+}
+
+.search-currency form {
+  background-color: var(--input-gray);
+  margin: 1rem 0;
+  border-radius: 5px;
+  display: flex;
+}
+
+.search-currency input {
+  width: 100%;
+  font-size: 14px;
+  color: var(--custom-gray);
+  direction: ltr;
+}
+.search-btn {
+  height: 24px;
+  padding: 0.4rem;
+  margin: 0 0.5rem;
+}
+
+.search-btn svg {
+  height: 24px;
+  fill: var(--custom-gray);
+}
+
+@media screen and (min-width: 1030px) {
+  .search-cuurency {
+    display: none;
+  }
+  .min-1030 {
+    display: block;
+  }
+}

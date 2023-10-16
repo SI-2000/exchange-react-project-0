@@ -9,7 +9,6 @@ const CustomTable = ({
   volumeBarPerc,
   btnClassNames = { col1: [], col2: [], col3: [] },
 }) => {
-  console.log(btnClassNames)
   /*
     header_titles structure =    [ { en: "title", fa: "عنوان" } ]
     buttons =  [ { a: "A", b: "B" } ]
@@ -22,9 +21,7 @@ const CustomTable = ({
 
   return (
     <div className={`${classes["custom-table"]} ${classes[className]}`}>
-      <form>
-        <input type="text" />
-      </form>
+
       <div className={classes["header"]}>
         {header_titles.map((title) => {
           return (

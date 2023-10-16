@@ -1,39 +1,23 @@
 import React from "react";
-
-import classes from "./SearchCurrency.module.css";
 import CustomTable from "../CustomTable";
 
-const SearchCurrency = ({ className }) => {
-  const header_titles = [
-    { en: "price", fa: "قیمت" },
-    { en: "amount", fa: "مقدار" },
-    { en: "total", fa: "کل" },
-  ];
+import classes from "./SearchCurrency.module.css";
+import { ReactComponent as SearchIcon } from "../../files/icons/search_FILL0_wght400_GRAD0_opsz24.svg";
 
-  const buttons = [
-    { price: "435356", amount: "56567", total: "5656" },
-    { price: "435356", amount: "56567", total: "5656" },
-    { price: "435356", amount: "56567", total: "5656" },
-    { price: "435356", amount: "56567", total: "5656" },
-    { price: "435356", amount: "56567", total: "5656" },
-    { price: "435356", amount: "56567", total: "5656" },
-    { price: "435356", amount: "56567", total: "5656" },
-    { price: "435356", amount: "56567", total: "5656" },
-    { price: "435356", amount: "56567", total: "5656" },
-    { price: "435356", amount: "56567", total: "5656" },
-    { price: "435356", amount: "56567", total: "5656" },
-    { price: "435356", amount: "56567", total: "5656" },
-    { price: "435356", amount: "56567", total: "5656" },
-    { price: "435356", amount: "56567", total: "5656" },
-    { price: "435356", amount: "56567", total: "5656" },
-    { price: "435356", amount: "56567", total: "5656" },
-    { price: "435356", amount: "56567", total: "5656" },
-    { price: "435356", amount: "56567", total: "5656" },
-  ];
-
+const SearchCurrency = ({ className, header_titles, buttons }) => {
   return (
-    <div className={classes["search-currency"]}>
-      <CustomTable header_titles={header_titles} buttons={buttons} />
+    <div className={`${classes["search-currency"]} ${classes[className]}`}>
+      <form>
+        <input type="text" placeholder="Enter pairs..." />
+        <button className={classes["search-btn"]}>
+          <SearchIcon />
+        </button>
+      </form>
+      <CustomTable
+        className="search-cuurency"
+        header_titles={header_titles}
+        buttons={buttons}
+      />
     </div>
   );
 };

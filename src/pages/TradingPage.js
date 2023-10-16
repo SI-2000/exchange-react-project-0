@@ -10,7 +10,7 @@ import Chart from "../component/trading-page-comp/Chart";
 import { useReducer_DWindow } from "../hook/use-reducer-dwindow";
 import TradeHistory from "../component/trading-page-comp/TradeHistory";
 import TradeSection from "../component/trading-page-comp/TradeSection";
-import SearchCurrency from "../component/trading-page-comp/SearchCurrency";
+import SelectCurrency from "../component/trading-page-comp/SelectCurrency";
 
 const marketDataActions = [
   { CHART: "نمودار" },
@@ -26,8 +26,9 @@ const TradingPage = () => {
   return (
     <div className={classes["trading-page"]}>
       <PrimaryData />
+      <SelectCurrency />
+
       <TradeSection />
-      {/* <SearchCurrency /> */}
 
       <MarketDataSelector
         actions={marketDataActions}

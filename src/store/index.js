@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import authReducer from "./auth";
-import assetsReduser from "./assets";
+import assetsReducer from "./assets";
+import searchPairsReducer from "./search-pairs";
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
-    assets: assetsReduser,
+    assets: assetsReducer,
+    searchOverlay: searchPairsReducer,
   },
 });
 

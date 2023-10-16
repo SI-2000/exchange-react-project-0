@@ -1,12 +1,28 @@
 import React from "react";
 
 import classes from "./PrimaryData.module.css";
+import { useDispatch } from "react-redux";
+import { searchPairsAction } from "../../store/search-pairs";
 
 const PrimaryData = () => {
+  const dispatch = useDispatch();
+
   return (
     <div className={classes["primary-data"]}>
       <div className={`${classes["col"]} ${classes["name-price"]}`}>
-        <div className={classes["name"]}>BTC/USDT</div>
+        <div
+          onClick={() => {
+            dispatch(searchPairsAction.open());
+          }}
+          className={`${classes["name"]} ${classes["searchOverlay-btn"]}`}
+        >
+          BTC/USDT
+        </div>
+        <div
+          className={classes["name"]}
+        >
+          BTC/USDT
+        </div>
         <div className={classes["price-change"]}>
           <div className={classes["price"]}>45435</div>
           <div className={`${classes["key-value"]} ${classes["change"]}`}>

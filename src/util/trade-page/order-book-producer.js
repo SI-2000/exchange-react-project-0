@@ -30,18 +30,18 @@ export function OBDataProducer(
 
   for (let i = 0; i < rows_num; i++) {
     const sellP =
-      ((volumeInfo.amount.sell[i] - minVolume) / (maxVolume - minVolume)* 95) +
+      ((volumeInfo.amount.sell[i] - minVolume) / (maxVolume - minVolume)) * 95 +
       5;
     volumeInfo.percentage.sell[i] = sellP;
     const buyP =
-      ((volumeInfo.amount.buy[i] - minVolume) / (maxVolume - minVolume)* 95) +
+      ((volumeInfo.amount.buy[i] - minVolume) / (maxVolume - minVolume)) * 95 +
       5;
     volumeInfo.percentage.buy[i] = buyP;
   }
 
   const sellOBData = [];
   for (let i = 0; i < rows_num; i++) {
-    const sellRowPrice = roundTo(price.value + price.step, 2);
+    const sellRowPrice = roundTo(+price.value + +price.step * i, 2);
     const sellRowVolume = roundTo(volumeInfo.amount.sell[i], 2);
     const sellRowTotal = roundTo(sellRowPrice * sellRowVolume, 2);
     sellOBData.push({
@@ -53,7 +53,7 @@ export function OBDataProducer(
 
   const buyOBData = [];
   for (let i = 0; i < rows_num; i++) {
-    const buyRowPrice = roundTo(price.value + price.step, 2);
+    const buyRowPrice = roundTo(+price.value - +price.step * i, 2);
     const buyRowVolume = roundTo(volumeInfo.amount.buy[i], 2);
     const buyRowTotal = roundTo(buyRowPrice * buyRowVolume, 2);
 
@@ -64,7 +64,7 @@ export function OBDataProducer(
     });
   }
 
-  const btnClasses = {col1:[], col2:[], col3:[]}
+  const btnClasses = { col1: [], col2: [], col3: [] };
 
   return [sellOBData, buyOBData, volumeInfo.percentage, btnClasses];
 }

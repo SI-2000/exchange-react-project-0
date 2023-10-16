@@ -3,15 +3,6 @@
   text-align: center;
 }
 
-.custom-table * {
-}
-
-.custom-table form {
-  display: none;
-  width: 100%;
-  background-color: green;
-}
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -101,6 +92,15 @@
 .trades .negative {
   color: var(--exchange-red);
 }
+
+/*    Search cuurency      */
+.search-cuurency{
+  direction: ltr;
+}
+
+
+
+
 
 @media screen and (min-width: 770px) {
   .buy-order-book,
