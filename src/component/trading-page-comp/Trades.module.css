@@ -14,3 +14,10 @@
     display: block;
   }
 }
+
+@media screen and (min-width: 1030px) {
+  .trades{
+    grid-column: 1;
+    grid-row: 4/5;
+  }
+}

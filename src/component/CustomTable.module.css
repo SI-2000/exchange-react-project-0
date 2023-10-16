@@ -94,18 +94,33 @@
 }
 
 /*    Search cuurency      */
-.search-cuurency{
+.search-cuurency {
   direction: ltr;
 }
-
-
-
-
 
 @media screen and (min-width: 770px) {
   .buy-order-book,
   .sell-order-book {
     max-height: 105px;
     overflow: hidden;
+  }
+
+  .buy-order-book .total,
+.sell-order-book .total {
+  display: block !important;
+}
+.buttons{
+  padding: 0.1rem 0rem;
+}
+}
+
+@media screen and (min-width: 1030px) {
+  .buy-order-book,
+  .sell-order-book {
+    max-height:none;
+    overflow: visible;
+  }
+  .buy-order-book{
+    direction: ltr;
   }
 }

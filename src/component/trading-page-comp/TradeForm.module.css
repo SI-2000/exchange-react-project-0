@@ -36,6 +36,10 @@
   margin: 1rem 0;
 }
 
+.inputs-container{
+  display: flex;
+}
+
 @media screen and (min-width: 770px) {
   .trade-form {
     width: 100%;
@@ -48,3 +52,7 @@
 }
 
 
+/* @media screen and (min-width: 1030px) {
+  .trade-form{
+  }
+} */

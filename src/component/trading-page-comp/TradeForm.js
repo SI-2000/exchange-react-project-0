@@ -67,17 +67,18 @@ const TradeForm = ({ className, activeForm, setActiveForm }) => {
             tabsState={selectedOrderType}
           />
         </div>
-
-        <TradeInputs
-          formType="sell"
-          orderType={selectedOrderType}
-          activeForm={activeForm}
-        />
-        <TradeInputs
-          formType="buy"
-          orderType={selectedOrderType}
-          activeForm={activeForm}
-        />
+        <div className={classes["inputs-container"]}>
+          <TradeInputs
+            formType="sell"
+            orderType={selectedOrderType}
+            activeForm={activeForm}
+          />
+          <TradeInputs
+            formType="buy"
+            orderType={selectedOrderType}
+            activeForm={activeForm}
+          />
+        </div>
       </div>
     </div>
   );

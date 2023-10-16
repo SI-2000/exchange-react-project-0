@@ -4,7 +4,7 @@ export function OBDataProducer(
   config = {
     volume: { min: 0, max: 12 },
     price: { value: "4354363", step: 1 },
-    rows_num: 12,
+    rows_num: 15,
   }
 ) {
   const { volume, price, rows_num } = config;

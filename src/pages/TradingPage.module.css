@@ -16,7 +16,7 @@
 @media screen and (min-width:1030px){
   .trading-page{
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(8, fit-content);
+    grid-template-rows: repeat(6, fit-content);
     height: fit-content;
   }
 }

@@ -13,7 +13,6 @@
 @media screen and (min-width: 770px) {
   .order-book{
     grid-template-columns: repeat(1, 1fr);
-
     grid-column-start: 2;
   }
   .hidden{
@@ -21,9 +20,9 @@
   }
 }
 
-/* @media screen and (min-width:1030px) {
+@media screen and (min-width:1030px) {
   .order-book{
-
+    grid-column: 4/5;
   }
   
-} */
+} 
