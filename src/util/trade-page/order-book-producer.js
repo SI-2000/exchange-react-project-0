@@ -1,4 +1,4 @@
-import { roundTo } from "./round-number";
+import { roundTo } from "../round-number";
 
 export function OBDataProducer(
   config = {
@@ -64,5 +64,7 @@ export function OBDataProducer(
     });
   }
 
-  return [sellOBData, buyOBData, volumeInfo.percentage];
+  const btnClasses = {col1:[], col2:[], col3:[]}
+
+  return [sellOBData, buyOBData, volumeInfo.percentage, btnClasses];
 }

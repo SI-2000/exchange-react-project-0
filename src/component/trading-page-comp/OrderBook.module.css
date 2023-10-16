@@ -1,7 +1,5 @@
 .order-book {
   height: 21rem;
-  /* display: flex;
-  justify-content: space-between; */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
@@ -14,10 +12,18 @@
 
 @media screen and (min-width: 770px) {
   .order-book{
+    grid-template-columns: repeat(1, 1fr);
+
     grid-column-start: 2;
-    height: 14rem;
   }
   .hidden{
-    display: block;
+    display: grid;
   }
 }
+
+/* @media screen and (min-width:1030px) {
+  .order-book{
+
+  }
+  
+} */

@@ -1,6 +1,7 @@
 .trades {
-  background-color: blue;
   height: 21rem;
+  padding: 1rem;
+  /* overflow-y: scroll; */
 }
 
 .hidden {

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import classes from "./OrderBook.module.css";
 import CustomTable from "../CustomTable";
-import { OBDataProducer } from "../../util/order-block-producer";
+import { OBDataProducer } from "../../util/trade-page/order-book-producer";
+import MarketPriceOB from "./MarketPriceOB";
 
 const header_titles = [
   { en: "price", fa: "قیمت" },
@@ -10,20 +11,6 @@ const header_titles = [
   { en: "total", fa: "کل" },
 ];
 
-// const buttons = [
-//   { price: "435356", amount: "56567", total: "5656" },
-//   { price: "435356", amount: "56567", total: "5656" },
-//   { price: "435356", amount: "56567", total: "5656" },
-//   { price: "435356", amount: "56567", total: "5656" },
-//   { price: "435356", amount: "56567", total: "5656" },
-//   { price: "435356", amount: "56567", total: "5656" },
-//   { price: "435356", amount: "56567", total: "5656" },
-//   { price: "435356", amount: "56567", total: "5656" },
-//   { price: "435356", amount: "56567", total: "5656" },
-//   { price: "435356", amount: "56567", total: "5656" },
-//   { price: "435356", amount: "56567", total: "5656" },
-//   { price: "435356", amount: "56567", total: "5656" },
-// ];
 
 const OrderBook = ({ className }) => {
   const [sellOBData, buyOBData, volumePercentage] = OBDataProducer();
@@ -48,6 +35,7 @@ const OrderBook = ({ className }) => {
         buttons={sellOBData}
         volumeBarPerc={volumePercentage.sell}
       />
+      <MarketPriceOB />
       <CustomTable
         className="buy-order-book"
         header_titles={header_titles}

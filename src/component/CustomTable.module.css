@@ -19,7 +19,7 @@
 }
 
 .header-title {
-  color: var(--custom-gray);
+  color: rgb(128, 128, 128);
   font-size: 12px;
 }
 
@@ -52,8 +52,7 @@
   display: flex;
   align-items: center;
   height: inherit;
-  color:var(--light-white);
-
+  color: var(--light-white);
 }
 
 /* Order book */
@@ -88,4 +87,25 @@
 
 .sell-order-book button.price {
   color: var(--exchange-red);
+}
+
+/*     Trades     */
+.trades .buttons {
+  padding: 0.1rem 0rem;
+}
+
+.trades .positive {
+  color: var(--exchange-green);
+}
+
+.trades .negative {
+  color: var(--exchange-red);
+}
+
+@media screen and (min-width: 770px) {
+  .buy-order-book,
+  .sell-order-book {
+    max-height: 105px;
+    overflow: hidden;
+  }
 }

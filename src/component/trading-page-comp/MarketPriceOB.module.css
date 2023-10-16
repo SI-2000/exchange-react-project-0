@@ -1,0 +1,24 @@
+.market-price{
+    display: none;
+}
+
+.market-price svg{
+    display: none;
+}
+
+.arrow-up{
+    fill:var(--exchange-green);
+}
+
+.arrow-down{
+    fill:var(--exchange-red);
+}
+
+
+@media screen and (min-width:770px) {
+    .market-price{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+}
