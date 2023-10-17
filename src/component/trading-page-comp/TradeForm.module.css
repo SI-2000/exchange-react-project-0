@@ -36,11 +36,6 @@
   margin: 1rem 0;
 }
 
-.inputs-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
 
 @media screen and (min-width: 770px) {
   .trade-form {
@@ -57,4 +52,10 @@
   .form-switchers {
     display: none;
   }
+  .inputs-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
 }

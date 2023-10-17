@@ -74,7 +74,7 @@ const MainNavigation = ({ className, onCloseNav }) => {
           </NavLink>
         </li>
         {!uid && (
-          <li>
+          <li className={classes["login-nav-link"]}>
             <NavLink
               className={({ isActive }) =>
                 isActive ? classes.active : undefined

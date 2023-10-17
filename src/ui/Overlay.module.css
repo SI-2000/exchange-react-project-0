@@ -43,7 +43,12 @@
 }
 
 @media screen and (min-width: 770px) {
-  .trade-form-overlay {
+  .trade-form-overlay,
+  .search-pairs-overlay,
+  .main-nav-overlay {
     display: none;
   }
+}
+
+@media screen and (min-width: 1030px) {
 }

@@ -1,11 +1,21 @@
-
 .backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.3);
-    z-index: 100;
-    backdrop-filter: blur(2px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 100;
+  backdrop-filter: blur(2px);
+}
+
+@media screen and (min-width: 770px) {
+  .trade-form-overlay-backdrop,
+  .search-pairs-overlay-backdrop,
+  .main-nav-overlay-backdrop {
+    display: none;
   }
+}
+
+@media screen and (min-width: 1030px) {
+}

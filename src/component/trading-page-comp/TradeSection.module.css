@@ -32,7 +32,11 @@
 @media screen and (min-width: 770px) {
   .trade-sec {
     position: relative;
-    grid-row: 4 / 5;
+    grid-row: 2 / 4;
+    border-left:1px solid var(--border-light-gray);
+    border-bottom:1px solid var(--border-light-gray);
+
+
   }
 
   .show-form-btns {
@@ -44,5 +48,7 @@
   .trade-sec {
     grid-column: 2/4;
     grid-row: 3/6;
+    border-bottom:1px solid var(--border-light-gray);
+
   }
 }

@@ -1,6 +1,21 @@
+.select-currency{
+  display: none;
+}
+
+/* @media screen and (min-width: 770px) {
+  .select-currency{
+    grid-column: 3/4;
+    grid-row:3/4;
+  }
+} */
+
 @media screen and (min-width: 1030px) {
-  .search-currency {
+  .select-currency {
+    display: block;
     grid-column: 1;
     grid-row: 2/4;
+    border-left:1px solid var(--border-light-gray);
+    border-bottom:1px solid var(--border-light-gray);
+
   }
 }

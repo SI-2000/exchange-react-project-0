@@ -23,20 +23,17 @@ const TradeSection = () => {
 
   return (
     <div className={classes["trade-sec"]}>
-        <div className={classes["show-form-btns"]}>
-          <button
-            onClick={openSellFormOverlayHandler}
-            className={classes["sell"]}
-          >
-            فروش
-          </button>
-          <button
-            onClick={openBuyFormOverlayHandler}
-            className={classes["buy"]}
-          >
-            خرید
-          </button>
-        </div>
+      <div className={classes["show-form-btns"]}>
+        <button
+          onClick={openSellFormOverlayHandler}
+          className={classes["sell"]}
+        >
+          فروش
+        </button>
+        <button onClick={openBuyFormOverlayHandler} className={classes["buy"]}>
+          خرید
+        </button>
+      </div>
       {ReactDOM.createPortal(
         <Overlay
           className={"trade-form-overlay"}

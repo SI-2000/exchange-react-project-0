@@ -3,19 +3,13 @@
   padding: 1rem 3rem;
   display: flex;
   flex-direction: column;
-
-  /* position: fixed; */
-  /* margin-right: -16rem; */
-  /* top: 0; */
-  /* transition: margin 0.3s; */
-  /* z-index: 101; */
   height: 100%;
   width: 15rem;
 }
 
-/* .shown {
-  margin-right: -1rem;
-} */
+.min-1030 {
+  display: none;
+}
 
 .main-nav ul {
   margin-top: 3rem;
@@ -50,7 +44,6 @@
   right: 2rem;
 }
 
-
 .logout-btn {
   padding: 0;
 }
@@ -62,4 +55,57 @@
 
 .close-icon {
   cursor: pointer;
+}
+
+@media screen and (min-width: 770px) {
+  .min-1030 {
+    width: fit-content;
+    display: block;
+    background: none;
+    padding: 0;
+    margin-right: 2rem;
+  }
+
+  .min-1030 ul {
+    flex-direction: row;
+    align-items: center;
+    background: none;
+    margin: 0;
+  }
+
+  .min-1030 li {
+    display: flex;
+    align-items: center;
+  }
+
+  .min-1030 a {
+    padding: 0 0.5rem;
+  }
+
+  .min-1030 .login-nav-link {
+    display: none;
+  }
+
+  .active {
+    border: none;
+    color: var(--gold-color);
+  }
+
+  a.active {
+    color: var(--gold-color);
+  }
+
+  .min-1030 a:hover {
+    border: none;
+  }
+
+  .close-icon {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1030px) {
+  .min-1030 a {
+    padding: 0 0.8rem;
+  }
 }

@@ -8,8 +8,9 @@
 }
 
 @media screen and (min-width: 770px) {
-  .chart-container{
-    grid-column: 2/end;
+  .chart-container {
+    grid-column: 2 / end;
+    grid-row: 2;
   }
   .hidden {
     display: block;
@@ -17,8 +18,8 @@
 }
 
 @media screen and (min-width: 1030px) {
-  .chart-container{
+  .chart-container {
     grid-column: 2/4;
-    grid-row:2/3;
+    grid-row: 2/3;
   }
 }

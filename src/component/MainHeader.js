@@ -53,6 +53,8 @@ const MainHeader = () => {
         <div className={classes["logo"]}>
           <h1>ایزی بیت</h1>
         </div>
+        <MainNavigation className={"min-1030"} onCloseNav={closeNavOverlayHandler} />
+
       </div>
       <div className={classes["user-links"]}>
         {uid && <ProfileSec />}

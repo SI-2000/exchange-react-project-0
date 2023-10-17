@@ -37,7 +37,7 @@ const SelectCurrency = ({ className }) => {
   ];
 
   return (
-    <div className={classes["search-currency"]}>
+    <div className={classes["select-currency"]}>
       {ReactDOM.createPortal(
         <Overlay
           className="search-pairs-overlay"

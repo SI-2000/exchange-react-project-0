@@ -125,6 +125,9 @@
 }
 
 @media screen and (min-width: 1030px) {
+  .primary-data {
+    border-bottom: 1px solid var(--border-light-gray);
+  }
   .name {
     display: flex;
   }
@@ -138,13 +141,8 @@
   .name {
     font-size: 22px;
     margin-left: 8rem;
-
   }
-  .price{
+  .price {
     font-size: 20px;
   }
-  
 }
-
-
-

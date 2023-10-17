@@ -20,7 +20,7 @@ const Overlay = ({
       {children}
       {overlayIsOpen &&
         ReactDOM.createPortal(
-          <Backdrop onClick={onClickBackdrop} />,
+          <Backdrop className={className+"-backdrop"} onClick={onClickBackdrop} />,
           document.getElementById("backdrop-root")
         )}
     </div>
