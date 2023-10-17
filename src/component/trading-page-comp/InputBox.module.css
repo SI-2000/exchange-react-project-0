@@ -4,9 +4,17 @@
   border-radius: 5px;
   display: flex;
   font-size: 12px;
-  padding: 0.7rem 0.6rem;
+  /* padding: 0.7rem 0.6rem; */
   justify-content: space-between;
   border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.input-box > *{
+  padding:.7rem 0;
+}
+
+.input-box label{
+  padding:.6rem;
 }
 
 .input-box:hover,
@@ -32,6 +40,3 @@
   direction: ltr;
 }
 
-.input-box .unit {
-  margin-right: 1rem;
-}

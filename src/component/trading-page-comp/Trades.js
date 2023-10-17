@@ -12,7 +12,7 @@ const Trades = ({ className }) => {
     { en: "time", fa: "زمان" },
   ];
 
-  const config = { price: "3566", row_num: 14, maxV: 0.09, minV: 0 };
+  const config = { price: "3566", row_num: 13, maxV: 0.09, minV: 0 };
 
   const [buttons, btnClassNames] = tradesProducer(config);
 

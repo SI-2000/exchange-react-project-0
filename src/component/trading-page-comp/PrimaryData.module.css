@@ -131,4 +131,20 @@
   .searchOverlay-btn {
     display: none;
   }
+  .key-value {
+    margin: 0 1rem;
+  }
+
+  .name {
+    font-size: 22px;
+    margin-left: 8rem;
+
+  }
+  .price{
+    font-size: 20px;
+  }
+  
 }
+
+
+

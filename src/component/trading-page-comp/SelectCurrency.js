@@ -34,7 +34,6 @@ const SelectCurrency = ({ className }) => {
     { pairs: "BTC/USDT", price: "45656", change: "6563" },
     { pairs: "BTC/USDT", price: "45656", change: "6563" },
     { pairs: "BTC/USDT", price: "45656", change: "6563" },
-    { pairs: "BTC/USDT", price: "45656", change: "6563" },
   ];
 
   return (
