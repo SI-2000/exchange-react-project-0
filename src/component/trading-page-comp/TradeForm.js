@@ -6,7 +6,7 @@ import SelectBtn from "../SelectBtn";
 import BuySellTriangle from "../../ui/custom-svg-components/BuySellTriangle";
 import FormSwitcherBtn from "./FormSwitcherBtn";
 import DynamicContentWindow from "../DynamicContentWindow ";
-import { useReducer_DWindow } from "../../hook/use-reducer-dwindow";
+import { useReducer_DWindow } from "../../hooks/use-reducer-dwindow";
 import TradeInputs from "./TradeInputs";
 
 const TradeForm = ({ className, activeForm, setActiveForm }) => {

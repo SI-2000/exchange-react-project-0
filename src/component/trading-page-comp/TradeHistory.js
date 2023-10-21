@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./TradeHistory.module.css";
 import DynamicContentWindow from "../DynamicContentWindow ";
-import { useReducer_DWindow } from "../../hook/use-reducer-dwindow";
+import { useReducer_DWindow } from "../../hooks/use-reducer-dwindow";
 import OrderHistoryItem from "./OrderHistoryItem";
 
 const tradeHistoryActions = [

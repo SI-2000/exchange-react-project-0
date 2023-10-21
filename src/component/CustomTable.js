@@ -21,7 +21,6 @@ const CustomTable = ({
 
   return (
     <div className={`${classes["custom-table"]} ${classes[className]}`}>
-
       <div className={classes["header"]}>
         {header_titles.map((title) => {
           return (

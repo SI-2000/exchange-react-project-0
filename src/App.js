@@ -81,8 +81,10 @@ function App() {
         const uid = user.uid;
         const email = user.email;
 
-        // for error
         dispatch(authActions.login({ uid, email }));
+
+
+        // for error
 
         // ...
       } else {

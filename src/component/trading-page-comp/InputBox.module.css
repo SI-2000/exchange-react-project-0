@@ -41,3 +41,11 @@
   direction: ltr;
 }
 
+.inp-has-error{
+  border-color: red;
+  background-color: rgb(73, 0, 0);
+}
+
+.inp-has-error:hover, .inp-has-error:focus-within{
+  border-color: red;
+}

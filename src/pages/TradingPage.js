@@ -7,7 +7,7 @@ import MarketDataSelector from "../component/trading-page-comp/MarketDataSelecto
 import OrderBook from "../component/trading-page-comp/OrderBook";
 import Trades from "../component/trading-page-comp/Trades";
 import Chart from "../component/trading-page-comp/Chart";
-import { useReducer_DWindow } from "../hook/use-reducer-dwindow";
+import { useReducer_DWindow } from "../hooks/use-reducer-dwindow";
 import TradeHistory from "../component/trading-page-comp/TradeHistory";
 import TradeSection from "../component/trading-page-comp/TradeSection";
 import SelectCurrency from "../component/trading-page-comp/SelectCurrency";
@@ -26,8 +26,8 @@ const TradingPage = () => {
   return (
     <div className={classes["trading-page"]}>
       <PrimaryData />
-      <SelectCurrency />
 
+      <SelectCurrency />
       <TradeSection />
 
       <MarketDataSelector

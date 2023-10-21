@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useUsername } from "../hook/use-username";
+import { useUsername } from "../hooks/use-username";
 import { Link, useLocation } from "react-router-dom";
 
 import classes from "./ProfileSec.module.css";
