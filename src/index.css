@@ -22,7 +22,7 @@
   --exchange-red-transparent: rgb(246, 70, 93, 0.1);
   --border-light-gray: rgb(49, 49, 49);
   --input-gray: rgb(43, 47, 54);
-  --light-white:rgb(196, 196, 196);
+  --light-white: rgb(196, 196, 196);
 }
 
 body {
@@ -76,4 +76,10 @@ dl,
 dt,
 dd {
   all: unset;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
