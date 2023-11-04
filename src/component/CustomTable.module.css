@@ -98,7 +98,7 @@
   direction: ltr;
 }
 
-@media screen and (min-width: 770px) {
+@media screen and (min-width: 768px) {
   .buy-order-book,
   .sell-order-book {
     max-height: 105px;
@@ -114,7 +114,7 @@
 }
 }
 
-@media screen and (min-width: 1030px) {
+@media screen and (min-width: 1024px) {
   .buy-order-book,
   .sell-order-book {
     max-height:none;

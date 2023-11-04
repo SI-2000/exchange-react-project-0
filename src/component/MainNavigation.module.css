@@ -57,7 +57,7 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 770px) {
+@media screen and (min-width: ) {
   .min-1030 {
     width: fit-content;
     display: block;
@@ -104,7 +104,7 @@
   }
 }
 
-@media screen and (min-width: 1030px) {
+@media screen and (min-width: 1024px) {
   .min-1030 a {
     padding: 0 0.8rem;
   }

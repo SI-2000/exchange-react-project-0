@@ -31,7 +31,7 @@
   fill: var(--custom-gray);
 }
 
-@media screen and (min-width: 1030px) {
+@media screen and (min-width: 1024px) {
   .search-currency {
     display: none;
   }

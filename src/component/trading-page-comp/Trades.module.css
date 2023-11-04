@@ -8,7 +8,7 @@
   display: none;
 }
 
-@media screen and (min-width: 770px) {
+@media screen and (min-width: 768px) {
   .trades {
     height: 100%;
     grid-column: 3 /4;
@@ -21,7 +21,7 @@
   }
 }
 
-@media screen and (min-width: 1030px) {
+@media screen and (min-width: 1024px) {
   .trades {
     grid-column: 1;
     grid-row: 4/5;

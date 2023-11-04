@@ -7,7 +7,7 @@
   display: none;
 }
 
-@media screen and (min-width: 770px) {
+@media screen and (min-width: 768px) {
   .chart-container {
     grid-column: 2 / end;
     grid-row: 2;
@@ -17,7 +17,7 @@
   }
 }
 
-@media screen and (min-width: 1030px) {
+@media screen and (min-width: 1024px) {
   .chart-container {
     grid-column: 2/4;
     grid-row: 2/3;

@@ -29,7 +29,7 @@
   background-color: var(--exchange-green);
 }
 
-@media screen and (min-width: 770px) {
+@media screen and (min-width: 768px) {
   .trade-sec {
     position: relative;
     grid-row: 2 / 4;
@@ -44,7 +44,7 @@
   }
 }
 
-@media screen and (min-width: 1030px) {
+@media screen and (min-width: 1024px) {
   .trade-sec {
     grid-column: 2/4;
     grid-row: 3/6;

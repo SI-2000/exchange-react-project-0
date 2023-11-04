@@ -80,7 +80,7 @@
 
 /* Min width: 770 px */
 
-@media screen and (min-width: 770px) {
+@media screen and (min-width: 768px) {
   .primary-data {
     grid-column: 1 / end;
     justify-content: flex-start;
@@ -124,7 +124,7 @@
   }
 }
 
-@media screen and (min-width: 1030px) {
+@media screen and (min-width: 1024px) {
   .primary-data {
     border-bottom: 1px solid var(--border-light-gray);
   }

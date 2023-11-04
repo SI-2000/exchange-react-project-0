@@ -4,14 +4,14 @@
   margin: 2rem 0;
 }
 
-@media screen and (min-width: 770px) {
+@media screen and (min-width: 768px) {
   .trade-history {
     grid-column: 2 / end;
     grid-row: 4/5;
   }
 }
 
-@media screen and (min-width: 1030px) {
+@media screen and (min-width: 1024px) {
   .trade-history {
     
     grid-column: 1 / 5;

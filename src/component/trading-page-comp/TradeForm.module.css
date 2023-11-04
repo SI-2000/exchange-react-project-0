@@ -37,7 +37,7 @@
 }
 
 
-@media screen and (min-width: 770px) {
+@media screen and (min-width: 768px) {
   .trade-form {
     width: 100%;
     grid-row: 2 / end;
@@ -48,7 +48,7 @@
   }
 }
 
-@media screen and (min-width: 1030px) {
+@media screen and (min-width: 1024px) {
   .form-switchers {
     display: none;
   }

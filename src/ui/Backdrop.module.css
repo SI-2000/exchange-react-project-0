@@ -9,7 +9,7 @@
   backdrop-filter: blur(2px);
 }
 
-@media screen and (min-width: 770px) {
+@media screen and (min-width: 768px) {
   .trade-form-overlay-backdrop,
   .search-pairs-overlay-backdrop,
   .main-nav-overlay-backdrop {
@@ -17,5 +17,5 @@
   }
 }
 
-@media screen and (min-width: 1030px) {
+@media screen and (min-width: 1024px) {
 }

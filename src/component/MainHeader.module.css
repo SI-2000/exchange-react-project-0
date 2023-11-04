@@ -44,7 +44,7 @@
   visibility: hidden;
 }
 
-@media screen and (min-width:770px) {
+@media screen and (min-width:768px) {
   .menubtn-logo-container label{
     display: none;
   }
