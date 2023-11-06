@@ -22,10 +22,10 @@ const CustomTable = ({
   return (
     <div className={`${classes["custom-table"]} ${classes[className]}`}>
       <div className={classes["header"]}>
-        {header_titles.map((title) => {
+        {header_titles.map((title, index) => {
           return (
             <div
-              key={title.en}
+              key={index}
               className={`${classes["header-title"]} ${classes[title.en]}`}
             >
               {title.fa}
@@ -36,7 +36,7 @@ const CustomTable = ({
       <div className={classes["buttons-list"]}>
         {buttons.map((btn, index) => {
           return (
-            <div className={classes["row"]}>
+            <div key={index} className={classes["row"]}>
               {volumeBarPerc && (
                 <div
                   style={{ width: `${volumeBarPerc[index]}%` }}

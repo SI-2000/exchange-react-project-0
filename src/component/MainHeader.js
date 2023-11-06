@@ -31,7 +31,7 @@ const MainHeader = () => {
     <header className={classes["main-header"]}>
       <div className={classes["menubtn-logo-container"]}>
         <div className={classes["main-nav-container"]}>
-          <input type="checkbox" id="show-menu-cbx" checked={navIsOpen} />
+          <input type="checkbox" id="show-menu-cbx" defaultChecked={navIsOpen} />
           <label
             className={classes["show-menu-label"]}
             htmlFor="show-menu-cbx"

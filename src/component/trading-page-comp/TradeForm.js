@@ -32,9 +32,10 @@ const TradeForm = ({ className, activeForm, setActiveForm }) => {
   return (
     <div className={`${classes["trade-form"]} ${classes[className]}`}>
       <div className={classes["trade-type-selector"]}>
-        {tradeTypes.map((type) => {
+        {tradeTypes.map((type, index) => {
           return (
             <SelectBtn
+            key={index}
               className="trade-form-selector"
               label={type}
               onClick={() => {

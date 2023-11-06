@@ -16,11 +16,12 @@ const DynamicContentWindow = ({
 
   return (
     <div className={classes["tabs"]}>
-      {actions.map((action) => {
+      {actions.map((action, index) => {
         const actionType = Object.keys(action)[0];
         const actionLabel = Object.values(action)[0];
         return (
           <button
+            key={index}
             onClick={() => onDispatchTabsChanges({ type: actionType })}
             className={`${classes[actionType]} ${
               classes[tabsClasses[actionType]]
