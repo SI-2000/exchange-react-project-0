@@ -1,33 +1,25 @@
 import { roundTo } from "../round-number";
 
-function getRandomOrderType() {
-  return Math.random() < 0.5 ? "positive" : "negative";
-}
-
-function getTime() {
-  let date = new Date();
-  let time = date.toTimeString().split(" ")[0];
-  return time;
-}
-
-export function tradesProducer(config) {
-  const { price, row_num, maxV, minV } = config;
-
-  const data = [];
-  for (let i = 0; i < row_num; i++) {
-    const randomAmount = Math.random() * (maxV - minV) + minV;
-
-    data.push({
-      price: price,
-      amount: roundTo(randomAmount, 5),
-      time: getTime(),
-    });
+export function tradesProducer(tradesData) {
+  function timeFormater(time) {
+    let date = new Date(time);
+    let formattedTime = date.toLocaleTimeString("en-GB", { hour12: false });
+    return formattedTime;
   }
+
+  const tableData = tradesData.map((trade) => {
+    return {
+      price: roundTo(trade.price, 2),
+      amount: roundTo(trade.qty, 5),
+      time: timeFormater(trade.time),
+    };
+  });
 
   const btnClassNames = { col1: [], col2: [], col3: [] };
-  for (let i = 0; i < row_num; i++) {
-    btnClassNames.col1.push(getRandomOrderType());
-  }
 
-  return [data, btnClassNames];
+  btnClassNames.col1 = tradesData.map((trade) => {
+    return trade.isBuyerMaker ? "positive" : "negative";
+  });
+
+  return [tableData, btnClassNames];
 }

@@ -5,16 +5,14 @@ import CustomTable from "../CustomTable";
 import classes from "./Trades.module.css";
 import { tradesProducer } from "../../util/trade-page/trades-producer";
 
-const Trades = ({ className }) => {
+const Trades = ({ data, className }) => {
   const header_titles = [
     { en: "price", fa: "قیمت" },
     { en: "amount", fa: "مقدار" },
     { en: "time", fa: "زمان" },
   ];
 
-  const config = { price: "3566", row_num: 13, maxV: 0.09, minV: 0 };
-
-  const [buttons, btnClassNames] = tradesProducer(config);
+  const [buttons, btnClassNames] = tradesProducer(data);
 
   return (
     <div className={`${classes["trades"]} ${classes[className]}`}>

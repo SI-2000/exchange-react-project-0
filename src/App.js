@@ -6,6 +6,7 @@ import Authentication from "./pages/Authentication";
 import { action as authenticationAction } from "./pages/Authentication";
 import ErrorPage from "./pages/ErrorPage";
 import { fetchRealTimeDB } from "./util/realTimeDB-req";
+// import { loader as TradingPageLoader } from "./pages/TradingPage";
 
 import classes from "./App.module.css";
 
@@ -20,6 +21,11 @@ import AssetsPage from "./pages/assets/AssetsPage";
 import UnimportantPage from "./pages/UnimportantPage";
 import CurrenciesList from "./pages/CurrenciesList";
 import TradingPage from "./pages/TradingPage";
+import {
+  QueryClient,
+  QueryClientProvider,
+  QueryClientProviderProps,
+} from "react-query";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -45,7 +51,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
       { path: "assets", element: <AssetsPage /> },
@@ -57,7 +63,13 @@ const router = createBrowserRouter([
       { path: "currencies-list", element: <CurrenciesList /> },
       {
         path: "coins",
-        children: [{ path: ":coinId", element: <TradingPage /> }],
+        children: [
+          {
+            path: ":coinId",
+            // loader: TradingPageLoader,
+            element: <TradingPage />,
+          },
+        ],
       },
       {
         path: "unimportant-page",
@@ -68,8 +80,8 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const queryClient = new QueryClient();
   const dispatch = useDispatch();
-
   const data = useSelector((state) => state.uid);
 
   useEffect(() => {
@@ -83,7 +95,6 @@ function App() {
 
         dispatch(authActions.login({ uid, email }));
 
-
         // for error
 
         // ...
@@ -93,7 +104,11 @@ function App() {
       }
     });
   }, []);
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
 }
 
 export default App;

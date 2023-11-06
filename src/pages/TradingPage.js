@@ -11,6 +11,8 @@ import { useReducer_DWindow } from "../hooks/use-reducer-dwindow";
 import TradeHistory from "../component/trading-page-comp/TradeHistory";
 import TradeSection from "../component/trading-page-comp/TradeSection";
 import SelectCurrency from "../component/trading-page-comp/SelectCurrency";
+import { useQuery } from "react-query";
+import getTradingInfo from "../util/get-trading-info";
 
 const marketDataActions = [
   { CHART: "نمودار" },
@@ -23,26 +25,37 @@ const TradingPage = () => {
     useReducer_DWindow(marketDataActions);
   const params = useParams();
 
+  const tradingQuery = useQuery({
+    queryKey: ["trading-page"],
+    queryFn: getTradingInfo,
+  });
+
   return (
-    <div className={classes["trading-page"]}>
-      <PrimaryData />
-
-      <SelectCurrency />
-      <TradeSection />
-
-      <MarketDataSelector
-        actions={marketDataActions}
-        marketDataDisplayState={marketDataDisplayState}
-        onDispatchMDataDisplay={dispatchMarketDataDisplay}
-      />
-      <Chart className={marketDataDisplayState.componentsClass.CHART} />
-      <OrderBook
-        className={marketDataDisplayState.componentsClass.ORDER_BOOK}
-      />
-      <Trades className={marketDataDisplayState.componentsClass.TRADES} />
-
-      <TradeHistory />
-    </div>
+    <>
+      {tradingQuery.isLoading ? (
+        <p>Is loading</p>
+      ) : (
+        <div className={classes["trading-page"]}>
+          <PrimaryData />
+          <SelectCurrency />
+          <TradeSection />
+          <MarketDataSelector
+            actions={marketDataActions}
+            marketDataDisplayState={marketDataDisplayState}
+            onDispatchMDataDisplay={dispatchMarketDataDisplay}
+          />
+          <Chart className={marketDataDisplayState.componentsClass.CHART} />
+          <OrderBook
+            className={marketDataDisplayState.componentsClass.ORDER_BOOK}
+          />
+          <Trades
+            data={tradingQuery.data.trades}
+            className={marketDataDisplayState.componentsClass.TRADES}
+          />
+          <TradeHistory />
+        </div>
+      )}
+    </>
   );
 };
 
