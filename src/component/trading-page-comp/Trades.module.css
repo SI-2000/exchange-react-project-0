@@ -1,5 +1,6 @@
 .trades {
   height: 21rem;
+  height: 100%;
   padding: 1rem;
   /* overflow-y: scroll; */
 }

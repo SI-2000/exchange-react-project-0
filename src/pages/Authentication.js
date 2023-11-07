@@ -82,7 +82,7 @@ export async function action({ request }) {
 
         const userData = {
           email: user.email,
-          userName: extractUsername(user.email),
+          username: extractUsername(user.email),
           assets: {
             tether: 0,
           },

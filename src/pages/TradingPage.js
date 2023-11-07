@@ -46,6 +46,7 @@ const TradingPage = () => {
           />
           <Chart className={marketDataDisplayState.componentsClass.CHART} />
           <OrderBook
+            data={tradingQuery.data.depth}
             className={marketDataDisplayState.componentsClass.ORDER_BOOK}
           />
           <Trades

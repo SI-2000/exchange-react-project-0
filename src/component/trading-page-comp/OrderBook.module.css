@@ -29,7 +29,7 @@
   .order-book{
     height: 100%;
     grid-column: 4/5;
-    grid-row:2/6;
+    grid-row:2/5;
     border-right: 1px solid var(--border-light-gray);
     border-bottom: 1px solid var(--border-light-gray) ;
     }

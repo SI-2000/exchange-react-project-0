@@ -11,21 +11,9 @@ const header_titles = [
   { en: "total", fa: "کل" },
 ];
 
-
-const OrderBook = ({ className }) => {
-  const [sellOBData, buyOBData, volumePercentage] = OBDataProducer();
-  const [OBData, setOBData] = useState();
-
-  useEffect(() => {
-    const updateOB = setInterval(() => {
-      const newData = OBDataProducer();
-      setOBData(newData);
-    }, 2000);
-    return () => {
-      clearInterval(updateOB);
-    };
-    // return clearInterval(updateOB);
-  }, [OBData]);
+const OrderBook = ({ data, className }) => {
+  const [sellOBData, buyOBData, volumeBar, marketPrice] =
+    OBDataProducer(data);
 
   return (
     <div className={`${classes["order-book"]} ${classes[className]}`}>
@@ -33,14 +21,14 @@ const OrderBook = ({ className }) => {
         className="sell-order-book"
         header_titles={header_titles}
         buttons={sellOBData}
-        volumeBarPerc={volumePercentage.sell}
+        volumeBarPerc={volumeBar.sell}
       />
-      <MarketPriceOB />
+      <MarketPriceOB price={marketPrice} />
       <CustomTable
         className="buy-order-book"
         header_titles={header_titles}
         buttons={buyOBData}
-        volumeBarPerc={volumePercentage.buy}
+        volumeBarPerc={volumeBar.buy}
       />
     </div>
   );
