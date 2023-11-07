@@ -85,6 +85,11 @@
   padding: 0.1rem 0rem;
 }
 
+.trades button{
+  width: 50px;
+
+}
+
 .trades .positive {
   color: var(--exchange-green);
 }
