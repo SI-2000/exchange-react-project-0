@@ -13,6 +13,7 @@ import TradeSection from "../component/trading-page-comp/TradeSection";
 import SelectCurrency from "../component/trading-page-comp/SelectCurrency";
 import { useQuery } from "react-query";
 import getTradingInfo from "../util/get-trading-info";
+import useAssets from "../hooks/use-assets";
 
 const marketDataActions = [
   { CHART: "نمودار" },
@@ -25,11 +26,7 @@ const TradingPage = () => {
     useReducer_DWindow(marketDataActions);
   const params = useParams();
 
-  const tradingQuery = useQuery({
-    queryKey: ["trading-page"],
-    queryFn: getTradingInfo,
-  });
-
+  const usersData = useAssets()
   return (
     <>
       {tradingQuery.isLoading ? (

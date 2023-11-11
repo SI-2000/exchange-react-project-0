@@ -80,7 +80,9 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: { queries: { refetchOnWindowFocus: false } },
+  });
   const dispatch = useDispatch();
   const data = useSelector((state) => state.uid);
 

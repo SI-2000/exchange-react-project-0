@@ -46,9 +46,6 @@ export async function action({ request }) {
   };
   const auth = getAuth();
 
-  let token = null;
-  let user = null;
-
   switch (mode) {
     case "signup": {
       try {
@@ -57,13 +54,18 @@ export async function action({ request }) {
           authData.email,
           authData.password
         );
-        user = userCredential.user;
+        let user = userCredential.user;
+        console.log(user)
+
         const userData = {
           email: user.email,
-          userName: extractUsername(user.email),
-          assets: {},
+          username: extractUsername(user.email),
+          assets: {
+            tether: 0,
+          },
         };
-        // fetchRealTimeDB(`users/${user.uid}`, "put", userData);
+
+        await fetchRealTimeDB(`users/${user.uid}`, "PUT", userData);
       } catch (err) {
         return firebaseErrHandler(err.code) || null;
       }
@@ -78,17 +80,16 @@ export async function action({ request }) {
           authData.email,
           authData.password
         );
-        user = userCredential.user;
 
-        const userData = {
-          email: user.email,
-          username: extractUsername(user.email),
-          assets: {
-            tether: 0,
-          },
-        };
+        // const userData = {
+        //   email: user.email,
+        //   username: extractUsername(user.email),
+        //   assets: {
+        //     tether: 0,
+        //   },
+        // };
 
-        fetchRealTimeDB(`users/${user.uid}`, "PUT", userData);
+        // fetchRealTimeDB(`users/${user.uid}`, "PUT", userData);
       } catch (err) {
         console.log(err);
         return firebaseErrHandler(err.code) || null;

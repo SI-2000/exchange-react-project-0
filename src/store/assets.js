@@ -8,6 +8,9 @@ const assetsSlice = createSlice({
   name: "assets",
   initialState,
   reducers: {
+    setAssets: (state, action) => {
+      state.assets = action.payload;
+    },
     updateAsset: (state, action) => {
       if (state.assets.hasOwnProperty(action.payload.asset)) {
         state.assets[action.payload.asset] += action.payload.value;
