@@ -25,6 +25,10 @@ const TradingPage = () => {
   const [marketDataDisplayState, dispatchMarketDataDisplay] =
     useReducer_DWindow(marketDataActions);
   const params = useParams();
+  const tradingQuery = useQuery({
+    queryKey: ["trading-page"],
+    queryFn: getTradingInfo,
+  });
 
   const usersData = useAssets()
   return (
