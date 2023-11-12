@@ -30,7 +30,7 @@ const TradingPage = () => {
     queryFn: getTradingInfo,
   });
 
-  const usersData = useAssets()
+  const userData = useAssets()
   return (
     <>
       {tradingQuery.isLoading ? (
