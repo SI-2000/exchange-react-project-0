@@ -18,7 +18,7 @@ export function OBDataProducer(data) {
 
   for (let i = 1; i <= 17; i++) {
     if (bidsIndex < data.bids.length) {
-      let buyPriceStep =  currentPrice - (i * ratio );
+      let buyPriceStep = currentPrice - i * ratio;
       while (data.bids[bidsIndex][0] >= buyPriceStep) {
         buyVolumeStep = data.bids[bidsIndex][1];
         bidsIndex++;
@@ -33,7 +33,7 @@ export function OBDataProducer(data) {
 
   for (let i = 1; i <= 17; i++) {
     if (asksIndex < data.asks.length) {
-      let sellPriceStep =  currentPrice + (i * ratio );
+      let sellPriceStep = currentPrice + i * ratio;
       while (data.asks[asksIndex][0] <= sellPriceStep) {
         sellVolumeStep = data.asks[asksIndex][1];
         asksIndex++;
@@ -48,18 +48,18 @@ export function OBDataProducer(data) {
   const buyOBData = buyOB_rows.map((buyOrder) => {
     allOrdersVolume.push(+buyOrder.amount);
     return {
-      price: roundTo(buyOrder.price,2),
-      amount: roundTo(buyOrder.amount,5),
-      total: roundTo(buyOrder.price * buyOrder.amount,5),
+      price: roundTo(buyOrder.price, 2),
+      amount: roundTo(buyOrder.amount, 5),
+      total: roundTo(buyOrder.price * buyOrder.amount, 5),
     };
   });
 
   const sellOBData = sellOB_rows.map((sellOrder) => {
     allOrdersVolume.push(+sellOrder.amount);
     return {
-      price: roundTo(sellOrder.price,2),
-      amount: roundTo(sellOrder.amount,5),
-      total: roundTo(sellOrder.price * sellOrder.amount,5),
+      price: roundTo(sellOrder.price, 2),
+      amount: roundTo(sellOrder.amount, 5),
+      total: roundTo(sellOrder.price * sellOrder.amount, 5),
     };
   });
 
@@ -75,11 +75,9 @@ export function OBDataProducer(data) {
     return ((row.amount - minVolume) / (maxVolume - minVolume)) * 95 + 5;
   });
 
-  console.log(volumeBar)
-
   const btnClasses = { col1: [], col2: [], col3: [] };
 
-  const marketPrice = roundTo(currentPrice, 2)
+  const marketPrice = roundTo(currentPrice, 2);
 
   return [sellOBData, buyOBData, volumeBar, marketPrice];
 }
