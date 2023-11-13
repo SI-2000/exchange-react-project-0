@@ -3,7 +3,29 @@ import React, { useEffect } from "react";
 import useInput from "../../hooks/use-input";
 import classes from "./InputBox.module.css";
 
-const InputBox = ({ value, name, unit, disabled = false }) => {
+const InputBox = ({ value, name, unit, disabled = false, onError }) => {
+  const validators = [
+    (val) => {
+      var regex = /^[0-9]+\.?[0-9]*$/;
+      const isValid = regex.test(val);
+      const errorMessage = isValid ? "" : "لطفا مقدار معتبر وارد کنید.";
+      return {
+        isValid,
+        errorMessage,
+      };
+    },
+    (val) => {
+      const errorMessage =
+        "مقدار مشخص شده برای معامله بیشتر از موجودی حساب شما میباشد.";
+      return {
+        isValid: true,
+        errorMessage,
+      };
+    },
+  ];
+
+
+
   const {
     value: inputValue,
     isValid: inputIsValid,
@@ -12,11 +34,7 @@ const InputBox = ({ value, name, unit, disabled = false }) => {
     valueChangeHandler: inputChangeHandler,
     inputBlueHnadler,
     reset: resetInput,
-  } = useInput((val) => {
-    var regex = /^[0-9]+\.?[0-9]*$/;
-    return regex.test(val);
-  });
-
+  } = useInput(validators);
 
   return (
     <div
