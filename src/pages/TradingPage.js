@@ -22,6 +22,7 @@ const marketDataActions = [
 ];
 
 const TradingPage = () => {
+
   const [marketDataDisplayState, dispatchMarketDataDisplay] =
     useReducer_DWindow(marketDataActions);
   const params = useParams();
@@ -30,34 +31,29 @@ const TradingPage = () => {
     queryFn: getTradingInfo,
   });
 
-  const userData = useAssets()
+  if (tradingQuery.isLoading) return <p>Is laoding...</p>;
+
   return (
-    <>
-      {tradingQuery.isLoading ? (
-        <p>Is loading</p>
-      ) : (
-        <div className={classes["trading-page"]}>
-          <PrimaryData />
-          <SelectCurrency />
-          <TradeSection />
-          <MarketDataSelector
-            actions={marketDataActions}
-            marketDataDisplayState={marketDataDisplayState}
-            onDispatchMDataDisplay={dispatchMarketDataDisplay}
-          />
-          <Chart className={marketDataDisplayState.componentsClass.CHART} />
-          <OrderBook
-            data={tradingQuery.data.depth}
-            className={marketDataDisplayState.componentsClass.ORDER_BOOK}
-          />
-          <Trades
-            data={tradingQuery.data.trades}
-            className={marketDataDisplayState.componentsClass.TRADES}
-          />
-          <TradeHistory />
-        </div>
-      )}
-    </>
+    <div className={classes["trading-page"]}>
+      <PrimaryData />
+      <SelectCurrency />
+      <TradeSection />
+      <MarketDataSelector
+        actions={marketDataActions}
+        marketDataDisplayState={marketDataDisplayState}
+        onDispatchMDataDisplay={dispatchMarketDataDisplay}
+      />
+      <Chart className={marketDataDisplayState.componentsClass.CHART} />
+      <OrderBook
+        data={tradingQuery.data.depth}
+        className={marketDataDisplayState.componentsClass.ORDER_BOOK}
+      />
+      <Trades
+        data={tradingQuery.data.trades}
+        className={marketDataDisplayState.componentsClass.TRADES}
+      />
+      <TradeHistory />
+    </div>
   );
 };
 

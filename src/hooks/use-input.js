@@ -1,20 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import persianNumsToEnglish from "../util/persianNums-to-english";
 
 export default function useInput(valueValidators) {
   const [enterdValue, setEnterdValue] = useState("");
   const [isTouched, setIsTouched] = useState(false);
 
-  const errorMessages = [];
-  
+  let errorMessage = "";
 
   const valueIsValid = valueValidators.every((validator) => {
-    const enterdValueValidation = validator(
-      persianNumsToEnglish(enterdValue)
-    ).isValid;
-    return enterdValueValidation;
+    const enterdValueValidation = validator(persianNumsToEnglish(enterdValue));
+    const enterdValueIsValid = enterdValueValidation.isValid;
+    if (!enterdValueIsValid && isTouched) {
+      errorMessage = enterdValueValidation.errorMessage
+    }
+    return enterdValueIsValid;
   });
-
 
   const inputHasError = !valueIsValid && isTouched;
 
@@ -22,10 +22,6 @@ export default function useInput(valueValidators) {
   const valueChangeHandler = (event) => {
     const transformedValue = persianNumsToEnglish(event.target.value);
     const newValueIsValid = valueValidators.every((validator) => {
-      const newValueValidation = validator(transformedValue);
-      if (!newValueValidation.isValid) {
-        errorMessages.push(newValueValidation.errorMessage);
-      }
       return validator(transformedValue).isValid;
     });
     if (newValueIsValid) {
@@ -35,7 +31,7 @@ export default function useInput(valueValidators) {
     }
   };
 
-  const inputBlueHnadler = () => {
+  const inputblurHandler = () => {
     setIsTouched(true);
   };
 
@@ -48,9 +44,9 @@ export default function useInput(valueValidators) {
     value: enterdValue,
     isValid: valueIsValid,
     hasError: inputHasError,
-    errorMessages,
+    errorMessage,
     valueChangeHandler,
-    inputBlueHnadler,
+    inputblurHandler,
     reset,
   };
 }

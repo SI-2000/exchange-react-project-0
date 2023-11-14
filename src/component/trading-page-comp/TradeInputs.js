@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useReducer, useState } from "react";
 
 import classes from "./TradeInputs.module.css";
 import InputBox from "./InputBox";
 import AVBLPercentage from "./AVBLPercentage";
-import { Link } from "react-router-dom";
+import { Link, createRoutesFromChildren } from "react-router-dom";
 import BuySellBtn from "./BuySellBtn";
+import { useQueryClient } from "react-query";
+import useAssets from "../../hooks/use-assets";
 
 const TradeInputs = ({ formType, orderType, activeForm }) => {
+  const userAssets = useAssets();
+  if (userAssets.isLoading) return <p>Loading...</p>;
+  if (userAssets.isError) return <p>{JSON.stringify(userAssets.error)}</p>;
+
+  const tetherVal = userAssets.data ? userAssets.data.tether : "-";
+  const pairVal = userAssets.data ? userAssets.data.bitcoin || 0 : "-";
+
   return (
     <div
       className={`${classes["inputs-container"]} ${
@@ -16,7 +25,8 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
       <div className={classes["avbl"]}>
         <div className={classes["title"]}>موجودی حساب</div>
         <div className={classes["value"]}>
-          46746<span>{formType === "buy" ? "تتر" : "بیت کوین"}</span>
+          {formType === "buy" ? tetherVal : pairVal}
+          <span>{formType === "buy" ? "تتر" : "بیت کوین"}</span>
         </div>
       </div>
       {orderType.state === "STOP_LIMIT" && (

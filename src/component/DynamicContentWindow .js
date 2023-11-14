@@ -22,6 +22,7 @@ const DynamicContentWindow = ({
         return (
           <button
             key={index}
+            type="button"
             onClick={() => onDispatchTabsChanges({ type: actionType })}
             className={`${classes[actionType]} ${
               classes[tabsClasses[actionType]]

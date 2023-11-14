@@ -47,8 +47,8 @@
 @media screen and (min-width: 1024px) {
   .trade-sec {
     grid-column: 2/4;
-    grid-row: 3/6;
+    grid-row: 3/5;
     border-bottom:1px solid var(--border-light-gray);
-
+    height:100%;
   }
 }

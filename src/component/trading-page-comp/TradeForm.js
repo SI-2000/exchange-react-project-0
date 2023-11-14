@@ -30,7 +30,7 @@ const TradeForm = ({ className, activeForm, setActiveForm }) => {
   }
 
   return (
-    <div className={`${classes["trade-form"]} ${classes[className]}`}>
+    <form className={`${classes["trade-form"]} ${classes[className]}`}>
       <div className={classes["trade-type-selector"]}>
         {tradeTypes.map((type, index) => {
           return (
@@ -81,7 +81,7 @@ const TradeForm = ({ className, activeForm, setActiveForm }) => {
           />
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 

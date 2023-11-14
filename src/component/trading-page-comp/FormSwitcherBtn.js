@@ -8,6 +8,7 @@ const FormSwitcherBtn = ({ transaction, onClick, visiableFormState }) => {
     <div className={classes["form-switcher"]}>
       <button
         onClick={onClick}
+        type="button"
         className={`${classes["form-switcher-btn"]} ${
           visiableFormState === transaction
             ? classes[transaction + "-selected"]

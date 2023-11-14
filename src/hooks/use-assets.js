@@ -6,7 +6,7 @@ export default function useAssets() {
   const dispatch = useDispatch();
   const uid = useSelector((state) => state.auth.uid);
   return useQuery({
-    queryKey: ["usersData"],
+    queryKey: ["user-asset"],
     queryFn: async () => {
       const assetsData = await fetch("http://localhost:8000/users");
       const users = await assetsData.json();
@@ -16,8 +16,8 @@ export default function useAssets() {
     select: (data) => {
       return data[`${uid}`].assets;
     },
-    onSuccess: (data) => {
-      dispatch(assetsActions.setAssets(data));
-    },
+    // onSuccess: (data) => {
+    //   dispatch(assetsActions.setAssets(data));
+    // },
   });
 }
