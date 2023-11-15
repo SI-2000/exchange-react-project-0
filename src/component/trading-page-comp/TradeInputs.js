@@ -7,9 +7,13 @@ import { Link, createRoutesFromChildren } from "react-router-dom";
 import BuySellBtn from "./BuySellBtn";
 import { useQueryClient } from "react-query";
 import useAssets from "../../hooks/use-assets";
+import TradeFormErrors from "./TradeFormErrors";
 
 const TradeInputs = ({ formType, orderType, activeForm }) => {
   const userAssets = useAssets();
+
+  const [errState, setErrState] = useState({ stop: "", price: "", amount: "" });
+
   if (userAssets.isLoading) return <p>Loading...</p>;
   if (userAssets.isError) return <p>{JSON.stringify(userAssets.error)}</p>;
 
@@ -33,6 +37,7 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
         <InputBox
           name={{ en: "stop", fa: "حد ضرر" }}
           unit={{ en: "USDT", fa: "تتر" }}
+          onChangeErrors={setErrState}
         />
       )}
 
@@ -41,14 +46,17 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
         name={{ en: "price", fa: "قیمت" }}
         unit={{ en: "USDT", fa: "تتر" }}
         disabled={orderType.state === "MARKET"}
+        onChangeErrors={setErrState}
       />
 
       <InputBox
         name={{ en: "amount", fa: "مقدار" }}
         unit={{ en: "btc", fa: "بیت کوین" }}
+        onChangeErrors={setErrState}
       />
       <AVBLPercentage />
       <BuySellBtn formType={formType} />
+      <TradeFormErrors errors={errState} />
     </div>
   );
 };

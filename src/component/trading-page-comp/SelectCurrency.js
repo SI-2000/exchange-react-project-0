@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import classes from "./SelectCurrency.module.css";
 import Overlay from "../../ui/Overlay";
 import { useDispatch, useSelector } from "react-redux";
-import { searchPairsAction } from "../../store/search-pairs";
+import { searchPairsActions } from "../../store/search-pairs";
 import SearchCurrency from "./SearchCurrency";
 
 const SelectCurrency = ({ className }) => {
@@ -42,7 +42,7 @@ const SelectCurrency = ({ className }) => {
         <Overlay
           className="search-pairs-overlay"
           onClickBackdrop={() => {
-            dispatch(searchPairsAction.close());
+            dispatch(searchPairsActions.close());
           }}
           overlayIsOpen={searchOverlayIsOpen}
         >

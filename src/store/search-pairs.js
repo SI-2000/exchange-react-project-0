@@ -13,6 +13,6 @@ const searchPairsSlice = createSlice({
   },
 });
 
-export const searchPairsAction = searchPairsSlice.actions;
+export const searchPairsActions = searchPairsSlice.actions;
 
 export default searchPairsSlice.reducer;

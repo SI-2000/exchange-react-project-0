@@ -1,0 +1,16 @@
+.TradeFormErrors {
+  height: 73px;
+}
+
+.container {
+  background-color: rgb(73, 0, 0);
+  border-radius: 5px;
+}
+
+.TradeFormErrors p {
+  margin: 0;
+  font-size: 12px;
+  color: red;
+  padding:.2rem .5rem;
+  
+}

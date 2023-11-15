@@ -2,7 +2,7 @@ import React from "react";
 
 import classes from "./PrimaryData.module.css";
 import { useDispatch } from "react-redux";
-import { searchPairsAction } from "../../store/search-pairs";
+import { searchPairsActions } from "../../store/search-pairs";
 
 const PrimaryData = () => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const PrimaryData = () => {
       <div className={`${classes["col"]} ${classes["name-price"]}`}>
         <div
           onClick={() => {
-            dispatch(searchPairsAction.open());
+            dispatch(searchPairsActions.open());
           }}
           className={`${classes["name"]} ${classes["searchOverlay-btn"]}`}
         >
