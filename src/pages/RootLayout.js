@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import MainHeader from "../component/MainHeader";
 import MainFooter from "../component/MainFooter";
@@ -32,6 +32,7 @@ const app = initializeApp(firebaseConfig);
 
 const RootLayout = () => {
   const uid = useSelector((state) => state.auth.uid);
+  const [isLoading, setIsLoading] = useState(true);
 
   const location = useLocation();
   const fullPath = location.pathname + location.search;
@@ -49,15 +50,17 @@ const RootLayout = () => {
         const uid = user.uid;
         const email = user.email;
         dispatch(authActions.login({ uid, email }));
+
         // for error
         // ...
       } else {
         // User is signed out
         // ...
       }
+      setIsLoading(false);
     });
   }, []);
-  if (!uid) return <p>Loading...</p>;
+  if (isLoading) return <p>Loading</p>
   return (
     <div>
       <MainHeader />
