@@ -8,7 +8,6 @@ const TradeFormErrors = ({ errors }) => {
     <div className={`${classes["TradeFormErrors"]}`}>
       <div className={`${classes["container"]}`}>
         {errorsList.map((err, index) => {
-          console.log(err);
           if (err !== "") return <p key={index}>{err}</p>;
         })}
       </div>

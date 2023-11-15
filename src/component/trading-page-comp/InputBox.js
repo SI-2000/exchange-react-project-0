@@ -26,6 +26,10 @@ const validators = [
 ];
 
 const InputBox = ({ value, name, unit, disabled = false, onChangeErrors }) => {
+  const uid = useSelector((state) => state.auth.uid);
+  console.log(uid)
+  const inputIsDisabled = !uid || disabled;
+
   const {
     value: inputValue,
     isValid: inputIsValid,
@@ -41,8 +45,6 @@ const InputBox = ({ value, name, unit, disabled = false, onChangeErrors }) => {
     onChangeErrors((prev) => {
       const updatedKey = `${name.en}`;
       return { ...prev, [updatedKey]: errorMessage };
-
-      return { stop: "45345", price: "435435", amount: "43543" };
     });
   }, [errorMessage]);
   // const dispatch = useDispatch();
@@ -56,8 +58,8 @@ const InputBox = ({ value, name, unit, disabled = false, onChangeErrors }) => {
   return (
     <div
       className={`${classes["input-box"]} ${classes[name.en]}
-       ${disabled ? classes["disabled-inp-box"] : undefined} ${
-        hasError && !disabled && classes["inp-has-error"]
+       ${inputIsDisabled ? classes["disabled-inp-box"] : undefined} ${
+        hasError && !inputIsDisabled && classes["inp-has-error"]
       }`}
     >
       <label htmlFor={"tradeForm-" + name.en} className={classes["title"]}>
@@ -69,7 +71,7 @@ const InputBox = ({ value, name, unit, disabled = false, onChangeErrors }) => {
         name={name.en}
         type="text"
         autoComplete="off"
-        disabled={disabled}
+        disabled={inputIsDisabled}
         onChange={inputChangeHandler}
         onBlur={inputblurHandler}
       />
