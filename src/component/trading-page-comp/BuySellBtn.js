@@ -7,25 +7,22 @@ import { useSelector } from "react-redux";
 const BuySellBtn = ({ formType }) => {
   const uid = useSelector((state) => state.auth.uid);
 
-  const class_name = !uid
-    ? "signed-out-trade-btn"
-    : formType === "buy"
-    ? "buy"
-    : "sell";
-
-  const comp_inner = !uid ? (
-    <span>
-      <Link>وارد شوید</Link> یا <Link>حالا ثبت نام کنید</Link>
-    </span>
-  ) : formType === "buy" ? (
-    "خرید"
-  ) : (
-    "فروش"
-  );
+  if (!uid) {
+    return (
+      <div
+        className={`${classes["buy-sell-btn"]} ${classes["auth-links-container"]}`}
+      >
+        <span>
+          <Link to="/auth/?mode=login">وارد شوید</Link> یا{" "}
+          <Link to="/auth/?mode=signup">حالا ثبت نام کنید</Link>
+        </span>
+      </div>
+    );
+  }
 
   return (
-    <button className={`${classes["buy-sell-btn"]} ${classes[class_name]}`}>
-      {comp_inner}
+    <button className={`${classes["buy-sell-btn"]} ${classes[formType]}`}>
+      {formType === "خرید" ? "خرید" : "فروش"}
     </button>
   );
 };

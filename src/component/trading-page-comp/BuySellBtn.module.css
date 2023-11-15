@@ -7,13 +7,19 @@
   }
   
   
-  .signed-out-trade-btn{
+  .auth-links-container{
     background-color: var(--input-gray);
   }
+
+  .auth-links-container span{
+    font-size: 12px;
+  }
   
-  .signed-out-trade-btn a{
+  .auth-links-container a{
     color:var(--gold-color)
   }
+
+
   
   button.buy{
     background-color: var(--exchange-green);
