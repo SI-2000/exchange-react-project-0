@@ -7,25 +7,24 @@ export function DCWreduverMaker(actionTypes) {
   // the DynamicContentWindow component
 
   const reducer = (state, action) => {
-    let baseState = {state:"",  componentsClass: {}, buttonsClass: {} };
+    let baseState = { state: "Limit", componentsClass: {}, buttonsClass: {} };
     actionTypes.forEach((actionType) => {
       baseState.componentsClass[actionType] = "hidden";
       baseState.buttonsClass[actionType] = undefined;
     });
-    let initialState = baseState;
+    let newState = baseState;
 
-    initialState.state = action.type
-    initialState.componentsClass[action.type] = undefined;
-    initialState.buttonsClass[action.type] = "active";
-
-    return initialState;
+    newState.state = action.type;
+    newState.componentsClass[action.type] = undefined;
+    newState.buttonsClass[action.type] = "active";
+    return newState;
   };
 
   return reducer;
 }
 
 function initialStateMaker(actions) {
-  let state = { componentsClass: {}, buttonsClass: {} };
+  let state = { state: "Limit", componentsClass: {}, buttonsClass: {} };
   actions.forEach((actionType) => {
     state.componentsClass[actionType] = "hidden";
     state.buttonsClass[actionType] = undefined;
