@@ -1,20 +1,35 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  tradeFormErrors: { buy: "", sell: "" },
+  current_price: "10",
+  order_type: "Limit",
+  tradeForm: {
+    pair: "bitcoin",
+    buy: {
+      stop: { value: "", isValid: false },
+      price: { value: "", isValid: false },
+      amount: { value: "", isValid: false },
+    },
+    sell: {
+      stop: { value: "", isValid: false },
+      price: { value: "", isValid: false },
+      amount: { value: "", isValid: false },
+    },
+  },
 };
 
-const TradingSlice = createSlice({
+const tradingSlice = createSlice({
   name: "trading-data",
   initialState,
   reducers: {
-    updataBuyErrors(state, action) {
-      const { formType, value } = action.payload;
-      state.tradeFormErrors[`${formType}`] = value;
+    updateInputs(state, action) {
+      const { formType, inputName, value } = action.payload;
+      state.tradeForm[formType][inputName] = value;
+      // state.tradeForm[formType][inputName].value = value;
     },
   },
 });
 
-export const TradingActions = TradingSlice.actions
+export const tradingActions = tradingSlice.actions;
 
-export default TradingSlice.reducer
+export default tradingSlice.reducer;

@@ -4,7 +4,6 @@ import MainHeader from "../component/MainHeader";
 import MainFooter from "../component/MainFooter";
 import { useDispatch, useSelector } from "react-redux";
 import { assetsActions } from "../store/assets";
-import useAssets from "../hooks/use-assets";
 import { useQuery } from "react-query";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";

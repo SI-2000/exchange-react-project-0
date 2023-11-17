@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 
 import classes from "./TradingPage.module.css";
 import { useParams } from "react-router-dom";
@@ -13,7 +13,8 @@ import TradeSection from "../component/trading-page-comp/TradeSection";
 import SelectCurrency from "../component/trading-page-comp/SelectCurrency";
 import { useQuery } from "react-query";
 import getTradingInfo from "../util/get-trading-info";
-import useAssets from "../hooks/use-assets";
+import useGetAssets from "../hooks/use-get-assets";
+import { useSelector } from "react-redux";
 
 const marketDataActions = [
   { CHART: "نمودار" },
@@ -22,16 +23,24 @@ const marketDataActions = [
 ];
 
 const TradingPage = () => {
+  const uid = useSelector((state) => state.auth.uid);
+
+  const tradingQuery = useQuery({
+    queryKey: ["trading-page"],
+    queryFn: async () => {
+      return await getTradingInfo(uid);
+    },
+  });
+
+  const assetsQuery = useGetAssets();
 
   const [marketDataDisplayState, dispatchMarketDataDisplay] =
     useReducer_DWindow(marketDataActions);
-  const params = useParams();
-  const tradingQuery = useQuery({
-    queryKey: ["trading-page"],
-    queryFn: getTradingInfo,
-  });
 
-  if (tradingQuery.isLoading) return <p>Is laoding...</p>;
+  if (tradingQuery.isLoading && assetsQuery.isLoading)
+    return <p>Is loading...</p>;
+  if (tradingQuery.isError && assetsQuery.isError) return <p>Error</p>;
+  if (!tradingQuery.data) return <p>There is no data.</p>;
 
   return (
     <div className={classes["trading-page"]}>

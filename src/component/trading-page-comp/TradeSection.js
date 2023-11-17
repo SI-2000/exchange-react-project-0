@@ -21,6 +21,9 @@ const TradeSection = () => {
     setTradeFormIsOpen(false);
   }
 
+
+
+
   return (
     <div className={classes["trade-sec"]}>
       <div className={classes["show-form-btns"]}>

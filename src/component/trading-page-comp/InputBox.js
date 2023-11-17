@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import useInput from "../../hooks/use-input";
 import classes from "./InputBox.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { TradingActions } from "../../store/trading-data";
+import { tradingActions } from "../../store/trading-data";
 
 const validators = [
   (val) => {
@@ -25,9 +25,17 @@ const validators = [
   },
 ];
 
-const InputBox = ({ value, name, unit, disabled = false, onChangeErrors }) => {
+const InputBox = ({
+  value,
+  name,
+  unit,
+  disabled = false,
+  formType,
+  onChangeErrors,
+}) => {
   const uid = useSelector((state) => state.auth.uid);
-  console.log(uid)
+  const dispatch = useDispatch();
+
   const inputIsDisabled = !uid || disabled;
 
   const {
@@ -42,18 +50,21 @@ const InputBox = ({ value, name, unit, disabled = false, onChangeErrors }) => {
   } = useInput(validators);
 
   useEffect(() => {
+    dispatch(
+      tradingActions.updateInputs({
+        formType,
+        inputName: name.en,
+        value: { value: inputValue, isValid: inputIsValid },
+      })
+    );
+  }, [inputValue]);
+
+  useEffect(() => {
     onChangeErrors((prev) => {
       const updatedKey = `${name.en}`;
       return { ...prev, [updatedKey]: errorMessage };
     });
   }, [errorMessage]);
-  // const dispatch = useDispatch();
-
-  // dispatch(
-  //   TradingActions.updataBuyErrors({ formType: name.en, value: errorMessage })
-  // );
-
-  const errorM = useSelector((state) => state.tradingData.tradeFormErrors);
 
   return (
     <div

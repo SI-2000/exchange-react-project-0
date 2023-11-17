@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import classes from "./TradeForm.module.css";
 import { Link } from "react-router-dom";
@@ -21,6 +21,9 @@ const TradeForm = ({ className, activeForm, setActiveForm }) => {
   ];
   const [selectedOrderType, dispatchSelectedOrderType] =
     useReducer_DWindow(orderTypes);
+    // console.log(selectedOrderType)
+
+  useEffect(()=>{},[])
 
   function showBuyFormHandler() {
     setActiveForm("buy");
@@ -29,13 +32,14 @@ const TradeForm = ({ className, activeForm, setActiveForm }) => {
     setActiveForm("sell");
   }
 
+
   return (
     <form className={`${classes["trade-form"]} ${classes[className]}`}>
       <div className={classes["trade-type-selector"]}>
         {tradeTypes.map((type, index) => {
           return (
             <SelectBtn
-            key={index}
+              key={index}
               className="trade-form-selector"
               label={type}
               onClick={() => {

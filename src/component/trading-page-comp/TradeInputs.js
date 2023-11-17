@@ -5,20 +5,23 @@ import InputBox from "./InputBox";
 import AVBLPercentage from "./AVBLPercentage";
 import { Link, createRoutesFromChildren } from "react-router-dom";
 import BuySellBtn from "./BuySellBtn";
-import { useQueryClient } from "react-query";
-import useAssets from "../../hooks/use-assets";
+import useGetAssets from "../../hooks/use-get-assets";
 import TradeFormErrors from "./TradeFormErrors";
 
 const TradeInputs = ({ formType, orderType, activeForm }) => {
-  const userAssets = useAssets();
+  const userAssets = useGetAssets();
 
   const [errState, setErrState] = useState({ stop: "", price: "", amount: "" });
+  const [formIsValid, setFromIsValid] = useState(false)
+
 
   if (userAssets.isLoading) return <p>Loading...</p>;
   if (userAssets.isError) return <p>{JSON.stringify(userAssets.error)}</p>;
 
   const tetherVal = userAssets.data ? userAssets.data.tether : "-";
   const pairVal = userAssets.data ? userAssets.data.bitcoin || 0 : "-";
+
+
 
   return (
     <div
@@ -38,6 +41,7 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
           name={{ en: "stop", fa: "حد ضرر" }}
           unit={{ en: "USDT", fa: "تتر" }}
           onChangeErrors={setErrState}
+          formType={formType}
         />
       )}
 
@@ -47,12 +51,14 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
         unit={{ en: "USDT", fa: "تتر" }}
         disabled={orderType.state === "MARKET"}
         onChangeErrors={setErrState}
+        formType={formType}
       />
 
       <InputBox
         name={{ en: "amount", fa: "مقدار" }}
         unit={{ en: "btc", fa: "بیت کوین" }}
         onChangeErrors={setErrState}
+        formType={formType}
       />
       <AVBLPercentage />
       <BuySellBtn formType={formType} />
