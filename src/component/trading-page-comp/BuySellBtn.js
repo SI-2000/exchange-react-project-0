@@ -4,24 +4,32 @@ import { Link } from "react-router-dom";
 import classes from "./BuySellBtn.module.css";
 import { useSelector } from "react-redux";
 import useSetAssets from "../../hooks/use-set-assets";
+import { useTradeForm } from "../../hooks/use-trade-form";
 
 const BuySellBtn = ({ formType }) => {
   const uid = useSelector((state) => state.auth.uid);
 
-  const tradingPageData = useSelector((state) => state.tradingData);
+  const {
+    current_price,
+    tradeForm: inputsData,
+    order_type,
+  } = useSelector((state) => state.tradingData);
 
-  const { current_price, tradeForm:inputsData, order_type } = tradingPageData;
-
+  const { formIsValid } = useTradeForm(inputsData, formType, order_type);
+  console.log(formIsValid)
 
   const changeAssetMutation = useSetAssets();
   const btnClickHandler = (e) => {
     e.preventDefault();
+    if (!formIsValid) {
+      return;
+    }
     changeAssetMutation.mutate({
       pair: inputsData.pair,
       formType,
       inputs: {
         price:
-          order_type === "market" ? current_price : inputsData[formType].price,
+          order_type === "MARKET" ? current_price : inputsData[formType].price,
         amount: inputsData[formType].amount,
       },
     });

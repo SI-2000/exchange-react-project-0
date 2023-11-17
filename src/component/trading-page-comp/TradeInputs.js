@@ -7,13 +7,16 @@ import { Link, createRoutesFromChildren } from "react-router-dom";
 import BuySellBtn from "./BuySellBtn";
 import useGetAssets from "../../hooks/use-get-assets";
 import TradeFormErrors from "./TradeFormErrors";
+import { useTradeForm } from "../../hooks/use-trade-form";
+import { useSelector } from "react-redux";
 
 const TradeInputs = ({ formType, orderType, activeForm }) => {
   const userAssets = useGetAssets();
 
   const [errState, setErrState] = useState({ stop: "", price: "", amount: "" });
-  const [formIsValid, setFromIsValid] = useState(false)
 
+  // const [formIsValid, setFromIsValid] = useState(false);
+  // const tradeFormIsValid = useTradeForm(formType, orderType);
 
   if (userAssets.isLoading) return <p>Loading...</p>;
   if (userAssets.isError) return <p>{JSON.stringify(userAssets.error)}</p>;
@@ -21,10 +24,8 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
   const tetherVal = userAssets.data ? userAssets.data.tether : "-";
   const pairVal = userAssets.data ? userAssets.data.bitcoin || 0 : "-";
 
-
-
   return (
-    <div
+    <form
       className={`${classes["inputs-container"]} ${
         classes[formType === activeForm ? "show-form" : ""]
       }`}
@@ -63,7 +64,7 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
       <AVBLPercentage />
       <BuySellBtn formType={formType} />
       <TradeFormErrors errors={errState} />
-    </div>
+    </form>
   );
 };
 

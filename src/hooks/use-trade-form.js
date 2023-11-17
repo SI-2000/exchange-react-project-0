@@ -1,24 +1,18 @@
 export function useTradeForm(inputsData, formType, order_type) {
+  let formIsValid = false;
+
   const { stop, price, amount } = inputsData[formType];
-  let formisValid;
-  // console.log(formisValid);
-  console.log(order_type)
-
   switch (order_type) {
-    case "Limit":
-      console.log("1")
-      formisValid = price.isValid && amount.isValid;
+    case "LIMIT":
+      formIsValid = price.isValid && amount.isValid;
       break;
-    case "Market":
-      console.log("2")
-
-      formisValid = amount.isValid;
+    case "MARKET":
+      formIsValid = amount.isValid;
       break;
-    case "Stop-limit":
-      console.log("3")
-
-      formisValid = stop.isValid && price.isValid && amount.isValid;
+    case "STOP_LIMIT":
+      formIsValid = stop.isValid && price.isValid && amount.isValid;
       break;
   }
-  return { formisValid };
+
+  return { formIsValid };
 }

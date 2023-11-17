@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   current_price: "10",
-  order_type: "Limit",
+  order_type: "LIMIT",
   tradeForm: {
     pair: "bitcoin",
     buy: {
@@ -22,6 +22,9 @@ const tradingSlice = createSlice({
   name: "trading-data",
   initialState,
   reducers: {
+    changeOrderType(state, action) {
+      state.order_type = action.payload;
+    },
     updateInputs(state, action) {
       const { formType, inputName, value } = action.payload;
       state.tradeForm[formType][inputName] = value;

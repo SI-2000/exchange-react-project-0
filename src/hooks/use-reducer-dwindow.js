@@ -13,24 +13,24 @@ export function useReducer_DWindow(actions) {
     // the DynamicContentWindow component
 
     const reducer = (state, action) => {
-      let baseState = { state: "Limit", componentsClass: {}, buttonsClass: {} };
+      let baseState = { state: "LIMIT", componentsClass: {}, buttonsClass: {} };
       actionTypes.forEach((actionType) => {
         baseState.componentsClass[actionType] = "hidden";
         baseState.buttonsClass[actionType] = undefined;
       });
       let newState = baseState;
 
-      newState.state = action.type;
-      newState.componentsClass[action.type] = undefined;
-      newState.buttonsClass[action.type] = "active";
-      return newState;
-    };
+    newState.state = action.type;
+    newState.componentsClass[action.type] = undefined;
+    newState.buttonsClass[action.type] = "active";
+    return newState;
+  };
 
     return reducer;
   }
 
   function initialStateMaker(actions) {
-    let state = { state: "Limit", componentsClass: {}, buttonsClass: {} };
+    let state = { state: "LIMIT", componentsClass: {}, buttonsClass: {} };
     actions.forEach((actionType) => {
       state.componentsClass[actionType] = "hidden";
       state.buttonsClass[actionType] = undefined;
@@ -44,6 +44,7 @@ export function useReducer_DWindow(actions) {
   const dataDisplayReducer = DCWreduverMaker(actionKeys);
   const initialState = initialStateMaker(actionKeys);
   const useReducerList = useReducer(dataDisplayReducer, initialState);
+
 
   return useReducerList;
 }
