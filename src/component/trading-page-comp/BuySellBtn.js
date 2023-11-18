@@ -16,7 +16,6 @@ const BuySellBtn = ({ formType }) => {
   } = useSelector((state) => state.tradingData);
 
   const { formIsValid } = useTradeForm(inputsData, formType, order_type);
-  console.log(formIsValid)
 
   const changeAssetMutation = useSetAssets();
   const btnClickHandler = (e) => {
