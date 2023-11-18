@@ -15,16 +15,15 @@ export default function useSetAssets() {
       }
 
       if (data.formType === "buy") {
-        assets[data.pair] = +assets[data.pair] + +data.inputs.amount;
+        assets[data.pair] = +assets[data.pair] + +data.inputs.amount.value;
         assets.tether =
-          assets[data.pair] - +data.inputs.price * +data.inputs.amount;
+          assets.tether - +data.inputs.price.value * +data.inputs.amount.value;
       } else if (data.formType === "sell") {
-        assets[data.pair] = +assets[data.pair] - +data.inputs.amount;
+        assets[data.pair] = +assets[data.pair] - +data.inputs.amount.value;
         assets.tether =
-          assets[data.pair] + +data.inputs.price * +data.inputs.amount;
+          assets.tether + +data.inputs.price.value * +data.inputs.amount.value;
       }
-      console.log(assets)
     },
   });
-  return changeAssetMutation
+  return changeAssetMutation;
 }
