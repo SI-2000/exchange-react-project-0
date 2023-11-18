@@ -7,14 +7,15 @@
 }
 
 .buy-sell-btn:disabled {
-  filter: grayscale(60%);
+  filter: grayscale(70%);
   cursor: not-allowed;
+  color: rgb(65, 65, 65);
 }
 
 .auth-links-container {
   background-color: var(--input-gray);
 }
-s
+
 .auth-links-container span {
   font-size: 12px;
 }
