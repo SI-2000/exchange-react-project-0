@@ -13,7 +13,10 @@ import { useSelector } from "react-redux";
 const TradeInputs = ({ formType, orderType, activeForm }) => {
   const userAssets = useGetAssets();
 
-  const [errState, setErrState] = useState({ stop: "", price: "", amount: "" });
+  // const [errState, setErrState] = useState({ stop: "", price: "", amount: "" });
+  const errState = useSelector(
+    (state) => state.tradingData.tradeForm.errorMessages[formType]
+  );
 
   // const [formIsValid, setFromIsValid] = useState(false);
   // const tradeFormIsValid = useTradeForm(formType, orderType);
@@ -41,7 +44,6 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
         <InputBox
           name={{ en: "stop", fa: "حد ضرر" }}
           unit={{ en: "USDT", fa: "تتر" }}
-          onChangeErrors={setErrState}
           formType={formType}
         />
       )}
@@ -51,14 +53,12 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
         name={{ en: "price", fa: "قیمت" }}
         unit={{ en: "USDT", fa: "تتر" }}
         disabled={orderType.state === "MARKET"}
-        onChangeErrors={setErrState}
         formType={formType}
       />
 
       <InputBox
         name={{ en: "amount", fa: "مقدار" }}
         unit={{ en: "btc", fa: "بیت کوین" }}
-        onChangeErrors={setErrState}
         formType={formType}
       />
       <AVBLPercentage />

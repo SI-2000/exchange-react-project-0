@@ -60,10 +60,18 @@ const InputBox = ({
   }, [inputValue]);
 
   useEffect(() => {
-    onChangeErrors((prev) => {
-      const updatedKey = `${name.en}`;
-      return { ...prev, [updatedKey]: errorMessage };
-    });
+    dispatch(
+      tradingActions.newErrorMessage({
+        formType,
+        updatedPart: name.en,
+        errMes: errorMessage,
+      })
+    );
+
+    // onChangeErrors((prev) => {
+    //   const updatedKey = `${name.en}`;
+    //   return { ...prev, [updatedKey]: errorMessage };
+    // });
   }, [errorMessage]);
 
   return (
