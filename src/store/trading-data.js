@@ -6,8 +6,8 @@ const initialState = {
   tradeForm: {
     pair: "bitcoin",
     errorMessages: {
-      buy: { stop: "", price: "", amount: "", form: "" },
-      sell: { stop: "", price: "", amount: "", form: "" },
+      buy: { stop: [], price: [], amount: [], form: [] },
+      sell: { stop: [], price: [], amount: [], form: [] },
     },
     buy: {
       stop: { value: "", isValid: false },
@@ -36,7 +36,8 @@ const tradingSlice = createSlice({
     },
     newErrorMessage(state, action) {
       const { formType, updatedPart, errMes } = action.payload;
-      state.tradeForm.errorMessages[formType][updatedPart] = errMes;
+      state.tradeForm.errorMessages[formType][updatedPart] = [];
+      state.tradeForm.errorMessages[formType][updatedPart].push(errMes);
     },
   },
 });

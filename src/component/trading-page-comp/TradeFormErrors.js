@@ -3,7 +3,7 @@ import React from "react";
 import classes from "./TradeFormErrors.module.css";
 
 const TradeFormErrors = ({ errors }) => {
-  const errorsList = [...new Set(Object.values(errors))];
+  const errorsList = [...new Set(Object.values(errors).flat())];
   return (
     <div className={`${classes["TradeFormErrors"]}`}>
       <div className={`${classes["container"]}`}>
