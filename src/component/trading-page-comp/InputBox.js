@@ -64,7 +64,7 @@ const InputBox = ({
       tradingActions.newErrorMessage({
         formType,
         updatedPart: name.en,
-        errMes: errorMessage,
+        errMes: [errorMessage],
       })
     );
 

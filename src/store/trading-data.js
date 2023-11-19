@@ -37,7 +37,7 @@ const tradingSlice = createSlice({
     newErrorMessage(state, action) {
       const { formType, updatedPart, errMes } = action.payload;
       state.tradeForm.errorMessages[formType][updatedPart] = [];
-      state.tradeForm.errorMessages[formType][updatedPart].push(errMes);
+      state.tradeForm.errorMessages[formType][updatedPart]=errMes;
     },
   },
 });
