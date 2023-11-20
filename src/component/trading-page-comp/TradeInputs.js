@@ -10,6 +10,7 @@ import TradeFormErrors from "./TradeFormErrors";
 import { useTradeForm } from "../../hooks/use-trade-form";
 import { useDispatch, useSelector } from "react-redux";
 import { tradingActions } from "../../store/trading-data";
+import { roundTo } from "../../util/round-number";
 
 const TradeInputs = ({ formType, orderType, activeForm }) => {
   const dispatch = useDispatch();
@@ -32,8 +33,7 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
 
   // console.log(inputsData[formType])
 
-
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(
       tradingActions.newErrorMessage({
         formType,
@@ -44,20 +44,21 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
     dispatch(
       tradingActions.formIsValid({ formType, isValid: formErrors.formIsValid })
     );
-  },[inputsData[formType]])
+  }, [inputsData[formType]]);
 
   const formErrMes = useSelector(
     (state) => state.tradingData.tradeForm.errorMessages.buy.form
   );
 
-  const formIsValid = inputsData.formIsValid[formType]
-
+  const formIsValid = inputsData.formIsValid[formType];
 
   if (userAssets.isLoading) return <p>Loading...</p>;
   if (userAssets.isError) return <p>{JSON.stringify(userAssets.error)}</p>;
 
-  const tetherVal = userAssets.data ? userAssets.data.tether : "-";
-  const pairVal = userAssets.data ? userAssets.data.bitcoin || 0 : "-";
+  const tetherVal = userAssets.data ? roundTo(userAssets.data.tether, 4) : "-";
+  const pairVal = userAssets.data
+    ? roundTo(userAssets.data.bitcoin, 4) || 0
+    : "-";
 
   return (
     <form
@@ -94,10 +95,7 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
         formType={formType}
       />
       <AVBLPercentage />
-      <BuySellBtn
-        formType={formType}
-        disabled={!formIsValid}
-      />
+      <BuySellBtn formType={formType} disabled={!formIsValid} />
       <TradeFormErrors errors={errState} />
     </form>
   );
