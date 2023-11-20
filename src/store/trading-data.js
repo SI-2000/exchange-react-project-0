@@ -33,11 +33,9 @@ const tradingSlice = createSlice({
     updateInputs(state, action) {
       const { formType, inputName, value } = action.payload;
       state.tradeForm[formType][inputName] = value;
-      // state.tradeForm[formType][inputName].value = value;
     },
     newErrorMessage(state, action) {
       const { formType, updatedPart, errMes } = action.payload;
-      // state.tradeForm.errorMessages[formType][updatedPart] = [];
       state.tradeForm.errorMessages[formType][updatedPart] = errMes;
     },
     formIsValid(state, action) {

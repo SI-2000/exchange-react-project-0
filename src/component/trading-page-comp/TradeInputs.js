@@ -39,9 +39,6 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
         errMes: formErrors.formErrMes,
       })
     );
-    // console.log("///////////////")
-    // console.log(inputValue)
-    // console.log("redux " +inputsData[formType]["price"].value);
     dispatch(
       tradingActions.formIsValid({ formType, isValid: formErrors.formIsValid })
     );
@@ -53,23 +50,6 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
 
   const formIsValid = inputsData.formIsValid[formType]
 
-
-  // console.log("redux " +inputsData[formType]["price"].value);
-
-
-  const updateFormErrors = (inputValue, formType, name) => {
-    return null
-  };
-
-  const onHoverTradeBtn = (e) => {
-    // dispatch(
-    //   tradingActions.newErrorMessage({
-    //     formType,
-    //     updatedPart: "form",
-    //     errMes: formErrMes.formErrMes,
-    //   })
-    // );
-  };
 
   if (userAssets.isLoading) return <p>Loading...</p>;
   if (userAssets.isError) return <p>{JSON.stringify(userAssets.error)}</p>;
@@ -95,7 +75,6 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
           name={{ en: "stop", fa: "حد ضرر" }}
           unit={{ en: "USDT", fa: "تتر" }}
           formType={formType}
-          onChange={updateFormErrors}
         />
       )}
 
@@ -105,20 +84,17 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
         unit={{ en: "USDT", fa: "تتر" }}
         disabled={orderType.state === "MARKET"}
         formType={formType}
-        onChange={updateFormErrors}
       />
 
       <InputBox
         name={{ en: "amount", fa: "مقدار" }}
         unit={{ en: "btc", fa: "بیت کوین" }}
         formType={formType}
-        onChange={updateFormErrors}
       />
       <AVBLPercentage />
       <BuySellBtn
         formType={formType}
         disabled={!formIsValid}
-        onMouseOver={onHoverTradeBtn}
       />
       <TradeFormErrors errors={errState} />
     </form>

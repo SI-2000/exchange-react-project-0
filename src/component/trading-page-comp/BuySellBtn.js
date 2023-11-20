@@ -7,7 +7,7 @@ import useSetAssets from "../../hooks/use-set-assets";
 import { useTradeForm } from "../../hooks/use-trade-form";
 import { tradingActions } from "../../store/trading-data";
 
-const BuySellBtn = ({ formType, disabled, onMouseOver }) => {
+const BuySellBtn = ({ formType, disabled }) => {
   const uid = useSelector((state) => state.auth.uid);
 
   const dispatch = useDispatch();
@@ -63,7 +63,6 @@ const BuySellBtn = ({ formType, disabled, onMouseOver }) => {
   return (
     <button
       onClick={btnClickHandler}
-      onMouseOver={onMouseOver}
       className={`${classes["buy-sell-btn"]} ${classes[formType]}`}
       disabled={disabled}
     >
