@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import useSetAssets from "../../hooks/use-set-assets";
 import { useTradeForm } from "../../hooks/use-trade-form";
 import { tradingActions } from "../../store/trading-data";
+import { compose } from "redux";
 
 const BuySellBtn = ({ formType, disabled }) => {
   const uid = useSelector((state) => state.auth.uid);
@@ -33,19 +34,7 @@ const BuySellBtn = ({ formType, disabled }) => {
         amount: inputsData[formType].amount,
       },
     });
-
-    // doTrade(
-    //   {
-    //     pair:inputsData.pair,
-    //     formType,
-    //     inputs:{
-    //       price:inputsData[formType].price,
-    //       amount:inputsData[formType].amount,
-    //     }
-    //   }
-    // )
   };
-
 
   if (!uid) {
     return (

@@ -23,6 +23,17 @@ export default function useSetAssets() {
         assets.tether =
           assets.tether + +data.inputs.price.value * +data.inputs.amount.value;
       }
+      const newData = { [uid]: { assets, ...users[uid] } };
+      const resData = await fetch("http://localhost:8000/users", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newData),
+      });
+      const res = await resData.json();
+      return res;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries("users");
     },
   });
   return changeAssetMutation;

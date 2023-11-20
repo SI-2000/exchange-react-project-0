@@ -30,6 +30,8 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
     current_price
   );
 
+  // console.log(inputsData[formType])
+
 
   useEffect(()=>{
     dispatch(

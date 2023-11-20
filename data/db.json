@@ -16,9 +16,9 @@
       "price_change_percentage_24h": 0.17396,
       "market_cap_change_24h": -1431361505.6973877,
       "market_cap_change_percentage_24h": -0.21046,
-      "circulating_supply": 19532068.0,
-      "total_supply": 21000000.0,
-      "max_supply": 21000000.0,
+      "circulating_supply": 19532068,
+      "total_supply": 21000000,
+      "max_supply": 21000000,
       "ath": 69045,
       "ath_change_percentage": -49.72864,
       "ath_date": "2021-11-10T14:24:11.849Z",
@@ -104,9 +104,9 @@
       "price_change_percentage_24h": -0.33407,
       "market_cap_change_24h": -308630836.8904114,
       "market_cap_change_percentage_24h": -0.87001,
-      "circulating_supply": 153856150.0,
-      "total_supply": 153856150.0,
-      "max_supply": 200000000.0,
+      "circulating_supply": 153856150,
+      "total_supply": 153856150,
+      "max_supply": 200000000,
       "ath": 686.31,
       "ath_change_percentage": -66.67694,
       "ath_date": "2021-05-10T07:24:17.097Z",
@@ -132,9 +132,9 @@
       "price_change_percentage_24h": 0.80942,
       "market_cap_change_24h": 150934303,
       "market_cap_change_percentage_24h": 0.46581,
-      "circulating_supply": 53615837759.0,
-      "total_supply": 99988316618.0,
-      "max_supply": 100000000000.0,
+      "circulating_supply": 53615837759,
+      "total_supply": 99988316618,
+      "max_supply": 100000000000,
       "ath": 3.4,
       "ath_change_percentage": -82.07974,
       "ath_date": "2018-01-07T00:00:00.000Z",
@@ -245,8 +245,8 @@
       "market_cap_change_24h": 501546824,
       "market_cap_change_percentage_24h": 4.68699,
       "circulating_supply": 34934854391.1769,
-      "total_supply": 45000000000.0,
-      "max_supply": 45000000000.0,
+      "total_supply": 45000000000,
+      "max_supply": 45000000000,
       "ath": 3.09,
       "ath_change_percentage": -89.63792,
       "ath_date": "2021-09-02T06:00:10.474Z",
@@ -278,7 +278,7 @@
       "ath": 0.731578,
       "ath_change_percentage": -90.75143,
       "ath_date": "2021-05-08T05:08:23.458Z",
-      "atl": 8.69e-5,
+      "atl": 0.0000869,
       "atl_change_percentage": 77756.81605,
       "atl_date": "2015-05-06T00:00:00.000Z",
       "roi": null,
@@ -361,8 +361,8 @@
       "market_cap_change_24h": 102184802,
       "market_cap_change_percentage_24h": 1.66487,
       "circulating_supply": 556849971.2305644,
-      "total_supply": 1000000000.0,
-      "max_supply": 1000000000.0,
+      "total_supply": 1000000000,
+      "max_supply": 1000000000,
       "ath": 52.7,
       "ath_change_percentage": -78.69535,
       "ath_date": "2021-05-10T00:13:57.214Z",
@@ -389,8 +389,8 @@
       "market_cap_change_24h": 43898732,
       "market_cap_change_percentage_24h": 0.72298,
       "circulating_supply": 9244372993.466755,
-      "total_supply": 10000000000.0,
-      "max_supply": 10000000000.0,
+      "total_supply": 10000000000,
+      "max_supply": 10000000000,
       "ath": 2.92,
       "ath_change_percentage": -77.2221,
       "ath_date": "2021-12-27T02:08:34.307Z",
@@ -477,8 +477,8 @@
       "market_cap_change_24h": -7365692.234980583,
       "market_cap_change_percentage_24h": -0.14418,
       "circulating_supply": 73832958.2334713,
-      "total_supply": 84000000.0,
-      "max_supply": 84000000.0,
+      "total_supply": 84000000,
+      "max_supply": 84000000,
       "ath": 410.26,
       "ath_change_percentage": -83.14524,
       "ath_date": "2021-05-10T03:13:07.904Z",
@@ -505,8 +505,8 @@
       "market_cap_change_24h": 17740997,
       "market_cap_change_percentage_24h": 0.38294,
       "circulating_supply": 19549137.3966508,
-      "total_supply": 21000000.0,
-      "max_supply": 21000000.0,
+      "total_supply": 21000000,
+      "max_supply": 21000000,
       "ath": 3785.82,
       "ath_change_percentage": -93.71022,
       "ath_date": "2017-12-20T00:00:00.000Z",
@@ -521,21 +521,21 @@
       "symbol": "shib",
       "name": "Shiba Inu",
       "image": "https://assets.coingecko.com/coins/images/11939/large/shiba.png?1696511800",
-      "current_price": 7.82e-6,
+      "current_price": 0.00000782,
       "market_cap": 4594158147,
       "market_cap_rank": 19,
       "fully_diluted_valuation": 7795459683,
       "total_volume": 132525290,
-      "high_24h": 7.92e-6,
-      "low_24h": 7.65e-6,
+      "high_24h": 0.00000792,
+      "low_24h": 0.00000765,
       "price_change_24h": 1.2859e-8,
       "price_change_percentage_24h": 0.16472,
       "market_cap_change_24h": -18377093.318087578,
       "market_cap_change_percentage_24h": -0.39842,
       "circulating_supply": 589327342546714.5,
-      "total_supply": 999982454207180.0,
+      "total_supply": 999982454207180,
       "max_supply": null,
-      "ath": 8.616e-5,
+      "ath": 0.00008616,
       "ath_change_percentage": -90.95427,
       "ath_date": "2021-10-28T03:54:55.568Z",
       "atl": 5.6366e-11,
@@ -562,7 +562,7 @@
       "market_cap_change_percentage_24h": 1.88218,
       "circulating_supply": 355151601.863306,
       "total_supply": 432527779.487597,
-      "max_supply": 720000000.0,
+      "max_supply": 720000000,
       "ath": 144.96,
       "ath_change_percentage": -91.72631,
       "ath_date": "2021-11-21T14:18:56.538Z",
@@ -617,7 +617,7 @@
       "market_cap_change_24h": 62223792,
       "market_cap_change_percentage_24h": 1.72569,
       "circulating_supply": 928666337.9,
-      "total_supply": 985239504.0,
+      "total_supply": 985239504,
       "max_supply": null,
       "ath": 8.14,
       "ath_change_percentage": -51.44166,
@@ -644,9 +644,9 @@
       "price_change_percentage_24h": 1.42946,
       "market_cap_change_24h": 56805197,
       "market_cap_change_percentage_24h": 1.65876,
-      "circulating_supply": 753766667.0,
-      "total_supply": 1000000000.0,
-      "max_supply": 1000000000.0,
+      "circulating_supply": 753766667,
+      "total_supply": 1000000000,
+      "max_supply": 1000000000,
       "ath": 44.92,
       "ath_change_percentage": -89.71275,
       "ath_date": "2021-05-03T05:25:04.822Z",
@@ -756,9 +756,9 @@
       "price_change_percentage_24h": 0.46772,
       "market_cap_change_24h": 2587550,
       "market_cap_change_percentage_24h": 0.09501,
-      "circulating_supply": 60000000.0,
+      "circulating_supply": 60000000,
       "total_supply": 235957685.3,
-      "max_supply": 300000000.0,
+      "max_supply": 300000000,
       "ath": 58.66,
       "ath_change_percentage": -22.45996,
       "ath_date": "2023-02-18T01:21:37.582Z",
@@ -785,8 +785,8 @@
       "market_cap_change_24h": -18569707.57439089,
       "market_cap_change_percentage_24h": -0.75324,
       "circulating_supply": 143202119.751449,
-      "total_supply": 210700000.0,
-      "max_supply": 210700000.0,
+      "total_supply": 210700000,
+      "max_supply": 210700000,
       "ath": 167.09,
       "ath_change_percentage": -89.77253,
       "ath_date": "2021-05-06T18:34:22.133Z",
@@ -1136,28 +1136,88 @@
   "depth": {
     "lastUpdateId": 40068465456,
     "bids": [
-      ["34709.61000000", "0.80120000"],
-      ["34709.60000000", "0.02013000"],
-      ["34709.59000000", "0.05837000"],
-      ["34709.51000000", "0.00029000"],
-      ["34709.30000000", "0.08346000"],
-      ["34709.29000000", "0.28799000"],
-      ["34709.17000000", "0.00070000"],
-      ["34708.93000000", "0.00134000"],
-      ["34708.73000000", "0.00070000"],
-      ["34708.51000000", "0.00020000"]
+      [
+        "34709.61000000",
+        "0.80120000"
+      ],
+      [
+        "34709.60000000",
+        "0.02013000"
+      ],
+      [
+        "34709.59000000",
+        "0.05837000"
+      ],
+      [
+        "34709.51000000",
+        "0.00029000"
+      ],
+      [
+        "34709.30000000",
+        "0.08346000"
+      ],
+      [
+        "34709.29000000",
+        "0.28799000"
+      ],
+      [
+        "34709.17000000",
+        "0.00070000"
+      ],
+      [
+        "34708.93000000",
+        "0.00134000"
+      ],
+      [
+        "34708.73000000",
+        "0.00070000"
+      ],
+      [
+        "34708.51000000",
+        "0.00020000"
+      ]
     ],
     "asks": [
-      ["34709.62000000", "6.06879000"],
-      ["34709.76000000", "0.02923000"],
-      ["34710.05000000", "0.00070000"],
-      ["34710.43000000", "0.00134000"],
-      ["34710.45000000", "0.02923000"],
-      ["34710.49000000", "0.52887000"],
-      ["34710.50000000", "0.88023000"],
-      ["34710.76000000", "0.39896000"],
-      ["34710.77000000", "0.31980000"],
-      ["34710.78000000", "0.37363000"]
+      [
+        "34709.62000000",
+        "6.06879000"
+      ],
+      [
+        "34709.76000000",
+        "0.02923000"
+      ],
+      [
+        "34710.05000000",
+        "0.00070000"
+      ],
+      [
+        "34710.43000000",
+        "0.00134000"
+      ],
+      [
+        "34710.45000000",
+        "0.02923000"
+      ],
+      [
+        "34710.49000000",
+        "0.52887000"
+      ],
+      [
+        "34710.50000000",
+        "0.88023000"
+      ],
+      [
+        "34710.76000000",
+        "0.39896000"
+      ],
+      [
+        "34710.77000000",
+        "0.31980000"
+      ],
+      [
+        "34710.78000000",
+        "0.37363000"
+      ]
     ]
   },
   "exchangeInfo": {
@@ -7103,11 +7163,22 @@
   },
   "users": {
     "2G5y2mtB9INurAICvHl0wHXNsdg2": {
-      "assets": { "tether": 4394, "bitcoin": 2854 },
-      "assets-copy": { "tether": 136 },
-
+      "assets": {
+        "tether": 1088383,
+        "bitcoin": 54215
+      },
+      "username": "siamakirani",
+      "email": "siamakirani1378@gmail.com"
+    }
+  },
+  "users-copy": {
+    "2G5y2mtB9INurAICvHl0wHXNsdg2": {
+      "username": "siamakirani",
       "email": "siamakirani1378@gmail.com",
-      "username": "siamakirani1378"
+      "assets": {
+        "tether": 13324,
+        "bitcoin": 54354
+      }
     }
   }
 }
