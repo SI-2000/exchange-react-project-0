@@ -1,10 +1,10 @@
 import React from "react";
 
 import classes from "./AssetsPage.module.css";
-import WhiteFrame from "../../ui/WhiteFrame";
-import { formatPrice } from "../../util/format-price";
-import AssetItem from "./assets-components/AssetItem";
-import tableClasses from "./assets-styles/assestTable.module.css"
+import WhiteFrame from "../ui/WhiteFrame";
+import { formatPrice } from "../util/format-price";
+import AssetItem from "../component/AssetItem";
+import tableClasses from "../component/assestTable.module.css"
 
 const AssetsPage = () => {
   return (

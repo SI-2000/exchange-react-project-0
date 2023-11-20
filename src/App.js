@@ -1,21 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import RootLayout from "./pages/RootLayout";
-
 import Authentication from "./pages/Authentication";
 import { action as authenticationAction } from "./pages/Authentication";
 import ErrorPage from "./pages/ErrorPage";
 import { fetchRealTimeDB } from "./util/realTimeDB-req";
-// import { loader as TradingPageLoader } from "./pages/TradingPage";
-
 import classes from "./App.module.css";
-
-
-
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "./store/auth";
-import AssetsPage from "./pages/assets/AssetsPage";
 import UnimportantPage from "./pages/UnimportantPage";
 import CurrenciesList from "./pages/CurrenciesList";
 import TradingPage from "./pages/TradingPage";
@@ -24,6 +17,7 @@ import {
   QueryClientProvider,
   QueryClientProviderProps,
 } from "react-query";
+import AssetsPage from "./pages/AssetsPage";
 
 const router = createBrowserRouter([
   {

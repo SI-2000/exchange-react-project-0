@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 import classes from "./AssetItem.module.css";
-import tableClasses from "../assets-styles/assestTable.module.css";
-import { ReactComponent as MoreBtn } from "../../../files/icons/more_vert_FILL0_wght400_GRAD0_opsz24.svg";
-import TradeOverly from "../../../component/TradeOverly";
+import tableClasses from "./assestTable.module.css";
+import { ReactComponent as MoreBtn } from "../files/icons/more_vert_FILL0_wght400_GRAD0_opsz24.svg";
+import TradeOverly from "./TradeOverly";
 
 const AssetItem = () => {
   const [overlyIsVisiable, setOverlyIsShown] = useState(false);
