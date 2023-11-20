@@ -25,13 +25,7 @@ const validators = [
   },
 ];
 
-const InputBox = ({
-  value,
-  name,
-  unit,
-  disabled = false,
-  formType,
-}) => {
+const InputBox = ({ value, name, unit, disabled = false, formType }) => {
   const uid = useSelector((state) => state.auth.uid);
   const dispatch = useDispatch();
 
@@ -58,8 +52,8 @@ const InputBox = ({
     );
   }, [inputValue]);
 
-  const { tradeForm: inputsData, current_price } = useSelector(
-    (state) => state.tradingData
+  const inputValueState = useSelector(
+    (state) => state.tradingData.tradeForm[formType][name.en].value
   );
 
   useEffect(() => {
@@ -70,8 +64,6 @@ const InputBox = ({
         errMes: [errorMessage],
       })
     );
-
-
   }, [errorMessage]);
 
   return (
@@ -85,7 +77,7 @@ const InputBox = ({
         {name.fa}
       </label>
       <input
-        value={value || inputValue}
+        value={value || inputValueState}
         id={"tradeForm-" + name.en}
         name={name.en}
         type="text"
