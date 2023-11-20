@@ -8,7 +8,7 @@ const TradeOverly = ({ onClickOnBG }) => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (overlyRef.current && !overlyRef.current.contains(event.target)) {
-        onClickOnBG(false);
+        onClickOnBG();
       }
     };
 
