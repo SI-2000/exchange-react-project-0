@@ -94,7 +94,7 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
         unit={{ en: "btc", fa: "بیت کوین" }}
         formType={formType}
       />
-      <AVBLPercentage />
+      <AVBLPercentage formType={formType} />
       <BuySellBtn formType={formType} disabled={!formIsValid} />
       <TradeFormErrors errors={errState} />
     </form>
