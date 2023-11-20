@@ -21,8 +21,8 @@ const CurrenciesTItem = ({ currencyInfo }) => {
       <td className={classes["name"]}>
         <img alt={currencyInfo.coinId} src={image} />
         <div className={classes["name-symbol"]}>
-          <h3>{id}</h3>
-          <p>{symbol}</p>
+          <h3>{id.toUpperCase().replace(/-/g, ' ')}</h3>
+          <p>{symbol.toUpperCase()}</p>
         </div>
       </td>
       <td className={classes["price"]}>{roundTo(current_price, 4)} $</td>
