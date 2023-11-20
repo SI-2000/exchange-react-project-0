@@ -4,7 +4,6 @@ import { assetsActions } from "../store/assets";
 
 export default function useGetAssets() {
   const uid = useSelector((state) => state.auth.uid);
-  const queryClient = useQueryClient();
 
   const usersQuery = useQuery({
     queryKey: ["users"],
@@ -15,18 +14,30 @@ export default function useGetAssets() {
     },
     enabled: !!uid,
     staleTime: Infinity,
+    select: (data) => {
+      let assets;
+      if (uid && data) {
+        assets = data[uid].assets;
+      } else {
+        assets = {
+          message: "You are not authorized.",
+        };
+      }
+      return assets;
+    },
   });
 
-  let assets;
-  if (uid && usersQuery.data) {
-    assets = usersQuery.data[uid].assets;
-  } else {
-    assets = {
-      message: "You are not authorized.",
-    };
-  }
-  return {
-    ...usersQuery,
-    data: assets,
-  };
+  // let assets;
+  // if (uid && usersQuery.data) {
+  //   assets = usersQuery.data[uid].assets;
+  // } else {
+  //   assets = {
+  //     message: "You are not authorized.",
+  //   };
+  // }
+  // return {
+  //   ...usersQuery,
+  //   data: assets,
+  // };
+  return usersQuery;
 }

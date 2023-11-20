@@ -2,12 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import classes from "./BuySellBtn.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useSetAssets from "../../hooks/use-set-assets";
 import { useTradeForm } from "../../hooks/use-trade-form";
+import { tradingActions } from "../../store/trading-data";
 
-const BuySellBtn = ({ formType }) => {
+const BuySellBtn = ({ formType, disabled, onMouseOver }) => {
   const uid = useSelector((state) => state.auth.uid);
+
+  const dispatch = useDispatch();
 
   const {
     current_price,
@@ -15,12 +18,10 @@ const BuySellBtn = ({ formType }) => {
     order_type,
   } = useSelector((state) => state.tradingData);
 
-  const { formIsValid } = useTradeForm(inputsData, formType, order_type);
-
   const changeAssetMutation = useSetAssets();
   const btnClickHandler = (e) => {
     e.preventDefault();
-    if (!formIsValid) {
+    if (disabled) {
       return;
     }
     changeAssetMutation.mutate({
@@ -32,6 +33,7 @@ const BuySellBtn = ({ formType }) => {
         amount: inputsData[formType].amount,
       },
     });
+
     // doTrade(
     //   {
     //     pair:inputsData.pair,
@@ -43,6 +45,7 @@ const BuySellBtn = ({ formType }) => {
     //   }
     // )
   };
+
 
   if (!uid) {
     return (
@@ -60,8 +63,9 @@ const BuySellBtn = ({ formType }) => {
   return (
     <button
       onClick={btnClickHandler}
+      onMouseOver={onMouseOver}
       className={`${classes["buy-sell-btn"]} ${classes[formType]}`}
-      disabled={!formIsValid}
+      disabled={disabled}
     >
       {formType === "خرید" ? "خرید" : "فروش"}
     </button>

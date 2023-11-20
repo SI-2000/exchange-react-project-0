@@ -31,7 +31,7 @@ const InputBox = ({
   unit,
   disabled = false,
   formType,
-  onChangeErrors,
+  onChange,
 }) => {
   const uid = useSelector((state) => state.auth.uid);
   const dispatch = useDispatch();
@@ -57,7 +57,16 @@ const InputBox = ({
         value: { value: inputValue, isValid: inputIsValid },
       })
     );
+    onChange(inputValue,formType, name.en);
   }, [inputValue]);
+
+  const { tradeForm: inputsData, current_price } = useSelector(
+    (state) => state.tradingData
+  );
+
+  // console.log("/////////////////////")
+  // console.log("actual "+inputValue)
+  // console.log("redux " +inputsData[formType][name.en].value);
 
   useEffect(() => {
     dispatch(

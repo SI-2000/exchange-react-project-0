@@ -9,7 +9,7 @@ const TradeFormErrors = ({ errors }) => {
       <div className={`${classes["container"]}`}>
         {errorsList.map((err, index) => {
           if (err !== "") return <p key={index}>{err}</p>;
-        })}
+        }) }
       </div>
     </div>
   );

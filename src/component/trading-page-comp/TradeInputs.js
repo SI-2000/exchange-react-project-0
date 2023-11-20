@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 
 import classes from "./TradeInputs.module.css";
 import InputBox from "./InputBox";
@@ -8,18 +8,68 @@ import BuySellBtn from "./BuySellBtn";
 import useGetAssets from "../../hooks/use-get-assets";
 import TradeFormErrors from "./TradeFormErrors";
 import { useTradeForm } from "../../hooks/use-trade-form";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { tradingActions } from "../../store/trading-data";
 
 const TradeInputs = ({ formType, orderType, activeForm }) => {
+  const dispatch = useDispatch();
   const userAssets = useGetAssets();
 
-  // const [errState, setErrState] = useState({ stop: "", price: "", amount: "" });
   const errState = useSelector(
     (state) => state.tradingData.tradeForm.errorMessages[formType]
   );
 
-  // const [formIsValid, setFromIsValid] = useState(false);
-  // const tradeFormIsValid = useTradeForm(formType, orderType);
+  const { tradeForm: inputsData, current_price } = useSelector(
+    (state) => state.tradingData
+  );
+
+  const formErrors = useTradeForm(
+    inputsData,
+    formType,
+    orderType,
+    current_price
+  );
+
+
+  useEffect(()=>{
+    dispatch(
+      tradingActions.newErrorMessage({
+        formType,
+        updatedPart: "form",
+        errMes: formErrors.formErrMes,
+      })
+    );
+    // console.log("///////////////")
+    // console.log(inputValue)
+    // console.log("redux " +inputsData[formType]["price"].value);
+    dispatch(
+      tradingActions.formIsValid({ formType, isValid: formErrors.formIsValid })
+    );
+  },[inputsData[formType]])
+
+  const formErrMes = useSelector(
+    (state) => state.tradingData.tradeForm.errorMessages.buy.form
+  );
+
+  const formIsValid = inputsData.formIsValid[formType]
+
+
+  // console.log("redux " +inputsData[formType]["price"].value);
+
+
+  const updateFormErrors = (inputValue, formType, name) => {
+    return null
+  };
+
+  const onHoverTradeBtn = (e) => {
+    // dispatch(
+    //   tradingActions.newErrorMessage({
+    //     formType,
+    //     updatedPart: "form",
+    //     errMes: formErrMes.formErrMes,
+    //   })
+    // );
+  };
 
   if (userAssets.isLoading) return <p>Loading...</p>;
   if (userAssets.isError) return <p>{JSON.stringify(userAssets.error)}</p>;
@@ -45,6 +95,7 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
           name={{ en: "stop", fa: "حد ضرر" }}
           unit={{ en: "USDT", fa: "تتر" }}
           formType={formType}
+          onChange={updateFormErrors}
         />
       )}
 
@@ -54,15 +105,21 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
         unit={{ en: "USDT", fa: "تتر" }}
         disabled={orderType.state === "MARKET"}
         formType={formType}
+        onChange={updateFormErrors}
       />
 
       <InputBox
         name={{ en: "amount", fa: "مقدار" }}
         unit={{ en: "btc", fa: "بیت کوین" }}
         formType={formType}
+        onChange={updateFormErrors}
       />
       <AVBLPercentage />
-      <BuySellBtn formType={formType} />
+      <BuySellBtn
+        formType={formType}
+        disabled={!formIsValid}
+        onMouseOver={onHoverTradeBtn}
+      />
       <TradeFormErrors errors={errState} />
     </form>
   );
