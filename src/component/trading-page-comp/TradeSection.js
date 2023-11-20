@@ -36,7 +36,7 @@ const TradeSection = () => {
           خرید
         </button>
       </div>
-      {/* {ReactDOM.createPortal(
+      {ReactDOM.createPortal(
         <Overlay
           className={"trade-form-overlay"}
           onClickBackdrop={closeFormOverlayHandler}
@@ -49,7 +49,7 @@ const TradeSection = () => {
           />
         </Overlay>,
         document.getElementById("overlay")
-      )} */}
+      )}
       <TradeForm
         className="min-770"
         activeForm={activeForm}
