@@ -18,10 +18,10 @@ const CurrenciesTable = ({ currencies }) => {
     return <p>{JSON.stringify(currenciesQuery.error)}</p>;
 
   return (
-    <table>
+    <table className={`${classes["currencies-table"]}`}>
       <thead>
-        <tr>
-          <th>نام</th>
+        <tr className={`${classes["headers-wrapper"]}`}>
+          <th className={classes["name"]}>نام</th>
           <th className={classes["price"]}>قیمت</th>
           <th className={classes["change"]}>تغییر 24h</th>
           <th className={classes["volume"]}>حجم 24h</th>

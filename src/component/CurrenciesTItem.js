@@ -21,7 +21,7 @@ const CurrenciesTItem = ({ currencyInfo }) => {
       <td className={classes["name"]}>
         <img alt={currencyInfo.coinId} src={image} />
         <div className={classes["name-symbol"]}>
-          <h3>{id.toUpperCase().replace(/-/g, ' ')}</h3>
+          <h3>{id.toUpperCase().replace(/-/g, " ")}</h3>
           <p>{symbol.toUpperCase()}</p>
         </div>
       </td>
