@@ -77,6 +77,15 @@ img {
   font-size: 12px;
 }
 
+.currencies-item img {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 10px;
+  text-align: center;
+}
+
 .name {
   display: flex;
   width: 120px !important;
