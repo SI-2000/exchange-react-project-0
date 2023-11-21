@@ -6,7 +6,7 @@ import { ReactComponent as MoreBtn } from "../files/icons/more_vert_FILL0_wght40
 import TradeOverly from "./TradeOverly";
 
 const AssetItem = () => {
-  const [overlyIsVisiable, setOverlyIsShown] = useState(false);
+  const [overlyIsVisiable, setOverlyIsVisiable] = useState(false);
 
   return (
     <div className={`${classes["asset-item"]} ${tableClasses["row"]}`}>
@@ -23,7 +23,7 @@ const AssetItem = () => {
       <div className={classes["buy-sell-btn"]}>
         <button
           onClick={() => {
-            setOverlyIsShown((prevState) => {
+            setOverlyIsVisiable((prevState) => {
               return !prevState;
             });
           }}
@@ -31,7 +31,7 @@ const AssetItem = () => {
         >
           <MoreBtn />
         </button>
-        {overlyIsVisiable && <TradeOverly onClickOnBG={setOverlyIsShown} />}
+        {overlyIsVisiable && <TradeOverly onClickOnBG={setOverlyIsVisiable} />}
       </div>
     </div>
   );
