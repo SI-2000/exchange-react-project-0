@@ -36,7 +36,21 @@ const CurrenciesTItem = ({ currencyInfo }) => {
       </td>
       <td className={classes["volume"]}>{volume}</td>
       <td className={classes["buy-sell-btn"]}>
-        <Link>خرید و فروش</Link>
+        <td className={classes["buy-sell-btn"]}>
+          <button
+            onClick={() => {
+              setOverlyIsVisiable((prevState) => {
+                return !prevState;
+              });
+            }}
+            className={classes["more-btn"]}
+          >
+            <MoreBtn />
+          </button>
+          {overlyIsVisiable && (
+            <TradeOverly onClickOnBG={setOverlyIsVisiable} />
+          )}
+        </td>
       </td>
     </tr>
   );
