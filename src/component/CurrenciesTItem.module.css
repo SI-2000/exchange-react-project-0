@@ -69,7 +69,9 @@ img {
 
 .decreased {
   color: red;
-} */
+} 
+
+*/
 
 .currencies-item {
   font-size: 12px;
@@ -93,19 +95,33 @@ img {
   font-size: 12px;
 }
 
-.price{
+.price {
   width: 80px;
+  direction: ltr;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.change{
-  width:50px;
+.change {
+  width: 50px;
+  direction: ltr;
+}
+
+.increased {
+  color: rgb(11, 110, 36);
+}
+
+.decreased {
+  color: red;
 }
 
 .volume {
   display: none;
+  width: 100px;
+  text-align: right !important;
 }
 
-.buy-sell-btn{
+.buy-sell-btn {
   width: 30px;
   position: relative;
 }
@@ -113,7 +129,6 @@ img {
 .more-btn > svg {
   fill: rgb(90, 90, 90);
   display: block;
-
   width: 28px;
   height: 28px;
   padding: 0.2rem;
@@ -128,5 +143,12 @@ img {
 @media screen and (min-width: 768px) {
   .volume {
     display: block;
+  }
+  .more-btn {
+    display: none;
+  }
+
+  .buy-sell-btn {
+    width: 100px;
   }
 }

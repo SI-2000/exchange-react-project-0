@@ -25,56 +25,65 @@ th.price {
   text-align: center;
 } */
 
-
-.currencies-table{
+.currencies-table {
   width: 100%;
-  padding:1rem .5rem;
+  padding: 1rem 0.5rem;
 }
 
-.currencies-table thead{
+.currencies-table thead {
   width: 100%;
   display: block;
-  margin-bottom: .3rem;
+  margin-bottom: 0.3rem;
 }
 
-.currencies-table tr{
+.currencies-table tr {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  padding:.5rem .5rem;
 }
 
-.currencies-table th{
+.currencies-table tbody tr:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+
+.currencies-table th {
   font-size: 12px;
 }
 
-.currencies-table td{
+.currencies-table td {
   text-align: center;
-
+  display: flex;
+  align-items: center;
 }
 
-.currencies-table .name{
-  width: 120px ;
+.currencies-table .name {
+  width: 120px;
 }
 
-.currencies-table .price{
-  width:80px;
+.currencies-table .price {
+  width: 80px;
 }
 
-.currencies-table .change{
-  width:50px;
+.currencies-table .change {
+  width: 50px;
 }
 
-.buy-sell-btn{
+.buy-sell-btn {
   width: 30px;
 }
 
-
-.volume{
+.volume {
   display: none;
+  width: 100px;
 }
 
 @media screen and (min-width: 768px) {
-  .volume{
+  .volume {
     display: block;
+  }
+  .buy-sell-btn {
+    width: 70px;
   }
 }

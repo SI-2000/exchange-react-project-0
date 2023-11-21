@@ -20,3 +20,16 @@
   background-color: rgb(92, 92, 92);
   padding: 0.3rem 1rem;
 }
+
+.currency-list-btn {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .currency-list-btn {
+    background-color: var(--gold-color);
+    display: block;
+    padding: 0.5rem 0;
+    width: 100px;
+  }
+}

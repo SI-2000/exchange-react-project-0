@@ -16,3 +16,14 @@ button.custom-btn {
 
   margin-right: 0.3rem;
 }
+
+.currency-list-btn{
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .currency-list-btn{
+    display: block;
+    background-color: var(--gold-color);
+  }  
+}

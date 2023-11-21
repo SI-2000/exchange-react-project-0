@@ -13,7 +13,7 @@ const AssetsPage = () => {
         <div className={classes["base-assets"]}>
           <h6>ارزش کل دارایی ها</h6>
           <h1>
-            {formatPrice(1000000)}
+            {1000000}
             <span>$</span>
           </h1>
         </div>

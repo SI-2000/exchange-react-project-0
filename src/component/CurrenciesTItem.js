@@ -4,6 +4,8 @@ import { roundTo } from "../util/round-number";
 import { ReactComponent as MoreBtn } from "../files/icons/more_vert_FILL0_wght400_GRAD0_opsz24.svg";
 import classes from "./CurrenciesTItem.module.css";
 import TradeOverly from "./TradeOverly";
+import { formatPrice } from "../util/format-price";
+import CustomLink from "./CustomLink"
 
 const CurrenciesTItem = ({ currencyInfo }) => {
   const [overlyIsVisiable, setOverlyIsVisiable] = useState(false);
@@ -26,7 +28,9 @@ const CurrenciesTItem = ({ currencyInfo }) => {
           <p>{symbol.toUpperCase()}</p>
         </div>
       </td>
-      <td className={classes["price"]}>{roundTo(current_price, 2)} $</td>
+      <td className={classes["price"]}>
+        {formatPrice(roundTo(current_price, 2))} $
+      </td>
       <td
         className={`${classes["change"]} ${
           change >= 0 ? classes["increased"] : classes["decreased"]
@@ -35,7 +39,7 @@ const CurrenciesTItem = ({ currencyInfo }) => {
         {change >= 0 && "+"}
         {roundTo(change, 2)}%
       </td>
-      <td className={classes["volume"]}>{volume}</td>
+      <td className={classes["volume"]}>{formatPrice(volume.toString())}</td>
       <td className={classes["buy-sell-btn"]}>
         <button
           onClick={() => {
@@ -53,6 +57,7 @@ const CurrenciesTItem = ({ currencyInfo }) => {
             className="currency-item--trade-overly"
           />
         )}
+        <CustomLink className="currency-list-btn">خرید و فروش</CustomLink>
       </td>
     </tr>
   );
