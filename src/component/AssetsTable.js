@@ -4,32 +4,25 @@ import classes from "./AssetsTable.module.css";
 import AssetItem from "./AssetItem";
 import { useQuery } from "react-query";
 import { getCurrenciesInfo } from "../util/get-currencies";
+import useGetAssets from "../hooks/use-get-assets";
 
-const AssetsTable = () => {
-  const currenciesQuery = useQuery({
-    queryKey: "currencies",
-    queryFn: getCurrenciesInfo,
-    // staleTime:Infinity,
-  });
+const AssetsTable = ({assetsInfo}) => {
 
-  if (currenciesQuery.isLoading) return <p>loading...</p>;
-  if (currenciesQuery.isError)
-    return <p>{JSON.stringify(currenciesQuery.error)}</p>;
 
   return (
     <table className={`${classes["assets-table"]}`}>
       <thead>
         <tr className={`${classes["headers-wrapper"]}`}>
           <th className={classes["name"]}>نام</th>
+          <th className={classes["amount"]}>مقدار</th>
           <th className={classes["price"]}>قیمت</th>
-          <th className={classes["change"]}>تغییر 24h</th>
-          <th className={classes["volume"]}>حجم 24h</th>
+          <th className={classes["total-value"]}>ارزش کل</th>
           <th className={classes["buy-sell-btn"]}></th>
         </tr>
       </thead>
       <tbody>
-        {currenciesQuery.data.map((currencyInfo, index) => {
-          return <AssetItem key={index} currencyInfo={currencyInfo} />;
+        {assetsInfo.map((assetInfo, index) => {
+          return <AssetItem key={index} assetInfo={assetInfo} />;
         })}
       </tbody>
     </table>

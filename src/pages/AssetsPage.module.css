@@ -5,6 +5,7 @@
 
 .base-assets {
   margin: 2rem;
+  width: fit-content;
 }
 
 .base-info h6 {
@@ -14,6 +15,7 @@
 .base-info h1 {
   margin: 0.5rem 0;
   font-size: 26px;
+  direction: ltr;
 }
 
 .currencies-container {

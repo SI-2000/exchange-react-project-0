@@ -1,4 +1,8 @@
-img {
+.assets-item {
+  font-size: 12px;
+}
+
+.assets-item img {
   display: block;
   width: 32px;
   height: 32px;
@@ -7,55 +11,50 @@ img {
   text-align: center;
 }
 
-.title-container .name-symbol {
-  margin: 0 0.5rem;
-}
-
-.title-container {
-  width: 7rem;
+.name {
   display: flex;
+  width: 120px !important;
+  text-align: right !important;
 }
 
-.title-container h3 {
+.name-symbol {
+  margin-right: 0.5rem;
+}
+
+.name h3 {
   font-size: 12px;
 }
 
-.title-container p {
+.name p {
   font-size: 12px;
 }
 
-.buy-sell-btn {
-  position: relative;
-}
-
-.price {
-  display: flex;
-  align-items: center;
-  font-size: 12px;
-  /* width: 5rem; */
+ .assets-item .price {
+  display: none;
+  width: 70px;
   direction: ltr;
+  justify-content: flex-end;
 }
 
 .amount {
+  width: 80px;
   display: flex;
-  align-items: center;
-  font-size: 12px;
-  direction: ltr;
+  justify-content: flex-start;
 }
 
-.more-btn {
-  all: unset;
-  /* display: block; */
-  cursor: pointer;
-  padding: 0.2rem;
-  height: 24px;
-  border-radius: 50%;
+.total-value {
+  width: 100px;
+  text-align: right !important;
+}
+
+.buy-sell-btn {
+  width: 30px;
+  position: relative;
 }
 
 .more-btn > svg {
   fill: rgb(90, 90, 90);
   display: block;
-
   width: 28px;
   height: 28px;
   padding: 0.2rem;
@@ -68,7 +67,15 @@ img {
 }
 
 @media screen and (min-width: 768px) {
+  .assets-item .price {
+    display: flex;
+  }
+
   .more-btn {
     display: none;
+  }
+
+  .buy-sell-btn {
+    width: 100px;
   }
 }

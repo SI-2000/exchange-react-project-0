@@ -1,63 +1,62 @@
 .assets-table {
-    width: 100%;
-    padding: 1rem 0.5rem;
-  }
-  
-  .assets-table thead {
-    width: 100%;
+  width: 100%;
+  padding: 1rem 0.5rem;
+}
+
+.assets-table thead {
+  width: 100%;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.assets-table tr {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0.5rem;
+}
+
+.assets-table tbody tr:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+
+.assets-table th {
+  font-size: 12px;
+}
+
+.assets-table td {
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.name {
+  width: 120px;
+}
+
+.price {
+  display: none;
+  width: 70px;
+}
+
+.amount {
+  width: 80px;
+}
+
+.buy-sell-btn {
+  width: 30px;
+}
+
+.total-value {
+  width: 100px;
+}
+
+@media screen and (min-width: 768px) {
+  .price {
     display: block;
-    margin-bottom: 0.3rem;
   }
-  
-  .assets-table tr {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 0.5rem;
-  }
-  
-  .assets-table tbody tr:hover {
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
-    border-radius: 10px;
-  }
-  
-  .assets-table th {
-    font-size: 12px;
-  }
-  
-  .assets-table td {
-    text-align: center;
-    display: flex;
-    align-items: center;
-  }
-  
-  .assets-table .name {
-    width: 120px;
-  }
-  
-  .assets-table .price {
-    width: 80px;
-  }
-  
-  .assets-table .change {
-    width: 50px;
-  }
-  
   .buy-sell-btn {
-    width: 30px;
-  }
-  
-  .volume {
-    display: none;
     width: 100px;
   }
-  
-  @media screen and (min-width: 768px) {
-    .volume {
-      display: block;
-    }
-    .buy-sell-btn {
-      width: 70px;
-    }
-  }
-  
+}
