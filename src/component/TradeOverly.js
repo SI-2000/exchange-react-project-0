@@ -2,13 +2,13 @@ import React, { useRef, useState, useEffect } from "react";
 import classes from "./TradeOverly.module.css";
 import { Link } from "react-router-dom";
 
-const TradeOverly = ({ onClickOnBG }) => {
+const TradeOverly = ({ onClickOnBG, className }) => {
   const overlyRef = useRef();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (overlyRef.current && !overlyRef.current.contains(event.target)) {
-        onClickOnBG();
+        onClickOnBG(false);
       }
     };
 
@@ -20,7 +20,7 @@ const TradeOverly = ({ onClickOnBG }) => {
   }, [onClickOnBG]);
 
   return (
-    <div className={`${classes["overly-list"]}`} ref={overlyRef}>
+    <div className={`${classes["overly-list"]} ${classes[className]}`} ref={overlyRef}>
       <ul>
         <li>
           <Link>معامله</Link>
