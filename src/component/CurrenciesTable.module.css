@@ -1,4 +1,4 @@
-table {
+/* table {
   width: 100%;
 }
 
@@ -23,4 +23,58 @@ th.price {
 .change {
   display: block;
   text-align: center;
+} */
+
+
+.currencies-table{
+  width: 100%;
+  padding:1rem .5rem;
+}
+
+.currencies-table thead{
+  width: 100%;
+  display: block;
+  margin-bottom: .3rem;
+}
+
+.currencies-table tr{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.currencies-table th{
+  font-size: 12px;
+}
+
+.currencies-table td{
+  text-align: center;
+
+}
+
+.currencies-table .name{
+  width: 120px ;
+}
+
+.currencies-table .price{
+  width:80px;
+}
+
+.currencies-table .change{
+  width:50px;
+}
+
+.buy-sell-btn{
+  width: 30px;
+}
+
+
+.volume{
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .volume{
+    display: block;
+  }
 }

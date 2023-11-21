@@ -28,11 +28,10 @@
   align-items: center;
 }
 
-.header-auth-links{
+.header-auth-links {
   height: 40px;
-  padding: .3rem 0;
+  padding: 0.3rem 0;
 }
-
 
 .show-menu-label {
   display: flex;
@@ -44,9 +43,8 @@
   visibility: hidden;
 }
 
-@media screen and (min-width:768px) {
-  .menubtn-logo-container label{
+@media screen and (min-width: 768px) {
+  .menubtn-logo-container label {
     display: none;
   }
-  
 }

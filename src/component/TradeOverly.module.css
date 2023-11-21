@@ -1,5 +1,5 @@
 .overly-list {
-  background-color: var(--custom-gray);
+  background-color:rgb(211, 211, 211);
   width: 8rem;
   height: 5rem;
   position: absolute;
@@ -49,4 +49,8 @@
 .overly-list a:hover {
   background-color: rgb(94, 94, 94);
   color:white;
+}
+
+.currency-item--trade-overly{
+  right: -9rem;
 }
