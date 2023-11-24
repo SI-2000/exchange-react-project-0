@@ -1,3 +1,5 @@
+import { currenciesData } from "./data/currencies-data";
+
 async function getTradingInfo(uid, currency) {
   const depthData = await fetch("http://localhost:8000/depth");
   const depth = await depthData.json();
@@ -5,10 +7,9 @@ async function getTradingInfo(uid, currency) {
   const tradesData = await fetch("http://localhost:8000/trades?_limit=13");
   const trades = await tradesData.json();
 
-  const pairsListData = await fetch("http://localhost:8000/exchangeInfo");
-  const pairsList = await pairsListData.json();
+  const currencies = currenciesData;
 
-  const data = { depth, trades, pairsList };
+  const data = { depth, trades, currencies };
   return data;
 }
 

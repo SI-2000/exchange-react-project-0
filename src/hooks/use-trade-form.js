@@ -2,17 +2,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { tradingActions } from "../store/trading-data";
 import useGetAssets from "./use-get-assets";
 
-export function useTradeForm(inputsData, formType, orderType, current_price) {
+export function useTradeForm(
+  userAssets,
+  inputsData,
+  formType,
+  orderType,
+  current_price
+) {
   const uid = useSelector((state) => state.auth.uid);
-
-  const assets = useGetAssets();
-
-  const { tether, [inputsData.pair]: pair = 0 } = assets.data;
-
-  const { stop, price, amount } = inputsData[formType];
 
   let formIsValid = false;
   let formErrMes = [];
+
+  if (!uid || !userAssets.data)
+    return {
+      formIsValid,
+      formErrMes,
+    };
+
+
+  const { tether, [inputsData.pair]: pair = 0 } = userAssets.data;
+
+  const { stop, price, amount } = inputsData[formType];
 
   switch (orderType.state) {
     case "LIMIT": {

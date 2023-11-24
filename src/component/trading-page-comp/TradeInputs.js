@@ -25,6 +25,7 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
   );
 
   const formErrors = useTradeForm(
+    userAssets,
     inputsData,
     formType,
     orderType,
@@ -53,7 +54,8 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
   const formIsValid = inputsData.formIsValid[formType];
 
   if (userAssets.isLoading) return <p>Loading...</p>;
-  if (userAssets.isError) return <p>{JSON.stringify(userAssets.error)}</p>;
+  if (userAssets.isError )
+    return <p>{JSON.stringify(userAssets.error)}</p>;
 
   const tetherVal = userAssets.data ? roundTo(userAssets.data.tether, 4) : "-";
   const pairVal = userAssets.data

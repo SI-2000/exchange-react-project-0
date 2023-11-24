@@ -6,8 +6,9 @@ import Overlay from "../../ui/Overlay";
 import { useDispatch, useSelector } from "react-redux";
 import { searchPairsActions } from "../../store/search-pairs";
 import SearchCurrency from "./SearchCurrency";
+import { roundTo } from "../../util/round-number";
 
-const SelectCurrency = ({ className }) => {
+const SelectCurrency = ({ currencies, className }) => {
   const searchOverlayIsOpen = useSelector(
     (state) => state.searchOverlay.isOpened
   );
@@ -19,22 +20,31 @@ const SelectCurrency = ({ className }) => {
     { en: "change", fa: "تغییر" },
   ];
 
-  const buttons = [
-    { pairs: "BTC/USDT", price: "45656", change: "6563" },
-    { pairs: "BTC/USDT", price: "45656", change: "6563" },
-    { pairs: "BTC/USDT", price: "45656", change: "6563" },
-    { pairs: "BTC/USDT", price: "45656", change: "6563" },
-    { pairs: "BTC/USDT", price: "45656", change: "6563" },
-    { pairs: "BTC/USDT", price: "45656", change: "6563" },
-    { pairs: "BTC/USDT", price: "45656", change: "6563" },
-    { pairs: "BTC/USDT", price: "45656", change: "6563" },
-    { pairs: "BTC/USDT", price: "45656", change: "6563" },
-    { pairs: "BTC/USDT", price: "45656", change: "6563" },
-    { pairs: "BTC/USDT", price: "45656", change: "6563" },
-    { pairs: "BTC/USDT", price: "45656", change: "6563" },
-    { pairs: "BTC/USDT", price: "45656", change: "6563" },
-    { pairs: "BTC/USDT", price: "45656", change: "6563" },
-  ];
+  const buttons = currencies.map((currency) => {
+    return {
+      pairs: currency.symbol.toUpperCase() + "USDT",
+      price: roundTo(currency.current_price.toString(), 2),
+      change:       roundTo(currency.price_change_percentage_24h.toString(), 2)
+      ,
+    };
+  });
+
+  // const buttons = [
+  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
+  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
+  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
+  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
+  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
+  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
+  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
+  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
+  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
+  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
+  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
+  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
+  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
+  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
+  // ];
 
   return (
     <div className={classes["select-currency"]}>
@@ -50,7 +60,11 @@ const SelectCurrency = ({ className }) => {
         </Overlay>,
         document.getElementById("overlay")
       )}
-      <SearchCurrency className="min-1030" header_titles={header_titles} buttons={buttons} />
+      <SearchCurrency
+        className="min-1030"
+        header_titles={header_titles}
+        buttons={buttons}
+      />
     </div>
   );
 };

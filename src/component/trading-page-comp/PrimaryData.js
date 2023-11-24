@@ -16,7 +16,7 @@ const PrimaryData = () => {
           }}
           className={`${classes["name"]} ${classes["searchOverlay-btn"]}`}
         >
-          BTC/USDT
+          BTCUSDT
         </div>
         <div
           className={classes["name"]}

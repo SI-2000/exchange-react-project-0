@@ -42,10 +42,11 @@ const TradingPage = () => {
   if (tradingQuery.isError && assetsQuery.isError) return <p>Error</p>;
   if (!tradingQuery.data) return <p>There is no data.</p>;
 
+
   return (
     <div className={classes["trading-page"]}>
       <PrimaryData />
-      <SelectCurrency />
+      <SelectCurrency currencies={tradingQuery.data.currencies} />
       <TradeSection />
       <MarketDataSelector
         actions={marketDataActions}

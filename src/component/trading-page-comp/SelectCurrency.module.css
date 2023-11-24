@@ -1,6 +1,8 @@
 .select-currency{
   display: none;
+  direction: ltr;
 }
+
 
 /* @media screen and (min-width: 768px) {
   .select-currency{

@@ -1,30 +1,3 @@
-/* table {
-  width: 100%;
-}
-
-.volume {
-  display: none;
-}
-
-.buy-sell-btn {
-  display: none;
-}
-
-th{
-  width: 5rem;
-  text-align: center;
-}
-
-th.price {
-  display: block;
-  text-align: center;
-}
-
-.change {
-  display: block;
-  text-align: center;
-} */
-
 .currencies-table {
   width: 100%;
   padding: 1rem 0.5rem;
@@ -40,7 +13,8 @@ th.price {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding:.5rem .5rem;
+  padding: 0.5rem 0.5rem;
+  transition: box-shadow 0.2s;
 }
 
 .currencies-table tbody tr:hover {
@@ -84,6 +58,6 @@ th.price {
     display: block;
   }
   .buy-sell-btn {
-    width: 70px;
+    width: 100px;
   }
 }

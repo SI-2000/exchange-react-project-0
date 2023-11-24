@@ -22,7 +22,7 @@
 /*  Trade form */
 
 .trade-form-overlay {
-  bottom: -30rem;
+  bottom: -50rem;
   transition: bottom 0.3s;
 }
 

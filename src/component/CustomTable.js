@@ -10,8 +10,8 @@ const CustomTable = ({
   btnClassNames = { col1: [], col2: [], col3: [] },
 }) => {
   /*
-    header_titles structure =    [ { en: "title", fa: "عنوان" } ]
-    buttons =  [ { a: "A", b: "B" } ]
+    header_titles structure =    [ // Every column ==> // { en: "title", fa: "عنوان" } ]
+    buttons =  [ { col1_title: "A", col2_title: "B" }, col3_title: "C" }  ]
   */
 
   const titles = [];
