@@ -13,6 +13,7 @@ import { tradingActions } from "../../store/trading-data";
 import { roundTo } from "../../util/round-number";
 
 const TradeInputs = ({ formType, orderType, activeForm }) => {
+  const uid = useSelector((state) => state.auth.uid);
   const dispatch = useDispatch();
   const userAssets = useGetAssets();
 
@@ -54,13 +55,12 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
   const formIsValid = inputsData.formIsValid[formType];
 
   if (userAssets.isLoading) return <p>Loading...</p>;
-  if (userAssets.isError )
-    return <p>{JSON.stringify(userAssets.error)}</p>;
+  if (userAssets.isError) return <p>{JSON.stringify(userAssets.error)}</p>;
 
-  const tetherVal = userAssets.data ? roundTo(userAssets.data.tether, 4) : "-";
-  const pairVal = userAssets.data
-    ? roundTo(userAssets.data.bitcoin, 4) || 0
-    : "-";
+  const tetherVal =
+    userAssets.data && uid ? roundTo(userAssets.data.tether, 4) : "-";
+  const pairVal =
+    userAssets.data && uid ? roundTo(userAssets.data.bitcoin, 4) || 0 : "-";
 
   return (
     <form
