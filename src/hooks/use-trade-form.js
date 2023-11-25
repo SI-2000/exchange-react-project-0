@@ -24,11 +24,6 @@ export function useTradeForm(
 
   const { stop, price, amount } = inputsData[formType];
 
-  console.log(formType + "///////////////");
-  console.log("pair   " + +pair);
-  console.log("amount " + +amount.value);
-  console.log(+amount.value > pair)
-
   switch (orderType.state) {
     case "LIMIT": {
       let condition1 = price.isValid && amount.isValid;
@@ -96,14 +91,18 @@ export function useTradeForm(
       } else {
         condition2 = true;
       }
-      const inputsAreEmpty = stop.value === "" || price.value === "";
+      const inputsAreNotEmpty = stop.value !== "" && price.value !== "";
       const inputsAreTouched = stop.isTouched && price.isTouched;
 
-      if (formType === "buy" && !inputsAreEmpty && inputsAreTouched) {
+      if (formType === "buy" && (inputsAreNotEmpty || inputsAreTouched)) {
         condition3 = +stop.value <= +price.value;
-        if (!condition3)
+        if (!condition3) {
           formErrMes.push("مقدار حد ضرر نمیتواند بالاتر از قیمت خرید باشد");
-      } else if (formType === "sell" && !inputsAreEmpty && inputsAreTouched) {
+        }
+      } else if (
+        formType === "sell" &&
+        (inputsAreNotEmpty || inputsAreTouched)
+      ) {
         condition3 = +stop.value >= +price.value;
         if (!condition3)
           formErrMes.push("مقدار حد ضرر نمیتواند پایین تر از قیمت فروش باشد");

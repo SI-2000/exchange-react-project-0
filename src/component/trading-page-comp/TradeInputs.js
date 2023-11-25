@@ -50,6 +50,7 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
     (state) => state.tradingData.tradeForm.errorMessages.buy.form
   );
 
+
   const formIsValid = inputsData.formIsValid[formType];
 
   if (userAssets.isLoading) return <p>Loading...</p>;
