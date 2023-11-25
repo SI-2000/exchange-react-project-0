@@ -11,8 +11,6 @@ export function useTradeForm(
 ) {
   const uid = useSelector((state) => state.auth.uid);
 
-  
-
   let formIsValid = false;
   let formErrMes = [];
 
@@ -25,6 +23,11 @@ export function useTradeForm(
   const { tether, [inputsData.pair]: pair = 0 } = userAssets.data;
 
   const { stop, price, amount } = inputsData[formType];
+
+  console.log(formType + "///////////////");
+  console.log("pair   " + +pair);
+  console.log("amount " + +amount.value);
+  console.log(+amount.value > pair)
 
   switch (orderType.state) {
     case "LIMIT": {

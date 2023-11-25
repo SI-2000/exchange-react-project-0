@@ -13,14 +13,12 @@ const AVBLPercentage = ({ formType }) => {
   const pair = useSelector((state) => state.tradingData.tradeForm.pair);
   const dispatch = useDispatch();
 
+
   const buttonClickHandler = (event, percentage) => {
     event.preventDefault();
     if (dataIsAvailable) {
       if (formType === "buy") {
-        const newInputValue = +roundTo(
-          (+assets.data.tether * percentage) / 100,
-          4
-        );
+        const newInputValue = (+assets.data.tether * percentage) / 100;
         dispatch(
           tradingActions.updateInputs({
             formType,
@@ -29,10 +27,8 @@ const AVBLPercentage = ({ formType }) => {
           })
         );
       } else if (formType === "sell") {
-        const newInputValue = roundTo(
-          (+assets.data[pair] * percentage) / 100,
-          4
-        );
+        const newInputValue = (+assets.data[pair] * percentage) / 100;
+
         dispatch(
           tradingActions.updateInputs({
             formType,
