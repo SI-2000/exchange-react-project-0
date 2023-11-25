@@ -31,6 +31,10 @@ const InputBox = ({ value, name, unit, disabled = false, formType }) => {
 
   const inputIsDisabled = !uid || disabled;
 
+  const inputValueState = useSelector(
+    (state) => state.tradingData.tradeForm[formType][name.en].value
+  );
+
   const {
     value: inputValue,
     isValid: inputIsValid,
@@ -40,7 +44,7 @@ const InputBox = ({ value, name, unit, disabled = false, formType }) => {
     valueChangeHandler: inputChangeHandler,
     inputblurHandler,
     reset: resetInput,
-  } = useInput(validators);
+  } = useInput(inputValueState, validators);
 
   useEffect(() => {
     dispatch(
@@ -52,9 +56,7 @@ const InputBox = ({ value, name, unit, disabled = false, formType }) => {
     );
   }, [inputValue]);
 
-  const inputValueState = useSelector(
-    (state) => state.tradingData.tradeForm[formType][name.en].value
-  );
+
 
   useEffect(() => {
     dispatch(

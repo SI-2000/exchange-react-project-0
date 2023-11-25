@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import persianNumsToEnglish from "../util/persianNums-to-english";
 
-export default function useInput(valueValidators) {
-  const [enterdValue, setEnterdValue] = useState("");
+export default function useInput(initialValue, valueValidators) {
+  const [enterdValue, setEnterdValue] = useState(initialValue);
   const [isTouched, setIsTouched] = useState(false);
 
   let errorMessage = "";
@@ -11,13 +11,12 @@ export default function useInput(valueValidators) {
     const enterdValueValidation = validator(persianNumsToEnglish(enterdValue));
     const enterdValueIsValid = enterdValueValidation.isValid;
     if (!enterdValueIsValid && isTouched) {
-      errorMessage = enterdValueValidation.errorMessage
+      errorMessage = enterdValueValidation.errorMessage;
     }
     return enterdValueIsValid;
   });
 
   const inputHasError = !valueIsValid && isTouched;
-
 
   const valueChangeHandler = (event) => {
     const transformedValue = persianNumsToEnglish(event.target.value);
