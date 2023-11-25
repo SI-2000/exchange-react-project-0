@@ -33,8 +33,6 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
     current_price
   );
 
-  // console.log(inputsData[formType])
-
   useEffect(() => {
     dispatch(
       tradingActions.newErrorMessage({
@@ -46,7 +44,7 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
     dispatch(
       tradingActions.formIsValid({ formType, isValid: formErrors.formIsValid })
     );
-  }, [inputsData[formType]]);
+  }, [inputsData[formType], orderType]);
 
   const formErrMes = useSelector(
     (state) => state.tradingData.tradeForm.errorMessages.buy.form
@@ -61,6 +59,7 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
     userAssets.data && uid ? roundTo(userAssets.data.tether, 4) : "-";
   const pairVal =
     userAssets.data && uid ? roundTo(userAssets.data.bitcoin, 4) || 0 : "-";
+
 
   return (
     <form

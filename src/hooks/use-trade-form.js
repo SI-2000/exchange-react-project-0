@@ -11,6 +11,8 @@ export function useTradeForm(
 ) {
   const uid = useSelector((state) => state.auth.uid);
 
+  
+
   let formIsValid = false;
   let formErrMes = [];
 
@@ -19,7 +21,6 @@ export function useTradeForm(
       formIsValid,
       formErrMes,
     };
-
 
   const { tether, [inputsData.pair]: pair = 0 } = userAssets.data;
 
@@ -42,7 +43,7 @@ export function useTradeForm(
           }
         }
       } else {
-        condition2 = true;
+        condition2 = false;
       }
       formIsValid = condition1 && condition2;
       break;
@@ -68,7 +69,7 @@ export function useTradeForm(
       formIsValid = condition1 && condition2;
       break;
     }
-    case "stop.value_LIMIT": {
+    case "STOP_LIMIT": {
       let condition1 = stop.isValid && price.isValid && amount.isValid;
       let condition2 = true;
       let condition3 = true;
@@ -78,22 +79,31 @@ export function useTradeForm(
           if (+price.value * +amount.value > tether) {
             formErrMes.push("موجودی شما برای این معامله کافی نیست.");
             condition2 = false;
+          } else {
+            condition2 = true;
           }
         } else if (formType === "sell") {
           if (+amount.value > pair) {
             formErrMes.push("موجودی شما برای این معامله کافی نیست.");
             condition2 = false;
+          } else {
+            condition2 = true;
           }
         }
       } else {
         condition2 = true;
       }
-      if (formType === "buy") {
-        condition3 = +stop.value.value < +price.value.value;
-        formErrMes.push("مقدار حد ضرر نمیتواند بالاتر از قیمت خرید باشد");
-      } else if (formType === "sell") {
-        condition3 = +stop.value.value > +price.value.value;
-        formErrMes.push("مقدار حد ضرر نمیتواند پایین تر از قیمت فروش باشد");
+      const inputsAreEmpty = stop.value === "" || price.value === "";
+      const inputsAreTouched = stop.isTouched && price.isTouched;
+
+      if (formType === "buy" && !inputsAreEmpty && inputsAreTouched) {
+        condition3 = +stop.value <= +price.value;
+        if (!condition3)
+          formErrMes.push("مقدار حد ضرر نمیتواند بالاتر از قیمت خرید باشد");
+      } else if (formType === "sell" && !inputsAreEmpty && inputsAreTouched) {
+        condition3 = +stop.value >= +price.value;
+        if (!condition3)
+          formErrMes.push("مقدار حد ضرر نمیتواند پایین تر از قیمت فروش باشد");
       }
       formIsValid = condition1 && condition2 && condition3;
       break;

@@ -43,6 +43,7 @@ const InputBox = ({ value, name, unit, disabled = false, formType }) => {
     errorMessage,
     valueChangeHandler: inputChangeHandler,
     inputblurHandler,
+    isTouched,
     reset: resetInput,
   } = useInput(inputValueState, validators);
 
@@ -51,10 +52,14 @@ const InputBox = ({ value, name, unit, disabled = false, formType }) => {
       tradingActions.updateInputs({
         formType,
         inputName: name.en,
-        value: { value: inputValue, isValid: inputIsValid },
+        value: {
+          value: inputValue,
+          isValid: inputIsValid,
+          isTouched: isTouched,
+        },
       })
     );
-  }, [inputValue]);
+  }, [inputValue, isTouched]);
 
 
 

@@ -46,6 +46,7 @@ export default function useInput(initialValue, valueValidators) {
     errorMessage,
     valueChangeHandler,
     inputblurHandler,
+    isTouched,
     reset,
   };
 }

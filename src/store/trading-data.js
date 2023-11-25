@@ -11,14 +11,14 @@ const initialState = {
       sell: { stop: [], price: [], amount: [], form: [] },
     },
     buy: {
-      stop: { value: "", isValid: false },
-      price: { value: "", isValid: false },
-      amount: { value: "", isValid: false },
+      stop: { value: "", isValid: false, isToched: false },
+      price: { value: "", isValid: false, isToched: false },
+      amount: { value: "", isValid: false, isToched: false },
     },
     sell: {
-      stop: { value: "", isValid: false },
-      price: { value: "", isValid: false },
-      amount: { value: "", isValid: false },
+      stop: { value: "", isValid: false, isToched: false },
+      price: { value: "", isValid: false, isToched: false },
+      amount: { value: "", isValid: false, isToched: false },
     },
   },
 };
