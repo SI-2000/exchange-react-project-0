@@ -3,25 +3,31 @@ import classes from "./TradeHistory.module.css";
 import DynamicContentWindow from "../DynamicContentWindow ";
 import { useReducer_DWindow } from "../../hooks/use-reducer-dwindow";
 import OrderHistoryItem from "./OrderHistoryItem";
+import SkeletonLoading from "../../ui/SkeletonLoading";
 
 const tradeHistoryActions = [
   { OPEN_ORDERS: "سفارش‌های فعال" },
   { ORDER_HISTORY: "تاریخچه سفارش‌ها" },
 ];
 
-const TradeHistory = () => {
+const TradeHistory = ({ isLoading }) => {
   const [tradeHistoryState, dispatchTradeHistory] =
     useReducer_DWindow(tradeHistoryActions);
 
   return (
-    <div className={classes["trade-history"]}>
-      <DynamicContentWindow
-        actions={tradeHistoryActions}
-        onDispatchTabsChanges={dispatchTradeHistory}
-        tabsState={tradeHistoryState}
-      />
-      <div className={classes["open-orders"]}></div>
-      {/* <OrderHistoryItem /> */}
+    <div className={`${classes["TradeHistory"]}`}>
+      <SkeletonLoading isVisible={isLoading} />
+      <div
+        className={`${classes["trade-history"]} ${isLoading && "invisible"}`}
+      >
+        <DynamicContentWindow
+          actions={tradeHistoryActions}
+          onDispatchTabsChanges={dispatchTradeHistory}
+          tabsState={tradeHistoryState}
+        />
+        <div className={classes["open-orders"]}></div>
+        {/* <OrderHistoryItem /> */}
+      </div>
     </div>
   );
 };

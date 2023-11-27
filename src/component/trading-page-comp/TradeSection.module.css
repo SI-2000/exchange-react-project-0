@@ -1,5 +1,8 @@
+.TradeSection {
+  position: relative;
+}
+
 .trade-sec {
-  /* background-color: red; */
   position: fixed;
   width: 100%;
   bottom: 0;
@@ -30,12 +33,13 @@
 }
 
 @media screen and (min-width: 768px) {
+  .TradeSection{
+    grid-row: 2 / 4;
+    border-left: 1px solid var(--border-light-gray);
+    border-bottom: 1px solid var(--border-light-gray);
+  }
   .trade-sec {
     position: relative;
-    grid-row: 2 / 4;
-    border-left:1px solid var(--border-light-gray);
-    border-bottom:1px solid var(--border-light-gray);
-
 
   }
 
@@ -45,10 +49,13 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .trade-sec {
+  .TradeSection {
     grid-column: 2/4;
     grid-row: 3/5;
-    border-bottom:1px solid var(--border-light-gray);
-    height:100%;
+    border:none;
+    border-bottom: 1px solid var(--border-light-gray);
+  }
+  .trade-sec {
+    height: 100%;
   }
 }

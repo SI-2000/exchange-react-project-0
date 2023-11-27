@@ -7,8 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { searchPairsActions } from "../../store/search-pairs";
 import SearchCurrency from "./SearchCurrency";
 import { roundTo } from "../../util/round-number";
+import SkeletonLoading from "../../ui/SkeletonLoading";
 
-const SelectCurrency = ({ currencies, className }) => {
+const SelectCurrency = ({ currencies, className, isLoading }) => {
   const searchOverlayIsOpen = useSelector(
     (state) => state.searchOverlay.isOpened
   );
@@ -24,47 +25,34 @@ const SelectCurrency = ({ currencies, className }) => {
     return {
       pairs: currency.symbol.toUpperCase() + "USDT",
       price: roundTo(currency.current_price.toString(), 2),
-      change:       roundTo(currency.price_change_percentage_24h.toString(), 2)
-      ,
+      change: roundTo(currency.price_change_percentage_24h.toString(), 2),
     };
   });
 
-  // const buttons = [
-  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
-  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
-  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
-  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
-  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
-  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
-  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
-  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
-  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
-  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
-  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
-  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
-  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
-  //   { pairs: "BTC/USDT", price: "45656", change: "6563" },
-  // ];
-
   return (
-    <div className={classes["select-currency"]}>
-      {ReactDOM.createPortal(
-        <Overlay
-          className="search-pairs-overlay"
-          onClickBackdrop={() => {
-            dispatch(searchPairsActions.close());
-          }}
-          overlayIsOpen={searchOverlayIsOpen}
-        >
-          <SearchCurrency header_titles={header_titles} buttons={buttons} />
-        </Overlay>,
-        document.getElementById("overlay")
-      )}
-      <SearchCurrency
-        className="min-1030"
-        header_titles={header_titles}
-        buttons={buttons}
-      />
+    <div className={`${classes["SelectCurrency"]}`}>
+      <SkeletonLoading isVisible={isLoading} />
+      <div
+        className={`${classes["select-currency"]} ${isLoading && "invisible"}`}
+      >
+        {ReactDOM.createPortal(
+          <Overlay
+            className="search-pairs-overlay"
+            onClickBackdrop={() => {
+              dispatch(searchPairsActions.close());
+            }}
+            overlayIsOpen={searchOverlayIsOpen}
+          >
+            <SearchCurrency header_titles={header_titles} buttons={buttons} />
+          </Overlay>,
+          document.getElementById("overlay")
+        )}
+        <SearchCurrency
+          className="min-1030"
+          header_titles={header_titles}
+          buttons={buttons}
+        />
+      </div>
     </div>
   );
 };

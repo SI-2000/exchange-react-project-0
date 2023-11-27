@@ -2,11 +2,18 @@ import React from "react";
 import TradingViewWidget from "react-tradingview-widget";
 
 import classes from "./Chart.module.css";
+import SkeletonLoading from "../../ui/SkeletonLoading";
 
-const Chart = ({ className }) => {
+const Chart = ({ className, isLoading }) => {
   return (
-    <div className={`${classes["chart-container"]} ${classes[className]}`}>
-      {/* {
+    <div className={`${classes["Chart"]}`}>
+      <SkeletonLoading isVisible={isLoading} />
+      <div
+        className={`${classes["chart-container"]} ${classes[className]} ${
+          isLoading && "invisible"
+        }`}
+      >
+        {/* {
         <TradingViewWidget
           symbol="BTCUSDT"
           theme="dark"
@@ -15,6 +22,7 @@ const Chart = ({ className }) => {
           height="20rem"
         />
       } */}
+      </div>
     </div>
   );
 };

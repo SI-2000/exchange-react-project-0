@@ -1,3 +1,7 @@
+.PrimaryData {
+  position: relative;
+}
+
 .primary-data {
   display: flex;
   justify-content: space-between;
@@ -81,8 +85,11 @@
 /* Min width: 770 px */
 
 @media screen and (min-width: 768px) {
-  .primary-data {
+  .PrimaryData {
     grid-column: 1 / end;
+  }
+
+  .primary-data {
     justify-content: flex-start;
     max-height: 83px;
   }
@@ -125,7 +132,7 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .primary-data {
+  .PrimaryData {
     border-bottom: 1px solid var(--border-light-gray);
   }
   .name {

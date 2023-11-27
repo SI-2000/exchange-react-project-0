@@ -4,8 +4,9 @@ import Overlay from "../../ui/Overlay";
 
 import classes from "./TradeSection.module.css";
 import TradeForm from "./TradeForm";
+import SkeletonLoading from "../../ui/SkeletonLoading";
 
-const TradeSection = () => {
+const TradeSection = ({ isLoading }) => {
   const [tradeFormIsOpen, setTradeFormIsOpen] = useState(false);
   const [activeForm, setActiveForm] = useState("buy");
 
@@ -21,40 +22,44 @@ const TradeSection = () => {
     setTradeFormIsOpen(false);
   }
 
-
-
   return (
-    <div className={classes["trade-sec"]}>
-      <div className={classes["show-form-btns"]}>
-        <button
-          onClick={openSellFormOverlayHandler}
-          className={classes["sell"]}
-        >
-          فروش
-        </button>
-        <button onClick={openBuyFormOverlayHandler} className={classes["buy"]}>
-          خرید
-        </button>
+    <div className={`${classes["TradeSection"]}`}>
+      <SkeletonLoading isVisible={isLoading} />
+      <div className={`${classes["trade-sec"]}  ${isLoading && "invisible"}`}>
+        <div className={classes["show-form-btns"]}>
+          <button
+            onClick={openSellFormOverlayHandler}
+            className={classes["sell"]}
+          >
+            فروش
+          </button>
+          <button
+            onClick={openBuyFormOverlayHandler}
+            className={classes["buy"]}
+          >
+            خرید
+          </button>
+        </div>
+        {ReactDOM.createPortal(
+          <Overlay
+            className={"trade-form-overlay"}
+            onClickBackdrop={closeFormOverlayHandler}
+            overlayIsOpen={tradeFormIsOpen}
+          >
+            <TradeForm
+              className="max-770"
+              activeForm={activeForm}
+              setActiveForm={setActiveForm}
+            />
+          </Overlay>,
+          document.getElementById("overlay")
+        )}
+        <TradeForm
+          className="min-770"
+          activeForm={activeForm}
+          setActiveForm={setActiveForm}
+        />
       </div>
-      {ReactDOM.createPortal(
-        <Overlay
-          className={"trade-form-overlay"}
-          onClickBackdrop={closeFormOverlayHandler}
-          overlayIsOpen={tradeFormIsOpen}
-        >
-          <TradeForm
-            className="max-770"
-            activeForm={activeForm}
-            setActiveForm={setActiveForm}
-          />
-        </Overlay>,
-        document.getElementById("overlay")
-      )}
-      <TradeForm
-        className="min-770"
-        activeForm={activeForm}
-        setActiveForm={setActiveForm}
-      />
     </div>
   );
 };

@@ -1,3 +1,7 @@
+.Trades {
+  position: relative;
+}
+
 .trades {
   height: 21rem;
   height: 100%;
@@ -10,23 +14,28 @@
 }
 
 @media screen and (min-width: 768px) {
-  .trades {
+  .Trades{
     height: 100%;
     grid-column: 3 /4;
     grid-row: 3/4;
     border-bottom: 1px solid var(--border-light-gray);
     border-top: 1px solid var(--border-light-gray);
   }
+
   .hidden {
     display: block;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .trades {
+  .Trades {
     grid-column: 1;
     grid-row: 4/5;
+    border:none;
     border-left: 1px solid var(--border-light-gray);
     border-bottom: 1px solid var(--border-light-gray);
+  }
+
+  .trades {
   }
 }

@@ -37,32 +37,45 @@ const TradingPage = () => {
   const [marketDataDisplayState, dispatchMarketDataDisplay] =
     useReducer_DWindow(marketDataActions);
 
-  if (tradingQuery.isLoading && assetsQuery.isLoading)
-    return <p>Is loading...</p>;
-  if (tradingQuery.isError && assetsQuery.isError) return <p>Error</p>;
-  if (!tradingQuery.data) return <p>There is no data.</p>;
+  // if (tradingQuery.isLoading || assetsQuery.isLoading)
+  //   return <p>Is loading...</p>;
 
+  // const isLoading = tradingQuery.isLoading || assetsQuery.isLoading;
+  const isLoading = false
+
+
+  if (tradingQuery.isError || assetsQuery.isError) return <p>Error</p>;
+  if (!tradingQuery.data) return <p>There is no data.</p>;
 
   return (
     <div className={classes["trading-page"]}>
-      <PrimaryData />
-      <SelectCurrency currencies={tradingQuery.data.currencies} />
-      <TradeSection />
+      <PrimaryData isLoading={isLoading} />
+      <SelectCurrency
+        currencies={tradingQuery.data.currencies}
+        isLoading={isLoading}
+      />
+      <TradeSection isLoading={isLoading} />
       <MarketDataSelector
         actions={marketDataActions}
         marketDataDisplayState={marketDataDisplayState}
         onDispatchMDataDisplay={dispatchMarketDataDisplay}
+        isLoading={isLoading}
       />
-      <Chart className={marketDataDisplayState.componentsClass.CHART} />
+      <Chart
+        className={marketDataDisplayState.componentsClass.CHART}
+        isLoading={isLoading}
+      />
       <OrderBook
         data={tradingQuery.data.depth}
         className={marketDataDisplayState.componentsClass.ORDER_BOOK}
+        isLoading={isLoading}
       />
       <Trades
         data={tradingQuery.data.trades}
         className={marketDataDisplayState.componentsClass.TRADES}
+        isLoading={isLoading}
       />
-      <TradeHistory />
+      <TradeHistory isLoading={isLoading} />
     </div>
   );
 };

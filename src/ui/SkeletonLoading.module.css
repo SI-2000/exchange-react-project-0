@@ -1,0 +1,29 @@
+.SkeletonLoading {
+  z-index: 2;
+  padding: 0.5rem;
+}
+
+.skeleton {
+  border-radius: 5px;
+}
+
+.skeleton {
+  height: 100%;
+  background-image: linear-gradient(
+    to right,
+    #505050 0%,
+    #b4b4b4 30%,
+    #505050 60%
+  );
+  background-size: 200rem 100rem;
+  animation: loading 10s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
