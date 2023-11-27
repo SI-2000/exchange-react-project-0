@@ -9,6 +9,7 @@ import { useQuery } from "react-query";
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { authActions } from "../store/auth";
+import RouterLoading from "../ui/RouterLoading";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -59,7 +60,9 @@ const RootLayout = () => {
       setIsLoading(false);
     });
   }, []);
-  if (isLoading) return <p>Loading</p>
+
+  if (isLoading) return <RouterLoading />;
+
   return (
     <div>
       <MainHeader />
