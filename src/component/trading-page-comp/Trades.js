@@ -15,7 +15,7 @@ const Trades = ({ data, className, isLoading }) => {
 
   if (isLoading) {
     return (
-      <div className={`${classes["Trades"]}`}>
+      <div className={`${classes["Trades"]} ${classes[className]}`}>
         <SkeletonLoading />
       </div>
     );
@@ -24,10 +24,8 @@ const Trades = ({ data, className, isLoading }) => {
   const [buttons, btnClassNames] = tradesProducer(data.trades);
 
   return (
-    <div className={`${classes["Trades"]}`}>
-      <div
-        className={`${classes["trades"]} ${classes[className]}`}
-      >
+    <div className={`${classes["Trades"]} ${classes[className]}`}>
+      <div className={`${classes["trades"]}`}>
         <CustomTable
           className="trades"
           btnClassNames={btnClassNames}

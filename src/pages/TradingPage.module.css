@@ -1,20 +1,27 @@
 .trading-page {
   background-color: var(--tradingview-black);
-  display:grid;
-  /* height:calc(100vh - 56px); */
+  position: relative;
+  display: grid;
 }
 
+.background {
+  background-color: var(--tradingview-black);
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: -10;
+}
 
-@media screen and (min-width:768px){
-  .trading-page{
+@media screen and (min-width: 768px) {
+  .trading-page {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, fit-content);
     height: fit-content;
   }
 }
 
-@media screen and (min-width:1024px){
-  .trading-page{
+@media screen and (min-width: 1024px) {
+  .trading-page {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, fit-content);
     height: fit-content;

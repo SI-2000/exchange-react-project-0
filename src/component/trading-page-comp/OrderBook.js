@@ -15,7 +15,7 @@ const header_titles = [
 const OrderBook = ({ data, className, isLoading }) => {
   if (isLoading) {
     return (
-      <div className={`${classes["OrderBook"]}`}>
+      <div className={`${classes["OrderBook"]} ${classes[className]}`}>
         <SkeletonLoading />
       </div>
     );
@@ -26,10 +26,8 @@ const OrderBook = ({ data, className, isLoading }) => {
   );
 
   return (
-    <div className={`${classes["OrderBook"]}`}>
-      <div
-        className={`${classes["order-book"]} ${classes[className]}`}
-      >
+    <div className={`${classes["OrderBook"]} ${classes[className]}`}>
+      <div className={`${classes["order-book"]}`}>
         <CustomTable
           className="sell-order-book"
           header_titles={header_titles}

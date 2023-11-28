@@ -7,16 +7,14 @@ import SkeletonLoading from "../../ui/SkeletonLoading";
 const Chart = ({ className, isLoading }) => {
   if (isLoading) {
     return (
-      <div className={`${classes["Chart"]}`}>
+      <div className={`${classes["Chart"]} ${classes[className]}`}>
         <SkeletonLoading />
       </div>
     );
   }
   return (
-    <div className={`${classes["Chart"]}`}>
-      <div
-        className={`${classes["chart-container"]}`}
-      >
+    <div className={`${classes["Chart"]} ${classes[className]}`}>
+      <div className={`${classes["chart-container"]}`}>
         {/* {
         <TradingViewWidget
           symbol="BTCUSDT"

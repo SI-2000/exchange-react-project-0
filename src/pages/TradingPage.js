@@ -68,6 +68,7 @@ const TradingPage = () => {
         isLoading={isLoading}
       />
       <TradeHistory isLoading={isLoading} />
+      <div className={`${classes["background"]}`}></div>
     </div>
   );
 };
