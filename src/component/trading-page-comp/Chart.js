@@ -5,13 +5,17 @@ import classes from "./Chart.module.css";
 import SkeletonLoading from "../../ui/SkeletonLoading";
 
 const Chart = ({ className, isLoading }) => {
+  if (isLoading) {
+    return (
+      <div className={`${classes["Chart"]}`}>
+        <SkeletonLoading />
+      </div>
+    );
+  }
   return (
     <div className={`${classes["Chart"]}`}>
-      <SkeletonLoading isVisible={isLoading} />
       <div
-        className={`${classes["chart-container"]} ${classes[className]} ${
-          isLoading && "invisible"
-        }`}
+        className={`${classes["chart-container"]}`}
       >
         {/* {
         <TradingViewWidget

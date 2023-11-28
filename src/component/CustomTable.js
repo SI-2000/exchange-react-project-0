@@ -2,9 +2,17 @@ import React, { useEffect } from "react";
 
 import classes from "./CustomTable.module.css";
 
+const defaultHeaderTitles = [
+  { en: "title1", fa: "عنوان-۱" },
+  { en: "title2", fa: "عنوان-۲" },
+  { en: "title3", fa: "عنوان-۳" },
+];
+
+const defaultButtons = [{ col1_title: "A", col2_title: "B", col3_title: "C" }];
+
 const CustomTable = ({
-  header_titles,
-  buttons,
+  header_titles = defaultHeaderTitles,
+  buttons = defaultButtons,
   className,
   volumeBarPerc,
   btnClassNames = { col1: [], col2: [], col3: [] },

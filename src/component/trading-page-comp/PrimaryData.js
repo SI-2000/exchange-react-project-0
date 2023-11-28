@@ -7,10 +7,17 @@ import SkeletonLoading from "../../ui/SkeletonLoading"
 const PrimaryData = ({ isLoading }) => {
   const dispatch = useDispatch();
 
+  if (isLoading) {
+    return (
+      <div className={`${classes["PrimaryData"]}`}>
+        <SkeletonLoading />
+      </div>
+    );
+  }
+
   return (
     <div className={`${classes["PrimaryData"]}`}>
-      <SkeletonLoading isVisible={isLoading} />
-      <div className={`${classes["primary-data"]} ${isLoading && "invisible"}`}>
+      <div className={`${classes["primary-data"]}`}>
         <div className={`${classes["col"]} ${classes["name-price"]}`}>
           <div
             onClick={() => {

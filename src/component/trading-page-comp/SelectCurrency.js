@@ -9,7 +9,7 @@ import SearchCurrency from "./SearchCurrency";
 import { roundTo } from "../../util/round-number";
 import SkeletonLoading from "../../ui/SkeletonLoading";
 
-const SelectCurrency = ({ currencies, className, isLoading }) => {
+const SelectCurrency = ({ data, className, isLoading }) => {
   const searchOverlayIsOpen = useSelector(
     (state) => state.searchOverlay.isOpened
   );
@@ -21,7 +21,15 @@ const SelectCurrency = ({ currencies, className, isLoading }) => {
     { en: "change", fa: "تغییر" },
   ];
 
-  const buttons = currencies.map((currency) => {
+  if (isLoading) {
+    return (
+      <div className={`${classes["SelectCurrency"]}`}>
+        <SkeletonLoading />
+      </div>
+    );
+  }
+
+  const buttons = data.currencies.map((currency) => {
     return {
       pairs: currency.symbol.toUpperCase() + "USDT",
       price: roundTo(currency.current_price.toString(), 2),
@@ -31,10 +39,7 @@ const SelectCurrency = ({ currencies, className, isLoading }) => {
 
   return (
     <div className={`${classes["SelectCurrency"]}`}>
-      <SkeletonLoading isVisible={isLoading} />
-      <div
-        className={`${classes["select-currency"]} ${isLoading && "invisible"}`}
-      >
+      <div className={`${classes["select-currency"]}`}>
         {ReactDOM.createPortal(
           <Overlay
             className="search-pairs-overlay"

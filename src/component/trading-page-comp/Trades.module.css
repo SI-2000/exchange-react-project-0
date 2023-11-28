@@ -1,9 +1,11 @@
 .Trades {
   position: relative;
+  height: 21rem;
+
+
 }
 
 .trades {
-  height: 21rem;
   height: 100%;
   padding: 1rem;
   /* overflow-y: scroll; */
@@ -15,7 +17,6 @@
 
 @media screen and (min-width: 768px) {
   .Trades{
-    height: 100%;
     grid-column: 3 /4;
     grid-row: 3/4;
     border-bottom: 1px solid var(--border-light-gray);

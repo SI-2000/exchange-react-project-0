@@ -10,6 +10,14 @@ const TradeSection = ({ isLoading }) => {
   const [tradeFormIsOpen, setTradeFormIsOpen] = useState(false);
   const [activeForm, setActiveForm] = useState("buy");
 
+  if (isLoading) {
+    return (
+      <div className={`${classes["TradeSection"]}`}>
+        <SkeletonLoading />
+      </div>
+    );
+  }
+
   function openBuyFormOverlayHandler() {
     setActiveForm("buy");
     setTradeFormIsOpen(true);
@@ -24,8 +32,7 @@ const TradeSection = ({ isLoading }) => {
 
   return (
     <div className={`${classes["TradeSection"]}`}>
-      <SkeletonLoading isVisible={isLoading} />
-      <div className={`${classes["trade-sec"]}  ${isLoading && "invisible"}`}>
+      <div className={`${classes["trade-sec"]}`}>
         <div className={classes["show-form-btns"]}>
           <button
             onClick={openSellFormOverlayHandler}

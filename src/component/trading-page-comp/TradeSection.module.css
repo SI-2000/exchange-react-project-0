@@ -1,16 +1,15 @@
 .TradeSection {
-  position: relative;
-}
-
-.trade-sec {
+  z-index: 1;
   position: fixed;
   width: 100%;
   bottom: 0;
 }
 
+.trade-sec {
+}
+
 .show-form-btns {
   display: flex;
-  /* justify-content: space-between; */
   padding: 1rem 1rem;
   background-color: var(--tradingview-light-black);
 }
@@ -33,14 +32,15 @@
 }
 
 @media screen and (min-width: 768px) {
-  .TradeSection{
+  .TradeSection {
+    position: relative;
+
     grid-row: 2 / 4;
     border-left: 1px solid var(--border-light-gray);
     border-bottom: 1px solid var(--border-light-gray);
   }
   .trade-sec {
-    position: relative;
-
+    height: 100%;
   }
 
   .show-form-btns {
@@ -52,7 +52,7 @@
   .TradeSection {
     grid-column: 2/4;
     grid-row: 3/5;
-    border:none;
+    border: none;
     border-bottom: 1px solid var(--border-light-gray);
   }
   .trade-sec {

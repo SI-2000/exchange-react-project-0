@@ -13,15 +13,22 @@ const header_titles = [
 ];
 
 const OrderBook = ({ data, className, isLoading }) => {
-  const [sellOBData, buyOBData, volumeBar, marketPrice] = OBDataProducer(data);
+  if (isLoading) {
+    return (
+      <div className={`${classes["OrderBook"]}`}>
+        <SkeletonLoading />
+      </div>
+    );
+  }
+
+  const [sellOBData, buyOBData, volumeBar, marketPrice] = OBDataProducer(
+    data.depth
+  );
 
   return (
     <div className={`${classes["OrderBook"]}`}>
-      <SkeletonLoading isVisible={isLoading} />
       <div
-        className={`${classes["order-book"]} ${classes[className]}  ${
-          isLoading && "invisible"
-        }`}
+        className={`${classes["order-book"]} ${classes[className]}`}
       >
         <CustomTable
           className="sell-order-book"

@@ -2,6 +2,12 @@
   position: relative;
   display: none;
   direction: ltr;
+  max-height: 487px;
+}
+
+.SelectCurrency .SkeletonLoading{
+  width: 25vw;
+  width:500rem;
 }
 
 .select-currency {

@@ -1,5 +1,6 @@
 .PrimaryData {
   position: relative;
+  height: 116px;
 }
 
 .primary-data {
@@ -87,6 +88,7 @@
 @media screen and (min-width: 768px) {
   .PrimaryData {
     grid-column: 1 / end;
+    height: 66px;
   }
 
   .primary-data {

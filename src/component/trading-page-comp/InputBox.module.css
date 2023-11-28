@@ -1,6 +1,6 @@
 .input-box {
   background-color: var(--input-gray);
-  margin: .7rem 0;
+  margin: 0.7rem 0;
   border-radius: 5px;
   display: flex;
   font-size: 12px;
@@ -9,12 +9,12 @@
   border: 1px solid rgba(0, 0, 0, 0);
 }
 
-.input-box > *{
-  padding:.7rem 0;
+.input-box > * {
+  padding: 0.7rem 0;
 }
 
-.input-box label{
-  padding:.6rem;
+.input-box label {
+  padding: 0.6rem;
 }
 
 .input-box:hover,
@@ -37,15 +37,17 @@
 }
 
 .input-box input {
+  width: 0;
   flex: 1 1 auto;
   direction: ltr;
 }
 
-.inp-has-error{
+.inp-has-error {
   border-color: red;
   background-color: rgb(73, 0, 0);
 }
 
-.inp-has-error:hover, .inp-has-error:focus-within{
+.inp-has-error:hover,
+.inp-has-error:focus-within {
   border-color: red;
 }

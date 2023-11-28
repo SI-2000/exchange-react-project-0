@@ -37,23 +37,15 @@ const TradingPage = () => {
   const [marketDataDisplayState, dispatchMarketDataDisplay] =
     useReducer_DWindow(marketDataActions);
 
-  // if (tradingQuery.isLoading || assetsQuery.isLoading)
-  //   return <p>Is loading...</p>;
-
-  // const isLoading = tradingQuery.isLoading || assetsQuery.isLoading;
-  const isLoading = false
-
+  const isLoading = tradingQuery.isLoading || assetsQuery.isLoading;
 
   if (tradingQuery.isError || assetsQuery.isError) return <p>Error</p>;
-  if (!tradingQuery.data) return <p>There is no data.</p>;
+  let data = tradingQuery.data;
 
   return (
     <div className={classes["trading-page"]}>
       <PrimaryData isLoading={isLoading} />
-      <SelectCurrency
-        currencies={tradingQuery.data.currencies}
-        isLoading={isLoading}
-      />
+      <SelectCurrency data={data} isLoading={isLoading} />
       <TradeSection isLoading={isLoading} />
       <MarketDataSelector
         actions={marketDataActions}
@@ -66,12 +58,12 @@ const TradingPage = () => {
         isLoading={isLoading}
       />
       <OrderBook
-        data={tradingQuery.data.depth}
+        data={data}
         className={marketDataDisplayState.componentsClass.ORDER_BOOK}
         isLoading={isLoading}
       />
       <Trades
-        data={tradingQuery.data.trades}
+        data={data}
         className={marketDataDisplayState.componentsClass.TRADES}
         isLoading={isLoading}
       />

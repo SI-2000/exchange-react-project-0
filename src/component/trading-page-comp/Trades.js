@@ -13,15 +13,20 @@ const Trades = ({ data, className, isLoading }) => {
     { en: "time", fa: "زمان" },
   ];
 
-  const [buttons, btnClassNames] = tradesProducer(data);
+  if (isLoading) {
+    return (
+      <div className={`${classes["Trades"]}`}>
+        <SkeletonLoading />
+      </div>
+    );
+  }
+
+  const [buttons, btnClassNames] = tradesProducer(data.trades);
 
   return (
     <div className={`${classes["Trades"]}`}>
-      <SkeletonLoading isVisible={isLoading} />
       <div
-        className={`${classes["trades"]} ${classes[className]} ${
-          isLoading && "invisible"
-        }`}
+        className={`${classes["trades"]} ${classes[className]}`}
       >
         <CustomTable
           className="trades"

@@ -1,10 +1,12 @@
 .Chart {
   position: relative;
+  height: 21rem;
+
 }
 
 .chart-container {
   padding: 0.5rem;
-  height: 21rem;
+  height: 100%;
 }
 
 .hidden {
@@ -12,7 +14,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .chart-container {
+  .Chart {
     grid-column: 2 / end;
     grid-row: 2;
   }
