@@ -2,7 +2,11 @@ import { useDispatch } from "react-redux";
 import { authActions } from "../store/auth";
 import { getAuth, signOut } from "firebase/auth";
 
-export function useLogout(postExecution) {
+export function useLogout(
+  postExecution = () => {
+    return null;
+  }
+) {
   const dispatch = useDispatch();
   return () => {
     const auth = getAuth();

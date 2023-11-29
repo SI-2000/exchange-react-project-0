@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "./AssetsPage.module.css";
 import WhiteFrame from "../ui/WhiteFrame";
 import { formatPrice } from "../util/format-price";
@@ -9,8 +9,21 @@ import { useQuery } from "react-query";
 import useGetAssets from "../hooks/use-get-assets";
 import { getCurrenciesInfo } from "../util/get-currencies";
 import { roundTo } from "../util/round-number";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import RouterLoading from "../ui/RouterLoading";
 
 const AssetsPage = () => {
+  const uid = useSelector((state) => state.auth.uid);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!uid) {
+      navigate("/auth/?mode=login");
+    }
+  }, [uid]);
+
   const currenciesQuery = useQuery({
     queryKey: "currencies",
     queryFn: getCurrenciesInfo,
@@ -19,7 +32,21 @@ const AssetsPage = () => {
 
   const assets = useGetAssets();
 
-  if (assets.isLoading || currenciesQuery.isLoading) return <p>Loading</p>;
+  if (!uid) {
+    return (
+      <div className={classes["assets-container"]}>
+        <WhiteFrame>
+          <p className={classes["auth-reminder"]}>
+            شما هنوز وارد حساب کاربری خود نشده اید. لطفا پس از احراز هویت به این
+            مسیر بازگردید.
+          </p>
+        </WhiteFrame>
+      </div>
+    );
+  }
+
+  if (assets.isLoading || currenciesQuery.isLoading) return <RouterLoading />;
+
   if (!assets.data || assets.isError || currenciesQuery.isError)
     return <p>{JSON.stringify(assets.error)}</p>;
 

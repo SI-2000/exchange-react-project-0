@@ -1,9 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { NavLink } from "react-router-dom";
-
 import { ReactComponent as CloseIcon } from "../files/icons/close_FILL0_wght400_GRAD0_opsz48.svg";
-
 import classes from "./MainNavigation.module.css";
 import { useLogout } from "../hooks/use-logout";
 import { useSelector } from "react-redux";
@@ -40,17 +38,20 @@ const MainNavigation = ({ className, onCloseNav }) => {
             فهرست ارز ها
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to="assets"
-            className={({ isActive }) =>
-              isActive ? classes.active : undefined
-            }
-            onClick={onCloseNav}
-          >
-            دارایی ها
-          </NavLink>
-        </li>
+        {uid && (
+          <li>
+            <NavLink
+              to="assets"
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+              onClick={onCloseNav}
+            >
+              دارایی ها
+            </NavLink>
+          </li>
+        )}
+
         <li>
           <NavLink
             to="unimportant-page"

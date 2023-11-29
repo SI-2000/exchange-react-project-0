@@ -22,7 +22,7 @@ const MainFooterLinkBox = ({ title, links }) => {
         className={`${classes["btn"]} ${panelIsOpen && classes["active"]}`}
       >
         <h1>{title}</h1>
-        <ArrowIcon className={panelIsOpen && classes["upside-down"]} />
+        <ArrowIcon className={panelIsOpen ? classes["upside-down"] : null} />
       </div>
 
       <div
