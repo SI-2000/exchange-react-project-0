@@ -39,10 +39,13 @@
 }
 
 @media screen and (min-width: 768px) {
+  .btn {
+    cursor: default;
+  }
   .MainFooterLinkBox .btn:hover,
   .MainFooterLinkBox .active {
     background: none;
-    padding: 0.2rem 0rem;
+    padding: 0;
   }
   .btn svg {
     display: none;
