@@ -1,65 +1,78 @@
-.main-footer{
-    /* background-color: var(--body-bg); */
-    color:white;
-    padding:1rem;
+.main-footer {
+  /* background-color: var(--body-bg); */
+  color: white;
+  padding: 1rem;
 }
 
-.links-sec{
+.links-sec {
+  display: grid;
 }
 
 .links-sec > div {
-    text-align: right;
-    padding:.8rem 0;
+  text-align: right;
+  padding: 0.8rem 0;
 }
 
-.social-media{
-    padding:1rem 0;
+.social-media {
+  padding: 1rem 0;
 }
 
-.icons{
-    display:flex;
-    justify-content: center;
+.icons {
+  display: flex;
+  justify-content: center;
 }
 
-.social-media h3{
-    margin-bottom: 1rem;
+.social-media h3 {
+  margin-bottom: 1rem;
 }
 
-.social-media .icon{
-    fill:rgb(173, 173, 173);
-    width: 24px;
-    height: 24px;
-    margin:0 .5rem;
-    transition: fill .2s;
-    cursor: pointer;
+.social-media .icon {
+  fill: rgb(173, 173, 173);
+  width: 24px;
+  height: 24px;
+  margin: 0 0.5rem;
+  transition: fill 0.2s;
+  cursor: pointer;
 }
 
-.social-media .instagram:hover{
-    fill:rgb(228, 64, 95);
+.social-media .instagram:hover {
+  fill: rgb(228, 64, 95);
 }
 
-.social-media .twitter:hover{
-    fill: #1DA1F2;
+.social-media .twitter:hover {
+  fill: #1da1f2;
 }
 
-.social-media .facebook:hover{
-    fill:#3b5998;
+.social-media .facebook:hover {
+  fill: #3b5998;
 }
 
-.social-media .linkedin:hover{
-    fill: rgb(10, 102, 194);
+.social-media .linkedin:hover {
+  fill: rgb(10, 102, 194);
 }
 
-.copy-right{
-    font-size:14px;
-    color:var(--custom-gray);
-    text-align: center;
-    display: flex;
-    justify-content: center;
+.copy-right {
+  font-size: 14px;
+  color: var(--custom-gray);
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
-.copy-right svg{
-    fill:rgb(170, 170, 170);
-    width:16px;
-    margin-left:.2rem;
+.copy-right svg {
+  fill: rgb(170, 170, 170);
+  width: 16px;
+  margin-left: 0.2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .links-sec {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .links-sec {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
