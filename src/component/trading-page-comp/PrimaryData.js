@@ -2,9 +2,11 @@ import React from "react";
 import classes from "./PrimaryData.module.css";
 import { useDispatch } from "react-redux";
 import { searchPairsActions } from "../../store/search-pairs";
-import SkeletonLoading from "../../ui/SkeletonLoading"
+import SkeletonLoading from "../../ui/SkeletonLoading";
+import numToRoundedString from "../../util/num-to-rounded-string";
+import { roundTo } from "../../util/round-number";
 
-const PrimaryData = ({ isLoading }) => {
+const PrimaryData = ({ data, isLoading }) => {
   const dispatch = useDispatch();
 
   if (isLoading) {
@@ -14,6 +16,26 @@ const PrimaryData = ({ isLoading }) => {
       </div>
     );
   }
+
+  const {
+    symbol,
+    lastPrice,
+    priceChange,
+    priceChangePercent,
+    highPrice,
+    lowPrice,
+    quoteVolume,
+  } = data.coinInfo;
+
+  // const {
+  //   symbol,
+  //   lastPrice,
+  //   priceChange,
+  //   priceChangePercent,
+  //   highPrice,
+  //   lowPrice,
+  //   quoteVolume,
+  // } = numToRoundedString(data.coinInfo);
 
   return (
     <div className={`${classes["PrimaryData"]}`}>
@@ -25,16 +47,30 @@ const PrimaryData = ({ isLoading }) => {
             }}
             className={`${classes["name"]} ${classes["searchOverlay-btn"]}`}
           >
-            BTCUSDT
+            {symbol}
           </div>
-          <div className={classes["name"]}>BTC/USDT</div>
+          <div className={classes["name"]}>{symbol}</div>
           <div className={classes["price-change"]}>
-            <div className={classes["price"]}>45435</div>
+            <div className={classes["price"]}>
+              $ {roundTo(lastPrice.toString(), 2)}
+            </div>
             <div className={`${classes["key-value"]} ${classes["change"]}`}>
               <h5>تغییرات 24 ساعت</h5>
               <div>
-                <span className={classes["percentage"]}>456</span>
-                <span className={classes["amount"]}>456546</span>
+                <span
+                  className={`${classes["percentage"]} ${
+                    priceChangePercent >= 0 ? "positive" : "negative"
+                  }`}
+                >
+                  {roundTo(priceChangePercent.toString(), 2)}%
+                </span>
+                <span
+                  className={`${classes["amount"]} ${
+                    priceChangePercent >= 0 ? "positive" : "negative"
+                  }`}
+                >
+                  {roundTo(priceChange.toString(), 2)}
+                </span>
               </div>
             </div>
           </div>
@@ -42,17 +78,17 @@ const PrimaryData = ({ isLoading }) => {
         <div className={classes["col"]}>
           <div className={`${classes["key-value"]} ${classes["high-24h"]}`}>
             <h5>بالاترین</h5>
-            <span>4545</span>
+            <span>{roundTo(highPrice.toString(), 2)}</span>
           </div>
           <div className={`${classes["key-value"]} ${classes["low-24h"]}`}>
             <h5>پایین ترین</h5>
-            <span>4545</span>
+            <span>{roundTo(lowPrice.toString(), 2)}</span>
           </div>
         </div>
         <div className={classes["col"]}>
           <div className={`${classes["key-value"]} ${classes["volume"]}`}>
             <h5>حجم 24 ساعت</h5>
-            <span>546777</span>
+            <span>{roundTo(quoteVolume.toString(), 2)}</span>
           </div>
         </div>
       </div>

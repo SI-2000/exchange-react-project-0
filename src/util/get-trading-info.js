@@ -7,9 +7,12 @@ async function getTradingInfo(uid, currency) {
   const tradesData = await fetch("http://localhost:8000/trades?_limit=13");
   const trades = await tradesData.json();
 
+  const coinInfoData = await fetch("http://localhost:8000/coin_info");
+  const coinInfo = await coinInfoData.json();
+
   const currencies = currenciesData;
 
-  const data = { depth, trades, currencies };
+  const data = { depth, trades, coinInfo, currencies };
   return data;
 }
 

@@ -32,6 +32,8 @@ const TradingPage = () => {
     },
   });
 
+  const data = tradingQuery.data;
+
   const assetsQuery = useGetAssets();
 
   const [marketDataDisplayState, dispatchMarketDataDisplay] =
@@ -40,11 +42,10 @@ const TradingPage = () => {
   const isLoading = tradingQuery.isLoading || assetsQuery.isLoading;
 
   if (tradingQuery.isError || assetsQuery.isError) return <p>Error</p>;
-  let data = tradingQuery.data;
 
   return (
     <div className={classes["trading-page"]}>
-      <PrimaryData isLoading={isLoading} />
+      <PrimaryData data={data} isLoading={isLoading} />
       <SelectCurrency data={data} isLoading={isLoading} />
       <TradeSection isLoading={isLoading} />
       <MarketDataSelector
