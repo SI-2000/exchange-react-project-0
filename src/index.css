@@ -3,8 +3,13 @@
   src: url(../src/files/fonts/Yekan.ttf);
 }
 
+@font-face {
+  font-family: vazir;
+  src: url(../src/files/fonts/vazir/Vazirmatn-Medium.ttf)
+}
+
 * {
-  font-family: Yekan;
+  font-family: vazir;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
