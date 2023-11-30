@@ -62,7 +62,7 @@ const AuthForm = () => {
               to={`?mode=${isLogin ? "signup" : "login"}`}
               className="dark"
             >
-              {isLogin ? "حساب جدیدی بسازید" : "ورود به حساب کاربری"}
+              {isLogin ? "حساب جدیدی بسازید" : "حسابی دارید؟ وارد شوید"}
             </CustomLink>
             <CustomButton className="dark" disabled={isSubmiting}>
               {isSubmiting ? "در حال ارسال" : isLogin ? "ورود" : "ارسال"}

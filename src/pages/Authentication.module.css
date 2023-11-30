@@ -29,6 +29,12 @@
     z-index: -1;
     animation: image 0.5s;
     animation-fill-mode: forwards;
+    display: none;
+
+  }
+
+  img.visiable-img{
+    display: block;
   }
 
   @keyframes image {
