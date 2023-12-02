@@ -24,7 +24,6 @@ const TradeForm = ({ className, activeForm, setActiveForm }) => {
   ];
   const [selectedOrderType, dispatchSelectedOrderType] =
     useReducer_DWindow(orderTypes);
-    // console.log(selectedOrderType)
 
   useEffect(()=>{
     // Setting selected order type in redux 

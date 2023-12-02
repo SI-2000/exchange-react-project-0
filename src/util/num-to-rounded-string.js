@@ -12,6 +12,5 @@ export default function numToRoundedString(numbers_object) {
       newObject[key] = numbers_object[key];
     }
   });
-  console.log(newObject);
   return newObject;
 }

@@ -1,3 +1,7 @@
+.MainFooterLinkBox{
+  /* width: fit-content; */
+}
+
 .btn {
   transition: 0.2s;
   cursor: pointer;
