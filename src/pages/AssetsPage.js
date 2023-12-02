@@ -80,7 +80,7 @@ const AssetsPage = () => {
         </div>
       </div>
 
-      <WhiteFrame>
+      <WhiteFrame className="home-page-table">
         <AssetsTable assetsInfo={assetsInfo} />
       </WhiteFrame>
     </div>

@@ -3,6 +3,9 @@ import React from "react";
 import classes from "./HomePage.module.css";
 import CurrenciesTable from "../component/CurrenciesTable";
 import WhiteFrame from "../ui/WhiteFrame";
+import Intro from "../component/home-page/Intro";
+import FeaturesSlides from "../component/home-page/FeaturesSlides";
+import Statistics from "../component/home-page/Statistics";
 
 const HomePage = () => {
   const currencies = [
@@ -14,11 +17,10 @@ const HomePage = () => {
 
   return (
     <div className={classes["home-page"]}>
-      <div className={classes["intro"]}>
-        <h1>ایزی بیت</h1>
-        <p>خرید و فروش سریع،امن و کم هزینه ارز های دیجیتال</p>
-      </div>
-      <WhiteFrame className="margin-top">
+      <Intro />
+      <FeaturesSlides />
+      <Statistics />
+      <WhiteFrame className="home-page-table">
         <CurrenciesTable currencies={currencies} />
       </WhiteFrame>
     </div>

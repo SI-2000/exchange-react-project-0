@@ -1,0 +1,15 @@
+.StatisticsCounter {
+  padding: 2rem 0;
+  width: 200px;
+  color: rgb(99, 99, 99);
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.counter-wrapper {
+  font-size: 40px;
+}
+
+.right-str{
+    color: rgb(145, 145, 145);
+}

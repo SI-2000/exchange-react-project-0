@@ -25,6 +25,18 @@
   display: none;
 }
 
+/* HomePage */
+
+.home-page-intro-link {
+  background-color: var(--gold-color);
+  width: fit-content;
+  margin: 1rem auto;
+  transition: 0.2;
+}
+.home-page-intro-link:hover {
+  background-color: var(--custom-gray);
+}
+
 @media screen and (min-width: 768px) {
   .currency-list-btn {
     background-color: var(--gold-color);

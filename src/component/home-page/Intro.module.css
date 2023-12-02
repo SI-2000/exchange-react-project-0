@@ -1,0 +1,23 @@
+.intro-wrapper {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem 0 3rem;
+}
+
+.intro-wrapper h1 {
+  color: var(--gold-color);
+  margin: 2rem 0;
+  font-size: 60px;
+}
+
+.intro-wrapper h3{
+}
+
+.intro-wrapper p {
+  font-size: 14px;
+  color: rgb(194, 194, 194);
+  margin:1rem 0;
+}

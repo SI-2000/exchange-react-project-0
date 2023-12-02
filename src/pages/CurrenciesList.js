@@ -38,7 +38,7 @@ const CurrenciesList = () => {
 
   return (
     <div className={classes["currencies-table"]}>
-      <WhiteFrame>
+      <WhiteFrame className="home-page-table">
         <CurrenciesTable currencies={currencies} />
       </WhiteFrame>
     </div>

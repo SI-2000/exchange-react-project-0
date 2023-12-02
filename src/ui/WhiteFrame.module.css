@@ -1,11 +1,20 @@
 .white-frame {
-  display:flex;
+  width: fit-content;
+  display: flex;
   justify-content: center;
   background-color: white;
   border-radius: 25px;
   color: black;
+  margin: 0 auto;
 }
 
-.margin-top {
+.stretchable {
+  width: unset;
+  max-width: 1024px;
+}
+
+.home-page-table {
+  width: unset;
+  max-width: 1024px;
   margin-top: -25px;
 }
