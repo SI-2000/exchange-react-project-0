@@ -1,19 +1,30 @@
 import { useEffect, useState } from "react";
 import persianNumsToEnglish from "../util/persianNums-to-english";
+import { useDispatch } from "react-redux";
 
-export default function useInput(initialValue, valueValidators) {
-  const [enterdValue, setEnterdValue] = useState(initialValue);
+export default function useInput(
+  valueValidators,
+  inputName,
+  //  initialInputValue = ""
+  enteredValue,
+  setEnteredValue
+) {
+  // const [enteredValue, setEnteredValue] = useState(initialInputValue);
   const [isTouched, setIsTouched] = useState(false);
+
+  console.log(enteredValue)
 
   let errorMessage = "";
 
   const valueIsValid = valueValidators.every((validator) => {
-    const enterdValueValidation = validator(persianNumsToEnglish(enterdValue));
-    const enterdValueIsValid = enterdValueValidation.isValid;
-    if (!enterdValueIsValid && isTouched) {
-      errorMessage = enterdValueValidation.errorMessage;
+    const enteredValueValidation = validator(
+      persianNumsToEnglish(enteredValue)
+    );
+    const enteredValueIsValid = enteredValueValidation.isValid;
+    if (!enteredValueIsValid && isTouched) {
+      errorMessage = enteredValueValidation.errorMessage;
     }
-    return enterdValueIsValid;
+    return enteredValueIsValid;
   });
 
   const inputHasError = !valueIsValid && isTouched;
@@ -24,9 +35,9 @@ export default function useInput(initialValue, valueValidators) {
       return validator(transformedValue).isValid;
     });
     if (newValueIsValid) {
-      setEnterdValue(transformedValue);
+      setEnteredValue(transformedValue, inputName);
     } else if (transformedValue === "") {
-      setEnterdValue(transformedValue);
+      setEnteredValue(transformedValue, inputName);
     }
   };
 
@@ -35,12 +46,12 @@ export default function useInput(initialValue, valueValidators) {
   };
 
   const reset = () => {
-    setEnterdValue("");
+    setEnteredValue("", inputName);
     setIsTouched(false);
   };
 
   return {
-    value: enterdValue,
+    value: enteredValue,
     isValid: valueIsValid,
     hasError: inputHasError,
     errorMessage,

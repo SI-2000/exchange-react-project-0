@@ -31,6 +31,10 @@ const tradingSlice = createSlice({
       state.order_type = action.payload;
     },
     updateInputs(state, action) {
+      const { formType, value } = action.payload;
+      state.tradeForm[formType] = value;
+    },
+    updateOneInput(state, action) {
       const { formType, inputName, value } = action.payload;
       state.tradeForm[formType][inputName] = value;
     },

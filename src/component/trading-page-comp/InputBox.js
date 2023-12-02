@@ -25,53 +25,20 @@ const validators = [
   },
 ];
 
-const InputBox = ({ value, name, unit, disabled = false, formType }) => {
+const InputBox = ({
+  isValid,
+  onChange,
+  onBlur,
+  value,
+  hasError,
+  name,
+  unit,
+  disabled = false,
+  formType,
+}) => {
   const uid = useSelector((state) => state.auth.uid);
-  const dispatch = useDispatch();
 
   const inputIsDisabled = !uid || disabled;
-
-  const inputValueState = useSelector(
-    (state) => state.tradingData.tradeForm[formType][name.en].value
-  );
-
-  const {
-    value: inputValue,
-    isValid: inputIsValid,
-    hasError,
-    inputHasError,
-    errorMessage,
-    valueChangeHandler: inputChangeHandler,
-    inputblurHandler,
-    isTouched,
-    reset: resetInput,
-  } = useInput(inputValueState, validators);
-
-  useEffect(() => {
-    dispatch(
-      tradingActions.updateInputs({
-        formType,
-        inputName: name.en,
-        value: {
-          value: inputValue,
-          isValid: inputIsValid,
-          isTouched: isTouched,
-        },
-      })
-    );
-  }, [inputValue, isTouched]);
-
-
-
-  useEffect(() => {
-    dispatch(
-      tradingActions.newErrorMessage({
-        formType,
-        updatedPart: name.en,
-        errMes: [errorMessage],
-      })
-    );
-  }, [errorMessage]);
 
   return (
     <div
@@ -84,14 +51,14 @@ const InputBox = ({ value, name, unit, disabled = false, formType }) => {
         {name.fa}
       </label>
       <input
-        value={value || inputValueState}
+        value={value}
         id={"tradeForm-" + name.en}
         name={name.en}
         type="text"
         autoComplete="off"
         disabled={inputIsDisabled}
-        onChange={inputChangeHandler}
-        onBlur={inputblurHandler}
+        onChange={onChange}
+        onBlur={onBlur}
       />
       <label className={classes["unit"]} htmlFor={"tradeForm" + name.en}>
         {unit.fa}

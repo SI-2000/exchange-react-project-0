@@ -1,5 +1,4 @@
 import React, { useEffect, useReducer, useState } from "react";
-
 import classes from "./TradeInputs.module.css";
 import InputBox from "./InputBox";
 import AVBLPercentage from "./AVBLPercentage";
@@ -21,37 +20,8 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
     (state) => state.tradingData.tradeForm.errorMessages[formType]
   );
 
-  const { tradeForm: inputsData, current_price } = useSelector(
-    (state) => state.tradingData
-  );
-
-  const formErrors = useTradeForm(
-    userAssets,
-    inputsData,
-    formType,
-    orderType,
-    current_price
-  );
-
-  useEffect(() => {
-    dispatch(
-      tradingActions.newErrorMessage({
-        formType,
-        updatedPart: "form",
-        errMes: formErrors.formErrMes,
-      })
-    );
-    dispatch(
-      tradingActions.formIsValid({ formType, isValid: formErrors.formIsValid })
-    );
-  }, [inputsData[formType], orderType]);
-
-  const formErrMes = useSelector(
-    (state) => state.tradingData.tradeForm.errorMessages.buy.form
-  );
-
-
-  const formIsValid = inputsData.formIsValid[formType];
+  const { formIsValid, stopInput, priceInput, amountInput, errorMessages } =
+    useTradeForm(formType, orderType);
 
   if (userAssets.isLoading) return <p>Loading...</p>;
   if (userAssets.isError) return <p>{JSON.stringify(userAssets.error)}</p>;
@@ -60,7 +30,6 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
     userAssets.data && uid ? roundTo(userAssets.data.tether, 4) : "-";
   const pairVal =
     userAssets.data && uid ? roundTo(userAssets.data.bitcoin, 4) || 0 : "-";
-
 
   return (
     <form
@@ -75,8 +44,14 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
           <span>{formType === "buy" ? "تتر" : "بیت کوین"}</span>
         </div>
       </div>
+
       {orderType.state === "STOP_LIMIT" && (
         <InputBox
+          value={stopInput.value}
+          isValid={true}
+          onChange={stopInput.valueChangeHandler}
+          onBlur={stopInput.inputblurHandler}
+          hasError={stopInput.hasError}
           name={{ en: "stop", fa: "حد ضرر" }}
           unit={{ en: "USDT", fa: "تتر" }}
           formType={formType}
@@ -84,7 +59,15 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
       )}
 
       <InputBox
-        value={orderType.state === "MARKET" ? "قیمت فعلی بازار" : null}
+        isValid={priceInput.isValid}
+        onChange={priceInput.valueChangeHandler}
+        onBlur={priceInput.inputblurHandler}
+        value={
+          orderType.state === "MARKET"
+            ? "قیمت فعلی بازار"
+            : priceInput.value
+        }
+        hasError={priceInput.hasError}
         name={{ en: "price", fa: "قیمت" }}
         unit={{ en: "USDT", fa: "تتر" }}
         disabled={orderType.state === "MARKET"}
@@ -92,13 +75,18 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
       />
 
       <InputBox
+        value={amountInput.value}
+        isValid={amountInput.isValid}
+        onChange={amountInput.valueChangeHandler}
+        onBlur={amountInput.inputblurHandler}
+        hasError={amountInput.hasError}
         name={{ en: "amount", fa: "مقدار" }}
         unit={{ en: "btc", fa: "بیت کوین" }}
         formType={formType}
       />
       <AVBLPercentage formType={formType} />
       <BuySellBtn formType={formType} disabled={!formIsValid} />
-      <TradeFormErrors errors={errState} />
+      <TradeFormErrors errors={errorMessages} />
     </form>
   );
 };

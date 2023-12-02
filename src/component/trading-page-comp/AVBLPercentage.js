@@ -13,27 +13,34 @@ const AVBLPercentage = ({ formType }) => {
   const pair = useSelector((state) => state.tradingData.tradeForm.pair);
   const dispatch = useDispatch();
 
-
   const buttonClickHandler = (event, percentage) => {
     event.preventDefault();
     if (dataIsAvailable) {
       if (formType === "buy") {
-        const newInputValue = (+assets.data.tether * percentage) / 100;
+        const newInputValue = +assets.data.tether * percentage;
         dispatch(
-          tradingActions.updateInputs({
+          tradingActions.updateOneInput({
             formType,
             inputName: "amount",
-            value: { value: newInputValue, isValid: true },
+            value: {
+              value: newInputValue.toString(),
+              isValid: true,
+              isToched: true,
+            },
           })
         );
       } else if (formType === "sell") {
-        const newInputValue = (+assets.data[pair] * percentage) / 100;
+        const newInputValue = +assets.data[pair] * percentage;
 
         dispatch(
-          tradingActions.updateInputs({
+          tradingActions.updateOneInput({
             formType,
             inputName: "amount",
-            value: { value: newInputValue, isValid: true },
+            value: {
+              value: newInputValue.toString(),
+              isValid: true,
+              isToched: true,
+            },
           })
         );
       }
@@ -44,7 +51,7 @@ const AVBLPercentage = ({ formType }) => {
     <div className={classes["percentage"]}>
       <button
         onClick={(e) => {
-          buttonClickHandler(e, 25);
+          buttonClickHandler(e, 0.25);
         }}
         className={classes["p25"]}
       >
@@ -52,7 +59,7 @@ const AVBLPercentage = ({ formType }) => {
       </button>
       <button
         onClick={(e) => {
-          buttonClickHandler(e, 50);
+          buttonClickHandler(e, 0.5);
         }}
         className={classes["p50"]}
       >
@@ -60,7 +67,7 @@ const AVBLPercentage = ({ formType }) => {
       </button>
       <button
         onClick={(e) => {
-          buttonClickHandler(e, 75);
+          buttonClickHandler(e, 0.75);
         }}
         className={classes["p75"]}
       >
@@ -68,7 +75,7 @@ const AVBLPercentage = ({ formType }) => {
       </button>
       <button
         onClick={(e) => {
-          buttonClickHandler(e, 100);
+          buttonClickHandler(e, 1);
         }}
         className={classes["p100"]}
       >
