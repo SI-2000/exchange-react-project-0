@@ -12,8 +12,6 @@ export default function useInput(
   // const [enteredValue, setEnteredValue] = useState(initialInputValue);
   const [isTouched, setIsTouched] = useState(false);
 
-  console.log(enteredValue)
-
   let errorMessage = "";
 
   const valueIsValid = valueValidators.every((validator) => {

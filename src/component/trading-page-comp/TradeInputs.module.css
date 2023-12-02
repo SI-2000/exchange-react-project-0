@@ -12,17 +12,17 @@
 }
 
 .avbl .title {
-  font-size: 12px;
+  font-size: 10px;
   color: var(--custom-gray);
 }
 
 .avbl .value {
-  font-size: 14px;
+  font-size: 12px;
   margin: 0 1rem;
 }
 .avbl .value span {
   margin: 0 0.2rem;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 @media screen and (min-width:1024px) {

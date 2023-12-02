@@ -26,10 +26,10 @@ const validators = [
 ];
 
 const InputBox = ({
+  value,
   isValid,
   onChange,
   onBlur,
-  value,
   hasError,
   name,
   unit,

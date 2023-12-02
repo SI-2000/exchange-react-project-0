@@ -13,23 +13,15 @@ import { roundTo } from "../../util/round-number";
 
 const TradeInputs = ({ formType, orderType, activeForm }) => {
   const uid = useSelector((state) => state.auth.uid);
-  const dispatch = useDispatch();
   const userAssets = useGetAssets();
-
-  const errState = useSelector(
-    (state) => state.tradingData.tradeForm.errorMessages[formType]
-  );
 
   const { formIsValid, stopInput, priceInput, amountInput, errorMessages } =
     useTradeForm(formType, orderType);
 
-  if (userAssets.isLoading) return <p>Loading...</p>;
-  if (userAssets.isError) return <p>{JSON.stringify(userAssets.error)}</p>;
-
   const tetherVal =
-    userAssets.data && uid ? roundTo(userAssets.data.tether, 4) : "-";
+    userAssets.data && uid ? roundTo(userAssets.data.tether, 2) : "-";
   const pairVal =
-    userAssets.data && uid ? roundTo(userAssets.data.bitcoin, 4) || 0 : "-";
+    userAssets.data && uid ? roundTo(userAssets.data.bitcoin, 2) || 0 : "-";
 
   return (
     <form
@@ -55,22 +47,20 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
           name={{ en: "stop", fa: "حد ضرر" }}
           unit={{ en: "USDT", fa: "تتر" }}
           formType={formType}
+          disabled={!uid}
         />
       )}
 
       <InputBox
-        isValid={priceInput.isValid}
         onChange={priceInput.valueChangeHandler}
         onBlur={priceInput.inputblurHandler}
         value={
-          orderType.state === "MARKET"
-            ? "قیمت فعلی بازار"
-            : priceInput.value
+          orderType.state === "MARKET" ? "قیمت فعلی بازار" : priceInput.value
         }
         hasError={priceInput.hasError}
         name={{ en: "price", fa: "قیمت" }}
         unit={{ en: "USDT", fa: "تتر" }}
-        disabled={orderType.state === "MARKET"}
+        disabled={orderType.state === "MARKET" || !uid}
         formType={formType}
       />
 
@@ -83,6 +73,7 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
         name={{ en: "amount", fa: "مقدار" }}
         unit={{ en: "btc", fa: "بیت کوین" }}
         formType={formType}
+        disabled={!uid}
       />
       <AVBLPercentage formType={formType} />
       <BuySellBtn formType={formType} disabled={!formIsValid} />
