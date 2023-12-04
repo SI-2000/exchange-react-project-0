@@ -1,0 +1,40 @@
+.FeaturesSlides {
+  /* background-color: red; */
+  height: 100rem;
+  direction: ltr;
+}
+
+.FeaturesSlides .slides-container {
+  display: flex;
+  padding: 0 2rem;
+}
+
+.FeaturesSlides .swiper {
+  height: 8rem;
+  /* width: 80%; */
+}
+
+.swiper-slide {
+  background-color: rgb(75, 75, 75);
+  border-radius: 5px;
+  user-select: none;
+  height: 6rem !important;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 6rem;
+}
+
+.swiper-button-prev svg,
+.swiper-button-next svg {
+  width: 2rem;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: var(--gold-color);
+  opacity: 1;
+}

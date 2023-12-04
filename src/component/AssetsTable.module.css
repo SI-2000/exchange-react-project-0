@@ -16,10 +16,10 @@
   padding: 0.5rem 0.5rem;
 }
 
-.assets-table tbody tr:hover {
+/* .assets-table tbody tr:hover {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
   border-radius: 10px;
-}
+} */
 
 .assets-table th {
   font-size: 12px;

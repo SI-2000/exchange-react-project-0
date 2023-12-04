@@ -17,11 +17,6 @@
   transition: box-shadow 0.2s;
 }
 
-.currencies-table tbody tr:hover {
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
-  border-radius: 10px;
-}
-
 .currencies-table th {
   font-size: 12px;
 }
