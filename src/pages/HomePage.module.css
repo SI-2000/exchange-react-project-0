@@ -1,4 +1,19 @@
+.HomePage {
+  background-color: rgb(48, 48, 48);
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(../files/images/homepageBG-bitcoin1.jfif);
+  background-position:center;
+  background-attachment: fixed;
+  background-repeat: repeat-x;
+
+}
+
 .home-page {
+  position: relative;
+  text-align: center;
+}
+
+.home-page > div {
   background-color: rgb(48, 48, 48);
 }
 

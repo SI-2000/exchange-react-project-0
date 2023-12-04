@@ -24,7 +24,7 @@ const AuthForm = () => {
 
   return (
     <div className={classes["form-container"]}>
-      <WhiteFrame>
+      <WhiteFrame className="auth-form">
         <Form method="post">
           <h1 className={classes["form-caption"]}>
             {isLogin ? "ورود" : "ثبت نام"}

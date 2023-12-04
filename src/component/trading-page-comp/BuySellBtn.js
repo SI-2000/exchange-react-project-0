@@ -55,7 +55,7 @@ const BuySellBtn = ({ formType, disabled }) => {
       className={`${classes["buy-sell-btn"]} ${classes[formType]}`}
       disabled={disabled}
     >
-      {formType === "خرید" ? "خرید" : "فروش"}
+      {formType === "buy" ? "خرید" : "فروش"}
     </button>
   );
 };

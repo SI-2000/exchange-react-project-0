@@ -1,7 +1,15 @@
 .FeaturesSlides {
   /* background-color: red; */
-  height: 100rem;
+  /* height: 100rem; */
   direction: ltr;
+  padding: 2rem 0;
+}
+
+
+
+.FeaturesSlides h1 {
+  font-size: 20px;
+  margin: 2rem 0;
 }
 
 .FeaturesSlides .slides-container {
@@ -10,8 +18,7 @@
 }
 
 .FeaturesSlides .swiper {
-  height: 8rem;
-  /* width: 80%; */
+  height: 9rem;
 }
 
 .swiper-slide {
@@ -27,11 +34,22 @@
   align-items: center;
   position: relative;
   height: 6rem;
+  cursor: pointer;
 }
 
 .swiper-button-prev svg,
 .swiper-button-next svg {
   width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  margin: 0 0.5rem;
+  transition: 0.3s;
+}
+
+.swiper-button-prev svg:hover,
+.swiper-button-next svg:hover {
+  background-color: var(--custom-gray);
+  fill: rgb(70, 70, 70);
 }
 
 .swiper-pagination-bullet.swiper-pagination-bullet-active {

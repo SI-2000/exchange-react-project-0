@@ -13,8 +13,12 @@
   max-width: 1024px;
 }
 
+.auth-form {
+  padding: 0 70px;
+}
+
 .home-page-table {
   width: unset;
   max-width: 1024px;
-  margin-top: -25px;
+  margin: 0 auto;
 }

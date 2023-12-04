@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: vazir;
-  src: url(../src/files/fonts/vazir/Vazirmatn-Medium.ttf)
+  src: url(../src/files/fonts/vazir/Vazirmatn-Medium.ttf);
 }
 
 * {
@@ -106,4 +106,8 @@ dd {
 }
 .negative {
   color: var(--exchange-red);
+}
+
+.fullscreen {
+  min-height: calc(100vh - 56px);
 }

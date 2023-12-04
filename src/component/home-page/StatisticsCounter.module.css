@@ -1,5 +1,6 @@
 .StatisticsCounter {
   padding: 2rem 0;
+  margin: 0 auto;
   width: 200px;
   color: rgb(99, 99, 99);
   flex: 1 1 auto;

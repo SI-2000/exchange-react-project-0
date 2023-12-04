@@ -1,0 +1,15 @@
+.HomePageTable {
+  padding: 0rem 0;
+}
+
+.table-capiton {
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  color: rgb(49, 49, 49);
+  padding: 2rem 0;
+}
+
+.container {
+  width: 100%;
+}

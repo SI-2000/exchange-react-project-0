@@ -6,7 +6,7 @@ import { useQuery } from "react-query";
 import { getCurrenciesInfo } from "../util/get-currencies";
 import { current } from "@reduxjs/toolkit";
 
-const CurrenciesTable = ({ currencies }) => {
+const CurrenciesTable = () => {
   const currenciesQuery = useQuery({
     queryKey: "currencies",
     queryFn: getCurrenciesInfo,

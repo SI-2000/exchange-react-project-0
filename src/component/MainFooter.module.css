@@ -2,7 +2,7 @@
   /* background-color: var(--body-bg); */
   color: white;
   padding: 1rem;
-  margin-top: 5rem;
+  margin-top: 1rem;
 }
 
 .links-sec {
@@ -71,10 +71,15 @@
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
   }
+
+  .social-media h3 {
+    margin: 1rem 4rem 1rem;
+  }
 }
 
 @media screen and (min-width: 1024px) {
   .links-sec {
     grid-template-columns: repeat(4, 1fr);
+    padding: 3rem;
   }
 }
