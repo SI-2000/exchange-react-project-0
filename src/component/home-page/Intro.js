@@ -31,7 +31,7 @@ const Intro = ({ queryData }) => {
             market_cap_change_percentage_24h: change,
           } = currency;
           return (
-            <p key={index} className={`fade-in--up`}>
+            <div key={index} className={`fade-in--up`}>
               <div className={`${classes["id"]}`}>{id.toUpperCase()}</div>
               <div
                 className={`${classes["change"]} ${
@@ -42,7 +42,7 @@ const Intro = ({ queryData }) => {
                 {roundTo(change, 2)}
               </div>
               <div className={`${classes["price"]}`}>{roundTo(price, 2)}</div>
-            </p>
+            </div>
           );
         })}
       </div>

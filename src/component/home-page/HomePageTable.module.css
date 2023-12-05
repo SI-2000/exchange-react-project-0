@@ -1,5 +1,6 @@
 .HomePageTable {
-  padding: 0rem 0;
+  background-color: var(--body-bg) !important;
+  padding: 5rem 0;
 }
 
 .table-capiton {

@@ -30,7 +30,7 @@
   margin: 0.5rem 0;
 }
 
-.right-side p {
+.right-side > div {
   font-size: 14px;
   color: rgb(194, 194, 194);
   margin-bottom: 1rem;
@@ -41,8 +41,8 @@
   align-self: flex-end;
 }
 
-.left-side p {
-  background-color: rgba(255, 255, 255, 0.1);
+.left-side > div {
+  background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   border-radius: 5px;
   padding: 0.5rem 1rem;
@@ -54,24 +54,24 @@
   display: flex;
 }
 
-.left-side p > div {
+.left-side > div > div {
   display: flex;
   justify-content: flex-start;
   margin: 0 1rem;
 }
 
-.left-side p > div:last-child {
+.left-side > div > div:last-child {
   justify-content: flex-end;
 }
 
-.left-side p .id {
+.left-side > div .id {
   width: 80px;
 }
-.left-side p .change {
+.left-side > div .change {
   width: 40px;
 }
 
-.left-side p .price {
+.left-side > div .price {
   width: 70px;
 }
 
@@ -79,7 +79,6 @@
   .Intro {
     justify-content: space-between;
     flex-wrap: nowrap;
-
   }
   .right-side {
     align-items: flex-start;
