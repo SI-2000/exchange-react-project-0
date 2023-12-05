@@ -15,7 +15,7 @@ const Trades = ({ data, className, isLoading }) => {
 
   if (isLoading) {
     return (
-      <div className={`${classes["Trades"]} ${classes[className]}`}>
+      <div style={{height:"320px"}} className={`${classes["Trades"]} ${classes[className]}`}>
         <SkeletonLoading />
       </div>
     );

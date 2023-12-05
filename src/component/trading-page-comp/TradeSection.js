@@ -12,7 +12,7 @@ const TradeSection = ({ isLoading }) => {
 
   if (isLoading) {
     return (
-      <div className={`${classes["TradeSection"]}`}>
+      <div style={{ height: "320px" }} className={`${classes["TradeSection"]}`}>
         <SkeletonLoading />
       </div>
     );
