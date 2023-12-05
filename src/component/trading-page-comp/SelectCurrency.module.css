@@ -27,5 +27,7 @@
     grid-row: 2/4;
     border-left: 1px solid var(--border-light-gray);
     border-bottom: 1px solid var(--border-light-gray);
+    max-height: unset;
+    height: 100%;
   }
 }

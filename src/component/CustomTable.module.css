@@ -71,7 +71,8 @@
 
 /* Sell order book */
 
-.sell-order-book {
+.sell-order-book,
+.buy-order-book {
   direction: ltr;
 }
 
