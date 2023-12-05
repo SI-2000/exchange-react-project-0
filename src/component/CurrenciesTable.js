@@ -4,18 +4,10 @@ import CurrenciesTItem from "./CurrenciesTItem";
 import classes from "./CurrenciesTable.module.css";
 import { useQuery } from "react-query";
 import { getCurrenciesInfo } from "../util/get-currencies";
-import { current } from "@reduxjs/toolkit";
 
-const CurrenciesTable = () => {
-  const currenciesQuery = useQuery({
-    queryKey: "currencies",
-    queryFn: getCurrenciesInfo,
-    // staleTime:Infinity,
-  });
-
-  if (currenciesQuery.isLoading) return <p>loading...</p>;
-  if (currenciesQuery.isError)
-    return <p>{JSON.stringify(currenciesQuery.error)}</p>;
+const CurrenciesTable = ({ queryData }) => {
+  if (queryData.isLoading) return <p>loading...</p>;
+  if (queryData.isError) return <p>{JSON.stringify(queryData.error)}</p>;
 
   return (
     <table className={`${classes["currencies-table"]}`}>
@@ -29,7 +21,7 @@ const CurrenciesTable = () => {
         </tr>
       </thead>
       <tbody>
-        {currenciesQuery.data.map((currencyInfo, index) => {
+        {queryData.data.map((currencyInfo, index) => {
           return <CurrenciesTItem key={index} currencyInfo={currencyInfo} />;
         })}
       </tbody>

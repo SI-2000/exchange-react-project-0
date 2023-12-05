@@ -4,7 +4,7 @@ import classes from "./HomePageTable.module.css";
 import WhiteFrame from "../../ui/WhiteFrame";
 import CurrenciesTable from "../CurrenciesTable";
 
-const HomePageTable = () => {
+const HomePageTable = ({ queryData }) => {
   return (
     <div className={`${classes["HomePageTable"]}`}>
       <WhiteFrame className="home-page-table">
@@ -12,7 +12,7 @@ const HomePageTable = () => {
           <h1 className={`${classes["table-capiton"]}`}>
             پر طرفدارترین ارز های دیجیتال را معامله کنید
           </h1>
-          <CurrenciesTable />
+          <CurrenciesTable queryData={queryData} />
         </div>
       </WhiteFrame>
     </div>

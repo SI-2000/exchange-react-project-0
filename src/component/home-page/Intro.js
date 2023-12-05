@@ -2,17 +2,49 @@ import React from "react";
 
 import classes from "./Intro.module.css";
 import CustomLink from "../CustomLink";
+import { roundTo } from "../../util/round-number";
 
-const Intro = () => {
+const Intro = ({ queryData }) => {
+  if (queryData.isLoading) return <p>loading...</p>;
+  if (queryData.isError) return <p>{JSON.stringify(queryData.error)}</p>;
+
+  const currencies = queryData.data.slice(0, 3);
+
   return (
     <div className={`${classes["Intro"]} fullscreen`}>
-      <div className={`${classes["intro-wrapper"]}`}>
-        <h1>ایزی بیت</h1>
+      <div className={`${classes["right-side"]}`}>
+        <p className={`${classes["title"]}`}>
+          در <span>ایزی‌بیت</span> به حرفه‌ای ترین و در عین حال ساده ترین ابزار
+          های معامله در بازار ارز‌های دیجیتال دسترسی خواهید داشت{" "}
+        </p>
         <h3>خرید و فروش سریع، امن و کم هزینه ارز‌های دیجیتال</h3>
         <p>به راحتی به بازار حرفه ای دسترسی داشته باشید</p>
         <CustomLink to="/coins/bitcoin" className="home-page-intro-link">
           به متنوع‌ترین بازار ارز‌های دیجیتال خوش آمده‌اید
         </CustomLink>
+      </div>
+      <div className={`${classes["left-side"]}`}>
+        {currencies.map((currency, index) => {
+          const {
+            id,
+            current_price: price,
+            market_cap_change_percentage_24h: change,
+          } = currency;
+          return (
+            <p key={index} className={`fade-in--up`}>
+              <div className={`${classes["id"]}`}>{id.toUpperCase()}</div>
+              <div
+                className={`${classes["change"]} ${
+                  change >= 0 ? "positive" : "negative"
+                }`}
+              >
+                {change >= 0 && "+"}
+                {roundTo(change, 2)}
+              </div>
+              <div className={`${classes["price"]}`}>{roundTo(price, 2)}</div>
+            </p>
+          );
+        })}
       </div>
     </div>
   );
