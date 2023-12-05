@@ -8,7 +8,7 @@ import useElementVisibility from "../../hooks/use-element-visibility";
 const Statistics = () => {
   const ref = useRef();
 
-  const { isSeen } = useElementVisibility(ref);
+  const { seen } = useElementVisibility(ref);
 
   return (
     <div className={`${classes["Statistics"]}`} ref={ref}>
@@ -18,7 +18,7 @@ const Statistics = () => {
             اعتبار ما کاربران ما هستند
           </h1>
           <div className={`${classes["background-holder"]}`}>
-            {isSeen && (
+            {seen && (
               <div className={`${classes["counter-container"]} fade-in--up`}>
                 <StatisticsCounter
                   className="markets"

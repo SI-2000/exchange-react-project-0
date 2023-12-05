@@ -1,24 +1,26 @@
 import { useEffect, useState } from "react";
 
 const defaultConfig = {
-  percentFromWindowTop: 1,
-  selectedLevel: 0,
+  visibilityThreshold: 1,
+  depthLevel: 0,
 };
 
-const useElementVisibility = (ref, config = defaultConfig) => {
+const useVisibilityStatus = (elementRef, config = defaultConfig) => {
   const [distanceFromTop, setDistanceFromTop] = useState(
     window.innerHeight * 2
   );
-  const [isSeen, setIsSeen] = useState(false);
-  const [isInView, setIsInView] = useState(false);
+  const [seen, setSeen] = useState(false);
+  const [inView, setInView] = useState(false);
 
-  const elementHeight = ref.current ? ref.current.scrollHeight : 0;
+  const elementHeight = elementRef.current
+    ? elementRef.current.scrollHeight
+    : 0;
 
   useEffect(() => {
     const scrollHandler = () => {
       setDistanceFromTop(
-        ref.current.getBoundingClientRect().top +
-          elementHeight * config.selectedLevel
+        elementRef.current.getBoundingClientRect().top +
+          elementHeight * config.depthLevel
       );
     };
     window.addEventListener("scroll", scrollHandler);
@@ -28,18 +30,18 @@ const useElementVisibility = (ref, config = defaultConfig) => {
   }, []);
 
   useEffect(() => {
-    setIsSeen((prev) => {
+    setSeen((prev) => {
       return !prev
-        ? distanceFromTop <= window.innerHeight * config.percentFromWindowTop
+        ? distanceFromTop <= window.innerHeight * config.visibilityThreshold
         : true;
     });
-    setIsInView(
-      ref.current.getBoundingClientRect().top - elementHeight <= 0 &&
-        ref.current.getBoundingClientRect().bottom >= 0
+    setInView(
+      elementRef.current.getBoundingClientRect().top - elementHeight <= 0 &&
+        elementRef.current.getBoundingClientRect().bottom >= 0
     );
   }, [distanceFromTop]);
 
-  return { isSeen, isInView };
+  return { seen, inView };
 };
 
-export default useElementVisibility;
+export default useVisibilityStatus;
