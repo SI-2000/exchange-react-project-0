@@ -1,44 +1,41 @@
-import { useEffect, useState } from "react";
-import persianNumsToEnglish from "../util/persianNums-to-english";
-import { useDispatch } from "react-redux";
+import { useState } from "react";
 
 export default function useInput({
-  valueValidators,
+  valueValidator,
+  valueModifier = (val) => {
+    return val;
+  },
   initialInputValue = "",
   useInternalValueState = true,
   externalState: { value, valueUpdateFn },
 }) {
-
   const [enteredValue, setEnteredValue] = useState(initialInputValue);
   const [isTouched, setIsTouched] = useState(false);
 
-  const inputValue = useInternalValueState ? enteredValue :value;
+  const inputValue = useInternalValueState ? enteredValue : value;
   const inputValueUpdater = useInternalValueState
     ? setEnteredValue
-    :valueUpdateFn;
+    : valueUpdateFn;
 
-  let errorMessage = "";
-
-  const valueIsValid = valueValidators.every((validator) => {
-    const enteredValueValidation = validator(persianNumsToEnglish(inputValue));
-    const enteredValueIsValid = enteredValueValidation.isValid;
-    if (!enteredValueIsValid && isTouched) {
-      errorMessage = enteredValueValidation.errorMessage;
-    }
-    return enteredValueIsValid;
-  });
+  const modifiedValue = valueModifier(inputValue);
+  const valueIsValid = valueValidator(modifiedValue).isValid;
+  if (!valueIsValid && isTouched) {
+    console.log(valueValidator(modifiedValue).errorMessage);
+  }
+  const errorMessage =
+    !valueIsValid && isTouched
+      ? valueValidator(modifiedValue).errorMessage
+      : "";
 
   const inputHasError = !valueIsValid && isTouched;
 
   const valueChangeHandler = (event) => {
-    const transformedValue = persianNumsToEnglish(event.target.value);
-    const newValueIsValid = valueValidators.every((validator) => {
-      return validator(transformedValue).isValid;
-    });
+    const modifiedValue = valueModifier(event.target.value);
+    const newValueIsValid = valueValidator(modifiedValue).isValid;
     if (newValueIsValid) {
-      inputValueUpdater(transformedValue);
-    } else if (transformedValue === "") {
-      inputValueUpdater(transformedValue);
+      inputValueUpdater(modifiedValue);
+    } else if (modifiedValue === "") {
+      inputValueUpdater(modifiedValue);
     }
   };
 

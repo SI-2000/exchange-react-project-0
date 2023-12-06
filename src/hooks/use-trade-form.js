@@ -2,27 +2,41 @@ import { useDispatch, useSelector } from "react-redux";
 import { tradingActions } from "../store/trading-data";
 import useGetAssets from "./use-get-assets";
 import useInput from "./use-input";
+import persianNumsToEnglish from "../util/persianNums-to-english";
 
-const validators = [
-  (val) => {
-    var regex = /^[0-9]+\.?[0-9]*$/;
-    let isValid = regex.test(val);
+const validator = (val) => {
+  let regex = /^[0-9]+\.?[0-9]*$/;
+  const condition1 = regex.test(val);
 
-    const errorMessage = isValid ? "" : "لطفا مقدار معتبر وارد کنید.";
-    return {
-      isValid,
-      errorMessage,
-    };
-  },
-  (val) => {
-    const errorMessage =
-      "مقدار مشخص شده برای معامله بیشتر از موجودی حساب شما میباشد.";
-    return {
-      isValid: true,
-      errorMessage,
-    };
-  },
-];
+  const isValid = condition1;
+  const errorMessage = isValid ? "543543" : "لطفا مقدار معتبر وارد کنید.";
+
+  return {
+    isValid,
+    errorMessage,
+  };
+};
+
+// const validators = [
+//   (val) => {
+//     var regex = /^[0-9]+\.?[0-9]*$/;
+//     let isValid = regex.test(val);
+
+//     const errorMessage = isValid ? "" : "لطفا مقدار معتبر وارد کنید.";
+//     return {
+//       isValid,
+//       errorMessage,
+//     };
+//   },
+//   (val) => {
+//     const errorMessage =
+//       "مقدار مشخص شده برای معامله بیشتر از موجودی حساب شما میباشد.";
+//     return {
+//       isValid: true,
+//       errorMessage,
+//     };
+//   },
+// ];
 
 export function useTradeForm(formType, orderType) {
   const uid = useSelector((state) => state.auth.uid);
@@ -50,7 +64,8 @@ export function useTradeForm(formType, orderType) {
   };
 
   const stopInput = useInput({
-    valueValidators: validators,
+    valueValidator: validator,
+    valueModifier: persianNumsToEnglish,
     useInternalValueState: false,
     externalState: {
       value: inputsValue.stop.value,
@@ -61,7 +76,8 @@ export function useTradeForm(formType, orderType) {
   });
 
   const priceInput = useInput({
-    valueValidators: validators,
+    valueValidator: validator,
+    valueModifier: persianNumsToEnglish,
     useInternalValueState: false,
     externalState: {
       value: inputsValue.price.value,
@@ -72,7 +88,8 @@ export function useTradeForm(formType, orderType) {
   });
 
   const amountInput = useInput({
-    valueValidators: validators,
+    valueValidator: validator,
+    valueModifier: persianNumsToEnglish,
     useInternalValueState: false,
     externalState: {
       value: inputsValue.amount.value,
