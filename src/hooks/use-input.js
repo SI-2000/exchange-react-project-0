@@ -3,19 +3,24 @@ import { useState } from "react";
 export default function useInput({
   valueValidator,
   valueModifier = (val) => {
+    /* If it is needed to change the input value 
+    (such as converting Persian numbers to English in numerical inputs) */
     return val;
   },
   initialInputValue = "",
-  useInternalValueState = true,
-  externalState: { value, valueUpdateFn },
+
+  /* If the input value is managed by external state management,
+  these two lines are used */
+  isUsingInternalState = true,
+  externalState: { extValue, extValueUpdateFn },
 }) {
   const [enteredValue, setEnteredValue] = useState(initialInputValue);
   const [isTouched, setIsTouched] = useState(false);
 
-  const inputValue = useInternalValueState ? enteredValue : value;
-  const inputValueUpdater = useInternalValueState
+  const inputValue = isUsingInternalState ? enteredValue : extValue;
+  const inputValueUpdater = isUsingInternalState
     ? setEnteredValue
-    : valueUpdateFn;
+    : extValueUpdateFn;
 
   const modifiedValue = valueModifier(inputValue);
   const valueIsValid = valueValidator(modifiedValue).isValid;

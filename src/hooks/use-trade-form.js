@@ -66,10 +66,10 @@ export function useTradeForm(formType, orderType) {
   const stopInput = useInput({
     valueValidator: validator,
     valueModifier: persianNumsToEnglish,
-    useInternalValueState: false,
+    isUsingInternalState: false,
     externalState: {
-      value: inputsValue.stop.value,
-      valueUpdateFn: (value) => {
+      extValue: inputsValue.stop.value,
+      extValueUpdateFn: (value) => {
         changeInputsValue(value, "stop");
       },
     },
@@ -78,10 +78,10 @@ export function useTradeForm(formType, orderType) {
   const priceInput = useInput({
     valueValidator: validator,
     valueModifier: persianNumsToEnglish,
-    useInternalValueState: false,
+    isUsingInternalState: false,
     externalState: {
-      value: inputsValue.price.value,
-      valueUpdateFn: (value) => {
+      extValue: inputsValue.price.value,
+      extValueUpdateFn: (value) => {
         changeInputsValue(value, "price");
       },
     },
@@ -90,10 +90,10 @@ export function useTradeForm(formType, orderType) {
   const amountInput = useInput({
     valueValidator: validator,
     valueModifier: persianNumsToEnglish,
-    useInternalValueState: false,
+    isUsingInternalState: false,
     externalState: {
-      value: inputsValue.amount.value,
-      valueUpdateFn: (value) => {
+      extValue: inputsValue.amount.value,
+      extValueUpdateFn: (value) => {
         changeInputsValue(value, "amount");
       },
     },
