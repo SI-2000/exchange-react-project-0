@@ -1,41 +1,46 @@
-import { useEffect, useState } from "react";
-import persianNumsToEnglish from "../util/persianNums-to-english";
-import { useDispatch } from "react-redux";
+import { useState } from "react";
 
-export default function useInput(
-  valueValidators,
-  inputName,
-  //  initialInputValue = ""
-  enteredValue,
-  setEnteredValue
-) {
-  // const [enteredValue, setEnteredValue] = useState(initialInputValue);
+export default function useInput({
+  valueValidator,
+  valueModifier = (val) => {
+    /* If it is needed to change the input value 
+    (such as converting Persian numbers to English in numerical inputs) */
+    return val;
+  },
+  initialInputValue = "",
+
+  /* If the input value is managed by external state management,
+  these two lines are used */
+  isUsingInternalState = true,
+  externalState: { extValue, extValueUpdateFn },
+}) {
+  const [enteredValue, setEnteredValue] = useState(initialInputValue);
   const [isTouched, setIsTouched] = useState(false);
 
-  let errorMessage = "";
+  const inputValue = isUsingInternalState ? enteredValue : extValue;
+  const inputValueUpdater = isUsingInternalState
+    ? setEnteredValue
+    : extValueUpdateFn;
 
-  const valueIsValid = valueValidators.every((validator) => {
-    const enteredValueValidation = validator(
-      persianNumsToEnglish(enteredValue)
-    );
-    const enteredValueIsValid = enteredValueValidation.isValid;
-    if (!enteredValueIsValid && isTouched) {
-      errorMessage = enteredValueValidation.errorMessage;
-    }
-    return enteredValueIsValid;
-  });
+  const modifiedValue = valueModifier(inputValue);
+  const valueIsValid = valueValidator(modifiedValue).isValid;
+  if (!valueIsValid && isTouched) {
+    console.log(valueValidator(modifiedValue).errorMessage);
+  }
+  const errorMessage =
+    !valueIsValid && isTouched
+      ? valueValidator(modifiedValue).errorMessage
+      : "";
 
   const inputHasError = !valueIsValid && isTouched;
 
   const valueChangeHandler = (event) => {
-    const transformedValue = persianNumsToEnglish(event.target.value);
-    const newValueIsValid = valueValidators.every((validator) => {
-      return validator(transformedValue).isValid;
-    });
+    const modifiedValue = valueModifier(event.target.value);
+    const newValueIsValid = valueValidator(modifiedValue).isValid;
     if (newValueIsValid) {
-      setEnteredValue(transformedValue, inputName);
-    } else if (transformedValue === "") {
-      setEnteredValue(transformedValue, inputName);
+      inputValueUpdater(modifiedValue);
+    } else if (modifiedValue === "") {
+      inputValueUpdater(modifiedValue);
     }
   };
 
@@ -44,12 +49,12 @@ export default function useInput(
   };
 
   const reset = () => {
-    setEnteredValue("", inputName);
+    inputValueUpdater("");
     setIsTouched(false);
   };
 
   return {
-    value: enteredValue,
+    value: inputValue,
     isValid: valueIsValid,
     hasError: inputHasError,
     errorMessage,

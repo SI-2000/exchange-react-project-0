@@ -2,28 +2,41 @@ import { useDispatch, useSelector } from "react-redux";
 import { tradingActions } from "../store/trading-data";
 import useGetAssets from "./use-get-assets";
 import useInput from "./use-input";
-import { useEffect } from "react";
+import persianNumsToEnglish from "../util/persianNums-to-english";
 
-const validators = [
-  (val) => {
-    var regex = /^[0-9]+\.?[0-9]*$/;
-    let isValid = regex.test(val);
+const validator = (val) => {
+  let regex = /^[0-9]+\.?[0-9]*$/;
+  const condition1 = regex.test(val);
 
-    const errorMessage = isValid ? "" : "لطفا مقدار معتبر وارد کنید.";
-    return {
-      isValid,
-      errorMessage,
-    };
-  },
-  (val) => {
-    const errorMessage =
-      "مقدار مشخص شده برای معامله بیشتر از موجودی حساب شما میباشد.";
-    return {
-      isValid: true,
-      errorMessage,
-    };
-  },
-];
+  const isValid = condition1;
+  const errorMessage = isValid ? "543543" : "لطفا مقدار معتبر وارد کنید.";
+
+  return {
+    isValid,
+    errorMessage,
+  };
+};
+
+// const validators = [
+//   (val) => {
+//     var regex = /^[0-9]+\.?[0-9]*$/;
+//     let isValid = regex.test(val);
+
+//     const errorMessage = isValid ? "" : "لطفا مقدار معتبر وارد کنید.";
+//     return {
+//       isValid,
+//       errorMessage,
+//     };
+//   },
+//   (val) => {
+//     const errorMessage =
+//       "مقدار مشخص شده برای معامله بیشتر از موجودی حساب شما میباشد.";
+//     return {
+//       isValid: true,
+//       errorMessage,
+//     };
+//   },
+// ];
 
 export function useTradeForm(formType, orderType) {
   const uid = useSelector((state) => state.auth.uid);
@@ -35,6 +48,7 @@ export function useTradeForm(formType, orderType) {
   );
 
   const inputsValue = inputsData[formType];
+
   const changeInputsValue = (value, inputName) => {
     dispatch(
       tradingActions.updateOneInput({
@@ -49,28 +63,41 @@ export function useTradeForm(formType, orderType) {
     );
   };
 
-  // const stopInput = useInput(validators, inputsData[formType].stop.value);
-  // const priceInput = useInput(validators, inputsData[formType].price.value);
-  // const amountInput = useInput(validators, inputsData[formType].amount.value);
+  const stopInput = useInput({
+    valueValidator: validator,
+    valueModifier: persianNumsToEnglish,
+    isUsingInternalState: false,
+    externalState: {
+      extValue: inputsValue.stop.value,
+      extValueUpdateFn: (value) => {
+        changeInputsValue(value, "stop");
+      },
+    },
+  });
 
-  const stopInput = useInput(
-    validators,
-    "stop",
-    inputsValue.stop.value,
-    changeInputsValue
-  );
-  const priceInput = useInput(
-    validators,
-    "price",
-    inputsValue.price.value,
-    changeInputsValue
-  );
-  const amountInput = useInput(
-    validators,
-    "amount",
-    inputsValue.amount.value,
-    changeInputsValue
-  );
+  const priceInput = useInput({
+    valueValidator: validator,
+    valueModifier: persianNumsToEnglish,
+    isUsingInternalState: false,
+    externalState: {
+      extValue: inputsValue.price.value,
+      extValueUpdateFn: (value) => {
+        changeInputsValue(value, "price");
+      },
+    },
+  });
+
+  const amountInput = useInput({
+    valueValidator: validator,
+    valueModifier: persianNumsToEnglish,
+    isUsingInternalState: false,
+    externalState: {
+      extValue: inputsValue.amount.value,
+      extValueUpdateFn: (value) => {
+        changeInputsValue(value, "amount");
+      },
+    },
+  });
 
   let formIsValid = false;
   let formErrMessages = [];
