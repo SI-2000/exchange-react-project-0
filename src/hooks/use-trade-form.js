@@ -17,27 +17,6 @@ const validator = (val) => {
   };
 };
 
-// const validators = [
-//   (val) => {
-//     var regex = /^[0-9]+\.?[0-9]*$/;
-//     let isValid = regex.test(val);
-
-//     const errorMessage = isValid ? "" : "لطفا مقدار معتبر وارد کنید.";
-//     return {
-//       isValid,
-//       errorMessage,
-//     };
-//   },
-//   (val) => {
-//     const errorMessage =
-//       "مقدار مشخص شده برای معامله بیشتر از موجودی حساب شما میباشد.";
-//     return {
-//       isValid: true,
-//       errorMessage,
-//     };
-//   },
-// ];
-
 export function useTradeForm(formType, orderType) {
   const uid = useSelector((state) => state.auth.uid);
   const userAssets = useGetAssets();
@@ -64,6 +43,7 @@ export function useTradeForm(formType, orderType) {
   };
 
   const stopInput = useInput({
+    isMutableIfHasError: false,
     valueValidator: validator,
     valueModifier: persianNumsToEnglish,
     isUsingInternalState: false,
@@ -76,6 +56,7 @@ export function useTradeForm(formType, orderType) {
   });
 
   const priceInput = useInput({
+    isMutableIfHasError: false,
     valueValidator: validator,
     valueModifier: persianNumsToEnglish,
     isUsingInternalState: false,
@@ -88,6 +69,7 @@ export function useTradeForm(formType, orderType) {
   });
 
   const amountInput = useInput({
+    isMutableIfHasError: false,
     valueValidator: validator,
     valueModifier: persianNumsToEnglish,
     isUsingInternalState: false,

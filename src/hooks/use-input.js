@@ -1,32 +1,33 @@
 import { useState } from "react";
 
 export default function useInput({
+  initialInputValue = "",
   valueValidator,
   valueModifier = (val) => {
     /* If it is needed to change the input value 
     (such as converting Persian numbers to English in numerical inputs) */
     return val;
   },
-  initialInputValue = "",
+  isMutableIfHasError = true,
 
   /* If the input value is managed by external state management,
   these two lines are used */
   isUsingInternalState = true,
-  externalState: { extValue, extValueUpdateFn },
+  externalState = { extValue: "", extValueUpdateFn: () => {} },
 }) {
   const [enteredValue, setEnteredValue] = useState(initialInputValue);
   const [isTouched, setIsTouched] = useState(false);
 
-  const inputValue = isUsingInternalState ? enteredValue : extValue;
+  const inputValue = isUsingInternalState
+    ? enteredValue
+    : externalState.extValue;
   const inputValueUpdater = isUsingInternalState
     ? setEnteredValue
-    : extValueUpdateFn;
+    : externalState.extValueUpdateFn;
 
   const modifiedValue = valueModifier(inputValue);
   const valueIsValid = valueValidator(modifiedValue).isValid;
-  if (!valueIsValid && isTouched) {
-    console.log(valueValidator(modifiedValue).errorMessage);
-  }
+
   const errorMessage =
     !valueIsValid && isTouched
       ? valueValidator(modifiedValue).errorMessage
@@ -37,10 +38,14 @@ export default function useInput({
   const valueChangeHandler = (event) => {
     const modifiedValue = valueModifier(event.target.value);
     const newValueIsValid = valueValidator(modifiedValue).isValid;
-    if (newValueIsValid) {
+    if (isMutableIfHasError) {
       inputValueUpdater(modifiedValue);
-    } else if (modifiedValue === "") {
-      inputValueUpdater(modifiedValue);
+    } else {
+      if (newValueIsValid) {
+        inputValueUpdater(modifiedValue);
+      } else if (modifiedValue === "") {
+        inputValueUpdater(modifiedValue);
+      }
     }
   };
 
