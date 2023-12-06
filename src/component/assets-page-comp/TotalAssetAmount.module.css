@@ -1,0 +1,19 @@
+.TotalAssetAmount {
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+.base-assets {
+  margin: 2rem;
+  width: fit-content;
+}
+
+.TotalAssetAmount h6 {
+  color: var(--custom-gray);
+}
+
+.TotalAssetAmount h1 {
+  margin: 0.5rem 0;
+  font-size: 26px;
+  direction: ltr;
+}

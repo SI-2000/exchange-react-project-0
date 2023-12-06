@@ -1,31 +1,10 @@
-.auth-reminder{
-  padding:5rem 0;
-}
-
-.base-info {
-  justify-content: space-between;
-  margin-bottom: 3rem;
-}
-
-.base-assets {
-  margin: 2rem;
-  width: fit-content;
-}
-
-.base-info h6 {
-  color: var(--custom-gray);
-}
-
-.base-info h1 {
-  margin: 0.5rem 0;
-  font-size: 26px;
-  direction: ltr;
+.auth-reminder {
+  padding: 5rem 0;
 }
 
 .currencies-container {
   width: 100%;
 }
-
 
 .title-header > div {
   font-size: 12px;
@@ -34,6 +13,5 @@
   font-weight: bold;
 }
 
-.pop-ups-container{
-  
+.pop-ups-container {
 }

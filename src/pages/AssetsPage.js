@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import classes from "./AssetsPage.module.css";
 import WhiteFrame from "../ui/WhiteFrame";
-import { formatPrice } from "../util/format-price";
 import AssetItem from "../component/AssetItem";
 import tableClasses from "../component/assestTable.module.css";
 import AssetsTable from "../component/AssetsTable";
 import { useQuery } from "react-query";
 import useGetAssets from "../hooks/use-get-assets";
 import { getCurrenciesInfo } from "../util/get-currencies";
-import { roundTo } from "../util/round-number";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import RouterLoading from "../ui/RouterLoading";
+import ModifyTetherAmount from "../component/assets-page-comp/ModifyTetherAmount";
+import TotalAssetAmount from "../component/assets-page-comp/TotalAssetAmount";
 
 const AssetsPage = () => {
   const uid = useSelector((state) => state.auth.uid);
@@ -64,24 +64,10 @@ const AssetsPage = () => {
     };
   });
 
-  const total_assets = assetsInfo.reduce((initialValue, assetItem) => {
-    return initialValue + assetItem.total_value;
-  }, 0);
-
-
   return (
     <div className={classes["assets-container"]}>
- 
-
-      <div className={classes["base-info"]}>
-        <div className={classes["base-assets"]}>
-          <h6>ارزش کل دارایی ها</h6>
-          <h1>
-            {formatPrice(roundTo(total_assets.toString(), 2))}
-            <span> $</span>
-          </h1>
-        </div>
-      </div>
+      <TotalAssetAmount assetsData={assetsInfo} />
+      <ModifyTetherAmount />
 
       <WhiteFrame className="home-page-table">
         <AssetsTable assetsInfo={assetsInfo} />
