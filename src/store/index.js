@@ -12,7 +12,7 @@ const store = configureStore({
     assets: assetsReducer,
     searchOverlay: searchPairsReducer,
     tradingData: tradingReducer,
-    popUps: popUpsReducer,
+    popUp: popUpsReducer,
   },
 });
 
