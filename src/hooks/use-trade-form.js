@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { tradingActions } from "../store/trading-data";
 import useGetAssets from "./use-get-assets";
 import useInput from "./use-input";
-import { useEffect } from "react";
 
 const validators = [
   (val) => {
@@ -35,6 +34,7 @@ export function useTradeForm(formType, orderType) {
   );
 
   const inputsValue = inputsData[formType];
+
   const changeInputsValue = (value, inputName) => {
     dispatch(
       tradingActions.updateOneInput({
@@ -49,28 +49,38 @@ export function useTradeForm(formType, orderType) {
     );
   };
 
-  // const stopInput = useInput(validators, inputsData[formType].stop.value);
-  // const priceInput = useInput(validators, inputsData[formType].price.value);
-  // const amountInput = useInput(validators, inputsData[formType].amount.value);
+  const stopInput = useInput({
+    valueValidators: validators,
+    useInternalValueState: false,
+    externalState: {
+      value: inputsValue.stop.value,
+      valueUpdateFn: (value) => {
+        changeInputsValue(value, "stop");
+      },
+    },
+  });
 
-  const stopInput = useInput(
-    validators,
-    "stop",
-    inputsValue.stop.value,
-    changeInputsValue
-  );
-  const priceInput = useInput(
-    validators,
-    "price",
-    inputsValue.price.value,
-    changeInputsValue
-  );
-  const amountInput = useInput(
-    validators,
-    "amount",
-    inputsValue.amount.value,
-    changeInputsValue
-  );
+  const priceInput = useInput({
+    valueValidators: validators,
+    useInternalValueState: false,
+    externalState: {
+      value: inputsValue.price.value,
+      valueUpdateFn: (value) => {
+        changeInputsValue(value, "price");
+      },
+    },
+  });
+
+  const amountInput = useInput({
+    valueValidators: validators,
+    useInternalValueState: false,
+    externalState: {
+      value: inputsValue.amount.value,
+      valueUpdateFn: (value) => {
+        changeInputsValue(value, "amount");
+      },
+    },
+  });
 
   let formIsValid = false;
   let formErrMessages = [];

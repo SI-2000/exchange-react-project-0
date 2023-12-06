@@ -2,22 +2,25 @@ import { useEffect, useState } from "react";
 import persianNumsToEnglish from "../util/persianNums-to-english";
 import { useDispatch } from "react-redux";
 
-export default function useInput(
+export default function useInput({
   valueValidators,
-  inputName,
-  //  initialInputValue = ""
-  enteredValue,
-  setEnteredValue
-) {
-  // const [enteredValue, setEnteredValue] = useState(initialInputValue);
+  initialInputValue = "",
+  useInternalValueState = true,
+  externalState: { value, valueUpdateFn },
+}) {
+
+  const [enteredValue, setEnteredValue] = useState(initialInputValue);
   const [isTouched, setIsTouched] = useState(false);
+
+  const inputValue = useInternalValueState ? enteredValue :value;
+  const inputValueUpdater = useInternalValueState
+    ? setEnteredValue
+    :valueUpdateFn;
 
   let errorMessage = "";
 
   const valueIsValid = valueValidators.every((validator) => {
-    const enteredValueValidation = validator(
-      persianNumsToEnglish(enteredValue)
-    );
+    const enteredValueValidation = validator(persianNumsToEnglish(inputValue));
     const enteredValueIsValid = enteredValueValidation.isValid;
     if (!enteredValueIsValid && isTouched) {
       errorMessage = enteredValueValidation.errorMessage;
@@ -33,9 +36,9 @@ export default function useInput(
       return validator(transformedValue).isValid;
     });
     if (newValueIsValid) {
-      setEnteredValue(transformedValue, inputName);
+      inputValueUpdater(transformedValue);
     } else if (transformedValue === "") {
-      setEnteredValue(transformedValue, inputName);
+      inputValueUpdater(transformedValue);
     }
   };
 
@@ -44,12 +47,12 @@ export default function useInput(
   };
 
   const reset = () => {
-    setEnteredValue("", inputName);
+    inputValueUpdater("");
     setIsTouched(false);
   };
 
   return {
-    value: enteredValue,
+    value: inputValue,
     isValid: valueIsValid,
     hasError: inputHasError,
     errorMessage,
