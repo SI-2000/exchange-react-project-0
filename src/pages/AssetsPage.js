@@ -68,8 +68,11 @@ const AssetsPage = () => {
     return initialValue + assetItem.total_value;
   }, 0);
 
+
   return (
     <div className={classes["assets-container"]}>
+ 
+
       <div className={classes["base-info"]}>
         <div className={classes["base-assets"]}>
           <h6>ارزش کل دارایی ها</h6>
