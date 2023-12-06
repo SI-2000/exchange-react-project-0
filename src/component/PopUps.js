@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 
 import classes from "./PopUps.module.css";
 import { ReactComponent as CloseIcon } from "../files/icons/close_FILL0_wght400_GRAD0_opsz48.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { popUpActions } from "../store/pop-up";
 
 const PopUpElement = ({ children, id, className, onLifeTimeOver }) => {
   const [isAlive, setIsAlive] = useState(true);
@@ -34,14 +36,12 @@ const PopUpElement = ({ children, id, className, onLifeTimeOver }) => {
 };
 
 const PopUps = () => {
-  const [popUpList, setPopUpList] = useState([]);
+  // const [popUpList, setPopUpList] = useState([]);
+  const popUpList = useSelector((state) => state.popUp.popUpList);
+  const dispatch = useDispatch();
 
   const deleteMessageHandler = (id) => {
-    setPopUpList((prevList) => {
-      return prevList.filter((item, index) => {
-        return id !== index;
-      });
-    });
+    dispatch(popUpActions.deletePopUp(id));
   };
 
   return (
