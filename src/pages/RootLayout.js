@@ -10,7 +10,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { authActions } from "../store/auth";
 import RouterLoading from "../ui/RouterLoading";
-import PopUps from "../component/PopUps";
+import Notifications from "../component/notification/Notifications";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -66,7 +66,7 @@ const RootLayout = () => {
 
   return (
     <div>
-      <PopUps />
+      <Notifications />
       <MainHeader />
       <Outlet />
       {showMainFooter && <MainFooter />}

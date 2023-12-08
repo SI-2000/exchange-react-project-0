@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 import classes from "./ModifyTetherAmount.module.css";
 import useInput from "../../hooks/use-input";
 import persianNumsToEnglish from "../../util/persianNums-to-english";
 import useSetTether from "../../hooks/use-set-tether";
 import { useDispatch } from "react-redux";
-import { popUpActions } from "../../store/pop-up";
+import { useNotification } from "../../hooks/use-notification";
 
 const validator = (val) => {
   let regex = /^[+-]?[0-9]+\.?[0-9]*$/;
@@ -39,10 +39,19 @@ const ModifyTetherAmount = () => {
 
   const { mutate } = useSetTether();
 
+  const { addNote } = useNotification();
+
+  const [counter, setCounter] = useState(0);
+
   const submitNewValueHandler = (e) => {
     e.preventDefault();
     mutate(parseFloat(value));
-    dispatch(popUpActions.newPopUp("مقدار جدید تتر ثبت شد"));
+    addNote({
+      type: "SUCCESS",
+      message: "مقدار جدید تتر ثبت شد",
+      title: "Successful Request",
+    });
+    setCounter((prev) => prev + 1);
   };
 
   return (

@@ -4,7 +4,7 @@ import authReducer from "./auth";
 import assetsReducer from "./assets";
 import searchPairsReducer from "./search-pairs";
 import tradingReducer from "./trading-data";
-import popUpsReducer from "./pop-up";
+import notificationReducer from "./notification";
 
 const store = configureStore({
   reducer: {
@@ -12,7 +12,7 @@ const store = configureStore({
     assets: assetsReducer,
     searchOverlay: searchPairsReducer,
     tradingData: tradingReducer,
-    popUp: popUpsReducer,
+    notes: notificationReducer,
   },
 });
 

@@ -1,0 +1,92 @@
+.notification-item {
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  animation: SlideLeft 0.4s;
+  animation-fill-mode: forwards;
+  width: 100%;
+  background-color: white;
+  direction: ltr;
+  color: black;
+}
+
+@keyframes SlideLeft {
+  0% {
+    margin-right: 120%;
+  }
+
+  100% {
+    margin-right: 0;
+  }
+}
+
+@keyframes SlideRight {
+  0% {
+    margin-right: 0;
+  }
+
+  100% {
+    margin-right: 120%;
+  }
+}
+
+.notification-item.exit {
+  animation: SlideRight 0.4s;
+  animation-fill-mode: forwards;
+}
+
+.inner-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inner-container svg {
+  width: 15px;
+}
+
+.close-icon {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 0 0.5rem;
+}
+.notification-item.success .close-icon{
+  background-color: var(--exchange-green);
+}
+
+.notification-item.error .close-icon{
+  background-color: var(--exchange-red);
+}
+
+.notification-item p {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  font-size: 12px;
+}
+
+.notification-item .bar {
+  height: 5px;
+}
+
+.notification-item.success p {
+  color: var(--exchange-green);
+}
+
+.notification-item.success .bar {
+  background-color: var(--exchange-green);
+}
+
+.notification-item.error p {
+  color: var(--exchange-red);
+}
+
+.notification-item.error .bar {
+  background-color: var(--exchange-red);
+}

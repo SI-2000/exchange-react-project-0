@@ -1,0 +1,6 @@
+.notification-wrapper {
+    position: fixed;
+    top: 60px;
+    left: 10px;
+    width: 200px;
+  }
