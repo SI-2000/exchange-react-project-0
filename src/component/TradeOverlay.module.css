@@ -1,4 +1,4 @@
-.overly-list {
+.overlay-list {
   background-color:rgb(211, 211, 211);
   width: 8rem;
   height: 5rem;
@@ -16,11 +16,11 @@
     display: none;
 } */
 
-.overly-list .shown {
+.overlay-list .shown {
   display: block;
 }
 
-.overly-list ul {
+.overlay-list ul {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -28,13 +28,13 @@
   align-items: center;
 }
 
-.overly-list li {
+.overlay-list li {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-.overly-list a {
+.overlay-list a {
   font-size: 14px;
   display: block;
   width: 100%;
@@ -46,17 +46,17 @@
   transition: all .2s;
 }
 
-.overly-list a:hover {
+.overlay-list a:hover {
   background-color: rgb(94, 94, 94);
   color:white;
 }
 
-.currency-item--trade-overly{
-  right: -9rem;
+.currency-item--trade-overlay{
+  right: -9rems;
 }
 
 @media screen and (min-width: 768px) {
-  .overly-list{
+  .overlay-list{
     display: none;
   }
 }

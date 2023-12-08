@@ -9,7 +9,6 @@
   width: 100%;
   background-color: white;
   direction: ltr;
-  color: black;
 }
 
 @keyframes SlideLeft {
@@ -56,6 +55,7 @@
   width: 25px;
   height: 25px;
   margin: 0 0.5rem;
+  cursor: pointer;
 }
 .notification-item.success .close-icon{
   background-color: var(--exchange-green);

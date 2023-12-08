@@ -4,18 +4,19 @@
 
 .ModifyTetherAmount h1 {
   font-size: 14px;
+  text-align: center;
 }
 
 .ModifyTetherAmount form {
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 1rem 0;
   margin-bottom: 2rem;
 }
 
 .ModifyTetherAmount input {
   background-color: white;
-  margin: 1rem 0;
   border-radius: 5px;
   padding: 0.5rem 1rem;
   color: rgb(39, 39, 39);
@@ -27,10 +28,26 @@
   border: 3px solid red;
 }
 
+.error-msg {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
 .ModifyTetherAmount button {
   background: red;
   width: fit-content;
   border-radius: 5px;
   padding: 0.5rem 1rem;
   background-color: var(--gold-color);
+  transition: 0.2s;
+}
+
+.ModifyTetherAmount Button:hover:not(:disabled) {
+  padding: 0.5rem 1.5rem;
+}
+
+.ModifyTetherAmount button:disabled {
+  filter: grayscale(0.8);
 }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { roundTo } from "../util/round-number";
 import { ReactComponent as MoreBtn } from "../files/icons/more_vert_FILL0_wght400_GRAD0_opsz24.svg";
 import classes from "./AssetItem.module.css";
-import TradeOverly from "./TradeOverly";
+import TradeOverlay from "./TradeOverlay";
 import { formatPrice } from "../util/format-price";
 import CustomLink from "./CustomLink";
 
@@ -30,25 +30,35 @@ const AssetItem = ({ assetInfo }) => {
       <td className={classes["total-value"]}>
         {formatPrice(roundTo(total_value.toString(), 2))}
       </td>
-      <td className={classes["buy-sell-btn"]}>
-        <button
-          onClick={() => {
-            setOverlyIsVisiable((prevState) => {
-              return !prevState;
-            });
-          }}
-          className={classes["more-btn"]}
-        >
-          <MoreBtn />
-        </button>
-        {overlyIsVisiable && (
-          <TradeOverly
-            onClickOnBG={setOverlyIsVisiable}
-            className="currency-item--trade-overly"
-          />
-        )}
-        <CustomLink className="currency-list-btn">خرید و فروش</CustomLink>
-      </td>
+      {symbol !== "usdt" ? (
+        <td className={classes["buy-sell-btn"]}>
+          <button
+            onClick={() => {
+              setOverlyIsVisiable((prevState) => {
+                return !prevState;
+              });
+            }}
+            className={classes["more-btn"]}
+          >
+            <MoreBtn />
+          </button>
+          {overlyIsVisiable && (
+            <TradeOverlay
+              symbol={symbol}
+              onClickOnBG={setOverlyIsVisiable}
+              className="currency-item--trade-overlay"
+            />
+          )}
+          <CustomLink
+            to={`/coin/${symbol.toUpperCase()}USDT`}
+            className="currency-list-btn"
+          >
+            خرید و فروش
+          </CustomLink>
+        </td>
+      ) : (
+        <td className={classes["buy-sell-btn"]}></td>
+      )}
     </tr>
   );
 };

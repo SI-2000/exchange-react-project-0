@@ -6,6 +6,7 @@ import persianNumsToEnglish from "../../util/persianNums-to-english";
 import useSetTether from "../../hooks/use-set-tether";
 import { useDispatch } from "react-redux";
 import { useNotification } from "../../hooks/use-notification";
+import { isError } from "react-query";
 
 const validator = (val) => {
   let regex = /^[+-]?[0-9]+\.?[0-9]*$/;
@@ -37,18 +38,25 @@ const ModifyTetherAmount = () => {
 
   const dispatch = useDispatch();
 
-  const { mutate } = useSetTether();
+  const { mutateAsync, isLoading, isError } = useSetTether();
 
   const { addNote } = useNotification();
 
   const [counter, setCounter] = useState(0);
 
-  const submitNewValueHandler = (e) => {
+  const submitNewValueHandler = async (e) => {
     e.preventDefault();
-    mutate(parseFloat(value));
+    await mutateAsync(parseFloat(value));
+    let type = "SUCCESS";
+    let message = "مقدار جدید تتر ثبت شد";
+    if (isError) {
+      type = "ERROR";
+      message = "خطایی  رخ داد!";
+    }
+
     addNote({
-      type: "SUCCESS",
-      message: "مقدار جدید تتر ثبت شد",
+      type,
+      message,
       title: "Successful Request",
     });
     setCounter((prev) => prev + 1);
@@ -65,8 +73,12 @@ const ModifyTetherAmount = () => {
           onBlur={inputblurHandler}
           placeholder="100.00"
         />
-        <button onClick={submitNewValueHandler} disabled={!isValid}>
-          ثبت مقدار جدید
+        <p className={`${classes["error-msg"]}`}>{errorMessage}</p>
+        <button
+          onClick={submitNewValueHandler}
+          disabled={!isValid || isLoading}
+        >
+          {isLoading ? "در حال ارسال..." : "ثبت مقدار جدید"}
         </button>
       </form>
     </div>

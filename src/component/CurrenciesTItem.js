@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { roundTo } from "../util/round-number";
 import { ReactComponent as MoreBtn } from "../files/icons/more_vert_FILL0_wght400_GRAD0_opsz24.svg";
 import classes from "./CurrenciesTItem.module.css";
-import TradeOverly from "./TradeOverly";
+import TradeOverlay from "./TradeOverlay";
 import { formatPrice } from "../util/format-price";
-import CustomLink from "./CustomLink"
+import CustomLink from "./CustomLink";
 
 const CurrenciesTItem = ({ currencyInfo }) => {
   const [overlyIsVisiable, setOverlyIsVisiable] = useState(false);
@@ -52,12 +52,18 @@ const CurrenciesTItem = ({ currencyInfo }) => {
           <MoreBtn />
         </button>
         {overlyIsVisiable && (
-          <TradeOverly
+          <TradeOverlay
+            symbol={symbol}
             onClickOnBG={setOverlyIsVisiable}
-            className="currency-item--trade-overly"
+            className="currency-item--trade-overlay"
           />
         )}
-        <CustomLink className="currency-list-btn">خرید و فروش</CustomLink>
+        <CustomLink
+          to={`/coin/${symbol.toUpperCase()}USDT`}
+          className="currency-list-btn"
+        >
+          خرید و فروش
+        </CustomLink>
       </td>
     </tr>
   );

@@ -1,13 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
-import classes from "./TradeOverly.module.css";
+import classes from "./TradeOverlay.module.css";
 import { Link } from "react-router-dom";
 
-const TradeOverly = ({ onClickOnBG, className }) => {
-  const overlyRef = useRef();
+const TradeOverlay = ({ symbol, onClickOnBG, className }) => {
+  const ovrelayRef = useRef();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (overlyRef.current && !overlyRef.current.contains(event.target)) {
+      if (ovrelayRef.current && !ovrelayRef.current.contains(event.target)) {
         onClickOnBG(false);
       }
     };
@@ -20,10 +20,13 @@ const TradeOverly = ({ onClickOnBG, className }) => {
   }, [onClickOnBG]);
 
   return (
-    <div className={`${classes["overly-list"]} ${classes[className]}`} ref={overlyRef}>
+    <div
+      className={`${classes["overlay-list"]} ${classes[className]}`}
+      ref={ovrelayRef}
+    >
       <ul>
         <li>
-          <Link>معامله</Link>
+          <Link to={`/coin/${symbol.toUpperCase()}USDT`}>معامله</Link>
         </li>
         <li>
           <Link>اطلاعات بیشتر</Link>
@@ -33,4 +36,4 @@ const TradeOverly = ({ onClickOnBG, className }) => {
   );
 };
 
-export default TradeOverly;
+export default TradeOverlay;
