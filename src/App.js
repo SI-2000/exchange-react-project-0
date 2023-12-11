@@ -3,7 +3,6 @@ import HomePage from "./pages/HomePage";
 import RootLayout from "./pages/RootLayout";
 import Authentication from "./pages/Authentication";
 import { action as authenticationAction } from "./pages/Authentication";
-import ErrorPage from "./pages/ErrorPage";
 import { fetchRealTimeDB } from "./util/realTimeDB-req";
 import classes from "./App.module.css";
 import { useEffect } from "react";
@@ -18,12 +17,13 @@ import {
   QueryClientProviderProps,
 } from "react-query";
 import AssetsPage from "./pages/AssetsPage";
+import ErrorElement from "./component/error-element-comp/ErrorElement";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    // errorElement: <ErrorPage />,
+    errorElement: <ErrorElement />,
     children: [
       { index: true, element: <HomePage /> },
       { path: "assets", element: <AssetsPage /> },
@@ -52,11 +52,9 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  
   const queryClient = new QueryClient({
     defaultOptions: { queries: { refetchOnWindowFocus: false } },
   });
-
 
   return (
     <QueryClientProvider client={queryClient}>

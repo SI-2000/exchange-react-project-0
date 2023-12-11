@@ -38,7 +38,6 @@ const Authentication = () => {
     <div className={`${classes["Authentication"]}`}>
       <AuthForm />
       <div className={`${classes["image-container"]}`}>
-        {/* {isLogin ? <img src={AuthImage0}></img> : <img src={AuthImage0}></img>} */}
         <img
           className={`${isLogin ? classes["visiable-img"] : null}`}
           src={AuthImage0}

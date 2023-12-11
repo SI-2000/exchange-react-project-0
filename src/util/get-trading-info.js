@@ -1,3 +1,4 @@
+import { json } from "react-router-dom";
 import { currenciesData } from "./data/currencies-data";
 
 async function getTradingInfo(uid, currency) {

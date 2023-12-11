@@ -1,7 +1,7 @@
 import React, { useReducer, useState } from "react";
 
 import classes from "./TradingPage.module.css";
-import { useParams } from "react-router-dom";
+import { json, useParams } from "react-router-dom";
 import PrimaryData from "../component/trading-page-comp/PrimaryData";
 import MarketDataSelector from "../component/trading-page-comp/MarketDataSelector";
 import OrderBook from "../component/trading-page-comp/OrderBook";
@@ -15,6 +15,7 @@ import { useQuery } from "react-query";
 import getTradingInfo from "../util/get-trading-info";
 import useGetAssets from "../hooks/use-get-assets";
 import { useSelector } from "react-redux";
+import ErrorElement from "../component/error-element-comp/ErrorElement";
 
 const marketDataActions = [
   { CHART: "نمودار" },
@@ -41,7 +42,9 @@ const TradingPage = () => {
 
   const isLoading = tradingQuery.isLoading || assetsQuery.isLoading;
 
-  if (tradingQuery.isError || assetsQuery.isError) return <p>Error</p>;
+  if (tradingQuery.isError || assetsQuery.isError) {
+    return <ErrorElement err={tradingQuery.error} />;
+  }
 
   return (
     <div className={classes["trading-page"]}>

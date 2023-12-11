@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import RouterLoading from "../ui/RouterLoading";
 import ModifyTetherAmount from "../component/assets-page-comp/ModifyTetherAmount";
 import TotalAssetAmount from "../component/assets-page-comp/TotalAssetAmount";
+import ErrorElement from "../component/error-element-comp/ErrorElement";
 
 const AssetsPage = () => {
   const uid = useSelector((state) => state.auth.uid);
@@ -47,8 +48,8 @@ const AssetsPage = () => {
 
   if (assets.isLoading || currenciesQuery.isLoading) return <RouterLoading />;
 
-  if (!assets.data || assets.isError || currenciesQuery.isError)
-    return <p>{JSON.stringify(assets.error)}</p>;
+  if (assets.isError || currenciesQuery.isError)
+    return <ErrorElement err={assets.error} />;
 
   const assetsInfo = Object.keys(assets.data).map((assetItem) => {
     const itemInfo = currenciesQuery.data.find((currency) => {

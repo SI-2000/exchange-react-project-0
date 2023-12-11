@@ -64,7 +64,7 @@ const MainHeader = () => {
               ورود
             </CustomLink>
             <CustomLink to="auth/?mode=signup" className="golden-link">
-              ثبت نام کنید
+              ثبت نام
             </CustomLink>
           </div>
         )}

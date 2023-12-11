@@ -2,13 +2,8 @@ import React from "react";
 
 import classes from "./AssetsTable.module.css";
 import AssetItem from "./AssetItem";
-import { useQuery } from "react-query";
-import { getCurrenciesInfo } from "../util/get-currencies";
-import useGetAssets from "../hooks/use-get-assets";
 
-const AssetsTable = ({assetsInfo}) => {
-
-
+const AssetsTable = ({ assetsInfo }) => {
   return (
     <table className={`${classes["assets-table"]}`}>
       <thead>
