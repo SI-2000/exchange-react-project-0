@@ -10,6 +10,7 @@ const Statistics = () => {
 
   const { seen } = useElementVisibility(ref);
 
+
   return (
     <div className={`${classes["Statistics"]}`} ref={ref}>
       <WhiteFrame className="stretchable">

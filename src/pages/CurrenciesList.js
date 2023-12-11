@@ -1,45 +1,53 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import WhiteFrame from "../ui/WhiteFrame";
 import CurrenciesTable from "../component/CurrenciesTable";
 
 import classes from "./CurrenciesList.module.css";
+import { useInfiniteQuery } from "react-query";
+import { getPaginatedCurrency } from "../util/get-currencies";
+import RouterLoading from "../ui/RouterLoading";
+import ErrorElement from "../component/error-element-comp/ErrorElement";
+import useVisibilityStatus from "../hooks/use-element-visibility";
+import { ReactComponent as LoadingSVG } from "../files/icons/refresh_FILL0_wght400_GRAD0_opsz24.svg";
 
 const CurrenciesList = () => {
-    const currencies = [
-        { coinId: "bitcoin", fname: "بیت کوین" },
-        { coinId: "ethereum", fname: "اتریوم" },
-        { coinId: "cardano", fname: "کاردانو" },
-        { coinId: "binancecoin", fname: "بایننس کوین" },
-        { coinId: "tether", fname: "تتر" },
-        { coinId: "usd-coin", fname: "یواس‌دی کوین" },
-        { coinId: "xrp", fname: "اکس‌آر‌پی" },
-        { coinId: "polkadot", fname: "پولکادات" },
-        { coinId: "litecoin", fname: "لایت‌کوین" },
-        { coinId: "chainlink", fname: "چین‌لینک" },
-        { coinId: "doge", fname: "دوج کوین" },
-        { coinId: "uniswap", fname: "یونی‌سواپ" },
-        { coinId: "solana", fname: "سولانا" },
-        { coinId: "wrapped-bitcoin", fname: "بیت کوین بسته‌بندی‌شده" },
-        { coinId: "avalanche-2", fname: "آوالانچ" },
-        { coinId: "terra-luna", fname: "ترا لونا" },
-        { coinId: "algorand", fname: "آلگورند" },
-        { coinId: "cosmos", fname: "کاسموس" },
-        { coinId: "vechain", fname: "ویچین" },
-        { coinId: "matic-network", fname: "شبکه ماتیک" },
-        { coinId:"aave",fname:"آئاو"},
-        { coinId:"monero",fname:"مونرو"},
-        { coinId:"eos",fname:"ای‌اُ اِس"},
-        { coinId:"tron",fname:"ترون"},
-        { coinId:"neo",fname:"نئو"},
-        { coinId:"dash",fname:"دَش"},
-      ];
-      
-      
+  const currenciesQuery = useInfiniteQuery({
+    queryKey: ["currencies", "infinite"],
+    getNextPageParam: (prevDate) => prevDate.nextPage,
+    queryFn: ({ pageParam = 1 }) => getPaginatedCurrency(pageParam),
+  });
+
+  const tableContainerRef = useRef();
+
+  const { seen, setSeen } = useVisibilityStatus(tableContainerRef);
+
+  console.log(seen);
+
+  useEffect(() => {
+    if (seen) {
+      currenciesQuery.fetchNextPage().then(() => {
+        setSeen(false);
+      });
+    }
+  }, [seen]);
+
+  if (currenciesQuery.isLoading) return <RouterLoading />;
+  if (currenciesQuery.isError) return console.log(currenciesQuery.error);
 
   return (
     <div className={classes["currencies-table"]}>
       <WhiteFrame className="home-page-table">
-        <CurrenciesTable currencies={currencies} />
+        <div
+          className={`${classes["table-container"]}`}
+          ref={tableContainerRef}
+        >
+          <CurrenciesTable queryData={currenciesQuery} />
+          {currenciesQuery.isFetchingNextPage && (
+            <div className={`${classes["loading-new-items"]}`}>
+              <LoadingSVG />
+            </div>
+          )}
+        </div>
       </WhiteFrame>
     </div>
   );

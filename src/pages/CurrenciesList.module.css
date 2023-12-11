@@ -1,0 +1,31 @@
+/* .currencies-table{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+} */
+
+.table-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.loading-new-items{
+    padding:1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.loading-new-items svg{
+    fill:rgb(189, 189, 189);
+    animation: rotation 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes rotation {
+    from{
+        transform: rotate(0);
+    }
+
+    to{transform: rotate(360deg);}
+}

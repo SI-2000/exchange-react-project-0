@@ -8,7 +8,7 @@ const Intro = ({ queryData }) => {
   if (queryData.isLoading) return <p>loading...</p>;
   if (queryData.isError) return <p>{JSON.stringify(queryData.error)}</p>;
 
-  const currencies = queryData.data.slice(0, 3);
+  const currencies = queryData.data.currencies.slice(0, 3);
 
   return (
     <div className={`${classes["Intro"]} fullscreen`}>

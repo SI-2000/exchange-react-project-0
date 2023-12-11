@@ -9,6 +9,13 @@ const CurrenciesTable = ({ queryData }) => {
   if (queryData.isLoading) return <p>loading...</p>;
   if (queryData.isError) return <p>{JSON.stringify(queryData.error)}</p>;
 
+  let tableData;
+  try {
+    tableData = queryData.data.pages.flatMap((page) => page.currencies);
+  } catch (error) {
+    tableData = queryData.data.currencies;
+  }
+
   return (
     <table className={`${classes["currencies-table"]}`}>
       <thead>
@@ -21,7 +28,7 @@ const CurrenciesTable = ({ queryData }) => {
         </tr>
       </thead>
       <tbody>
-        {queryData.data.map((currencyInfo, index) => {
+        {tableData.map((currencyInfo, index) => {
           return <CurrenciesTItem key={index} currencyInfo={currencyInfo} />;
         })}
       </tbody>

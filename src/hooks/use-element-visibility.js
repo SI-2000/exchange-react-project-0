@@ -6,6 +6,8 @@ const defaultConfig = {
 };
 
 const useVisibilityStatus = (elementRef, config = defaultConfig) => {
+  // if (elementRef.current) throw new Error("Ref must refer to an element");
+
   const [distanceFromTop, setDistanceFromTop] = useState(
     window.innerHeight * 2
   );
@@ -35,13 +37,15 @@ const useVisibilityStatus = (elementRef, config = defaultConfig) => {
         ? distanceFromTop <= window.innerHeight * config.visibilityThreshold
         : true;
     });
-    setInView(
-      elementRef.current.getBoundingClientRect().top - elementHeight <= 0 &&
-        elementRef.current.getBoundingClientRect().bottom >= 0
-    );
+    if (elementRef.current) {
+      setInView(
+        elementRef.current.getBoundingClientRect().top - elementHeight <= 0 &&
+          elementRef.current.getBoundingClientRect().bottom >= 0
+      );
+    }
   }, [distanceFromTop]);
 
-  return { seen, inView };
+  return { seen, setSeen, inView };
 };
 
 export default useVisibilityStatus;
