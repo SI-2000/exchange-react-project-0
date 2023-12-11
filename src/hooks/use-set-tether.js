@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "react-query";
 import { useSelector } from "react-redux";
+import axios from "../api/axios";
 
 const useSetTether = () => {
   const queryClient = useQueryClient();
@@ -12,13 +13,8 @@ const useSetTether = () => {
       assets.tether = newAmount;
 
       const newData = { [uid]: { assets, ...users[uid] } };
-      const resData = await fetch("http://localhost:8000/users", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newData),
-      });
-      const res = await resData.json();
-      return res;
+      const resData = await axios.put("users", newData);
+      return resData.data;
     },
     onSuccess: () => {
       queryClient.invalidateQueries("users");
