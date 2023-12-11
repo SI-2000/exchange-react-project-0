@@ -16,7 +16,7 @@ import ErrorElement from "../component/error-element-comp/ErrorElement";
 const HomePage = () => {
   const navigation = useNavigation();
   const currenciesQuery = useQuery({
-    queryKey: ["currencies"],
+    queryKey: ["currencies", 1],
     queryFn: () => getPaginatedCurrency(1),
     staleTime: Infinity,
   });
@@ -24,7 +24,6 @@ const HomePage = () => {
   if (currenciesQuery.isLoading) return <RouterLoading />;
 
   if (currenciesQuery.isError) return <ErrorElement />;
-
 
   return (
     <div className={`${classes["HomePage"]}`}>

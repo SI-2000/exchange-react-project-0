@@ -31,6 +31,7 @@ const AssetsPage = () => {
     staleTime: Infinity,
   });
 
+  console.log(currenciesQuery.data)
   const assets = useGetAssets();
 
   if (!uid) {

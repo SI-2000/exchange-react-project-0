@@ -20,10 +20,14 @@ const useVisibilityStatus = (elementRef, config = defaultConfig) => {
 
   useEffect(() => {
     const scrollHandler = () => {
-      setDistanceFromTop(
-        elementRef.current.getBoundingClientRect().top +
-          elementHeight * config.depthLevel
-      );
+      setDistanceFromTop((prev) => {
+        if (elementRef.current) {
+          return (
+            elementRef.current.getBoundingClientRect().top +
+            elementHeight * config.depthLevel
+          );
+        }
+      });
     };
     window.addEventListener("scroll", scrollHandler);
     return () => {
