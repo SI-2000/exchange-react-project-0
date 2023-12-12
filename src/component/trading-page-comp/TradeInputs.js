@@ -8,12 +8,15 @@ import useGetAssets from "../../hooks/use-get-assets";
 import TradeFormErrors from "./TradeFormErrors";
 import { useTradeForm } from "../../hooks/use-trade-form";
 import { useDispatch, useSelector } from "react-redux";
-import { tradingActions } from "../../store/trading-data";
+import tradingData, { tradingActions } from "../../store/trading-data";
 import { roundTo } from "../../util/round-number";
+import { getTime } from "../../util/get-time";
 
 const TradeInputs = ({ formType, orderType, activeForm }) => {
   const uid = useSelector((state) => state.auth.uid);
+  const pairs = useSelector((state) => state.tradingData.tradeForm.pair);
   const userAssets = useGetAssets();
+  const dispatch = useDispatch();
 
   const { formIsValid, stopInput, priceInput, amountInput, errorMessages } =
     useTradeForm(formType, orderType);
@@ -21,7 +24,22 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
   const tetherVal =
     userAssets.data && uid ? roundTo(userAssets.data.tether, 2) : "-";
   const pairVal =
-    userAssets.data && uid ? roundTo(userAssets.data.bitcoin, 2) || 0 : "-";
+    userAssets.data && uid ? roundTo(userAssets.data[pairs], 2) || 0 : "-";
+
+  const updateTradeHistory = () => {
+    const { time, date } = getTime();
+    dispatch(
+      tradingActions.addTradeHistory({
+        pairs,
+        formType,
+        orderType: orderType.state,
+        price: priceInput.value,
+        amount: amountInput.value,
+        time,
+        date,
+      })
+    );
+  };
 
   return (
     <form
@@ -33,7 +51,7 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
         <div className={classes["title"]}>موجودی حساب</div>
         <div className={classes["value"]}>
           {formType === "buy" ? tetherVal : pairVal}
-          <span>{formType === "buy" ? "تتر" : "بیت کوین"}</span>
+          <span>{formType === "buy" ? "TETHER" : pairs}</span>
         </div>
       </div>
 
@@ -76,7 +94,11 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
         disabled={!uid}
       />
       <AVBLPercentage formType={formType} />
-      <BuySellBtn formType={formType} disabled={!formIsValid} />
+      <BuySellBtn
+        formType={formType}
+        disabled={!formIsValid}
+        postFn={updateTradeHistory}
+      />
       <TradeFormErrors errors={errorMessages} />
     </form>
   );

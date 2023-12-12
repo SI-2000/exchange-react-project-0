@@ -31,7 +31,6 @@ const AssetsPage = () => {
     staleTime: Infinity,
   });
 
-  console.log(currenciesQuery.data)
   const assets = useGetAssets();
 
   if (!uid) {
@@ -54,7 +53,11 @@ const AssetsPage = () => {
 
   const assetsInfo = Object.keys(assets.data).map((assetItem) => {
     const itemInfo = currenciesQuery.data.find((currency) => {
-      return currency.id === assetItem;
+      if (currency.id === "tether") {
+        return currency.id === assetItem;
+      } else {
+        return currency.symbol.toUpperCase() + "USDT" === assetItem;
+      }
     });
     return {
       id: itemInfo.id,

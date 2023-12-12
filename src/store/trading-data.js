@@ -4,7 +4,7 @@ const initialState = {
   current_price: "10",
   order_type: "LIMIT",
   tradeForm: {
-    pair: "bitcoin",
+    pair: "BTCUSDT",
     formIsValid: { buy: false, sell: false },
     errorMessages: {
       buy: { stop: [], price: [], amount: [], form: [] },

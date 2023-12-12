@@ -81,7 +81,9 @@ div.transaction-type {
 
   .order-item dl {
     display: flex;
+    justify-content: space-between;
   }
+
 
   .order-item dt {
     display: none;
@@ -90,5 +92,8 @@ div.transaction-type {
   .order-item dd{
     font-size: 12px;
     color:var(--custom-gray);
+    width: calc(100% /6);
+    text-align: center;
   }
+
 }
