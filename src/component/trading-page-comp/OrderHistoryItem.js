@@ -32,7 +32,7 @@ const OrderHistoryItem = (props) => {
         <dt className={classes["transaction-type"]}>تراکنش</dt>
         <dd
           className={`${classes["transaction-type"]} ${
-            !true ? "positive" : "negative"
+            props.formType === "buy" ? "positive" : "negative"
           }`}
         >
           {props.formType === "buy" ? "خرید" : "فروش"}

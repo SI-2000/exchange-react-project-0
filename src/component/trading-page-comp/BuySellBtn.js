@@ -41,7 +41,7 @@ const BuySellBtn = ({
         inputs: {
           price:
             order_type === "MARKET"
-              ? current_price
+              ? { value: current_price }
               : inputsData[formType].price,
           amount: inputsData[formType].amount,
         },

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  current_price: "10",
+  current_price: 1000,
   order_type: "LIMIT",
   tradeForm: {
     pair: "BTCUSDT",
