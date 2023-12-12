@@ -1,14 +1,18 @@
 .TradeHistory {
   position: relative;
-  height: 10rem;
+  min-height: 10rem;
   padding: 0 1rem;
-  margin: 2rem 0;
+  margin: 2rem 0 0;
   grid-row: 4/5;
-
 }
 
 .trade-history {
   height: 100%;
+}
+
+.open-orders {
+  margin-top: 1rem;
+  padding-bottom: 80px;
 }
 
 @media screen and (min-width: 768px) {
@@ -16,13 +20,14 @@
     grid-column: 1 / end;
     grid-row: 4/5;
   }
+  .open-orders {
+    padding-bottom: 0;
+  }
 }
 
 @media screen and (min-width: 1024px) {
   .TradeHistory {
     grid-column: 1 / 5;
     grid-row: 6/7;
-  }
-  .trade-history {
   }
 }

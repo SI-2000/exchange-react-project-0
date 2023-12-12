@@ -14,26 +14,34 @@ const TradeHistory = ({ isLoading }) => {
   const [tradeHistoryState, dispatchTradeHistory] =
     useReducer_DWindow(tradeHistoryActions);
 
-    if (isLoading) {
-      return (
-        <div className={`${classes["TradeHistory"]}`}>
-          <SkeletonLoading />
-        </div>
-      );
-    }
+  if (isLoading) {
+    return (
+      <div className={`${classes["TradeHistory"]}`}>
+        <SkeletonLoading />
+      </div>
+    );
+  }
 
   return (
     <div className={`${classes["TradeHistory"]}`}>
-      <div
-        className={`${classes["trade-history"]}`}
-      >
+      <div className={`${classes["trade-history"]}`}>
         <DynamicContentWindow
           actions={tradeHistoryActions}
           onDispatchTabsChanges={dispatchTradeHistory}
           tabsState={tradeHistoryState}
         />
-        <div className={classes["open-orders"]}></div>
-        {/* <OrderHistoryItem /> */}
+        <div className={classes["open-orders"]}>
+          <OrderHistoryItem />
+          <OrderHistoryItem />
+          <OrderHistoryItem />
+          <OrderHistoryItem />
+          <OrderHistoryItem />
+          <OrderHistoryItem />
+          <OrderHistoryItem />
+          <OrderHistoryItem />
+          <OrderHistoryItem />
+          <OrderHistoryItem />
+        </div>
       </div>
     </div>
   );

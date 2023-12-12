@@ -104,10 +104,10 @@ dd {
 }
 
 .positive {
-  color: var(--exchange-green);
+  color: var(--exchange-green) !important;
 }
 .negative {
-  color: var(--exchange-red);
+  color: var(--exchange-red) !important;
 }
 
 .fullscreen {

@@ -1,8 +1,9 @@
 .order-item {
   margin: 0 1rem;
-  background-color: var(--tradingview-dark-black);
+  background-color: rgb(43, 43, 43);
   padding: 0.5rem;
   border-radius: 5px;
+  margin: 0.5rem;
 }
 
 .header {
@@ -10,6 +11,7 @@
   align-items: center;
   margin: 0.5rem 0;
 }
+
 
 div.currency-pair {
   margin-left: 1rem;
@@ -32,12 +34,21 @@ div.transaction-type {
 }
 
 .order-item dt {
+  margin-top: 0.3rem;
   font-size: 12px;
   justify-self: start;
+  color: var(--custom-gray);
 }
 
 .order-item dd {
+  margin-top: 0.3rem;
   justify-self: end;
+  font-size: 14px;
+}
+
+.order-item dd.time {
+  font-size: 12px;
+  color: var(--custom-gray);
 }
 
 .currency-pair:not(div),
@@ -46,21 +57,38 @@ div.transaction-type {
   display: none;
 }
 
-/* dt.currency-pair,
-dt.order-type,
-dt.transaction-type {
-  display: none;
-}
 
-dd.currency-pair {
-  grid-column: 1 /2;
-  justify-self: start;
-}
 
-dd.order-type {
-  grid-column: 2/3;
-}
+@media screen and (min-width: 768px) {
+  .order-item {
+    margin: 0 1rem;
+    background-color: transparent;
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin: 0.5rem;
+    border-radius: 0;
+    border-top: 1px solid rgb(49, 49, 49);
+  }
 
-dd.transaction-type {
-  grid-column: 3/9;
-}  */
+  .header {
+    display: none;
+  }
+  .currency-pair:not(div),
+  .order-type:not(div),
+  .transaction-type:not(div) {
+    display: block;
+  }
+
+  .order-item dl {
+    display: flex;
+  }
+
+  .order-item dt {
+    display: none;
+  }
+
+  .order-item dd{
+    font-size: 12px;
+    color:var(--custom-gray);
+  }
+}
