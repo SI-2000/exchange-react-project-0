@@ -35,20 +35,37 @@ const CurrenciesList = () => {
   if (currenciesQuery.isError) return console.log(currenciesQuery.error);
 
   return (
-    <div className={classes["currencies-table"]}>
-      <WhiteFrame className="home-page-table">
-        <div
-          className={`${classes["table-container"]}`}
-          ref={tableContainerRef}
-        >
-          <CurrenciesTable queryData={currenciesQuery} />
-          {currenciesQuery.isFetchingNextPage && (
-            <div className={`${classes["loading-new-items"]}`}>
-              <LoadingSVG />
-            </div>
-          )}
-        </div>
-      </WhiteFrame>
+    <div className={`${classes["CurrenciesList"]}`}>
+      <div className={`${classes["intro"]}`}>
+        <h1>
+          شما در <span>ایزی‌بیت</span> به بزرگ‌ترین مجموعه ارز های دیجیتال
+          دسترسی دارید
+        </h1>
+        <p>
+          در صرافی امن و معتبر ایزی بیت، شما قادر خواهید بود در کمترین زمان
+          ممکن، به معاملات خرید و فروش بیش از ۳۰۰ نوع ارز دیجیتال مختلف
+          بپردازید. با استفاده از سیستم تبدیل ما، شما تجربه ای لذت بخش و بی نظیر
+          از خرید انواع ارزهای دیجیتال محبوب و پرطرفدار مانند بیت کوین، اتریوم،
+          تتر و حتی ارزهای دیجیتال متنوع دیگر را خواهید داشت. این ارزهای دیجیتال
+          شامل فن توکن ها، ارزهای متاورسی، ان اف تی و ... می باشند. با ما همراه
+          باشید و از خدمات ما در زمینه ارزهای دیجیتال بهره مند شوید.
+        </p>
+      </div>
+      <div className={classes["currencies-table"]}>
+        <WhiteFrame className="home-page-table">
+          <div
+            className={`${classes["table-container"]}`}
+            ref={tableContainerRef}
+          >
+            <CurrenciesTable queryData={currenciesQuery} />
+            {currenciesQuery.isFetchingNextPage && (
+              <div className={`${classes["loading-new-items"]}`}>
+                <LoadingSVG />
+              </div>
+            )}
+          </div>
+        </WhiteFrame>
+      </div>
     </div>
   );
 };
