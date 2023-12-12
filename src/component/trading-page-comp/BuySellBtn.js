@@ -7,11 +7,13 @@ import useSetAssets from "../../hooks/use-set-assets";
 import { useTradeForm } from "../../hooks/use-trade-form";
 import { tradingActions } from "../../store/trading-data";
 import { compose } from "redux";
+import { useNotification } from "../../hooks/use-notification";
 
 const BuySellBtn = ({ formType, disabled }) => {
   const uid = useSelector((state) => state.auth.uid);
 
   const dispatch = useDispatch();
+  const { addNote } = useNotification();
 
   const {
     current_price,
@@ -20,20 +22,30 @@ const BuySellBtn = ({ formType, disabled }) => {
   } = useSelector((state) => state.tradingData);
 
   const changeAssetMutation = useSetAssets();
+
   const btnClickHandler = (e) => {
     e.preventDefault();
     if (disabled) {
       return;
     }
-    changeAssetMutation.mutate({
-      pair: inputsData.pair,
-      formType,
-      inputs: {
-        price:
-          order_type === "MARKET" ? current_price : inputsData[formType].price,
-        amount: inputsData[formType].amount,
-      },
-    });
+    changeAssetMutation
+      .mutateAsync({
+        pair: inputsData.pair,
+        formType,
+        inputs: {
+          price:
+            order_type === "MARKET"
+              ? current_price
+              : inputsData[formType].price,
+          amount: inputsData[formType].amount,
+        },
+      })
+      .then(() => {
+        addNote({
+          type: "SUCCESS",
+          message: "معامله انجام شد",
+        });
+      });
   };
 
   if (!uid) {
@@ -53,9 +65,13 @@ const BuySellBtn = ({ formType, disabled }) => {
     <button
       onClick={btnClickHandler}
       className={`${classes["buy-sell-btn"]} ${classes[formType]}`}
-      disabled={disabled}
+      disabled={disabled || changeAssetMutation.isLoading}
     >
-      {formType === "buy" ? "خرید" : "فروش"}
+      {changeAssetMutation.isLoading
+        ? "در حال ارسال..."
+        : formType === "buy"
+        ? "خرید"
+        : "فروش"}
     </button>
   );
 };

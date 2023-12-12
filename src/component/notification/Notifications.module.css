@@ -1,6 +1,14 @@
+.Notifications{
+  position: fixed;
+  top: 60px;
+  left: 10px;
+  width: 200px;
+  z-index: 100;
+}
+
 .notification-wrapper {
-    position: fixed;
+    /* position: fixed;
     top: 60px;
     left: 10px;
-    width: 200px;
+    width: 200px; */
   }

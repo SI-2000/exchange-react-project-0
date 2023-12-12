@@ -2,6 +2,7 @@
 // from the "https://api.coingecko.com" API
 
 import axios from "../api/axios";
+import { delay } from "../util/delay";
 
 export async function getCurrenciesInfo() {
   const response = await axios.get("coingecko", {
@@ -20,12 +21,9 @@ export async function getPaginatedCurrency(page) {
       _page: page,
     },
   });
-  function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+
   await delay(2000); // تاخیر 2 ثانیه
   // کدی که می‌خواهید پس از تاخیر اجرا شود
-    
 
   const hasNext = page * limit < parseFloat(response.headers["x-total-count"]);
   return {

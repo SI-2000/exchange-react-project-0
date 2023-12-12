@@ -21,8 +21,6 @@ const CurrenciesList = () => {
 
   const { seen, setSeen } = useVisibilityStatus(tableContainerRef);
 
-  console.log(seen);
-
   useEffect(() => {
     if (seen) {
       currenciesQuery.fetchNextPage().then(() => {
