@@ -45,6 +45,12 @@ const BuySellBtn = ({ formType, disabled }) => {
           type: "SUCCESS",
           message: "معامله انجام شد",
         });
+      })
+      .catch(() => {
+        addNote({
+          type: "ERROR",
+          message: "معامله انجام نشد",
+        });
       });
   };
 
