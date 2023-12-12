@@ -6,6 +6,14 @@ export const useNotification = () => {
   const dispatch = useDispatch();
 
   const addNote = (props) => {
+    /*
+   props:{
+      type,
+      message,
+      title: "Successful Request",
+    }
+    */
+
     dispatch(
       notificationActions.addNotification({
         id: v4(),
