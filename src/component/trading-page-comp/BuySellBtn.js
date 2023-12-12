@@ -9,7 +9,13 @@ import { tradingActions } from "../../store/trading-data";
 import { compose } from "redux";
 import { useNotification } from "../../hooks/use-notification";
 
-const BuySellBtn = ({ formType, disabled }) => {
+const BuySellBtn = ({
+  formType,
+  disabled,
+  postFn = () => {
+    return;
+  },
+}) => {
   const uid = useSelector((state) => state.auth.uid);
 
   const dispatch = useDispatch();
@@ -45,6 +51,7 @@ const BuySellBtn = ({ formType, disabled }) => {
           type: "SUCCESS",
           message: "معامله انجام شد",
         });
+        postFn();
       })
       .catch(() => {
         addNote({

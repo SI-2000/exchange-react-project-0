@@ -21,6 +21,7 @@ const initialState = {
       amount: { value: "", isValid: false, isToched: false },
     },
   },
+  trade_history: [],
 };
 
 const tradingSlice = createSlice({
@@ -45,6 +46,9 @@ const tradingSlice = createSlice({
     formIsValid(state, action) {
       const { formType, isValid } = action.payload;
       state.tradeForm.formIsValid[formType] = isValid;
+    },
+    addTradeHistory(state, action) {
+      state.trade_history.unshift(action.payload);
     },
   },
 });
