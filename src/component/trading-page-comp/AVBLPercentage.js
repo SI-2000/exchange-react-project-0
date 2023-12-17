@@ -7,6 +7,7 @@ import { tradingActions } from "../../store/trading-data";
 import { roundTo } from "../../util/round-number";
 
 const AVBLPercentage = ({ formType }) => {
+  const uid = useSelector((state) => state.auth.uid);
   const assets = useGetAssets();
 
   const dataIsAvailable = !!assets.data;
@@ -54,6 +55,7 @@ const AVBLPercentage = ({ formType }) => {
           buttonClickHandler(e, 0.25);
         }}
         className={classes["p25"]}
+        disabled={!uid}
       >
         25%
       </button>
@@ -62,6 +64,7 @@ const AVBLPercentage = ({ formType }) => {
           buttonClickHandler(e, 0.5);
         }}
         className={classes["p50"]}
+        disabled={!uid}
       >
         50%
       </button>
@@ -70,6 +73,7 @@ const AVBLPercentage = ({ formType }) => {
           buttonClickHandler(e, 0.75);
         }}
         className={classes["p75"]}
+        disabled={!uid}
       >
         75%
       </button>
@@ -78,6 +82,7 @@ const AVBLPercentage = ({ formType }) => {
           buttonClickHandler(e, 1);
         }}
         className={classes["p100"]}
+        disabled={!uid}
       >
         100%
       </button>

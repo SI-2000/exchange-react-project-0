@@ -12,6 +12,7 @@ const tradeHistoryActions = [
 ];
 
 const TradeHistory = ({ isLoading }) => {
+  const uid = useSelector((state) => state.auth.uid);
   const [tradeHistoryState, dispatchTradeHistory] =
     useReducer_DWindow(tradeHistoryActions);
 
@@ -38,7 +39,7 @@ const TradeHistory = ({ isLoading }) => {
           />
         </div>
         <div className={classes["open-orders"]}>
-          {historyData.length !== 0 && (
+          {historyData.length !== 0 && uid && (
             <div className={`${classes["titles"]}`}>
               <div className={`${classes[""]}`}>جفت ارز</div>
               <div className={`${classes[""]}`}>نوع سفارش</div>
@@ -48,11 +49,12 @@ const TradeHistory = ({ isLoading }) => {
               <div className={`${classes[""]}`}>ساعت و تاریخ</div>
             </div>
           )}
-          {historyData.length !== 0 ? (
+          {historyData.length !== 0 &&
+            uid &&
             historyData.map((item, index) => {
               return <OrderHistoryItem key={index} {...item} />;
-            })
-          ) : (
+            })}
+          {historyData.length === 0 && (
             <p className={`${classes["open-orders-msg"]}`}>
               تاریخچه معاملات خالی است
             </p>

@@ -63,6 +63,10 @@ Form p {
   margin-top: 2rem;
 }
 
+.buttons > *{
+  font-size: 12px !important;
+}
+
 .ltr {
   direction: ltr;
 }
