@@ -1,7 +1,7 @@
 .form-container {
   margin: 3rem 0;
   max-width: 25rem;
-  flex:1 1 auto;
+  flex: 1 1 auto;
 }
 
 .form-container form {
@@ -11,7 +11,6 @@
   align-items: center;
   width: 16rem;
   height: 25rem;
-
 }
 
 .form-caption {
@@ -26,14 +25,14 @@
 }
 
 .err-message p {
-  background: red;
-  color: white;
-  border-radius: 20px;
+  color: red;
+  text-decoration: underline;
   font-size: 14px;
   padding: 0.2rem 0.5rem;
   width: fit-content;
   align-self: flex-start;
   margin-right: 0;
+  font-size: 12px;
 }
 
 Form p {
@@ -63,20 +62,15 @@ Form p {
   margin-top: 2rem;
 }
 
-.buttons > *{
+.buttons > * {
   font-size: 12px !important;
+}
+
+.buttons button:disabled {
+  background-color: rgb(170, 170, 170);
 }
 
 .ltr {
   direction: ltr;
 }
 
-.error-message {
-  direction: ltr;
-  font-size: 12px;
-  color: white;
-  background: rgb(255, 29, 29);
-  padding: 0.3rem 0.5rem;
-  border-radius: 10px;
-  width: fit-content;
-}

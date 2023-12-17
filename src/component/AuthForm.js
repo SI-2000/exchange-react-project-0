@@ -13,7 +13,7 @@ import CustomLink from "./CustomLink";
 import { useSelector } from "react-redux";
 
 const AuthForm = () => {
-  const errData = useActionData();
+  const authData = useActionData();
   const navigaton = useNavigation();
 
   const [searchParams] = useSearchParams();
@@ -30,7 +30,7 @@ const AuthForm = () => {
             {isLogin ? "ورود" : "ثبت نام"}
           </h1>
           <div className={classes["err-message"]}>
-            {errData && <p>{errData}</p>}
+            {authData && <p>{authData}</p>}
           </div>
           <p>
             <label htmlFor="email">ایمیل</label>
