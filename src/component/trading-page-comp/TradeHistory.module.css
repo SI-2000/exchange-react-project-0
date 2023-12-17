@@ -4,7 +4,6 @@
   padding: 0 1rem;
   margin: 2rem 0 0;
   grid-row: 4/5;
-
 }
 
 /* .btns-wrapper{
@@ -21,7 +20,26 @@
   margin-top: 1rem;
   padding-bottom: 80px;
   max-height: 634px;
-  overflow:scroll;
+  overflow-y: auto;
+}
+
+.open-orders-msg {
+  color: var(--custom-gray);
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 12px;
+}
+
+.open-orders .titles {
+  display: none;
+  justify-content: space-around;
+  font-size: 12px;
+  color: var(--custom-gray);
+}
+
+.open-orders .titles > div {
+  width: 200px;
+  text-align: center;
 }
 
 @media screen and (min-width: 768px) {
@@ -32,7 +50,10 @@
   .open-orders {
     padding-bottom: 0;
     max-height: 280px;
+  }
 
+  .open-orders .titles {
+    display: flex;
   }
 }
 
