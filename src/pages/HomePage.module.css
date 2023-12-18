@@ -1,10 +1,9 @@
 .HomePage {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../files/images/homepageBG-bitcoin1.jfif);
-  background-position:center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../files/images/home-page-bg-0.jfif);
+  background-position: center;
   background-attachment: fixed;
   background-repeat: repeat-x;
-
 }
 
 .home-page {
@@ -23,4 +22,15 @@
   border-radius: 25px;
   color: black;
   margin-top: -25px;
+}
+
+@media screen and (min-width:1024px) {
+  .HomePage {
+    background: linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)),
+      url(../files/images/home-page-bg-1.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: repeat-x;
+  }
+  
 }

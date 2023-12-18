@@ -12,11 +12,11 @@
   align-items: center;
   height: 100%;
   padding: 2rem 0;
-  margin: 0 4rem;
+  margin: 0 1rem;
 }
 
 .right-side .title {
-  font-size: 30px;
+  font-size: 25px;
   max-width: 30rem;
   text-align: center;
   margin-bottom: 4rem;
@@ -28,6 +28,11 @@
 
 .right-side h3 {
   margin: 0.5rem 0;
+  font-size: 14px;
+}
+
+.right-side .btn-caption {
+  font-size: 12px;
 }
 
 .right-side > div {
@@ -37,27 +42,31 @@
 }
 
 .left-side {
-  margin: 4rem 4rem;
-  align-self: flex-end;
+  margin: 4rem 8rem;
+  align-self: center;
 }
 
 .left-side > div {
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   border-radius: 5px;
-  padding: 0.5rem 1rem;
-  margin: 1rem 0;
-  font-size: 14px;
+  padding: 0.5rem 0rem;
+  margin: 0.5rem 0;
+  font-size: 10px;
   color: var(--custom-gray);
   border: 1px solid rgba(255, 255, 255, 0.5);
   direction: ltr;
   display: flex;
 }
 
+.left-side > div:nth-child(2) {
+  margin-left: 1rem;
+}
+
 .left-side > div > div {
   display: flex;
   justify-content: flex-start;
-  margin: 0 1rem;
+  margin: 0 0.5rem;
 }
 
 .left-side > div > div:last-child {
@@ -65,14 +74,14 @@
 }
 
 .left-side > div .id {
-  width: 80px;
+  width: 55px;
 }
 .left-side > div .change {
-  width: 40px;
+  width: 30px;
 }
 
 .left-side > div .price {
-  width: 70px;
+  width: 50px;
 }
 
 @media screen and (min-width: 1024px) {
@@ -82,7 +91,15 @@
   }
   .right-side {
     align-items: flex-start;
+    align-self: flex-start;
+    margin: 0 4rem;
+    margin-top: 5rem;
   }
+
+  .right-side > * {
+    margin: 1rem 0;
+  }
+
   .right-side .title {
     text-align: right;
   }
