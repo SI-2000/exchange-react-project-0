@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { assetsActions } from "../store/assets";
-import axios from "../api/axios";
+import axios, { fireBaseAxios } from "../api/axios";
 
 export default function useGetAssets() {
   const uid = useSelector((state) => state.auth.uid);
@@ -9,7 +9,7 @@ export default function useGetAssets() {
   const usersQuery = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const users = await axios.get("users");
+      const users = await fireBaseAxios.get("users");
       return users.data;
     },
     enabled: !!uid,

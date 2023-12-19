@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "react-query";
 import { useSelector } from "react-redux";
-import axios from "../api/axios";
+import axios, { fireBaseAxios } from "../api/axios";
 
 const useSetTether = () => {
   const queryClient = useQueryClient();
@@ -13,7 +13,7 @@ const useSetTether = () => {
       assets.tether = newAmount;
 
       const newData = { [uid]: { assets, ...users[uid] } };
-      const resData = await axios.put("users", newData);
+      const resData = await fireBaseAxios.put("users", newData);
       return resData.data;
     },
     onSuccess: () => {

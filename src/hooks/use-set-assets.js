@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { assetsActions } from "../store/assets";
-import axios from "../api/axios";
+import axios, { fireBaseAxios } from "../api/axios";
 
 export default function useSetAssets() {
   const uid = useSelector((state) => state.auth.uid);
@@ -25,7 +25,7 @@ export default function useSetAssets() {
           assets.tether + +data.inputs.price.value * +data.inputs.amount.value;
       }
       const newData = { [uid]: { assets, ...users[uid] } };
-      const resData = await axios.put("users", newData);
+      const resData = await fireBaseAxios.put("users", newData);
       return resData.data;
     },
     onSuccess: () => {
