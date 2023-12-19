@@ -71,8 +71,8 @@ const AssetsPage = () => {
 
   return (
     <div className={classes["assets-container"]}>
-      <TotalAssetAmount assetsData={assetsInfo} />
-      <ModifyTetherAmount />
+      {/* <TotalAssetAmount assetsData={assetsInfo} /> */}
+      {/* <ModifyTetherAmount /> */}
 
       <WhiteFrame className="home-page-table">
         <AssetsTable assetsInfo={assetsInfo} />
