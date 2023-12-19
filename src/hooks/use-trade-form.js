@@ -89,7 +89,7 @@ export function useTradeForm(formType, orderType) {
     const { stop, price, amount } = inputsData[formType];
     switch (orderType.state) {
       case "LIMIT": {
-        let condition1 = price.isValid && amount.isValid;
+        let condition1 = priceInput.isValid && amountInput.isValid;
         let condition2 = true;
         if (uid) {
           if (formType === "buy") {
@@ -110,7 +110,7 @@ export function useTradeForm(formType, orderType) {
         break;
       }
       case "MARKET": {
-        let condition1 = amount.isValid;
+        let condition1 = amountInput.isValid;
         let condition2 = true;
         if (uid) {
           if (formType === "buy") {
@@ -131,7 +131,8 @@ export function useTradeForm(formType, orderType) {
         break;
       }
       case "STOP_LIMIT": {
-        let condition1 = stop.isValid && price.isValid && amount.isValid;
+        let condition1 =
+          stopInput.isValid && priceInput.isValid && amountInput.isValid;
         let condition2 = true;
         let condition3 = true;
 
