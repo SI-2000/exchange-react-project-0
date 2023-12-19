@@ -1,11 +1,10 @@
 .Chart {
   position: relative;
   height: 21rem;
-
 }
 
 .chart-container {
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
   height: 100%;
 }
 
@@ -27,7 +26,5 @@
   .Chart {
     grid-column: 2/4;
     grid-row: 2/3;
-  }
-  .chart-container {
   }
 }

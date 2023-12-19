@@ -26,7 +26,6 @@ const TradeHistory = ({ isLoading }) => {
     );
   }
 
-  console.log(historyData);
 
   return (
     <div className={`${classes["TradeHistory"]}`}>

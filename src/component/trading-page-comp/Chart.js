@@ -3,8 +3,12 @@ import TradingViewWidget from "react-tradingview-widget";
 
 import classes from "./Chart.module.css";
 import SkeletonLoading from "../../ui/SkeletonLoading";
+import { useParams } from "react-router-dom";
 
 const Chart = ({ className, isLoading }) => {
+  const params = useParams();
+  console.log(params);
+
   if (isLoading) {
     return (
       <div className={`${classes["Chart"]} ${classes[className]}`}>
@@ -16,14 +20,14 @@ const Chart = ({ className, isLoading }) => {
     <div className={`${classes["Chart"]} ${classes[className]}`}>
       <div className={`${classes["chart-container"]}`}>
         {/* {
-        <TradingViewWidget
-          symbol="BTCUSDT"
-          theme="dark"
-          locale="fa"
-          width="100%"
-          height="20rem"
-        />
-      } */}
+          <TradingViewWidget
+            symbol={params.coinId}
+            theme="dark"
+            locale="fa"
+            width="100%"
+            height="20rem"
+          />
+        } */}
       </div>
     </div>
   );

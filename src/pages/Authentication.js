@@ -85,7 +85,6 @@ export async function action({ request }) {
 
         await fetchRealTimeDB(`users/${user.uid}`, "PUT", userData);
       } catch (err) {
-        console.log(err.code)
         return firebaseErrHandler(err.code);
         // return firebaseErrHandler(err.code) || null;
       }

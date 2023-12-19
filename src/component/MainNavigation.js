@@ -65,13 +65,13 @@ const MainNavigation = ({ className, onCloseNav }) => {
         </li>
         <li>
           <NavLink
-            to="coins/bitcoin"
+            to="coins/BTCUSDT"
             className={({ isActive }) =>
               isActive ? classes.active : undefined
             }
             onClick={onCloseNav}
           >
-            coins/bitcoin
+            بازار حرفه‌ای
           </NavLink>
         </li>
         {!uid && (
