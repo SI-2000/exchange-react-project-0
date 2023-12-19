@@ -22,7 +22,9 @@ const CurrenciesList = () => {
   const { seen, setSeen } = useVisibilityStatus(tableContainerRef);
 
   useEffect(() => {
-    if (seen) {
+    if (seen && !currenciesQuery.isError) {
+      /* If we do not apply the error condition, 
+      in case of error a new request will be sent with each time of scrolling .*/
       currenciesQuery.fetchNextPage().then(() => {
         setSeen(false);
       });
@@ -30,7 +32,7 @@ const CurrenciesList = () => {
   }, [seen]);
 
   if (currenciesQuery.isLoading) return <RouterLoading />;
-  if (currenciesQuery.isError) return console.log(currenciesQuery.error);
+  if (currenciesQuery.isError) console.log(currenciesQuery.error);
 
   return (
     <div className={`${classes["CurrenciesList"]}`}>
@@ -56,6 +58,7 @@ const CurrenciesList = () => {
             ref={tableContainerRef}
           >
             <CurrenciesTable queryData={currenciesQuery} />
+
             {currenciesQuery.isFetchingNextPage && (
               <div className={`${classes["loading-new-items"]}`}>
                 <LoadingSVG />

@@ -22,8 +22,7 @@ export async function getPaginatedCurrency(page) {
     },
   });
 
-  await delay(2000); // تاخیر 2 ثانیه
-  // کدی که می‌خواهید پس از تاخیر اجرا شود
+  await delay(2000); 
 
   const hasNext = page * limit < parseFloat(response.headers["x-total-count"]);
   return {

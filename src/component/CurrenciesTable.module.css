@@ -48,6 +48,12 @@
   width: 100px;
 }
 
+.connection-message {
+  font-size: 14px;
+  padding: 1rem;
+  color:rgb(51, 51, 51);
+}
+
 @media screen and (min-width: 768px) {
   .volume {
     display: block;
