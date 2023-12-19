@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   current_price: 1000,
   order_type: "LIMIT",
+  pairs: "BTCUSDT",
   tradeForm: {
-    pair: "BTCUSDT",
     formIsValid: { buy: false, sell: false },
     errorMessages: {
       buy: { stop: [], price: [], amount: [], form: [] },
@@ -50,6 +50,9 @@ const tradingSlice = createSlice({
     addTradeHistory(state, action) {
       state.trade_history.unshift(action.payload);
     },
+    setPairs(state, action){
+      state.pairs = action.payload
+    }
   },
 });
 
