@@ -22,9 +22,11 @@ export function useTradeForm(formType, orderType) {
   const userAssets = useGetAssets();
   const dispatch = useDispatch();
 
-  const { tradeForm: inputsData, current_price: currentPrice } = useSelector(
-    (state) => state.tradingData
-  );
+  const {
+    tradeForm: inputsData,
+    pairs,
+    current_price: currentPrice,
+  } = useSelector((state) => state.tradingData);
 
   const inputsValue = inputsData[formType];
 
@@ -85,7 +87,7 @@ export function useTradeForm(formType, orderType) {
   let formErrMessages = [];
 
   if (uid || userAssets.data) {
-    const { tether, [inputsData.pair]: pair = 0 } = userAssets.data;
+    const { tether, [pairs]: pair = 0 } = userAssets.data;
     const { stop, price, amount } = inputsData[formType];
     switch (orderType.state) {
       case "LIMIT": {
