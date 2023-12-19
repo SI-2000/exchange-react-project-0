@@ -11,7 +11,7 @@ const AVBLPercentage = ({ formType }) => {
   const assets = useGetAssets();
 
   const dataIsAvailable = !!assets.data;
-  const pair = useSelector((state) => state.tradingData.tradeForm.pair);
+  const pair = useSelector((state) => state.tradingData.pairs);
   const dispatch = useDispatch();
 
   const buttonClickHandler = (event, percentage) => {

@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 
 import classes from "./TradingPage.module.css";
 import { json, useParams } from "react-router-dom";
@@ -14,8 +14,9 @@ import SelectCurrency from "../component/trading-page-comp/SelectCurrency";
 import { useQuery } from "react-query";
 import getTradingInfo from "../util/get-trading-info";
 import useGetAssets from "../hooks/use-get-assets";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ErrorElement from "../component/error-element-comp/ErrorElement";
+import { tradingActions } from "../store/trading-data";
 
 const marketDataActions = [
   { CHART: "نمودار" },
@@ -25,6 +26,12 @@ const marketDataActions = [
 
 const TradingPage = () => {
   const uid = useSelector((state) => state.auth.uid);
+  const params = useParams();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(tradingActions.setPairs(params.coinId));
+  }, [params.coinId]);
 
   const tradingQuery = useQuery({
     queryKey: ["trading-page"],

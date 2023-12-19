@@ -14,7 +14,7 @@ import { getTime } from "../../util/get-time";
 
 const TradeInputs = ({ formType, orderType, activeForm }) => {
   const uid = useSelector((state) => state.auth.uid);
-  const pairs = useSelector((state) => state.tradingData.tradeForm.pair);
+  const pairs = useSelector((state) => state.tradingData.pairs);
   const userAssets = useGetAssets();
   const dispatch = useDispatch();
 
@@ -24,7 +24,11 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
   const tetherVal =
     userAssets.data && uid ? roundTo(userAssets.data.tether, 2) : "-";
   const pairVal =
-    userAssets.data && uid ? roundTo(userAssets.data[pairs], 2) || 0 : "-";
+    userAssets.data && uid
+      ? userAssets.data[pairs]
+        ? roundTo(userAssets.data[pairs], 2)
+        : 0
+      : "-";
 
   const updateTradeHistory = () => {
     const { time, date } = getTime();

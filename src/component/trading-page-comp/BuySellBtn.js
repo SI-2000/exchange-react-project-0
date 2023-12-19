@@ -23,6 +23,7 @@ const BuySellBtn = ({
 
   const {
     current_price,
+    pairs,
     tradeForm: inputsData,
     order_type,
   } = useSelector((state) => state.tradingData);
@@ -36,7 +37,7 @@ const BuySellBtn = ({
     }
     changeAssetMutation
       .mutateAsync({
-        pair: inputsData.pair,
+        pair: pairs,
         formType,
         inputs: {
           price:

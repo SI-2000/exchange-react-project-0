@@ -13,7 +13,7 @@ const useSetTether = () => {
       assets.tether = newAmount;
 
       const newData = { [uid]: { assets, ...users[uid] } };
-      const resData = await fireBaseAxios.put("users", newData);
+      const resData = await fireBaseAxios.put("users.json", newData);
       return resData.data;
     },
     onSuccess: () => {

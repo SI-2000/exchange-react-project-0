@@ -9,7 +9,7 @@ export default function useGetAssets() {
   const usersQuery = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const users = await fireBaseAxios.get("users");
+      const users = await fireBaseAxios.get("users.json");
       return users.data;
     },
     enabled: !!uid,

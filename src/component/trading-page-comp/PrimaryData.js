@@ -27,15 +27,6 @@ const PrimaryData = ({ data, isLoading }) => {
     quoteVolume,
   } = data.coinInfo;
 
-  // const {
-  //   symbol,
-  //   lastPrice,
-  //   priceChange,
-  //   priceChangePercent,
-  //   highPrice,
-  //   lowPrice,
-  //   quoteVolume,
-  // } = numToRoundedString(data.coinInfo);
 
   return (
     <div className={`${classes["PrimaryData"]}`}>

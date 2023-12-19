@@ -25,7 +25,7 @@ export default function useSetAssets() {
           assets.tether + +data.inputs.price.value * +data.inputs.amount.value;
       }
       const newData = { [uid]: { assets, ...users[uid] } };
-      const resData = await fireBaseAxios.put("users", newData);
+      const resData = await fireBaseAxios.put("users.json", newData);
       return resData.data;
     },
     onSuccess: () => {
