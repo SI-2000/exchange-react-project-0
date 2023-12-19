@@ -11,7 +11,7 @@ const Intro = ({ queryData }) => {
   const currencies = queryData.data.currencies.slice(0, 3);
 
   return (
-    <div className={`${classes["Intro"]} fullscreen`}>
+    <div className={`${classes["Intro"]} `}>
       <div className={`${classes["right-side"]}`}>
         <p className={`${classes["title"]}`}>
           در <span>ایزی‌بیت</span> به حرفه‌ای ترین و در عین حال ساده ترین ابزار
