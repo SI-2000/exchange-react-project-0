@@ -23,7 +23,7 @@ const Intro = ({ queryData }) => {
         <p className={`${classes["btn-caption"]}`}>
           به راحتی به بازار حرفه ای دسترسی داشته باشید
         </p>
-        <CustomLink to="/coins/bitcoin" className="home-page-intro-link">
+        <CustomLink to="/coins/BTCUSDT" className="home-page-intro-link">
           به متنوع‌ترین بازار ارز‌های دیجیتال خوش آمده‌اید
         </CustomLink>
       </div>

@@ -16,10 +16,13 @@ const CustomTable = ({
   className,
   volumeBarPerc,
   btnClassNames = { col1: [], col2: [], col3: [] },
+  btnClickHandler = () => {
+    return;
+  },
 }) => {
   /*
     header_titles structure =    [ // Every column ==> // { en: "title", fa: "عنوان" } ]
-    buttons =  [ { col1_title: "A", col2_title: "B" }, col3_title: "C" }  ]
+    buttons =  [ { col1_title: "A", col2_title: "B" , col3_title: "C" }  ]
   */
 
   const titles = [];
@@ -57,6 +60,9 @@ const CustomTable = ({
                   className={`${classes[titles[0]]} ${
                     classes[btnClassNames.col1[index]]
                   }`}
+                  onClick={() => {
+                    btnClickHandler(btn[titles[0]]);
+                  }}
                 >
                   {btn[titles[0]]}
                 </button>

@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom";
 
 const Chart = ({ className, isLoading }) => {
   const params = useParams();
-  console.log(params);
 
   if (isLoading) {
     return (

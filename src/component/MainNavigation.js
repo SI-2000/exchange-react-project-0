@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { ReactComponent as CloseIcon } from "../files/icons/close_FILL0_wght400_GRAD0_opsz48.svg";
 import classes from "./MainNavigation.module.css";
 import { useLogout } from "../hooks/use-logout";
@@ -10,6 +10,7 @@ import Backdrop from "../ui/Backdrop";
 const MainNavigation = ({ className, onCloseNav }) => {
   const uid = useSelector((state) => state.auth.uid);
   const logoutHandler = useLogout(onCloseNav);
+  const location = useLocation();
 
   return (
     <nav className={`${classes["main-nav"]} ${classes[className]}`}>
@@ -65,9 +66,11 @@ const MainNavigation = ({ className, onCloseNav }) => {
         </li>
         <li>
           <NavLink
-            to="coins/BTCUSDT"
+            to="/coins/BTCUSDT"
             className={({ isActive }) =>
-              isActive ? classes.active : undefined
+              isActive || location.pathname.split("/")[1] === "coins"
+                ? classes.active
+                : undefined
             }
             onClick={onCloseNav}
           >
