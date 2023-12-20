@@ -26,7 +26,7 @@ const TradeOverlay = ({ symbol, onClickOnBG, className }) => {
     >
       <ul>
         <li>
-          <Link to={`/coin/${symbol.toUpperCase()}USDT`}>معامله</Link>
+          <Link to={`/coins/${symbol.toUpperCase()}USDT`}>معامله</Link>
         </li>
         <li>
           <Link>اطلاعات بیشتر</Link>

@@ -50,7 +50,7 @@ const AssetItem = ({ assetInfo }) => {
             />
           )}
           <CustomLink
-            to={`/coin/${symbol.toUpperCase()}USDT`}
+            to={`/coins/${symbol.toUpperCase()}USDT`}
             className="currency-list-btn"
           >
             خرید و فروش

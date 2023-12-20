@@ -24,7 +24,6 @@ const AssetsPage = () => {
       navigate("/auth/?mode=login");
     }
   }, [uid]);
-  
 
   const currenciesQuery = useQuery({
     queryKey: "currencies",
