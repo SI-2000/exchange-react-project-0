@@ -1,0 +1,23 @@
+.HorizontalScrollComponent {
+  height: 400rem;
+  position: relative;
+}
+
+.container {
+  position: sticky;
+  height: 100vh;
+  top: 0;
+  overflow: hidden;
+}
+
+.slides-wrapper {
+  display: flex;
+  direction: ltr;
+  overflow: hidden;
+  position: absolute;
+  height: 100%;
+}
+
+.slides-wrapper > * {
+  width: calc(100vw);
+}

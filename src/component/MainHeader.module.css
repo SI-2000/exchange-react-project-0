@@ -5,9 +5,15 @@
   position: sticky;
   top: 0;
   padding: 0.5rem 1rem;
-  background-color: hwb(0 13% 87% / 0.3);
-  backdrop-filter: blur(10px);
+  background-color: hwb(0 13% 87% / 1);
   z-index: 10;
+}
+
+@supports (backdrop-filter: blur(10px)) {
+  .main-header {
+    background-color: hwb(0 13% 87% / 0.3);
+    backdrop-filter: blur(10px);
+  }
 }
 
 .menubtn-logo-container {

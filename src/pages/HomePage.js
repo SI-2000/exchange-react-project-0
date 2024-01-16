@@ -12,6 +12,7 @@ import {
 import RouterLoading from "../ui/RouterLoading";
 import { useNavigation } from "react-router-dom";
 import ErrorElement from "../component/error-element-comp/ErrorElement";
+import HomePageHorizontalSroll from "../component/home-page/HomePageHorizontalScroll";
 
 const HomePage = () => {
   const navigation = useNavigation();
@@ -30,6 +31,7 @@ const HomePage = () => {
       <div className={classes["home-page"]}>
         <Intro queryData={currenciesQuery} />
         <HomePageTable queryData={currenciesQuery} />
+        <HomePageHorizontalSroll />
         <FeaturesSlides />
         <Statistics />
       </div>

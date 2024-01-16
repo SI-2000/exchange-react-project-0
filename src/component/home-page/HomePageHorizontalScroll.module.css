@@ -1,0 +1,55 @@
+.scroll-page {
+  background-color: white;
+  padding: 7rem 1rem;
+  position: relative;
+}
+
+.scroll-page * {
+  color: rgb(61, 61, 61);
+}
+
+.text-container {
+  background-color: white;
+  z-index: 100;
+}
+
+.scroll-page h1 {
+  color: rgb(61, 61, 61);
+  font-size: 22px;
+  margin-bottom: 1rem;
+}
+
+.scroll-page p {
+  font-size: 12px;
+  text-align: justify;
+  direction: rtl;
+}
+
+.scroll-page img {
+  display: block;
+  margin: 0rem auto 0;
+  width: 90vw;
+  max-width: 30rem;
+  border-radius: 50%;
+}
+
+@media screen and (min-width: 1024px) {
+  .scroll-page {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .scroll-page p {
+    max-width: 30rem;
+    font-size: 14px;
+  }
+
+  .scroll-page h1 {
+    margin-top: 1;
+    margin-bottom: 4rem;
+
+  }
+  .scroll-page img {
+    margin: 8rem 0 0;
+  }
+}
