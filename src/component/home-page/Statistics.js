@@ -6,9 +6,17 @@ import StatisticsCounter from "./StatisticsCounter";
 import useElementVisibility from "../../hooks/use-element-visibility";
 
 const Statistics = () => {
+
+  const defaultConfig = {
+  visibilityThreshold: 1,
+  depthLevel: 0,
+};
   const ref = useRef();
 
-  const { seen } = useElementVisibility(ref);
+  const { seen } = useElementVisibility(ref,{
+    visibilityThreshold: .7,
+    depthLevel: 0,
+  });
 
 
   return (

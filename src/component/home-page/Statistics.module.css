@@ -2,6 +2,7 @@
   padding: 2rem 0 5rem;
   direction: ltr;
   user-select: none;
+  height: 661px;
 }
 
 .background-holder{
@@ -32,6 +33,10 @@
 
 
 @media screen and (min-width: 768px) {
+  .Statistics{
+    height: 360px;
+  }
+
   .counter-container {
     flex-direction: row;
   }
