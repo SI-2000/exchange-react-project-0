@@ -15,10 +15,6 @@
   padding: 0 2rem;
 }
 
-.FeaturesSlides .swiper {
-  /* height: 9rem; */
-}
-
 .swiper-slide {
   /* background-color: rgb(75, 75, 75); */
   border-radius: 5px;
@@ -51,7 +47,7 @@
   align-items: center;
   position: relative;
   cursor: pointer;
-  margin-bottom:3rem ;
+  margin-bottom: 3rem;
 }
 
 .swiper-button-prev svg,

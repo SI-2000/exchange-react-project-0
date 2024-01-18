@@ -52,18 +52,6 @@ const MainNavigation = ({ className, onCloseNav }) => {
             </NavLink>
           </li>
         )}
-
-        <li>
-          <NavLink
-            to="unimportant-page"
-            className={({ isActive }) =>
-              isActive ? classes.active : undefined
-            }
-            onClick={onCloseNav}
-          >
-            تماس با ما
-          </NavLink>
-        </li>
         <li>
           <NavLink
             to="/coins/BTCUSDT"

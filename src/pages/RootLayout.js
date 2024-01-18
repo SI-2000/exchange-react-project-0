@@ -11,6 +11,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { authActions } from "../store/auth";
 import RouterLoading from "../ui/RouterLoading";
 import Notifications from "../component/notification/Notifications";
+import Modal from "../ui/Modal";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -34,6 +35,7 @@ const app = initializeApp(firebaseConfig);
 const RootLayout = () => {
   const uid = useSelector((state) => state.auth.uid);
   const [isLoading, setIsLoading] = useState(true);
+  const [modalIsOpen, setModalIsOpen] = useState(true);
 
   const location = useLocation();
   const fullPath = location.pathname + location.search;
@@ -66,6 +68,7 @@ const RootLayout = () => {
 
   return (
     <div>
+      <Modal isOpen={modalIsOpen} setIsOpen={setModalIsOpen} />
       <Notifications />
       <MainHeader />
       <Outlet />
