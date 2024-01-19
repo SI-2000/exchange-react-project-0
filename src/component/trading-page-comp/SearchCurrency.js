@@ -4,11 +4,13 @@ import CustomTable from "../CustomTable";
 import classes from "./SearchCurrency.module.css";
 import { ReactComponent as SearchIcon } from "../../files/icons/search_FILL0_wght400_GRAD0_opsz24.svg";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { searchPairsActions } from "../../store/search-pairs";
 
 const SearchCurrency = ({ className, header_titles, buttons }) => {
   const [filteredButtns, setFilteredButtns] = useState(buttons);
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const changeInputHandler = (e) => {
     const inputValue = e.target.value;
     if (inputValue === "") {
@@ -24,6 +26,7 @@ const SearchCurrency = ({ className, header_titles, buttons }) => {
   };
 
   const navigateToOtherPairs = (pairs) => {
+    dispatch(searchPairsActions.close());
     navigate(`/coins/${pairs}`);
   };
 

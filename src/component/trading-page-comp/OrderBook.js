@@ -21,9 +21,12 @@ const OrderBook = ({ data, className, isLoading }) => {
     );
   }
 
+
+
   const [sellOBData, buyOBData, volumeBar, marketPrice] = OBDataProducer(
     data.depth
   );
+
 
   return (
     <div className={`${classes["OrderBook"]} ${classes[className]}`}>

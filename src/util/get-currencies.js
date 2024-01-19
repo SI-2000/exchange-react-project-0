@@ -1,7 +1,7 @@
 // These functions receive currency information
 // from the "https://api.coingecko.com" API
 
-import axios from "../api/axios";
+import axios from "axios";
 import { delay } from "../util/delay";
 import { currenciesData } from "./data/currencies-data";
 
@@ -18,12 +18,15 @@ export async function getCurrenciesInfo() {
 
 export async function getPaginatedCurrency(page) {
   const limit = 10;
-  const response = await axios.get("coingecko", {
-    params: {
-      _limit: limit,
-      _page: page,
-    },
-  });
+  const response = await axios.get(
+    `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc`,
+    {
+      params: {
+        per_page: limit,
+        page: page,
+      },
+    }
+  );
 
   await delay(2000);
 

@@ -6,7 +6,7 @@ import SkeletonLoading from "../../ui/SkeletonLoading";
 import numToRoundedString from "../../util/num-to-rounded-string";
 import { roundTo } from "../../util/round-number";
 
-const PrimaryData = ({ data, isLoading }) => {
+const PrimaryData = ({ data, isLoading, coinId }) => {
   const dispatch = useDispatch();
 
   if (isLoading) {
@@ -17,16 +17,20 @@ const PrimaryData = ({ data, isLoading }) => {
     );
   }
 
-  const {
-    symbol,
-    lastPrice,
-    priceChange,
-    priceChangePercent,
-    highPrice,
-    lowPrice,
-    quoteVolume,
-  } = data.coinInfo;
+  const currencies = data.currencies;
 
+  const coin = currencies.find(
+    (c) => c.symbol.toUpperCase() + "USDT" === coinId
+  );
+  const {
+    symbol: symbol,
+    current_price: lastPrice,
+    price_change_24h: priceChange,
+    price_change_percentage_24h: priceChangePercent,
+    high_24h: highPrice,
+    low_24h: lowPrice,
+    total_volume: quoteVolume,
+  } = coin;
 
   return (
     <div className={`${classes["PrimaryData"]}`}>
@@ -38,9 +42,11 @@ const PrimaryData = ({ data, isLoading }) => {
             }}
             className={`${classes["name"]} ${classes["searchOverlay-btn"]}`}
           >
-            {symbol}
+            {symbol.replace(/-/g, "").toUpperCase() + "USDT"}
           </div>
-          <div className={classes["name"]}>{symbol}</div>
+          <div className={classes["name"]}>
+            {symbol.replace(/-/g, "").toUpperCase() + "USDT"}
+          </div>
           <div className={classes["price-change"]}>
             <div className={classes["price"]}>
               $ {roundTo(lastPrice.toString(), 2)}

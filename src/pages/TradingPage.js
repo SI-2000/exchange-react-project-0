@@ -36,8 +36,10 @@ const TradingPage = () => {
   const tradingQuery = useQuery({
     queryKey: ["trading-page"],
     queryFn: async () => {
-      return await getTradingInfo(uid);
+      return await getTradingInfo(params.coinId);
     },
+    // staleTime: 1000,
+    refetchInterval: 1000
   });
 
   const data = tradingQuery.data;
@@ -55,7 +57,7 @@ const TradingPage = () => {
 
   return (
     <div className={classes["trading-page"]}>
-      <PrimaryData data={data} isLoading={isLoading} />
+      <PrimaryData data={data} isLoading={isLoading} coinId={params.coinId} />
       <SelectCurrency data={data} isLoading={isLoading} />
       <TradeSection isLoading={isLoading} />
       <MarketDataSelector
