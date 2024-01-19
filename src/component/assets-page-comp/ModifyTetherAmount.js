@@ -46,12 +46,23 @@ const ModifyTetherAmount = () => {
 
   const submitNewValueHandler = async (e) => {
     e.preventDefault();
-    await mutateAsync(parseFloat(value));
-    let type = "SUCCESS";
-    let message = "مقدار جدید تتر ثبت شد";
-    if (isError) {
+    // await mutateAsync(parseFloat(value));
+    // let type = "SUCCESS";
+    // let message = "مقدار جدید تتر ثبت شد";
+    // if (isError) {
+    //   type = "ERROR";
+    //   message = "خطایی  رخ داد!";
+    // }
+
+    let type, message;
+
+    try {
+      await mutateAsync(parseFloat(value));
+      type = "SUCCESS";
+      message = "مقدار جدید تتر ثبت شد";
+    } catch (error) {
       type = "ERROR";
-      message = "خطایی  رخ داد!";
+      message = "خطایی  رخ داد";
     }
 
     addNote({
