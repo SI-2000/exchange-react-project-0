@@ -61,7 +61,7 @@ const InputBox = ({
         onBlur={onBlur}
       />
       <label className={classes["unit"]} htmlFor={"tradeForm" + name.en}>
-        {unit.fa}
+        {unit.en === "USDT" ? "تتر" : "کوین"}
       </label>
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import MainNavigation from "./MainNavigation";
 import ProfileSec from "./ProfileSec";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import CustomButton from "./CustomButton";
 import { ReactComponent as HamburgerIcon } from "../files/icons/menu_FILL0_wght400_GRAD0_opsz48.svg";
 import classes from "./MainHeader.module.css";
@@ -31,7 +31,11 @@ const MainHeader = () => {
     <header className={classes["main-header"]}>
       <div className={classes["menubtn-logo-container"]}>
         <div className={classes["main-nav-container"]}>
-          <input type="checkbox" id="show-menu-cbx" defaultChecked={navIsOpen} />
+          <input
+            type="checkbox"
+            id="show-menu-cbx"
+            defaultChecked={navIsOpen}
+          />
           <label
             className={classes["show-menu-label"]}
             htmlFor="show-menu-cbx"
@@ -51,10 +55,14 @@ const MainHeader = () => {
           )}
         </div>
         <div className={classes["logo"]}>
-          <h1>ایزی بیت</h1>
+          <h1>
+            <Link to="/">ایزی بیت</Link>
+          </h1>
         </div>
-        <MainNavigation className={"min-1030"} onCloseNav={closeNavOverlayHandler} />
-
+        <MainNavigation
+          className={"min-1030"}
+          onCloseNav={closeNavOverlayHandler}
+        />
       </div>
       <div className={classes["user-links"]}>
         {uid && <ProfileSec />}
