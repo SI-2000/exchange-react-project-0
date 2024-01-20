@@ -13,7 +13,7 @@ function ErrorElement({ err = null }) {
   let title = "خطایی پیش آمد!";
   let message = "ظاهرا مشکلی پیش آمده است. دوباره تلاش کنید.";
 
-  const errStatus = error.status || -1
+  const errStatus = error ? error.status : -1;
 
   switch (errStatus) {
     case 400:
