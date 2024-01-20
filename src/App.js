@@ -53,6 +53,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  // {path:"*", element:<ErrorElement />}
 ]);
 
 function App() {

@@ -87,8 +87,8 @@ const FeaturesSlides = () => {
           // onSlideChange={() => console.log("slide change")}
           // onSwiper={(swiper) => console.log(swiper)}
         >
-          {slides.map((s) => (
-            <SwiperSlide>
+          {slides.map((s, index) => (
+            <SwiperSlide key={index}>
               <div className="slide-container">
                 <img className={"slide-image"} src={s.img} />
                 <h1 className={"slide-title"}>{s.header}</h1>

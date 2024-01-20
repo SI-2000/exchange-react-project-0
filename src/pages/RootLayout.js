@@ -35,7 +35,6 @@ const app = initializeApp(firebaseConfig);
 const RootLayout = () => {
   const uid = useSelector((state) => state.auth.uid);
   const [isLoading, setIsLoading] = useState(true);
-  const [modalIsOpen, setModalIsOpen] = useState(true);
 
   const location = useLocation();
   const fullPath = location.pathname + location.search;
@@ -68,7 +67,7 @@ const RootLayout = () => {
 
   return (
     <div>
-      <Modal isOpen={modalIsOpen} setIsOpen={setModalIsOpen} />
+      <Modal />
       <Notifications />
       <MainHeader />
       <Outlet />

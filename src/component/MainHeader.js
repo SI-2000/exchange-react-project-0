@@ -34,7 +34,9 @@ const MainHeader = () => {
           <input
             type="checkbox"
             id="show-menu-cbx"
-            defaultChecked={navIsOpen}
+            // defaultChecked={navIsOpen}
+            checked={navIsOpen}
+            onChange={() => {}}
           />
           <label
             className={classes["show-menu-label"]}
