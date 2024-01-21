@@ -15,24 +15,29 @@ const CurrenciesList = () => {
     queryKey: ["currencies", "infinite"],
     getNextPageParam: (prevDate) => prevDate.nextPage,
     queryFn: ({ pageParam = 1 }) => getPaginatedCurrency(pageParam),
+    retry: 1,
   });
 
   const tableContainerRef = useRef();
 
-  const { seen, setSeen } = useVisibilityStatus(tableContainerRef);
+  const { seen, setSeen } = useVisibilityStatus(tableContainerRef, {
+    visibilityThreshold: 1,
+    depthLevel: 1,
+  });
 
   useEffect(() => {
     if (seen && !currenciesQuery.isError) {
-      /* If we do not apply the error condition, 
+      /* If we do not apply the error condition,
       in case of error a new request will be sent with each time of scrolling .*/
       currenciesQuery.fetchNextPage().then(() => {
         setSeen(false);
       });
     }
-  }, [seen]);
+  }, [seen, currenciesQuery.data]);
+
 
   if (currenciesQuery.isLoading) return <RouterLoading />;
-  if (currenciesQuery.isError) console.log(currenciesQuery.error);
+
 
   return (
     <div className={`${classes["CurrenciesList"]}`}>
@@ -64,6 +69,17 @@ const CurrenciesList = () => {
                 <LoadingSVG />
               </div>
             )}
+
+            {currenciesQuery.isError &&
+              currenciesQuery.data &&
+              !currenciesQuery.isFetchingNextPage && ( // Render error message here
+                <div
+                  onClick={() => currenciesQuery.fetchNextPage()}
+                  className={`${classes["refresh-btn"]}`}
+                >
+                  <LoadingSVG />
+                </div>
+              )}
           </div>
         </WhiteFrame>
       </div>

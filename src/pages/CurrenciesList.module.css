@@ -43,6 +43,20 @@
   animation-iteration-count: infinite;
 }
 
+.currencies-table .refresh-btn{
+  margin: auto;
+  background-color: rgb(187, 187, 187);
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  padding:3px;
+  margin-bottom: 10px;
+}
+.currencies-table .refresh-btn svg{
+  fill: rgb(255, 255, 255);
+
+}
+
 @keyframes rotation {
   from {
     transform: rotate(0);

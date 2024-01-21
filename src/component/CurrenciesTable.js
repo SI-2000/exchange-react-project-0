@@ -6,23 +6,26 @@ import { useQuery } from "react-query";
 import { getCurrenciesInfo } from "../util/get-currencies";
 
 const CurrenciesTable = ({ queryData }) => {
-  
-  if (queryData.isError)
-  return (
-<p className={`${classes["connection-message"]}`}>
+  if (!queryData.data)
+    return (
+      <p className={`${classes["connection-message"]}`}>
         مشکلی در دسترسی به داده ها وجود دارد. لطفا اتصال اینترنت و vpn خود را
         بررسی کنید.
       </p>
     );
-    
-    let tableData;
-    try {
-      tableData = queryData.data.pages.flatMap((page) => page.currencies);
-    } catch (error) {
-      tableData = queryData.data.currencies;
-    }
-    return (
-      <table className={`${classes["currencies-table"]}`}>
+
+
+  let tableData;
+  try {
+    tableData = queryData.data.pages.flatMap((page) => page.currencies);
+  } catch (error) {
+    tableData = queryData.data.currencies;
+  }
+
+  
+
+  return (
+    <table className={`${classes["currencies-table"]}`}>
       <thead>
         <tr className={`${classes["headers-wrapper"]}`}>
           <th className={classes["name"]}>نام</th>

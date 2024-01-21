@@ -8,8 +8,6 @@ function ErrorElement({ err = null }) {
   const routerError = useRouteError();
   const error = err || routerError;
 
-  console.log(error)
-
   let title = "خطایی پیش آمد!";
   let message = "ظاهرا مشکلی پیش آمده است. دوباره تلاش کنید.";
 

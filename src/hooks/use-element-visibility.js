@@ -14,17 +14,13 @@ const useVisibilityStatus = (elementRef, config = defaultConfig) => {
   const [seen, setSeen] = useState(false);
   const [inView, setInView] = useState(false);
 
-  const elementHeight = elementRef.current
-    ? elementRef.current.scrollHeight
-    : 0;
-
   useEffect(() => {
     const scrollHandler = () => {
       setDistanceFromTop((prev) => {
         if (elementRef.current) {
           return (
             elementRef.current.getBoundingClientRect().top +
-            elementHeight * config.depthLevel
+            elementRef.current.scrollHeight * config.depthLevel
           );
         }
       });
@@ -43,8 +39,9 @@ const useVisibilityStatus = (elementRef, config = defaultConfig) => {
     });
     if (elementRef.current) {
       setInView(
-        elementRef.current.getBoundingClientRect().top - elementHeight <= 0 &&
-          elementRef.current.getBoundingClientRect().bottom >= 0
+        elementRef.current.getBoundingClientRect().top -
+          elementRef.current.scrollHeight <=
+          0 && elementRef.current.getBoundingClientRect().bottom >= 0
       );
     }
   }, [distanceFromTop]);
