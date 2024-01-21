@@ -47,7 +47,7 @@ const AssetsPage = () => {
   }
 
 
-  if (assets.isLoading || currenciesQuery.isLoading || assets.isFetching)
+  if (assets.isLoading || currenciesQuery.isLoading)
     return <RouterLoading />;
 
   if (assets.isError || currenciesQuery.isError)
