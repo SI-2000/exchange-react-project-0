@@ -46,7 +46,9 @@ const AssetsPage = () => {
     );
   }
 
-  if (assets.isLoading || currenciesQuery.isLoading) return <RouterLoading />;
+
+  if (assets.isLoading || currenciesQuery.isLoading || assets.isFetching)
+    return <RouterLoading />;
 
   if (assets.isError || currenciesQuery.isError)
     return <ErrorElement err={assets.error} />;

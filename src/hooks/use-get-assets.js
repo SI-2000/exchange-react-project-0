@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { assetsActions } from "../store/assets";
 import axios, { fireBaseAxios } from "../api/axios";
+import { useEffect } from "react";
 
 export default function useGetAssets() {
   const uid = useSelector((state) => state.auth.uid);
@@ -16,7 +17,7 @@ export default function useGetAssets() {
     staleTime: Infinity,
     select: (data) => {
       let assets;
-      if (uid && data) {
+      if (uid && data && data[uid]) {
         assets = data[uid].assets;
       } else {
         assets = {
@@ -27,17 +28,5 @@ export default function useGetAssets() {
     },
   });
 
-  // let assets;
-  // if (uid && usersQuery.data) {
-  //   assets = usersQuery.data[uid].assets;
-  // } else {
-  //   assets = {
-  //     message: "You are not authorized.",
-  //   };
-  // }
-  // return {
-  //   ...usersQuery,
-  //   data: assets,
-  // };
   return usersQuery;
 }

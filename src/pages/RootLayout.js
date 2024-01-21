@@ -4,7 +4,7 @@ import MainHeader from "../component/MainHeader";
 import MainFooter from "../component/MainFooter";
 import { useDispatch, useSelector } from "react-redux";
 import { assetsActions } from "../store/assets";
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -40,6 +40,7 @@ const RootLayout = () => {
   const fullPath = location.pathname + location.search;
   const userIsInTradePath = fullPath.startsWith("/coins");
   const showMainFooter = !userIsInTradePath;
+  const queryClient = useQueryClient()
 
   const dispatch = useDispatch();
 
@@ -62,6 +63,11 @@ const RootLayout = () => {
       setIsLoading(false);
     });
   }, []);
+
+  useEffect(()=>{
+    queryClient.invalidateQueries(["users"])
+  },[uid])
+  
 
   if (isLoading) return <RouterLoading />;
 
