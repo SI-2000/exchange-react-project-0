@@ -4,7 +4,7 @@ import WhiteFrame from "../ui/WhiteFrame";
 import AssetItem from "../component/AssetItem";
 import tableClasses from "../component/assestTable.module.css";
 import AssetsTable from "../component/AssetsTable";
-import { useQuery } from "react-query";
+import { useQuery } from '@tanstack/react-query'
 import useGetAssets from "../hooks/use-get-assets";
 import { getCurrenciesInfo } from "../util/get-currencies";
 import { useSelector } from "react-redux";
@@ -33,6 +33,7 @@ const AssetsPage = () => {
 
   const assets = useGetAssets();
 
+
   if (!uid) {
     return (
       <div className={classes["assets-container"]}>
@@ -47,11 +48,12 @@ const AssetsPage = () => {
   }
 
 
-  if (assets.isLoading || currenciesQuery.isLoading)
+  if (assets.isLoading || currenciesQuery.isLoading )
     return <RouterLoading />;
 
   if (assets.isError || currenciesQuery.isError)
     return <ErrorElement err={assets.error} />;
+
 
   const assetsInfo = Object.keys(assets.data).map((assetItem) => {
     const itemInfo = currenciesQuery.data.find((currency) => {

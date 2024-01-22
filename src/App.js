@@ -19,9 +19,10 @@ import {
   QueryClient,
   QueryClientProvider,
   QueryClientProviderProps,
-} from "react-query";
+} from '@tanstack/react-query';
 import AssetsPage from "./pages/AssetsPage";
 import ErrorElement from "./component/error-element-comp/ErrorElement";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,8 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+
       <RouterProvider router={router} />
     </QueryClientProvider>
   );

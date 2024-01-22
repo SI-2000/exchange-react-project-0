@@ -6,7 +6,6 @@ import persianNumsToEnglish from "../../util/persianNums-to-english";
 import useSetTether from "../../hooks/use-set-tether";
 import { useDispatch } from "react-redux";
 import { useNotification } from "../../hooks/use-notification";
-import { isError } from "react-query";
 
 const validator = (val) => {
   let regex = /^[+-]?[0-9]+\.?[0-9]*$/;

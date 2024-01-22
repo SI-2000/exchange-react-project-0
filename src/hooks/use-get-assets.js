@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useDispatch, useSelector } from "react-redux";
 import { assetsActions } from "../store/assets";
 import axios, { fireBaseAxios } from "../api/axios";
@@ -26,7 +26,14 @@ export default function useGetAssets() {
       }
       return assets;
     },
+    staleTime: 0,
+    refetchOnMount: true,
+    // refetchOnWindowFocus:true
   });
+
+  // useEffect(() => {
+  //   usersQuery.refetch();
+  // }, []);
 
   return usersQuery;
 }
