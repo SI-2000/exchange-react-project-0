@@ -11,7 +11,7 @@ import { useReducer_DWindow } from "../hooks/use-reducer-dwindow";
 import TradeHistory from "../component/trading-page-comp/TradeHistory";
 import TradeSection from "../component/trading-page-comp/TradeSection";
 import SelectCurrency from "../component/trading-page-comp/SelectCurrency";
-import { useQuery } from'@tanstack/react-query'
+import { useQuery } from "@tanstack/react-query";
 import getTradingInfo from "../util/get-trading-info";
 import useGetAssets from "../hooks/use-get-assets";
 import { useDispatch, useSelector } from "react-redux";
@@ -39,7 +39,8 @@ const TradingPage = () => {
       return await getTradingInfo(params.coinId);
     },
     // staleTime: 1000,
-    refetchInterval: 1000
+    refetchInterval: 1000,
+    retry: 0,
   });
 
   const data = tradingQuery.data;

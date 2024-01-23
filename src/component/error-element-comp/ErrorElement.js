@@ -10,7 +10,6 @@ function ErrorElement({ err = null }) {
     "ظاهرا مشکلی پیش آمده است. اتصال اینترنت خود را بررسی کنید و دوباره تلاش کنید.";
 
   const errStatus = error ? error.status : -1;
-  console.log(errStatus)
 
   switch (errStatus) {
     case 400:

@@ -30,7 +30,6 @@ const router = createBrowserRouter([
         children: [
           {
             path: ":coinId",
-            // loader: TradingPageLoader,
             element: <TradingPage />,
           },
         ],

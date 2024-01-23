@@ -2,7 +2,7 @@ import { json } from "react-router-dom";
 import { currenciesData, depthArr, tradesArr } from "./data/currencies-data";
 import axios from "../api/axios";
 
-async function getTradingInfo(uid, currency) {
+async function getTradingInfo(coinId) {
   // const [depthRes, tradesRes, coinInfoRes] = await Promise.all([
   //   axios.get("depth"),
   //   axios.get("trades?_limit=13"),
@@ -13,6 +13,15 @@ async function getTradingInfo(uid, currency) {
   const trades = tradesArr[Math.floor(Math.random() * tradesArr.length)];
 
   const currencies = currenciesData;
+
+  // console.log(currencies[0].symbol.toUpperCase() + "USDT")
+
+  if (!currencies.some((c) => c.symbol.toUpperCase() + "USDT" === coinId)) {
+    
+    let err = new Error("ارز مورد نظر یافت نشد");
+    err.status = 404;
+    throw err;
+  }
 
   const data = {
     depth,
