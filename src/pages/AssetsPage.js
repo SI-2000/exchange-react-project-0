@@ -26,7 +26,7 @@ const AssetsPage = () => {
   }, [uid]);
 
   const currenciesQuery = useQuery({
-    queryKey: "currencies",
+    queryKey: ["currencies"],
     queryFn: getCurrenciesInfo,
     staleTime: Infinity,
   });

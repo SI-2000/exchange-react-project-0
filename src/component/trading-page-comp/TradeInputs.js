@@ -60,7 +60,7 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
 
       {orderType.state === "STOP_LIMIT" && (
         <InputBox
-          value={stopInput.value}
+          value={uid ? stopInput.value : ""}
           isValid={true}
           onChange={stopInput.valueChangeHandler}
           onBlur={stopInput.inputblurHandler}
@@ -76,7 +76,11 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
         onChange={priceInput.valueChangeHandler}
         onBlur={priceInput.inputblurHandler}
         value={
-          orderType.state === "MARKET" ? "قیمت فعلی بازار" : priceInput.value
+          orderType.state === "MARKET"
+            ? "قیمت فعلی بازار"
+            : uid
+            ? priceInput.value
+            : ""
         }
         hasError={priceInput.hasError}
         name={{ en: "price", fa: "قیمت" }}
@@ -86,7 +90,7 @@ const TradeInputs = ({ formType, orderType, activeForm }) => {
       />
 
       <InputBox
-        value={amountInput.value}
+        value={uid ? amountInput.value : ""}
         isValid={amountInput.isValid}
         onChange={amountInput.valueChangeHandler}
         onBlur={amountInput.inputblurHandler}

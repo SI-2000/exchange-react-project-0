@@ -11,7 +11,7 @@ import { tradingActions } from "../../store/trading-data";
 
 const TradeForm = ({ className, activeForm, setActiveForm }) => {
   const tradeTypes = ["spot", "cross", "isolated"];
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [tradeType, setTradeType] = useState("spot");
 
@@ -23,10 +23,10 @@ const TradeForm = ({ className, activeForm, setActiveForm }) => {
   const [selectedOrderType, dispatchSelectedOrderType] =
     useReducer_DWindow(orderTypes);
 
-  useEffect(()=>{
-    // Setting selected order type in redux 
-    dispatch(tradingActions.changeOrderType(selectedOrderType.state))
-  },[selectedOrderType])
+  useEffect(() => {
+    // Setting selected order type in redux
+    dispatch(tradingActions.changeOrderType(selectedOrderType.state));
+  }, [selectedOrderType]);
 
   function showBuyFormHandler() {
     setActiveForm("buy");
@@ -34,7 +34,6 @@ const TradeForm = ({ className, activeForm, setActiveForm }) => {
   function showSellFormHandler() {
     setActiveForm("sell");
   }
-
 
   return (
     <div className={`${classes["trade-form"]} ${classes[className]}`}>

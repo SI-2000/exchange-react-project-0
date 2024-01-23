@@ -1,15 +1,16 @@
-import {  useRouteError } from "react-router-dom";
+import { useRouteError } from "react-router-dom";
 import ErrorBox from "./ErrorBox";
 
 function ErrorElement({ err = null }) {
-
   const routerError = useRouteError();
   const error = err || routerError;
 
   let title = "خطایی پیش آمد!";
-  let message = "ظاهرا مشکلی پیش آمده است. دوباره تلاش کنید.";
+  let message =
+    "ظاهرا مشکلی پیش آمده است. اتصال اینترنت خود را بررسی کنید و دوباره تلاش کنید.";
 
   const errStatus = error ? error.status : -1;
+  console.log(errStatus)
 
   switch (errStatus) {
     case 400:
@@ -24,12 +25,7 @@ function ErrorElement({ err = null }) {
       title = "یافت نشد!";
       message = "منبع یا صفحه مورد نظر یافت نشد.";
       break;
-    case 500:
-      title = "خطای سرور داخلی!";
-      message = "سرور با یک خطای داخلی مواجه شد.";
-      break;
   }
-
 
   return (
     <>
