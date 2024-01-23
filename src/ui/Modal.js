@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import classes from "./Modal.module.css";
 import Overlay from "./Overlay";
 import CustomButton from "../component/CustomButton";
 import { ReactComponent as CloseIcon } from "../files/icons/close_FILL0_wght400_GRAD0_opsz48.svg";
+import axios from "axios";
 
 const Modal = () => {
   const [chxIsChecked, setChxIsChecked] = useState(
@@ -11,7 +12,16 @@ const Modal = () => {
   );
 
   const [modalIsOpen, setModalIsOpen] = useState(!chxIsChecked);
+  const [country, setCountry] = useState("");
 
+  useEffect(() => {
+    axios
+      .get("https://ipapi.co/json/")
+      .then((response) => {
+        setCountry(response.data.country_name);
+      })
+      .catch((error) => {});
+  }, []);
 
   if (!modalIsOpen) return null;
 
@@ -42,6 +52,21 @@ const Modal = () => {
           >
             <CloseIcon />
           </div>
+          {country === "Iran" && (
+            <p
+              style={{
+                marginBottom: "2rem",
+                backgroundColor: "white",
+                padding: ".5rem",
+                color: "var(--gold-color)",
+                borderRadius: "10px",
+              }}
+            >
+              شما با IP ایران به وبسایت متصل شده اید. توجه کنید که این سایت از
+              سرویس Firebase استفاده میکند که تحت تحریم است و شما امکان استفاده
+              از خدمات سایت را نخواهید داشت.
+            </p>
+          )}
           <p>
             این برنامه به دلیل نبود API مناسب برای تایید هویت و ذخیره داده های
             کاربر از دو سرویس Authentication و Realtime Database از وبسایت
