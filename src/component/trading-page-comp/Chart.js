@@ -18,7 +18,7 @@ const Chart = ({ className, isLoading }) => {
   return (
     <div className={`${classes["Chart"]} ${classes[className]}`}>
       <div className={`${classes["chart-container"]}`}>
-        {/* {
+        {
           <TradingViewWidget
             symbol={params.coinId}
             theme="dark"
@@ -26,7 +26,7 @@ const Chart = ({ className, isLoading }) => {
             width="100%"
             height="20rem"
           />
-        } */}
+        }
       </div>
     </div>
   );
