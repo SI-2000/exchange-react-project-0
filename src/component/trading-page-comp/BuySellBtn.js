@@ -4,9 +4,6 @@ import { Link } from "react-router-dom";
 import classes from "./BuySellBtn.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import useSetAssets from "../../hooks/use-set-assets";
-import { useTradeForm } from "../../hooks/use-trade-form";
-import { tradingActions } from "../../store/trading-data";
-import { compose } from "redux";
 import { useNotification } from "../../hooks/use-notification";
 
 const BuySellBtn = ({

@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-import useInput from "../../hooks/use-input";
 import classes from "./InputBox.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { tradingActions } from "../../store/trading-data";
+import { useSelector } from "react-redux";
+
 
 const validators = [
   (val) => {

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import classes from "./TradeForm.module.css";
-import { Link } from "react-router-dom";
 import SelectBtn from "../SelectBtn";
-import BuySellTriangle from "../../ui/custom-svg-components/BuySellTriangle";
 import FormSwitcherBtn from "./FormSwitcherBtn";
 import DynamicContentWindow from "../DynamicContentWindow ";
 import { useReducer_DWindow } from "../../hooks/use-reducer-dwindow";

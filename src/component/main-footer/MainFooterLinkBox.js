@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 import classes from "./MainFooterLinkBox.module.css";
 import { ReactComponent as ArrowIcon } from "../../files/icons/keyboard_arrow_down_FILL0_wght400_GRAD0_opsz48.svg";

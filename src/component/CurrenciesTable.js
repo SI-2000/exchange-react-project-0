@@ -1,9 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import CurrenciesTItem from "./CurrenciesTItem";
 import classes from "./CurrenciesTable.module.css";
-import { useQuery } from '@tanstack/react-query';
-import { getCurrenciesInfo } from "../util/get-currencies";
 
 const CurrenciesTable = ({ queryData }) => {
   if (!queryData.data)

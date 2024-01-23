@@ -1,14 +1,13 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React from "react";
 import classes from "./TradeInputs.module.css";
 import InputBox from "./InputBox";
 import AVBLPercentage from "./AVBLPercentage";
-import { Link, createRoutesFromChildren } from "react-router-dom";
 import BuySellBtn from "./BuySellBtn";
 import useGetAssets from "../../hooks/use-get-assets";
 import TradeFormErrors from "./TradeFormErrors";
 import { useTradeForm } from "../../hooks/use-trade-form";
 import { useDispatch, useSelector } from "react-redux";
-import tradingData, { tradingActions } from "../../store/trading-data";
+import { tradingActions } from "../../store/trading-data";
 import { roundTo } from "../../util/round-number";
 import { getTime } from "../../util/get-time";
 

@@ -1,9 +1,7 @@
-import { useEffect } from "react";
-import { useNavigate, useRouteError } from "react-router-dom";
+import {  useRouteError } from "react-router-dom";
 import ErrorBox from "./ErrorBox";
 
 function ErrorElement({ err = null }) {
-  const navigate = useNavigate();
 
   const routerError = useRouteError();
   const error = err || routerError;

@@ -3,7 +3,6 @@ import classes from "./PrimaryData.module.css";
 import { useDispatch } from "react-redux";
 import { searchPairsActions } from "../../store/search-pairs";
 import SkeletonLoading from "../../ui/SkeletonLoading";
-import numToRoundedString from "../../util/num-to-rounded-string";
 import { roundTo } from "../../util/round-number";
 
 const PrimaryData = ({ data, isLoading, coinId }) => {

@@ -1,28 +1,15 @@
-import {
-  createBrowserRouter,
-  redirect,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import RootLayout from "./pages/RootLayout";
 import Authentication from "./pages/Authentication";
 import { action as authenticationAction } from "./pages/Authentication";
-import { fetchRealTimeDB } from "./util/realTimeDB-req";
-import classes from "./App.module.css";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { authActions } from "./store/auth";
+
 import UnimportantPage from "./pages/UnimportantPage";
 import CurrenciesList from "./pages/CurrenciesList";
 import TradingPage from "./pages/TradingPage";
-import {
-  QueryClient,
-  QueryClientProvider,
-  QueryClientProviderProps,
-} from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AssetsPage from "./pages/AssetsPage";
 import ErrorElement from "./component/error-element-comp/ErrorElement";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const router = createBrowserRouter([
   {
@@ -64,8 +51,6 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-
       <RouterProvider router={router} />
     </QueryClientProvider>
   );

@@ -1,11 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { NavLink, useLocation } from "react-router-dom";
 import { ReactComponent as CloseIcon } from "../files/icons/close_FILL0_wght400_GRAD0_opsz48.svg";
 import classes from "./MainNavigation.module.css";
 import { useLogout } from "../hooks/use-logout";
 import { useSelector } from "react-redux";
-import Backdrop from "../ui/Backdrop";
 
 const MainNavigation = ({ className, onCloseNav }) => {
   const uid = useSelector((state) => state.auth.uid);

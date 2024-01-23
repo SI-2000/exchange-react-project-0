@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import { roundTo } from "../util/round-number";
 import { ReactComponent as MoreBtn } from "../files/icons/more_vert_FILL0_wght400_GRAD0_opsz24.svg";
 import classes from "./AssetItem.module.css";

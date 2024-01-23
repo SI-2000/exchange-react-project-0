@@ -4,7 +4,6 @@ import classes from "./AVBLPercentage.module.css";
 import useGetAssets from "../../hooks/use-get-assets";
 import { useDispatch, useSelector } from "react-redux";
 import { tradingActions } from "../../store/trading-data";
-import { roundTo } from "../../util/round-number";
 
 const AVBLPercentage = ({ formType }) => {
   const uid = useSelector((state) => state.auth.uid);
