@@ -29,8 +29,9 @@ const RouterLoading = () => {
         <div className={`${classes["region-msg"]}`}>
           {showRegionMsg && (
             <p className="fade-in--up">
-              لطفا از اتصال VPN خود مطمئن شوید. این برنامه از api هایی مانند
-              Firebase و Binance استفاده میکند که تحت تحریم هستند.
+              از فعال بودن ابزار های عبور از تحریم مانند VPN یا DNS خود مطمئن
+              شوید. این برنامه از سرویس های Firebase استفاده میکند که تحت تحریم
+              هستند.
             </p>
           )}
         </div>
