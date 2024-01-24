@@ -3,7 +3,7 @@ import WhiteFrame from "../ui/WhiteFrame";
 import CurrenciesTable from "../component/CurrenciesTable";
 
 import classes from "./CurrenciesList.module.css";
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from 'react-query';
 import { getPaginatedCurrency } from "../util/get-currencies";
 import RouterLoading from "../ui/RouterLoading";
 import ErrorElement from "../component/error-element-comp/ErrorElement";

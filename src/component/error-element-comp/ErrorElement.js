@@ -7,7 +7,7 @@ function ErrorElement({ err = null }) {
 
   let title = "خطایی پیش آمد!";
   let message =
-    "ظاهرا مشکلی پیش آمده است. اتصال اینترنت خود را بررسی کنید و دوباره تلاش کنید.";
+    "ظاهرا مشکلی پیش آمده است. اتصال اینترنت و VPN خود را بررسی کنید و دوباره تلاش کنید.";
 
   const errStatus = error ? error.status : -1;
 

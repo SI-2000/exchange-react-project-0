@@ -4,7 +4,7 @@ import Intro from "../component/home-page/Intro";
 import FeaturesSlides from "../component/home-page/FeaturesSlides";
 import Statistics from "../component/home-page/Statistics";
 import HomePageTable from "../component/home-page/HomePageTable";
-import { useQuery, useQueryClient } from'@tanstack/react-query';
+import { useQuery, useQueryClient } from'react-query';
 import {
   getCurrenciesInfo,
   getPaginatedCurrency,

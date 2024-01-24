@@ -14,10 +14,7 @@ async function getTradingInfo(coinId) {
 
   const currencies = currenciesData;
 
-  // console.log(currencies[0].symbol.toUpperCase() + "USDT")
-
   if (!currencies.some((c) => c.symbol.toUpperCase() + "USDT" === coinId)) {
-    
     let err = new Error("ارز مورد نظر یافت نشد");
     err.status = 404;
     throw err;

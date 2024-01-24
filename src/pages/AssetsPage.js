@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./AssetsPage.module.css";
 import WhiteFrame from "../ui/WhiteFrame";
 import AssetItem from "../component/AssetItem";
 import tableClasses from "../component/assestTable.module.css";
 import AssetsTable from "../component/AssetsTable";
-import { useQuery } from '@tanstack/react-query'
+import { useQuery } from 'react-query'
 import useGetAssets from "../hooks/use-get-assets";
 import { getCurrenciesInfo } from "../util/get-currencies";
 import { useSelector } from "react-redux";
@@ -32,6 +32,7 @@ const AssetsPage = () => {
   });
 
   const assets = useGetAssets();
+
 
 
   if (!uid) {
@@ -63,6 +64,8 @@ const AssetsPage = () => {
         return currency.symbol.toUpperCase() + "USDT" === assetItem;
       }
     });
+
+
     return {
       id: itemInfo.id,
       symbol: itemInfo.symbol,

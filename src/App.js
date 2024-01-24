@@ -1,51 +1,81 @@
+import { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import RootLayout from "./pages/RootLayout";
-import Authentication from "./pages/Authentication";
-import { action as authenticationAction } from "./pages/Authentication";
 
-import UnimportantPage from "./pages/UnimportantPage";
-import CurrenciesList from "./pages/CurrenciesList";
-import TradingPage from "./pages/TradingPage";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import AssetsPage from "./pages/AssetsPage";
+import RootLayout from "./pages/RootLayout";
+import { action as authenticationAction } from "./pages/Authentication";
+import { QueryClient, QueryClientProvider } from "react-query";
 import ErrorElement from "./component/error-element-comp/ErrorElement";
+import RouterLoading from "./ui/RouterLoading";
+
+const HomePage = lazy(() => import("./pages/HomePage"));
+const AssetsPage = lazy(() => import("./pages/AssetsPage"));
+const Authentication = lazy(() => import("./pages/Authentication"));
+const CurrenciesList = lazy(() => import("./pages/CurrenciesList"));
+const TradingPage = lazy(() => import("./pages/TradingPage"));
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    errorElement: <ErrorElement />,
+    errorElement: (
+      <Suspense fallback={<RouterLoading />}>
+        <ErrorElement />
+      </Suspense>
+    ),
     children: [
-      { index: true, element: <HomePage /> },
-      { path: "assets", element: <AssetsPage /> },
+      {
+        index: true,
+        element: (
+          <Suspense fallback={<RouterLoading />}>
+            <HomePage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "assets",
+        element: (
+          <Suspense fallback={<RouterLoading />}>
+            <AssetsPage />
+          </Suspense>
+        ),
+      },
       {
         path: "auth",
-        element: <Authentication />,
+        element: (
+          <Suspense fallback={<RouterLoading />}>
+            <Authentication />
+          </Suspense>
+        ),
         action: authenticationAction,
       },
-      { path: "currencies-list", element: <CurrenciesList /> },
+      {
+        path: "currencies-list",
+        element: (
+          <Suspense fallback={<RouterLoading />}>
+            <CurrenciesList />
+          </Suspense>
+        ),
+      },
       {
         path: "coins",
         children: [
           {
             path: ":coinId",
-            element: <TradingPage />,
+            element: (
+              <Suspense fallback={<RouterLoading />}>
+                <TradingPage />
+              </Suspense>
+            ),
           },
         ],
       },
-      {
-        path: "unimportant-page",
-        element: <UnimportantPage />,
-      },
     ],
   },
-  // {path:"*", element:<ErrorElement />}
 ]);
 
 function App() {
   const queryClient = new QueryClient({
-    defaultOptions: { queries: { refetchOnWindowFocus: true, retry: 1 } },
+    defaultOptions: { queries: { refetchOnWindowFocus: false, retry: 1 } },
   });
 
   return (

@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { useSelector } from "react-redux";
 import axios, { fireBaseAxios } from "../api/axios";
 
@@ -17,7 +17,7 @@ const useSetTether = () => {
       return resData.data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["users"] });
+      queryClient.invalidateQueries(["users"]);
     },
   });
   return tetherMutation;

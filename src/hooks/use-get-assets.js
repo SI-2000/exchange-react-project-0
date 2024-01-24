@@ -1,8 +1,6 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { useDispatch, useSelector } from "react-redux";
-import { assetsActions } from "../store/assets";
-import axios, { fireBaseAxios } from "../api/axios";
-import { useEffect } from "react";
+import { useQuery } from "react-query";
+import { useSelector } from "react-redux";
+import { fireBaseAxios } from "../api/axios";
 
 export default function useGetAssets() {
   const uid = useSelector((state) => state.auth.uid);
@@ -26,14 +24,7 @@ export default function useGetAssets() {
       }
       return assets;
     },
-    staleTime: 0,
-    refetchOnMount: true,
-    // refetchOnWindowFocus:true
   });
-
-  // useEffect(() => {
-  //   usersQuery.refetch();
-  // }, []);
 
   return usersQuery;
 }

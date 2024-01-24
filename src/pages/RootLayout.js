@@ -4,7 +4,7 @@ import MainHeader from "../component/MainHeader";
 import MainFooter from "../component/MainFooter";
 import { useDispatch, useSelector } from "react-redux";
 import { assetsActions } from "../store/assets";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "react-query";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
