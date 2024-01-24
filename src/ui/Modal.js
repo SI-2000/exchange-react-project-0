@@ -14,14 +14,14 @@ const Modal = () => {
   const [modalIsOpen, setModalIsOpen] = useState(!chxIsChecked);
   const [country, setCountry] = useState("");
 
-  // useEffect(() => {
-  //   axios
-  //     .get("https://ipapi.co/json/")
-  //     .then((response) => {
-  //       setCountry(response.data.country_name);
-  //     })
-  //     .catch((error) => {});
-  // }, []);
+  useEffect(() => {
+    axios
+      .get("https://ipapi.co/json/")
+      .then((response) => {
+        setCountry(response.data.country_name);
+      })
+      .catch((error) => {});
+  }, []);
 
   if (!modalIsOpen) return null;
 
