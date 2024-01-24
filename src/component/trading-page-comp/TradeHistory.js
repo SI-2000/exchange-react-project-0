@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "./TradeHistory.module.css";
 import DynamicContentWindow from "../DynamicContentWindow ";
 import { useReducer_DWindow } from "../../hooks/use-reducer-dwindow";
 import OrderHistoryItem from "./OrderHistoryItem";
 import SkeletonLoading from "../../ui/SkeletonLoading";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { tradingActions } from "../../store/trading-data";
 
 const tradeHistoryActions = [
   { ORDER_HISTORY: "تاریخچه سفارش‌ها" },
@@ -15,6 +16,7 @@ const TradeHistory = ({ isLoading }) => {
   const uid = useSelector((state) => state.auth.uid);
   const [tradeHistoryState, dispatchTradeHistory] =
     useReducer_DWindow(tradeHistoryActions);
+  const dispatch = useDispatch();
 
   const historyData = useSelector((state) => state.tradingData.trade_history);
 
@@ -25,7 +27,6 @@ const TradeHistory = ({ isLoading }) => {
       </div>
     );
   }
-
 
   return (
     <div className={`${classes["TradeHistory"]}`}>

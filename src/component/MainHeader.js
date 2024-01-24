@@ -78,7 +78,7 @@ const MainHeader = () => {
             </CustomLink>
           </div>
         )}
-        {isInAuthPages && (
+        {isInAuthPages && !uid && (
           <CustomButton
             className="golden-btn"
             onClick={() => {

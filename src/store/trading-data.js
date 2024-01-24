@@ -50,9 +50,12 @@ const tradingSlice = createSlice({
     addTradeHistory(state, action) {
       state.trade_history.unshift(action.payload);
     },
-    setPairs(state, action){
-      state.pairs = action.payload
-    }
+    clearHistory(state) {
+      state.trade_history = [];
+    },
+    setPairs(state, action) {
+      state.pairs = action.payload;
+    },
   },
 });
 

@@ -12,6 +12,7 @@ import { authActions } from "../store/auth";
 import RouterLoading from "../ui/RouterLoading";
 import Notifications from "../component/notification/Notifications";
 import Modal from "../ui/Modal";
+import { tradingActions } from "../store/trading-data";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -66,6 +67,7 @@ const RootLayout = () => {
 
   useEffect(() => {
     queryClient.removeQueries(["users"]);
+    dispatch(tradingActions.clearHistory());
   }, [uid]);
 
   if (isLoading) return <RouterLoading />;
